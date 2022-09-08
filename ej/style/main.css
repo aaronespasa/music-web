@@ -5,41 +5,20 @@
 :root {
 
     /* Colors */
-    --bs-color-primary: #1e1e1e;
-    --bs-color-secondary: #f2f2f2;
-    --bs-color-tertiary: #f2f2f2;
-    --bs-color-quaternary: #f2f2f2;
-    --bs-color-quinary: #f2f2f2;
-    --bs-color-senary: #f2f2f2;
-    --bs-color-septenary: #f2f2f2;
-    --bs-color-octonary: #f2f2f2;
-    --bs-color-nonary: #f2f2f2;
-    --bs-color-denary: #f2f2f2;
-    --bs-color-primary-light: #f2f2f2;
-    --bs-color-secondary-light: #f2f2f2;
-    --bs-color-tertiary-light: #f2f2f2;
-    --bs-color-quaternary-light: #f2f2f2;
-    --bs-color-quinary-light: #f2f2f2;
-    --bs-color-senary-light: #f2f2f2;
-    --bs-color-septenary-light: #f2f2f2;
-    --bs-color-octonary-light: #f2f2f2;
-    --bs-color-nonary-light: #f2f2f2;
-    --bs-color-denary-light: #f2f2f2;
-    --bs-color-primary-dark: #f2f2f2;
-    --bs-color-secondary-dark: #f2f2f2;
-    --bs-color-tertiary-dark: #f2f2f2;
-    --bs-color-quaternary-dark: #f2f2f2;
-    --bs-color-quinary-dark: #f2f2f2;
-    --bs-color-senary-dark: #f2f2f2;
-    --bs-color-septenary-dark: #f2f2f2;
-    --bs-color-octonary-dark: #f2f2f2;
-    --bs-color-nonary-dark: #f2f2f2;
-    --bs-color-denary-dark: #f2f2f2;
+    --bs-color-primary-blue-navy: #002B5B;
+    --bs-color-primary-blue: #2B4865;
+    --bs-color-content-container-before-grey: #a3a8ae;
+    --bs-color-content-container-after-grey: #8a8f94;
+    --bs-color-content-grey-light: #cfd5de;
+    --bs-color-nav-grey-light: #37393b;
+    --bs-color-sidebar-grey: #3d3f41;
+    --bs-color-footer-grey: #5b5e62;
 
     /* Fonts */
-    --bs-font-sans-serif: system-ui, -apple-system, "Segoe UI", Roboto,
+    --bs-font-roboto-default: Roboto, "Segoe UI",
     "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
     --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
     "Liberation Mono", "Courier New", monospace;
     --bs-font-times: Times New Roman, Times, Baskerville, Georgia, serif;
@@ -48,10 +27,11 @@
 /* Body & general styles */
 body {
     margin: 0;
-    font-family: Roboto, sans-serif;
+    font-family: var(--bs-font-roboto-default);
 }
 
 h1 {
+    color: white;
     margin: 0;
 }
 
@@ -66,7 +46,8 @@ ul {
 
 a {
     text-decoration: none;
-    color: #000000;
+    font-family: Roboto, sans-serif;
+    color: white;
 }
 
 figure {
@@ -74,6 +55,7 @@ figure {
 }
 
 p {
+    color: white;
     margin: 0;
 }
 
@@ -93,7 +75,7 @@ p {
 nav {
     width: 100vw;
     height: 10vh;
-    background-color: #f1f1f1;
+    background-color: var(--bs-color-nav-grey-light);
 }
 
 .menu-title {
@@ -118,6 +100,7 @@ nav {
 }
 
 .sign-log-in-button {
+    color: white;
     background-color: transparent;
     border: none;
     font-size: 1em;
@@ -130,11 +113,12 @@ nav {
 
 /* Sidebar */
 .sidebar {
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     padding-top: 1em;
-    background-color: #f5f5f5;
+    background-color: var(--bs-color-sidebar-grey);
 }
 
 .menu-options-container {
@@ -166,6 +150,7 @@ nav {
     height: 82vh;
     overflow-y: scroll;
     overflow-x: hidden;
+    background-color: var(--bs-color-content-grey-light);
 }
 
 .content-container {
@@ -208,7 +193,7 @@ nav {
     cursor: pointer;
     transition: transform 0.5s, filter 0.5s;
     width: 100%;
-    border-radius: 10px;
+    border-radius: 8px;
 }
 
 .song-cover-container img:hover {
@@ -219,18 +204,27 @@ nav {
 .song-container audio {
     width: 100%;
     margin: 0.7em 0;
-    height: 30px;
-    border: 1px solid red;
+    height: 40px;
+}
+
+audio::-webkit-media-controls-panel {
+    background-color: var(--bs-color-content-grey-light);
+}    
+
+audio::-webkit-media-controls-play-button {
+    background-color: var(--bs-color-content-container-before-grey);
+    border-radius: 50%;
 }
 
 .song-container {
+    background-color: var(--bs-color-content-container-before-grey);
     font-family: var(--bs-font-sans-serif);
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    padding: 1.5em 1.5em 0.5em 1.5em;
-    border: 1px solid red;
+    padding: 1.5em 1.5em 1.2em 1.5em;
+    border-radius: 8px;
 }
 
 /* CTA */
@@ -240,20 +234,21 @@ nav {
     justify-content: center;
     align-items: center;
     height: 8vh;
-    background-color: #f9f9f9;
+    background-color: var(--bs-color-footer-grey);
 }
 
 .cta-text {
     margin: 0;
 }
 
-/* media query for a max width of 768 px */
+/* media query for a max width of 768px */
 @media (max-width: 768px) {
     body {
         background-color: rgb(213, 240, 255);
     }
 }
 
+/* media query for a max width of 600px */
 @media (max-width: 600px) {
     .music-genre-songs-container {
         justify-content: center;
