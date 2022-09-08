@@ -255,5 +255,8 @@ nav {
 }
 
 @media (max-width: 600px) {
-
+    .music-genre-songs-container {
+        justify-content: center;
+        grid-template-columns: repeat(auto-fill, 150px);
+    }
 }
