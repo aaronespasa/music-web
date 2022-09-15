@@ -14,8 +14,4 @@ $ sh create_zip.sh
 
 ## A preguntar / hacer
 
-* [ ] Saber si se puede poner el audio track debajo de la imagen de la canción, se necesita .js para poder hacer play de la canción al hacer click en la imagen.
-* [ ] La última "section" ha sido cambiada por un "footer", creo que encaja mejor.
-* [ ] Crear figma para poder poner distintas ideas a cerca del diseño.
-* [ ] Podemos poner iconos para las cookies y privacidad? estaría bien.
-* [ ] Se podría añadir un titulo de canción y el autor debajo i.e.
+* [ ] Definir las constantes de colores y fuentes en CSS
