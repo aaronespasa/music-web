@@ -68,6 +68,12 @@ audio::-webkit-media-controls-panel {
 .grid-container {
     display: grid;
     grid-template-columns: 1fr 3fr;
+    height: 94vh;
+}
+
+.column {
+    display: grid;
+    grid-template-rows: 70px 1fr;
 }
 
 .music-genre-songs-container {
@@ -184,7 +190,7 @@ nav {
 
 /* Content */
 .content {
-    height: 94vh;
+    height: calc(94vh - 70px);
     overflow-y: scroll;
     overflow-x: hidden;
     /* background-color: #0A1019; */
