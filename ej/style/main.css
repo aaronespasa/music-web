@@ -5,14 +5,9 @@
 :root {
 
     /* Colors */
-    --bs-color-primary-blue-navy: #002B5B;
-    --bs-color-primary-blue: #2B4865;
-    --bs-color-content-container-before-grey: #a3a8ae;
-    --bs-color-content-container-after-grey: #8a8f94;
-    --bs-color-content-grey-light: #cfd5de;
-    --bs-color-nav-grey-light: #37393b;
-    --bs-color-sidebar-grey: #3d3f41;
-    --bs-color-footer-grey: #5b5e62;
+    --bs-color-secondary-button-blue: rgba(146, 139, 218, 0.6);
+    --bs-color-primary-nav-blue: rgba(230, 209, 255, .75);
+    --bs-color-primary-sidebar: rgb(221, 209, 255);
 
     /* Fonts */
     --bs-font-roboto-default: Roboto, "Segoe UI",
@@ -33,7 +28,7 @@ body {
 
 h1 {
     margin: 0;
-    color: rgb(0, 0, 0);
+    color: rgba(0, 0, 0, 1);
 }
 
 li {
@@ -47,7 +42,7 @@ ul {
 
 a {
     text-decoration: none;
-    color: rgb(0, 0, 0);
+    color: rgb(0, 0, 0, 1);
 }
 
 button {
@@ -87,7 +82,7 @@ nav {
     width: 100vw;
     height: 8vh;
     background-color:
-        rgba(230, 209, 255, .75);
+        var(--bs-color-primary-nav-blue);
 }
 
 .menu-title {
@@ -130,11 +125,11 @@ nav {
     color: rgb(255, 255, 255);
     padding: .8rem;
     border-radius: 8px;
-    background-color: rgba(146, 139, 218, 0.6);
+    background-color: var(--bs-color-secondary-button-blue);
 }
 
 .sign-log-in-button:hover {
-    transform: scale(1.002);
+    transform: scale(1.01);
     filter: brightness(1.2);
 }
 
@@ -153,7 +148,7 @@ nav {
 }
 
 .menu-option-link-container {
-    background-color: rgba(146, 139, 218, 0.6);
+    background-color: var(--bs-color-secondary-button-blue);
     margin: 0 1em;
     border-radius: 8px;
     padding: 0.3em 0.6em;
@@ -165,7 +160,7 @@ nav {
 
 
 .menu-option-link-container:hover {
-    transform: scale(1.002);
+    transform: scale(1.01);
     filter: brightness(1.2);
 }
 
@@ -189,7 +184,7 @@ nav {
 
 /* Content */
 .content {
-    height: 86vh;
+    height: 94vh;
     overflow-y: scroll;
     overflow-x: hidden;
     /* background-color: #0A1019; */
@@ -202,10 +197,10 @@ nav {
 
     background:
         linear-gradient(
-            120deg, rgba(255, 255, 255, 0.2) 0%, rgba(23, 204, 68, 0.2) 100%), 
+            270deg, rgba(0, 0, 0, 0.1)0%, rgba(23, 204, 68, 0.3) 100%), 
         linear-gradient(
             90deg, rgba(91, 219, 40, 0.8) 0%, rgba(122, 89, 245, 0.6) 100%),
-        rgba(101, 101, 252, 0.5);
+        rgba(101, 101, 252, .7);
 
     background-blend-mode: multiply, screen, normal;
     z-index: 0;
@@ -328,7 +323,7 @@ nav {
 
 .song-author:hover {
     text-decoration: underline;
-    text-transform:;
+    transition: transform 0.3s;
 }
 
 /* Song container */
@@ -341,13 +336,12 @@ nav {
 .song-container {
     
     /* Glass Effect */
-    background: rgba(190, 190, 190, 0.4);
-    background: rgba(190, 190, 190, 0.4);
+    background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 2px solid rgba(118, 118, 118, 0.05);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
 
     backdrop-filter: blur(20px);
     display: flex;
@@ -371,11 +365,11 @@ nav {
 }
 
 audio::-webkit-media-controls-panel {
-    background-color: rgba(230, 209, 255, .75);
+    background-color: var(--bs-color-primary-nav-blue);
 }    
 
 audio::-webkit-media-controls-play-button {
-    background-color: rgba(146, 139, 218, 0.6);
+    background-color: var(--bs-color-secondary-button-blue);
     border-radius: 50%;
 }
 
