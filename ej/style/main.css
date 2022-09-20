@@ -85,18 +85,24 @@ audio::-webkit-media-controls-panel {
     grid-template-columns: repeat(auto-fill, 200px);
 }
 
-
 /* Navbar */
-nav {
-    width: 100vw;
-    height: 8vh;
-    background-color:
-        var(--bs-color-primary-nav-blue);
-}
-
 .menu-title {
     display: flex;
     align-items: center;
+    background-color: var(--bs-color-primary-nav-blue);
+}
+
+.navbar-links {
+    display: flex;
+    width: 100%;
+    background-color: var(--bs-color-primary-nav-blue);
+}
+
+.navbar-links-container {
+    display: flex;
+    align-items: center;
+    margin-left: auto;
+    padding-right: 2em;
 }
 
 .logo-container {
@@ -111,13 +117,6 @@ nav {
     font-size: 1.3em;
     color: white;
     width: 100%;
-}
-
-.navbar-links {
-    display: flex;
-    align-items: center;
-    margin-left: auto;
-    padding-right: 2em;
 }
 
 .sign-log-in-button {
@@ -167,7 +166,6 @@ nav {
     transition:filter 0.3s;
 }
 
-
 .menu-option-link-container:hover {
     transform: scale(1.01);
     filter: brightness(1.2);
@@ -189,7 +187,6 @@ nav {
     color: rgba(45, 27, 124, 0.5);
     /* border: 1px solid red; */
 }
-
 
 /* Content */
 .content {
@@ -279,7 +276,6 @@ nav {
     padding-left: 26px;
     font-family: var(--bs-font-roboto-default);
 }
-
 
 /* Song cover */
 .song-cover-container {
