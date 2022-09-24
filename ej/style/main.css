@@ -95,6 +95,7 @@ nav {
 }
 
 .menu-title {
+    background-color: var(--bs-color-primary-nav-blue);
     display: flex;
     align-items: center;
 }
@@ -114,8 +115,13 @@ nav {
 }
 
 .navbar-links {
+    background-color:
+        var(--bs-color-primary-nav-blue);
     display: flex;
     align-items: center;
+}
+
+.navbar-links-container {
     margin-left: auto;
     padding-right: 2em;
 }
