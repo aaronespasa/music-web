@@ -60,13 +60,6 @@ p {
     margin: 0;
 }
 
-/* audio::-webkit-media-controls-play-button,
-audio::-webkit-media-controls-panel {
-  background-color: transparent;
-  color: #4327a0 !important;
-} */
-
-
 /* Layout */
 .grid-container {
     display: grid;
@@ -231,12 +224,7 @@ audio::-webkit-media-controls-panel {
     height: calc(var(--content-height-without-footer) - var(--navbar-height));
     overflow-y: scroll;
     overflow-x: hidden;
-    /* background-color: #0A1019; */
     position: relative;
-    /* -moz-box-shadow:    inset 0 0 10px #000000;
-    -webkit-box-shadow: inset 0 0 10px #000000; */
-    /* box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.12); */
-    /* background: linear-gradient(125deg, #ECFCFF 0%, #ECFCFF 40%, #B2FCFF calc(40% + 1px), #B2FCFF 60%, #5EDFFF calc(60% + 1px), #5EDFFF 72%, #3E64FF calc(72% + 1px), #3E64FF 100%); */
     opacity: 1;
 
     background:
@@ -273,7 +261,6 @@ audio::-webkit-media-controls-panel {
     background-clip: text;
     -webkit-background-clip: text;
     font-size: 2.2em;
-    /* text-shadow: 0px 2px 6px rgba(0, 0, 0, 0.45); */
     font-weight: bold;
     padding-left: 26px;
     font-family: var(--bs-font-roboto-default);
@@ -366,7 +353,6 @@ audio::-webkit-media-controls-panel {
 }
 
 .song-container p {
-    /* font-family: var(--bs-font-roboto-default); */
     color: black;
     text-align: center
 }
