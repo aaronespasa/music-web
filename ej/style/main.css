@@ -430,7 +430,6 @@ audio::-webkit-media-controls-play-button {
 
     .music-genre-songs-container {
         justify-content: center;
-        grid-template-columns: repeat(auto-fill, 150px);
     }
 
     .song-cover-container::before {
