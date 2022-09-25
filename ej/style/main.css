@@ -14,9 +14,7 @@
     "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 
-    --bs-font-monospace: SFMono-Regular, Menlo, Monaco, Consolas,
-    "Liberation Mono", "Courier New", monospace;
-    --bs-font-times: Times New Roman, Times, Baskerville, Georgia, serif;
+    /* Constant sizes */
     --navbar-height: 70px;
     --content-height-without-footer: 94vh;
     --footer-height: calc(100vh - var(--content-height-without-footer));
@@ -72,11 +70,7 @@ p {
     grid-template-rows: var(--navbar-height) 1fr;
 }
 
-.music-genre-songs-container {
-    display: grid;
-    grid-gap: 30px;
-    grid-template-columns: repeat(auto-fill, 200px);
-}
+
 
 
 /* Navbar */
@@ -250,6 +244,12 @@ p {
     z-index: 1;
 }
 
+.music-genre-songs-container {
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fill, 200px);
+}
+
 .music-genre-title {
     color: black;
     background: linear-gradient(
@@ -326,7 +326,7 @@ p {
     transition: transform 0.3s;
 }
 
-/* Song container */
+
 .song-cover-container img:hover {
     transform: scale(1.1);
     filter: blur(0.5px);
@@ -394,7 +394,13 @@ audio::-webkit-media-controls-play-button {
     );
     background-clip: text;
     -webkit-background-clip: text;
-    color: transparent;
+    -webkit-text-fill-color: transparent;
+}
+
+.cta-text:hover {
+    background: black;
+    background-clip: text;
+    -webkit-background-clip: text;
 }
 
 
