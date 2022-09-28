@@ -293,10 +293,6 @@ p {
     opacity: 0;
 }
 
-/* .song-cover-container:hover::before {
-    opacity: 1;
-} */
-
 .song-cover-container img {
     transition: transform 0.5s, filter 0.5s;
     width: 100%;
@@ -304,6 +300,7 @@ p {
 }
 
 .song-description {
+    margin: .5em 0 0 0;
     transition: transform 0.3s;
     cursor: pointer;
     font-weight: bold;
@@ -380,6 +377,8 @@ p {
     text-align: center
 }
 
+
+/* Audio webkit*/
 audio::-webkit-media-controls-panel {
     background-color: var(--bs-color-primary-nav-blue);
 }    
