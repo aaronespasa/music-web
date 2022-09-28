@@ -293,13 +293,12 @@ p {
     opacity: 0;
 }
 
-.song-cover-container:hover::before {
+/* .song-cover-container:hover::before {
     opacity: 1;
-}
+} */
 
 .song-cover-container img {
     transition: transform 0.5s, filter 0.5s;
-    cursor: pointer;
     width: 100%;
     border-radius: 8px;
 }
@@ -333,6 +332,30 @@ p {
     filter: brightness(.4);
 }
 
+.song-cover-container {
+    position: relative;
+}
+
+.song-cover-container audio {
+    position: absolute;
+    cursor: pointer;
+    top: 20%;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s;
+    z-index: 10;
+    width: 100%;
+    margin: 0.7em 0;
+    height: 40px;
+}
+
+.song-cover-container img:hover + audio {
+    opacity: 1;
+    /* cursor: pointer; */
+    pointer-events: all;
+}
+
 .song-container {
     
     /* Glass Effect */
@@ -355,12 +378,6 @@ p {
 .song-container p {
     color: black;
     text-align: center
-}
-
-.song-container audio {
-    width: 100%;
-    margin: 0.7em 0;
-    height: 40px;
 }
 
 audio::-webkit-media-controls-panel {
