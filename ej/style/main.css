@@ -325,13 +325,6 @@ p {
     transition: transform 0.3s;
 }
 
-
-.song-cover-container img:hover {
-    transform: scale(1.1);
-    filter: blur(0.5px);
-    filter: brightness(.4);
-}
-
 .song-cover-container {
     position: relative;
 }
@@ -339,10 +332,9 @@ p {
 .song-cover-container audio {
     position: absolute;
     cursor: pointer;
-    top: 20%;
+    top: 25%;
     left: 0;
     opacity: 0;
-    pointer-events: none;
     transition: opacity 0.8s;
     z-index: 10;
     width: 100%;
@@ -352,8 +344,16 @@ p {
 
 .song-cover-container img:hover + audio {
     opacity: 1;
-    /* cursor: pointer; */
-    pointer-events: all;
+}
+
+.song-cover-container audio:hover {
+    opacity: 1;
+}
+
+.song-cover-container:hover img {
+    transform: scale(1.1);
+    filter: blur(0.5px);
+    filter: brightness(.4);
 }
 
 .song-container {
