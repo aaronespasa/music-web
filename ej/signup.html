@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="100451339 & 100451170">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <title>Listenify | Registrarse</title>
+</head>
+
+<body>
+    <a class="logo-link" onclick="location.href='index.html'">
+        <figure class="logo-container">
+            <img src="images/logo.svg" alt="Logo of the webpage">
+        </figure>
+    </a>
+    <a class="title-link" onclick="location.href='index.html'">
+        <h1>
+            Listenify
+        </h1>
+    </a>
+    <!-- Form with the username input, the password input and a submit button that uses javascript to handle the data on the local storage -->
+    <form method="POST" id="signup-form">
+        <div class="form-container">
+            <div class="form-body">
+                <div class="form-input">
+                    <label for="username">Nombre de usuario</label>
+                    <input type="text" name="username" id="username" placeholder="Nombre de usuario" required>
+                </div>
+                <div class="form-input">
+                    <label for="email">Correo</label>
+                    <input type="email" name="email" id="email" placeholder="Correo Electrónico" required>
+                </div>
+                <div class="form-input">
+                    <label for="password">Contraseña</label>
+                    <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                </div>
+                <div class="form-input">
+                    <input type="submit" value="Iniciar Sesión" id="submit">
+                </div>
+            </div>
+        </div>
+    </form>
+    <div id="error-message-container" class="error-message-container"></div>
+    <script src="script/index.js"></script>
+</body>
+
+</html>
