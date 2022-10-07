@@ -489,11 +489,10 @@ audio::-webkit-media-controls-play-button {
 
 .login-content{
     display: flex;
-    width: 100vw;
-    height: calc(100vh - var(--navbar-height));
+    width: 100%;
+    height: calc(100% - var(--navbar-height));
     flex-direction: column;
     align-items: center;
-    background-color: var(--bs-color-primary-sidebar);
 }
 
 .login-content .login-content-container {
@@ -507,7 +506,7 @@ audio::-webkit-media-controls-play-button {
     min-width: calc(300px + 40px);
     height: auto;
     /* Glass Effect */
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.3);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(3px);
