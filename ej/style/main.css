@@ -521,7 +521,7 @@ audio::-webkit-media-controls-play-button {
     margin-bottom: 15px;
 }
 
-.form-body .form-input{
+.form-body {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -599,21 +599,27 @@ audio::-webkit-media-controls-play-button {
     background-color: var(--bs-color-secondary-button-blue);
 }
 
-.login-content input[type=submit]:hover {
+.login-content input[type=submit]:focus {
     transform: scale(1.01);
     filter: brightness(1.1);
-    transition: 0.1s;
+    transition: 0.2s;
 }
 
 .error-message-container {
     display: none;
-    width: 50%;
+    justify-content: center;
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
     background-color: red;
-    margin: 0 auto;
-    padding: 4px 10px 4px 10px;
+    border-radius: 4px;
+    padding: 10px 0 10px 0;
+    margin: 5px 5px;
 }
 
 .error-message {
     display: block;
+    font-size: 0.9em;
     color: white;
+    text-align: center;
 }

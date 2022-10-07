@@ -11,7 +11,9 @@ const PASSWORD_MIN_LENGTH = 8;
 
 const createErrorMessage = (message) => {
     errorMessageContainer.style.display = "block";
-
+    errorMessageContainer.style.opacity = "100";
+    
+    
     // create a text node
     const textParagraph = document.createElement("p")
     const textNode = document.createTextNode(message);
@@ -21,6 +23,21 @@ const createErrorMessage = (message) => {
 
     // append the text node to the error message
     errorMessageContainer.appendChild(textParagraph);
+
+    // Remove the error message and created paragraph after 3 seconds
+    // Adding apacity transition to the error message
+    var errorMessageOpacity = function() {
+        errorMessageContainer.style.transitionDuration = "0.5s";
+        errorMessageContainer.style.opacity = "0";
+    }
+
+    var errorMessageDeletion = function() {
+        errorMessageContainer.style.display = "none";
+        textParagraph.remove();
+    }
+
+    setTimeout(errorMessageOpacity, 2500);
+    setTimeout(errorMessageDeletion, 3000);
 }
 
 const validateUsername = (username) => {
