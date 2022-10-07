@@ -599,7 +599,7 @@ audio::-webkit-media-controls-play-button {
     background-color: var(--bs-color-secondary-button-blue);
 }
 
-.login-content input[type=submit]:focus {
+.login-content input[type=submit]:active {
     transform: scale(1.01);
     filter: brightness(1.1);
     transition: 0.2s;
