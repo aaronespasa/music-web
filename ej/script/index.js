@@ -36,8 +36,8 @@ const createErrorMessage = (message) => {
         textParagraph.remove();
     }
 
-    setTimeout(errorMessageOpacity, 2500);
-    setTimeout(errorMessageDeletion, 3000);
+    setTimeout(errorMessageOpacity, 2200);
+    setTimeout(errorMessageDeletion, 2700);
 }
 
 const validateUsername = (username) => {

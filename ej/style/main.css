@@ -605,6 +605,29 @@ audio::-webkit-media-controls-play-button {
     transition: 0.2s;
 }
 
+.login-content .third-party-auth {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.facebook-auth, .google-auth {
+    background-color: white;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px 5px 5px 5px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+}
+
+.facebook-auth:active, .google-auth:active {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+    transition: 0.2s;
+}
+
 .error-message-container {
     display: none;
     justify-content: center;
