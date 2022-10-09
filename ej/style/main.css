@@ -656,6 +656,45 @@ audio::-webkit-media-controls-play-button {
 }
 
 
+/*! Borrar formulario */
+.login-content input[type=reset] {
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
+    margin: 5px 5px;
+    height: calc(20px + 1.2em);
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.login-content input[type=reset]::placeholder {
+    text-align: center;
+}
+
+
+/*! Checkbox */
+.login-content .form-input-checkbox {
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
+    margin: 5px 5px;
+    height: calc(10px + .6em);
+    display: inline-block;
+    /* border: 1px solid #ccc;*/
+    background-color: rgba(0, 0, 0, 0.0); /*#ffffff*/
+    color: balck;/*#858585;*/
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: .8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 /*! Botón de registro */
 .login-content input[type=submit]:active {
     transform: scale(1.01);

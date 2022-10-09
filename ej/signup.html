@@ -103,7 +103,7 @@
                             <div class="form-container">
                                 <div class="login-title">
                                     <h2>
-                                        Darse de Alta
+                                        Registrarse
                                     </h2>
                                 </div>
                                 <div class="form-body">
@@ -128,12 +128,17 @@
                                         <input type="text" name="surname" id="surname" placeholder="Apellido(s)" required>
                                     </div>
                                     <div class="form-input">
-                                        <!-- <label for="password">Contraseña</label> -->
-                                        <input type="date" name="surname" id="surname" placeholder="Fecha de Nacimiento:" onchange="this.classList.toggle('has-value',this.value);" required>
+                                        <input type="date" name="birthdate" id="birthdate" placeholder="Fecha de Nacimiento:" onchange="this.classList.toggle('has-value',this.value);" required>
                                     </div>
                                     <div class="form-input">
                                         <input type='file' class='input-file' id="input-file">
                                         <button class='input-btn' id='input-btn'>Selecciona su Imagen de Perfil</button>
+                                    </div>
+                                    <div class="form-input-checkbox">
+                                        <input type="checkbox" name="terms" id="terms" required> He leído y acepto las condiciones de uso </input>
+                                    </div>
+                                    <div class="form-input">
+                                        <input type="reset" value="Borrar información">
                                     </div>
                                     <div class="form-input">
                                         <input type="submit" value="Registrarse" id="submit">
