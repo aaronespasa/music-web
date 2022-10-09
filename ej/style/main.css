@@ -539,6 +539,8 @@ audio::-webkit-media-controls-play-button {
     text-align: center; 
 }
 
+
+/*! Seleccionando nombre de usuario, nombre, apellidos */
 .login-content input[type=text] {
     width: 30vw;  /* Pasar todos los calcs a variables */
     max-width: 700px;
@@ -550,10 +552,12 @@ audio::-webkit-media-controls-play-button {
     border-radius: 4px;
     box-sizing: border-box;
 }
-::placeholder {
+.login-content input[type=text]::placeholder {
     text-align: center; 
 }
 
+
+/*! Seleccionando email */
 .login-content input[type=email] {
     width: 30vw;
     max-width: 700px;
@@ -565,10 +569,12 @@ audio::-webkit-media-controls-play-button {
     border-radius: 4px;
     box-sizing: border-box;
 }
-::placeholder {
+.login-content input[type=email]::placeholder {
     text-align: center;
 }
 
+
+/*! Seleccionando contraseña */
 .login-content input[type=password] {
     width: 30vw;
     max-width: 700px;
@@ -580,8 +586,59 @@ audio::-webkit-media-controls-play-button {
     border-radius: 4px;
     box-sizing: border-box;
 }
-::placeholder {
+.login-content input[type=password]::placeholder {
     text-align: center;
+}
+
+
+/*! Seleccionando date */
+.login-content input[type=date] {
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
+    margin: 5px 5px;
+    height: calc(20px + 1.2em);
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #858585;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.login-content input[type=date]::placeholder {
+    text-align: center;
+    align-items: center;
+    margin: 0 -20px 0 0;
+}
+.login-content input[type="date"]:before{
+    content: attr(placeholder);
+    width: 180px;
+}
+
+
+/*! Seleccionando imagen de perfil */
+.login-content .input-file {
+    display:none;  
+}
+
+.login-content .input-btn {
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
+    margin: 5px 5px;
+    height: calc(20px + 1.2em);
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #858585;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login-content .input-btn:active {
+    transform: scale(1.01);
+    filter: brightness(1.1);
+    transition: 0.2s;
 }
 
 .login-content input[type=submit] {
@@ -598,6 +655,8 @@ audio::-webkit-media-controls-play-button {
     background-color: var(--bs-color-secondary-button-blue);
 }
 
+
+/*! Botón de registro */
 .login-content input[type=submit]:active {
     transform: scale(1.01);
     filter: brightness(1.1);

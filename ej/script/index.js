@@ -99,3 +99,10 @@ if (signUpForm !== null) {
 } else if (loginForm !== null) {
     loginForm.addEventListener("submit", (event) => login(event));
 }
+
+
+// Activar el seleccionar la imagen de perfil
+document.getElementById("input-btn")
+.addEventListener('click',function(){
+  document.getElementById("input-file").click();  
+},false);

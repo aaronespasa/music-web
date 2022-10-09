@@ -103,7 +103,7 @@
                             <div class="form-container">
                                 <div class="login-title">
                                     <h2>
-                                        Registrarse
+                                        Darse de Alta
                                     </h2>
                                 </div>
                                 <div class="form-body">
@@ -120,7 +120,23 @@
                                         <input type="password" name="password" id="password" placeholder="Contraseña" required>
                                     </div>
                                     <div class="form-input">
-                                        <input type="submit" value="Iniciar Sesión" id="submit">
+                                        <!-- <label for="password">Contraseña</label> -->
+                                        <input type="text" name="name" id="name" placeholder="Nombre" required>
+                                    </div>
+                                    <div class="form-input">
+                                        <!-- <label for="password">Contraseña</label> -->
+                                        <input type="text" name="surname" id="surname" placeholder="Apellido(s)" required>
+                                    </div>
+                                    <div class="form-input">
+                                        <!-- <label for="password">Contraseña</label> -->
+                                        <input type="date" name="surname" id="surname" placeholder="Fecha de Nacimiento:" onchange="this.classList.toggle('has-value',this.value);" required>
+                                    </div>
+                                    <div class="form-input">
+                                        <input type='file' class='input-file' id="input-file">
+                                        <button class='input-btn' id='input-btn'>Selecciona su Imagen de Perfil</button>
+                                    </div>
+                                    <div class="form-input">
+                                        <input type="submit" value="Registrarse" id="submit">
                                     </div>
                                     <div id="error-message-container" class="error-message-container"></div>
                                     <div class="third-party-auth">
@@ -142,4 +158,5 @@
     </div>
 </body>
 <script src="script/index.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 </html>
