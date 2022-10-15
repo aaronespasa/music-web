@@ -5,6 +5,7 @@ const errorMessageContainer = document.getElementById("error-message-container")
 const errorMessage = document.getElementById("error-message");
 const signUpForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
+const navbarLinks = document.getElementById("navbar-links-container")
 
 const USERNAME_MIN_LENGTH = 5;
 const PASSWORD_MIN_LENGTH = 8;
@@ -71,9 +72,39 @@ const login = (event) => {
 
     if (user.username === username && user.password === password) {
         // redirect to the home page
+        localStorage.setItem("isAuthenticated", true);
         window.location.href = "index.html";
     } else {
         createErrorMessage("El usuario o la contraseña son incorrectos");
+    }
+}
+
+const logout = (event) => {
+    event.preventDefault();
+
+    localStorage.setItem("isAuthenticated", false);
+}
+
+if (localStorage.getItem("isAuthenticated") === null) {
+    localStorage.setItem("isAuthenticated", false);
+}
+
+if (navbarLinks !== null) {
+    if (localStorage.getItem("isAuthenticated") === true) {
+        navbarLinks.innerHTML = `
+            <button onclick="(event) => logout(event)" class="sign-log-in-button sign-in-button">
+                Cerrar Sesión
+            </button>
+        `;
+    } else {
+        navbarLinks.innerHTML = `
+            <button onclick="location.href='signup.html'" class="sign-log-in-button sign-in-button">
+                Sign In
+            </button>
+            <button onclick="location.href='login.html'" class="sign-log-in-button">
+                Log In
+            </button>
+        `;
     }
 }
 
