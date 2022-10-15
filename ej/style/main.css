@@ -476,15 +476,283 @@ audio::-webkit-media-controls-play-button {
  * Login & Sign Up Page *
  ************************/
 
+.login-navbar{
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    grid-template-rows: var(--navbar-height) 1fr;
+}
+
+.login-navbar .title-link{
+    text-align: left;
+    font-size: 1.7em;  /* Es más pequeño que el title link del homepage debido al em, arreglar*/
+}
+
+.login-content{
+    display: flex;
+    width: 100%;
+    height: calc(100% - var(--navbar-height));
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-content .login-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10vh;
+    width: calc(30vw + 40px);
+    max-width: calc(700px + 40px); 
+    min-width: calc(300px + 40px);
+    height: auto;
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+.login-content .form-container {
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.form-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.login-content .login-title {
+    padding: 1px 0 0 0;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+}
+
+.login-content input{
+    text-align: center; 
+}
+
+
+/*! Seleccionando nombre de usuario, nombre, apellidos */
+.login-content input[type=text] {
+    width: 30vw;  /* Pasar todos los calcs a variables */
+    max-width: 700px;
+    min-width: 300px;
+    margin: 5px 5px;
+    height: calc(20px + 1.2em);
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.login-content input[type=text]::placeholder {
+    text-align: center; 
+}
+
+
+/*! Seleccionando email */
+.login-content input[type=email] {
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
+    margin: 5px 5px;
+    height: calc(20px + 1.2em);
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.login-content input[type=email]::placeholder {
+    text-align: center;
+}
+
+
+/*! Seleccionando contraseña */
+.login-content input[type=password] {
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
+    margin: 5px 5px;
+    height: calc(20px + 1.2em);
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.login-content input[type=password]::placeholder {
+    text-align: center;
+}
+
+
+/*! Seleccionando date */
+.login-content input[type=date] {
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
+    margin: 5px 5px;
+    height: calc(20px + 1.2em);
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #858585;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.login-content input[type=date]::placeholder {
+    text-align: center;
+    align-items: center;
+    margin: 0 -20px 0 0;
+}
+.login-content input[type="date"]:before{
+    content: attr(placeholder);
+    width: 180px;
+}
+
+
+/*! Seleccionando imagen de perfil */
+.login-content .input-file {
+    display:none;  
+}
+
+.login-content .select-image-button {
+    cursor: pointer;
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
+    margin: 5px 5px;
+    height: calc(20px + 1.2em);
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    color: #858585;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login-content input[type=submit] {
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
+    margin: 5px 10px;
+    height:calc(20px + 1.2em);
+    border: transparent;
+    border-radius: 4px;
+    color: white;
+    font-size: .9em;
+    font-weight: bold;
+    background-color: var(--bs-color-secondary-button-blue);
+}
+
+
+/*! Borrar formulario */
+.login-content input[type=reset] {
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
+    margin: 5px 5px;
+    height: calc(20px + 1.2em);
+    display: inline-block;
+    border: 1px solid #ccc;
+    background-color: #ffffff;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+.login-content input[type=reset]::placeholder {
+    text-align: center;
+}
+
+.form-input input {
+    outline: none;
+}
+
+/*! Checkbox */
+.login-content .form-input-checkbox {
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
+    margin: 5px 5px;
+    height: calc(10px + .6em);
+    display: inline-block;
+    /* border: 1px solid #ccc;*/
+    background-color: rgba(0, 0, 0, 0.0); /*#ffffff*/
+    color: balck;/*#858585;*/
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: .8em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/*! Botón de registro */
+.login-content input[type=submit]:active {
+    transform: scale(1.01);
+    filter: brightness(1.1);
+    transition: 0.2s;
+}
+
+.login-content .third-party-auth {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.facebook-auth, .google-auth {
+    background-color: white;
+    border-radius: 4px;
+    padding: 5px;
+    margin: 5px 5px 5px 5px;
+    width: 30px;
+    height: 30px;
+    border: 1px solid #ccc;
+}
+
+.facebook-auth:active, .google-auth:active {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+    transition: 0.2s;
+}
+
 .error-message-container {
     display: none;
-    width: 50%;
+    justify-content: center;
+    width: 30vw;
+    max-width: 700px;
+    min-width: 300px;
     background-color: red;
-    margin: 0 auto;
-    padding: 4px 10px 4px 10px;
+    border-radius: 4px;
+    padding: 10px 0 10px 0;
+    margin: 5px 5px;
 }
 
 .error-message {
     display: block;
+    font-size: 0.9em;
     color: white;
+    text-align: center;
+}
+
+.form-checkbox {
+    cursor: pointer;
+}
+
+.form-button {
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    transform: scale(1.0;)
+}
+
+.form-button:hover {
+    transform: scale(0.95);
+    filter: brightness(1.1);
 }

@@ -11,40 +11,157 @@
 </head>
 
 <body>
-    <a class="logo-link" onclick="location.href='index.html'">
-        <figure class="logo-container">
-            <img src="images/logo.svg" alt="Logo of the webpage">
-        </figure>
-    </a>
-    <a class="title-link" onclick="location.href='index.html'">
-        <h1>
-            Listenify
-        </h1>
-    </a>
-    <!-- Form with the username input, the password input and a submit button that uses javascript to handle the data on the local storage -->
-    <form method="POST" id="signup-form">
-        <div class="form-container">
-            <div class="form-body">
-                <div class="form-input">
-                    <label for="username">Nombre de usuario</label>
-                    <input type="text" name="username" id="username" placeholder="Nombre de usuario" required>
+    <div class="grid-container">
+        <div class="column">
+            <div class="menu-title">
+                <a class="logo-link" href="#homepage">
+                    <figure class="logo-container">
+                        <img src="images/logo.svg" alt="Logo of the webpage">
+                    </figure>
+                </a>
+                <a class="title-link" href="#homepage">
+                    <h1>
+                        Listenify
+                    </h1>
+                </a>
+            </div>
+            <div class="sidebar">
+                <ul class="menu-options-container">
+                    <li class="menu-option-container">
+                        <a href="#" class="menu-option-link-container">
+                            <figure class="menu-option-icon-container">
+                                <img src="images/icon.svg" alt="Home icon">
+                            </figure>
+                            <div class="menu-option-text-container">
+                                <p>Home</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="menu-option-container">
+                        <a href="#" class="menu-option-link-container">
+                            <figure class="menu-option-icon-container">
+                                <img src="images/music-notes-icon.svg" alt="Home icon">
+                            </figure>
+                            <div class="menu-option-text-container">
+                                <p>Música</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="menu-option-container">
+                        <a href="#" class="menu-option-link-container">
+                            <figure class="menu-option-icon-container">
+                                <img src="images/podcast-icon.svg" alt="Home icon">
+                            </figure>
+                            <div class="menu-option-text-container">
+                                <p>Podcasts</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="menu-option-container">
+                        <a href="#" class="menu-option-link-container">
+                            <figure class="menu-option-icon-container">
+                                <img src="images/favourites-icon.svg" alt="Home icon">
+                            </figure>
+                            <div class="menu-option-text-container">    
+                                <p>Favoritos</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="bottom-links-container">
+                    <li class="bottom-link-container">
+                        <a href="#privacy" class="bottom-link">
+                            <figure class="bottom-link-icon-container">
+                                <img src="images/privacy-policy-icon.svg" alt="Home icon">
+                            </figure>
+                            <p>Política de Privacidad</p>
+                        </a>
+                    </li>
+                    <li class="bottom-link-container">
+                        <a href="#cookies" class="bottom-link">
+                            <figure class="bottom-link-icon-container">
+                                <img src="images/cookie-icon.svg" alt="Home icon">
+                            </figure>
+                            <p>Política de Cookies</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column">
+                <div class="navbar-links">
+                    <div class="navbar-links-container">
+                        <button onclick="location.href='index.html'" class="sign-log-in-button sign-in-button">
+                            Atrás
+                        </button>
+                    </div>
                 </div>
-                <div class="form-input">
-                    <label for="email">Correo</label>
-                    <input type="email" name="email" id="email" placeholder="Correo Electrónico" required>
-                </div>
-                <div class="form-input">
-                    <label for="password">Contraseña</label>
-                    <input type="password" name="password" id="password" placeholder="Contraseña" required>
-                </div>
-                <div class="form-input">
-                    <input type="submit" value="Iniciar Sesión" id="submit">
+            <div class="content">
+                <div login-content class="login-content">
+                    <div login-content-container class="login-content-container">
+                        <form method="POST" id="signup-form">
+                            <div class="form-container">
+                                <div class="login-title">
+                                    <h2>
+                                        Registrarse
+                                    </h2>
+                                </div>
+                                <div class="form-body">
+                                    <div class="form-input">
+                                        <!-- <label for="username">Nombre de usuario</label> -->
+                                        <input type="text" name="username" id="username" placeholder="Nombre de usuario" required>
+                                    </div>
+                                    <div class="form-input">
+                                        <!-- <label for="email">Correo</label> -->
+                                        <input type="email" name="email" id="email" placeholder="Correo Electrónico" required>
+                                    </div>
+                                    <div class="form-input">
+                                        <!-- <label for="password">Contraseña</label> -->
+                                        <input type="password" name="password" id="password" placeholder="Contraseña" required>
+                                    </div>
+                                    <div class="form-input">
+                                        <!-- <label for="password">Contraseña</label> -->
+                                        <input type="text" name="name" id="name" placeholder="Nombre" required>
+                                    </div>
+                                    <div class="form-input">
+                                        <!-- <label for="password">Contraseña</label> -->
+                                        <input type="text" name="surname" id="surname" placeholder="Apellido(s)" required>
+                                    </div>
+                                    <div class="form-input">
+                                        <input type="date" name="birthdate" id="birthdate" placeholder="Fecha de Nacimiento:" onchange="this.classList.toggle('has-value',this.value);" required>
+                                    </div>
+                                    <div class="form-input">
+                                        <input type='file' class='input-file' id="input-file">
+                                        <button class='select-image-button' id='select-image-button'>Selecciona su Imagen de Perfil</button>
+                                    </div>
+                                    <div class="form-input-checkbox">
+                                        <input class="form-checkbox" type="checkbox" name="terms" id="terms" required> He leído y acepto las condiciones de uso </input>
+                                    </div>
+                                    <div class="form-input">
+                                        <input class="form-button" type="reset" value="Borrar información">
+                                    </div>
+                                    <div class="form-input">
+                                        <input class="form-button" type="submit" value="Registrarse" id="submit">
+                                    </div>
+                                    <div id="error-message-container" class="error-message-container"></div>
+                                    <div class="third-party-auth">
+                                        <img src="images/google-icon.svg" alt="iniciar sesión con Google" class="google-auth">
+                                        <img src="images/facebook-icon.svg" alt="iniciar sesión con Facebook" class="facebook-auth">
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-    </form>
-    <div id="error-message-container" class="error-message-container"></div>
-    <script src="script/index.js"></script>
+    </div>
+    <div class="cta-container">
+        <a href="#footer" class="cta-text">
+            ¡Regístrate y Disfruta de 3 Meses Gratis!
+        </a>
+    </div>
 </body>
-
+<script src="script/index.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 </html>

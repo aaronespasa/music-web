@@ -6,13 +6,26 @@ const errorMessage = document.getElementById("error-message");
 const signUpForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
 const navbarLinks = document.getElementById("navbar-links-container")
+const selectImageInput = document.getElementById("input-file");
+const selectImageButton = document.getElementById("select-image-button")
 
 const USERNAME_MIN_LENGTH = 5;
 const PASSWORD_MIN_LENGTH = 8;
 
+const errorMessageOpacity = function() {
+    errorMessageContainer.style.transitionDuration = "0.5s";
+    errorMessageContainer.style.opacity = "0";
+}
+
+const errorMessageDeletion = function() {
+    errorMessageContainer.style.display = "none";
+    textParagraph.remove();
+}
+
 const createErrorMessage = (message) => {
     errorMessageContainer.style.display = "block";
-
+    errorMessageContainer.style.opacity = "100";
+    
     // create a text node
     const textParagraph = document.createElement("p")
     const textNode = document.createTextNode(message);
@@ -22,6 +35,11 @@ const createErrorMessage = (message) => {
 
     // append the text node to the error message
     errorMessageContainer.appendChild(textParagraph);
+
+    // Remove the error message and created paragraph after 3 seconds
+    // Adding opacity transition to the error message
+    setTimeout(errorMessageOpacity, 2200);
+    setTimeout(errorMessageDeletion, 2700);
 }
 
 const validateUsername = (username) => {
@@ -79,37 +97,41 @@ const login = (event) => {
     }
 }
 
-const logout = (event) => {
-    event.preventDefault();
 
-    localStorage.setItem("isAuthenticated", false);
-}
+const setNavbarLinks = () => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
 
-if (localStorage.getItem("isAuthenticated") === null) {
-    localStorage.setItem("isAuthenticated", false);
-}
+    // isAuthenticated default value
+    if (isAuthenticated === null) {
+        localStorage.setItem("isAuthenticated", false);
+    }
 
-if (navbarLinks !== null) {
-    if (localStorage.getItem("isAuthenticated") === true) {
+    const logoutFunction = `
+        localStorage.setItem('isAuthenticated', false);
+        window.location.href = 'index.html';
+    `
+
+    if (isAuthenticated === "true") {
         navbarLinks.innerHTML = `
-            <button onclick="(event) => logout(event)" class="sign-log-in-button sign-in-button">
+            <button onclick="${logoutFunction}" class="sign-log-in-button sign-in-button">
                 Cerrar Sesión
-            </button>
-        `;
+            </button>`;
     } else {
         navbarLinks.innerHTML = `
             <button onclick="location.href='signup.html'" class="sign-log-in-button sign-in-button">
-                Sign In
+                Darse de Alta
             </button>
             <button onclick="location.href='login.html'" class="sign-log-in-button">
                 Log In
-            </button>
-        `;
+            </button>`;
     }
 }
 
 if (signUpForm !== null) {
     signUpForm.addEventListener("submit", (event) => signUp(event));
+    selectImageButton.addEventListener("click", () => selectImageInput.click());
 } else if (loginForm !== null) {
     loginForm.addEventListener("submit", (event) => login(event));
 }
+
+setNavbarLinks();
