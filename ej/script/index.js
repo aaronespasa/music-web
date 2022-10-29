@@ -1,5 +1,4 @@
 const usernameInput = document.getElementById("username");
-const emailInput = document.getElementById("email");
 const passwordInput = document.getElementById("password");
 const errorMessageContainer = document.getElementById("error-message-container");
 const errorMessage = document.getElementById("error-message");
@@ -54,22 +53,50 @@ const validatePassword = (password) => {
     return true;
 }
 
-const signUp = (event) => {
+// create async function to get the user image
+const saveUserInLocalStorage = async user => {
+    const userImageFile = document.getElementById("input-file").files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(userImageFile);
+
+    // wait until the reader is ready
+    await new Promise((resolve, reject) => {
+        reader.onload = resolve;
+    });
+
+    // check that reader.result is a string
+    if (typeof reader.result === "string") {
+        user.image = reader.result;
+    }
+
+    // save user to the localstorage
+    localStorage.setItem("user", JSON.stringify(user));
+}
+
+const signUp = async (event) => {
     event.preventDefault();
 
     const username = usernameInput.value;
-    const email = emailInput.value;
+    const email = document.getElementById("email").value;
     const password = passwordInput.value;
+    const name = document.getElementById("name").value;
+    const surname = document.getElementById("surname").value;
+    const birthdate = document.getElementById("birthdate").value;
+    const userImageFile = document.getElementById("input-file").files[0];
+    const reader = new FileReader();
+    reader.readAsDataURL(userImageFile);
 
     if (validateUsername(username) && validatePassword(password)) {
-        const user = {
+        let user = {
             "username": username,
             "email": email,
-            "password": password
+            "password": password,
+            "name": name,
+            "surname": surname,
+            "birthdate": birthdate
         }
 
-        // save user to the localstorage
-        localStorage.setItem("user", JSON.stringify(user));
+        await saveUserInLocalStorage(user);
 
         // redirect to the login page
         window.location.href = "login.html";
