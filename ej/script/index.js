@@ -12,34 +12,30 @@ const selectImageButton = document.getElementById("select-image-button")
 const USERNAME_MIN_LENGTH = 5;
 const PASSWORD_MIN_LENGTH = 8;
 
-const errorMessageOpacity = function() {
-    errorMessageContainer.style.transitionDuration = "0.5s";
-    errorMessageContainer.style.opacity = "0";
-}
-
-const errorMessageDeletion = function() {
-    errorMessageContainer.style.display = "none";
-    textParagraph.remove();
-}
-
 const createErrorMessage = (message) => {
     errorMessageContainer.style.display = "block";
     errorMessageContainer.style.opacity = "100";
     
     // create a text node
-    const textParagraph = document.createElement("p")
+    const textParagraph = document.createElement("p");
     const textNode = document.createTextNode(message);
     textParagraph.appendChild(textNode);
-
     textParagraph.className = "error-message";
 
     // append the text node to the error message
-    errorMessageContainer.appendChild(textParagraph);
+    if (!errorMessageContainer.hasChildNodes()) {
+        errorMessageContainer.appendChild(textParagraph);
+    }
 
-    // Remove the error message and created paragraph after 3 seconds
-    // Adding opacity transition to the error message
-    setTimeout(errorMessageOpacity, 2200);
-    setTimeout(errorMessageDeletion, 2700);
+    setTimeout(() => {
+        errorMessageContainer.style.transitionDuration = "0.5s";
+        errorMessageContainer.style.opacity = "0";
+
+        setTimeout(() => {
+            errorMessageContainer.style.display = "none";
+            errorMessageContainer.removeChild(errorMessageContainer.childNodes[0]);
+        }, 500);
+    }, 2200);
 }
 
 const validateUsername = (username) => {
@@ -119,10 +115,10 @@ const setNavbarLinks = () => {
     } else {
         navbarLinks.innerHTML = `
             <button onclick="location.href='signup.html'" class="sign-log-in-button sign-in-button">
-                Darse de Alta
+                Registrarse
             </button>
             <button onclick="location.href='login.html'" class="sign-log-in-button">
-                Log In
+                Iniciar Sesión
             </button>`;
     }
 }
@@ -130,6 +126,19 @@ const setNavbarLinks = () => {
 if (signUpForm !== null) {
     signUpForm.addEventListener("submit", (event) => signUp(event));
     selectImageButton.addEventListener("click", () => selectImageInput.click());
+
+    // musicCard.addEventListener("click", () => {
+    //     const musicName = musicCard.getAttribute("songName")
+    //     const musics = localStorage.getItem("musics")
+    //     for(let i = 0; i < musics.length; i++){
+    //         if(musics[i].name === musicName){
+    //             musics[i].clickCount += 1;
+    //             break
+    //         }
+    //     }
+    //     localStorage.setItem("musics", JSON.stringify(musics))
+    // })
+
 } else if (loginForm !== null) {
     loginForm.addEventListener("submit", (event) => login(event));
 }
