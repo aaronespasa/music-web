@@ -9,10 +9,18 @@ const selectImageInput = document.getElementById("input-file");
 const selectImageButton = document.getElementById("select-image-button")
 const profileName = document.getElementById("profile-title");
 const profileData = document.getElementById("profile-body");
-
+const profileOptions = document.getElementById("profile-options-container");
 
 const USERNAME_MIN_LENGTH = 5;
 const PASSWORD_MIN_LENGTH = 8;
+
+goToHome = () => {
+    window.location.href = "index.html";
+}
+
+goToProfileOptions = () => {
+    window.location.href = "profileOptions.html";
+}
 
 const createErrorMessage = (message) => {
     errorMessageContainer.style.display = "block";
@@ -140,16 +148,14 @@ const setNavbarLinks = () => {
 
     // Esto hay que crearlo como la imagen del usuario y si se le da click, que te muestre las siguientes opciones
     if (isAuthenticated === "true") {
+        // Cuando se inicia sesión, en el navbar solo aparece la imagen del usuario
+        const user = JSON.parse(localStorage.getItem("user"));
+        const userImage = user.image;
         navbarLinks.innerHTML = `
-            <button onclick="location.href='account.html'" class="sign-log-in-button sign-in-button">
-                Cuenta
-            </button>
-            <button onclick="location.href='profile.html'" class="sign-log-in-button sign-in-button">
-                Perfil
-            </button>
-            <button onclick="${logoutFunction}" class="sign-log-in-button sign-in-button">
-                Cerrar Sesión
-            </button>`;
+            <div class="navbar-profile">
+                <img src="${userImage}" class="navbar-profile-image" onclick="goToProfileOptions()">
+            </div>
+            `;
 
     } else {
         navbarLinks.innerHTML = `
@@ -161,6 +167,17 @@ const setNavbarLinks = () => {
             </button>`;
     }
 
+    // ! si se ha iniciado sesión, se borra el pie de página y se agranda el resto de la página
+    if (isAuthenticated === "true") {
+        // El valor de la variable "--content-height-without-footer", pasa a 100vh
+        document.documentElement.style.setProperty("--content-height-without-footer", "100vh");
+        // El valor de la variable "--footer-height", pasa a 0
+        document.documentElement.style.setProperty("--footer-height", "0");
+        const footer = document.getElementsByClassName("cta-container");
+        const footerText = document.getElementsByClassName("cta-text");
+        footer[0].style.display = "none";
+        footerText[0].style.display = "none";
+    }
 
     // ! Añadimos la pagína del perfil del usuario
     if (isAuthenticated === "true" && window.location.href.includes("profile.html")) {
@@ -219,7 +236,19 @@ const setNavbarLinks = () => {
                 </div>
             </div>
             <p id="profile-extra-title">Canciones favoritas</p>
-            <div class="profile-extra-artists" id="profile-extra-artists">
+            <div class="profile-extra-liked-songs" id="profile-extra-liked-songs">
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
                 <div class="artist-profile">
                     <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
                     <p class="artist-name">Pimp Flaco</p>
@@ -301,8 +330,30 @@ const setNavbarLinks = () => {
             </button>
         </div>`;}
 
-}
 
+    // ! Añadimos la informacion de la página de opciones del perfil
+    if (isAuthenticated === "true" && window.location.href.includes("profileOptions.html")) {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const name = user.name, surname = user.surname, image = user.image;
+        profileOptions.innerHTML = `
+        <h2 class="profile-name">
+            ${name} ${surname}
+        </h2>
+        <div class="profile-options-data">
+            <img src="${image}" id="profile-options-image" alt="profile-options-image">
+        </div>
+        <button onclick="location.href='account.html'" class="options-button">
+            Cuenta
+        </button>
+        <button onclick="location.href='profile.html'" class="options-button">
+            Perfil
+        </button>
+        <button onclick="${logoutFunction}" class="options-logout-button">
+            Cerrar Sesión
+        </button>`;}
+
+    }
+        
 if (signUpForm !== null) {
     signUpForm.addEventListener("submit", (event) => signUp(event));
     selectImageButton.addEventListener("click", () => selectImageInput.click());

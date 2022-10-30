@@ -500,7 +500,7 @@ audio::-webkit-media-controls-play-button {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 10vh;
+    margin-top: 5vh;
     width: calc(30vw + 40px);
     max-width: calc(700px + 40px); 
     min-width: calc(300px + 40px);
@@ -765,8 +765,9 @@ audio::-webkit-media-controls-play-button {
 /* ! Estilos para el perfil del usuario*/
 
 hr {
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid rgb(22, 22, 22);
     border-radius: 4px;
+    width: 20vw;
 }
 
 .profile-content{
@@ -788,7 +789,7 @@ hr {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 10vh;
+    margin-top: 5vh;
     width: calc(50vw + 40px);
     max-width: calc(1000px + 40px); 
     min-width: calc(300px + 40px);
@@ -811,23 +812,20 @@ hr {
     align-items: center;
     width: 100%;
     height: 100%;
-    margin: 0 0 30px 0;
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
+    margin: 0 0 40px 0;
 }
 
 h2.profile-name {
     text-align: center;
     font-size: 2em;
-    margin: 3vh 0 3vh 0;
+    margin: 3vh 0 2vh 0;
 }
 
 .profile-data #profile-image {
-    width: 100px;
-    height: 100px;
+    width: 120px;
+    height: 120px;
     border-radius: 50%;
-    border: 1px solid #ccc;
+    margin: 0 0 -10px 0;
 }
 
 .profile-data #profile-data-title {
@@ -842,11 +840,10 @@ h2.profile-name {
 }
 
 .profile-data .sign-log-in-button {
-    font-family: Poppins, sans-serif;
     color: rgb(255, 255, 255);
     padding: .8rem;
     border-radius: 8px;
-    margin-top: 20px;
+    margin: 20px 0 0 0;
     background-color: var(--bs-color-secondary-button-blue);
     align-self: center;
 }
@@ -859,10 +856,6 @@ h2.profile-name {
     align-items: center;
     width: 100%;
     height: 100%;
-    margin: 30px 0 20px 0;
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
 }
 
 .profile-extra #profile-extra-title {
@@ -880,17 +873,18 @@ h2.profile-name {
     align-items: center;
     width: 100%;
     height: 100%;
-    margin: 25px 0 20px 0;
+    margin: 40px 0 30px 0;
     width: 30vw;
     max-width: 700px;
     min-width: 100px;
     border-radius: 8px;
     gap: 30px;
+    flex-wrap: wrap;
 }
 
 img.artist-img {
-    width: 100px;
-    height: 100px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
 }
 
@@ -928,4 +922,144 @@ p.artist-name {
     font-size: 1.3em;
     font-weight: bold;
     margin: 25px 0 0px 0;
+
+}
+
+.profile-extra #profile-extra-liked-songs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    margin: 25px 0 20px 0;
+    width: 30vw;
+    max-width: 700px;
+    min-width: 120px;
+    border-radius: 8px;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+
+.modalContainer {
+    display: none; 
+    position: fixed; 
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    overflow: auto; 
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modalContainer .modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-top: 10px solid #58abb7;
+    width: 60%;
+}
+
+.modalContainer .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.modalContainer .close:hover,
+.modalContainer .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+
+
+/* mostrar imaghe de perfil del usuario */
+.navbar-links-container .profile-image-container {
+}
+
+.navbar-profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.navbar-profile-image:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+    transition: 0.2s;
+}
+
+
+
+
+/* ! Profile options */
+
+.profile-content .profile-options-content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 5vh;
+    width: calc(50vw + 40px);
+    max-width: calc(1000px + 40px); 
+    min-width: calc(300px + 40px);
+    height: auto;
+    /* Glass Effect */
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(3px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1.5px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+}
+
+.profile-options-data #profile-options-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin: -30px 0 10px 0;
+}
+
+.options-button {
+    font-family: Poppins, sans-serif;
+    color: rgb(255, 255, 255);
+    font-size: 1em;
+    padding: .8rem 1rem .8rem 1rem;
+    border-radius: 8px;
+    background-color: var(--bs-color-secondary-button-blue);
+    border: none;
+}
+
+.options-logout-button {
+    font-family: Poppins, sans-serif;
+    font-size: 0.7em;
+    color: rgb(255, 255, 255);
+    padding: .6rem;
+    border-radius: 8px;
+    background-color: rgb(87, 87, 87);
+    border: none;
+}
+
+.options-button:hover, .options-logout-button:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+    transition: 0.2s;
+}
+
+.profile-options-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin: 0 0 30px 0;
 }
