@@ -22,6 +22,19 @@ goToProfileOptions = () => {
     window.location.href = "profileOptions.html";
 }
 
+goToLists = () => {
+    window.location.href = "mylists.html";
+}
+
+modalFunction = () => {
+    const modal = document.getElementById("logoutModal");
+    modal.style.display = "flex";
+}
+
+closeLogoutModal = () => {
+    window.location.href = "profileOptions.html";
+}
+
 const createErrorMessage = (message) => {
     errorMessageContainer.style.display = "block";
     errorMessageContainer.style.opacity = "100";
@@ -132,6 +145,10 @@ const login = (event) => {
 }
 
 
+const logout = () => {
+    localStorage.setItem("isAuthenticated", false);
+    window.location.href = "index.html";
+}
 
 const setNavbarLinks = () => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
@@ -140,12 +157,7 @@ const setNavbarLinks = () => {
     if (isAuthenticated === null) {
         localStorage.setItem("isAuthenticated", false);
     }
-
-    const logoutFunction = `
-        localStorage.setItem('isAuthenticated', false);
-        window.location.href = 'index.html';
-    `
-
+    
     // Esto hay que crearlo como la imagen del usuario y si se le da click, que te muestre las siguientes opciones
     if (isAuthenticated === "true") {
         // Cuando se inicia sesión, en el navbar solo aparece la imagen del usuario
@@ -348,7 +360,7 @@ const setNavbarLinks = () => {
         <button onclick="location.href='profile.html'" class="options-button">
             Perfil
         </button>
-        <button onclick="${logoutFunction}" class="options-logout-button">
+        <button class="options-logout-button" onclick="modalFunction()">
             Cerrar Sesión
         </button>`;}
 

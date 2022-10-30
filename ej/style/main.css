@@ -484,7 +484,7 @@ audio::-webkit-media-controls-play-button {
 
 .login-navbar .title-link{
     text-align: left;
-    font-size: 1.7em;  /* Es más pequeño que el title link del homepage debido al em, arreglar*/
+    font-size: 1.7em;
 }
 
 .login-content{
@@ -922,7 +922,6 @@ p.artist-name {
     font-size: 1.3em;
     font-weight: bold;
     margin: 25px 0 0px 0;
-
 }
 
 .profile-extra #profile-extra-liked-songs {
@@ -1040,12 +1039,11 @@ p.artist-name {
 }
 
 .options-logout-button {
-    font-family: Poppins, sans-serif;
-    font-size: 0.7em;
-    color: rgb(255, 255, 255);
-    padding: .6rem;
-    border-radius: 8px;
-    background-color: rgb(87, 87, 87);
+    font-family: var(--bs-font-roboto-default);
+    font-size: 0.9em;
+    font-weight: bold;
+    color: rgb(32, 32, 32);
+    background-color: none;
     border: none;
 }
 
@@ -1062,4 +1060,79 @@ p.artist-name {
     align-items: center;
     gap: 30px;
     margin: 0 0 30px 0;
+}
+
+
+
+/* ! Notificación modal de confirmación de cerrar sesión */
+.logoutModal {
+    display: none; 
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%; 
+    background-color: rgba(0,0,0,0.4);
+}
+
+.logoutModal .logoutModal-content {
+    text-align: center;
+    background-color: #fefefe;
+    margin: auto;
+    padding: -10px 0 30px 0;
+    border: 1px solid lightgray;
+    border-top: 10px solid #58abb7;
+    border-radius: 10px;
+    width: 60%;
+}
+
+.logoutModal .close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 40px;
+    font-weight: bold;
+    margin: 0 10px 0 10px;
+}
+
+.logoutModal .close:hover,
+.logoutModal .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+    transform: scale(1.05);
+    transition: 0.2s;
+}
+
+.logoutModal .logoutModal-body {
+    margin: 20px 0 30px 0;
+}
+
+.logoutModal .logoutModal-body p {
+    font-family: Poppins, sans-serif;
+    font-size: 0.8em;
+    margin: -10px 0 0 0;
+}
+
+.logoutModal .logoutModal-footer {
+    margin: 0 0 30px 0;
+}
+
+.logoutModal-footer button {
+    font-family: Poppins, sans-serif;
+    font-size: 0.8em;
+    color: rgb(255, 255, 255);
+    padding: .6rem 1rem .6rem 1rem;
+    border-radius: 8px;
+    background-color: rgb(87, 87, 87);
+    border: none;
+}
+
+.logoutModal-footer button:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+    transition: 0.2s;
 }

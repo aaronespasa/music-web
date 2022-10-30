@@ -13,13 +13,13 @@
 <body>
     <div class="grid-container">
         <div class="column">
-            <div class="menu-title">
+            <div class="menu-title"  onclick="goToHome()">
                 <a class="logo-link" href="#homepage">
                     <figure class="logo-container">
                         <img src="images/logo.svg" alt="Logo of the webpage">
                     </figure>
                 </a>
-                <a class="title-link" href="#homepage" onclick="goToHome()">
+                <a class="title-link" href="#homepage">
                     <h1>
                         Listenify
                     </h1>
@@ -27,7 +27,7 @@
             </div>
             <div class="sidebar">
                 <ul class="menu-options-container">
-                    <li class="menu-option-container"  onclick="goToHome()">
+                    <li class="menu-option-container" onclick="goToHome()">
                         <a href="#" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
                                 <img src="images/icon.svg" alt="Home icon">
@@ -37,7 +37,7 @@
                             </div>
                         </a>
                     </li>
-                    <li class="menu-option-container">
+                    <li class="menu-option-container" onclick="goToLists()">
                         <a href="#" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
                                 <img src="images/music-notes-icon.svg" alt="Home icon">
@@ -98,12 +98,29 @@
                 <div profile-content class="profile-content">
                     <div profile-content-container class="profile-options-content-container">
                         <div class="profile-options-container" id="profile-options-container">
+                            
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    
+    <div class="logoutModal" id="logoutModal">
+        <div class="logoutModal-content">
+            <div class="logoutModal-header">
+                <span class="close" onclick="closeLogoutModal()">&times;</span>
+            </div>
+            <div class="logoutModal-body">
+                <h2>¿Está seguro de que quiere cerrar sesión?</h2>
+                <p>Si cierras sesión, no podrás acceder a tus listas de reproducción.</p>
+            </div>
+            <div class="logoutModal-footer">
+                <button class="logoutModal-button" onclick="logout()">Si, cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+    
     <div class="cta-container">
         <a href="#footer" class="cta-text">
             ¡Regístrate y Disfruta de 3 Meses Gratis!
