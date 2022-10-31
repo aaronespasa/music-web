@@ -1010,6 +1010,7 @@ p.artist-name {
     overflow: hidden;
     position: absolute;
     top: 60px;
+    right: 0;
     color: black;
     background: white;
     width: 160px;
