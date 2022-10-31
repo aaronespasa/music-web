@@ -14,25 +14,23 @@ const profileOptions = document.getElementById("profile-options-container");
 const USERNAME_MIN_LENGTH = 5;
 const PASSWORD_MIN_LENGTH = 8;
 
-goToHome = () => {
-    window.location.href = "index.html";
-}
+const goToHome = () => window.location.href = "index.html";
+const goToProfileOptions = () => window.location.href = "profileOptions.html";
+const closeLogoutModal = () => window.location.href = "profileOptions.html";
+const goToLists = () => window.location.href = "mylists.html";
+const goToAccount = () => window.location.href = "account.html";
+const goToProfile = () => window.location.href = "profile.html";
 
-goToProfileOptions = () => {
-    window.location.href = "profileOptions.html";
-}
-
-goToLists = () => {
-    window.location.href = "mylists.html";
-}
-
-modalFunction = () => {
+const modalFunction = () => {
     const modal = document.getElementById("logoutModal");
     modal.style.display = "flex";
 }
 
-closeLogoutModal = () => {
-    window.location.href = "profileOptions.html";
+function toggleMenuLinks() {
+    navbarProfileOptions = document.getElementById("navbar-profile-options");
+    maxProfileHeight = navbarProfileOptions.style.maxHeight;
+    // if navProfileOptions maxHeight style is 0, then set it to auto else set it to 0
+    navbarProfileOptions.style.maxHeight = (maxProfileHeight === "0px" || maxProfileHeight === "") ? "200px" : "0px";
 }
 
 const createErrorMessage = (message) => {
@@ -79,18 +77,21 @@ const validatePassword = (password) => {
 
 // create async function to get the user image
 const saveUserInLocalStorage = async user => {
-    const userImageFile = document.getElementById("input-file").files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(userImageFile);
+    const useImageInput = document.getElementById("input-file");
+    if (useImageInput.files.length > 0) {
+        const userImageFile = useImageInput.files[0];
+        const reader = new FileReader();
+        reader.readAsDataURL(userImageFile);
 
-    // wait until the reader is ready
-    await new Promise((resolve, reject) => {
-        reader.onload = resolve;
-    });
+        // wait until the reader is ready
+        await new Promise((resolve, reject) => {
+            reader.onload = resolve;
+        });
 
-    // check that reader.result is a string
-    if (typeof reader.result === "string") {
-        user.image = reader.result;
+        // check that reader.result is a string
+        if (typeof reader.result === "string") {
+            user.image = reader.result;
+        }
     }
 
     // save user to the localstorage
@@ -106,9 +107,6 @@ const signUp = async (event) => {
     const name = document.getElementById("name").value;
     const surname = document.getElementById("surname").value;
     const birthdate = document.getElementById("birthdate").value;
-    const userImageFile = document.getElementById("input-file").files[0];
-    const reader = new FileReader();
-    reader.readAsDataURL(userImageFile);
 
     if (validateUsername(username) && validatePassword(password)) {
         let user = {
@@ -162,13 +160,31 @@ const setNavbarLinks = () => {
     if (isAuthenticated === "true") {
         // Cuando se inicia sesión, en el navbar solo aparece la imagen del usuario
         const user = JSON.parse(localStorage.getItem("user"));
-        const userImage = user.image;
-        navbarLinks.innerHTML = `
+        const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
+        navbarLinks.style.flexDirection = "column";
+        const navbarProfileLinks = `
             <div class="navbar-profile">
-                <img src="${userImage}" class="navbar-profile-image" onclick="goToProfileOptions()">
+                <img src=${userImage} class="navbar-profile-image" onclick="toggleMenuLinks()">
             </div>
-            `;
-
+            <div class="navbar-profile-options" id="navbar-profile-options">
+                <div class="navbar-profile-option">
+                    <a class="navbar-profile-option-link" onclick="goToAccount()">
+                        <p class="navbar-profile-option-text">Cuenta</p>
+                    </a>
+                </div>
+                <div class="navbar-profile-option">
+                    <a href="#settings" class="navbar-profile-option-link" onclick="goToProfile()">
+                        <p class="navbar-profile-option-text">Perfil</p>
+                    </a>
+                </div>
+                <div class="navbar-profile-option">
+                    <a href="#logout" class="navbar-profile-option-link" onclick="logout()">
+                        <p class="navbar-profile-option-text">Cerrar Sesión</p>
+                    </a>
+                </div>
+            </div>
+        `;
+        navbarLinks.innerHTML = navbarProfileLinks;
     } else {
         navbarLinks.innerHTML = `
             <button onclick="location.href='signup.html'" class="sign-log-in-button sign-in-button">
@@ -318,11 +334,12 @@ const setNavbarLinks = () => {
         </h2>`;
 
         // set the profile data
-        const username = user.username, email = user.email, birthdate = user.birthdate, image = user.image;
-        
+        const username = user.username, email = user.email, birthdate = user.birthdate;
+        const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
+
         profileData.innerHTML = `
         <div class="profile-data">
-            <img src="${image}" id="profile-image" alt="profile-image">
+            <img src="${userImage}" id="profile-image" alt="profile-image">
         </div>
         <div class="profile-data">
             <p id="profile-data-title">Nombre de usuario</p>
