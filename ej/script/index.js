@@ -218,10 +218,11 @@ const setNavbarLinks = () => {
         </h2>`;
 
         // set the profile data
-        const username = user.username, email = user.email, birthdate = user.birthdate, image = user.image;
+        const username = user.username, email = user.email, birthdate = user.birthdate;
+        const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
         profileData.innerHTML = `
         <div class="profile-data">
-            <img src="${image}" id="profile-image" alt="profile-image">
+            <img src="${userImage}" id="profile-image" alt="profile-image">
         </div>
         <div class="profile-data">
             <p id="profile-data-title">Nombre de usuario</p>
@@ -363,13 +364,14 @@ const setNavbarLinks = () => {
     // ! Añadimos la informacion de la página de opciones del perfil
     if (isAuthenticated === "true" && window.location.href.includes("profileOptions.html")) {
         const user = JSON.parse(localStorage.getItem("user"));
-        const name = user.name, surname = user.surname, image = user.image;
+        const name = user.name, surname = user.surname;
+        const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
         profileOptions.innerHTML = `
         <h2 class="profile-name">
             ${name} ${surname}
         </h2>
         <div class="profile-options-data">
-            <img src="${image}" id="profile-options-image" alt="profile-options-image">
+            <img src="${userImage}" id="profile-options-image" alt="profile-options-image">
         </div>
         <button onclick="location.href='account.html'" class="options-button">
             Cuenta
