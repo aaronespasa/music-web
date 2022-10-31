@@ -101,6 +101,23 @@ const saveUserInLocalStorage = async user => {
     localStorage.setItem("user", JSON.stringify(user));
 }
 
+const modifyProfile = () => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const username = document.getElementById("username").value;
+    const email = document.getElementById("email").value;
+    const birthdate = document.getElementById("birthdate").value;
+
+    console.log(username)
+
+    if (validateUsername(username)) {
+        user.username = username;
+        user.email = email;
+        user.birthdate = birthdate;
+
+        localStorage.setItem("user", JSON.stringify(user));
+    }
+}
+
 const signUp = async (event) => {
     event.preventDefault();
 
@@ -225,15 +242,15 @@ const setNavbarLinks = () => {
         const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
         profileData.innerHTML = `
         <div class="profile-data">
-            <img src="${userImage}" id="profile-image" alt="profile-image">
+            <img src="${userImage}" class="profile-image" alt="profile-image">
         </div>
         <div class="profile-data">
-            <p id="profile-data-title">Nombre de usuario</p>
-            <p id="profile-data-info">@${username}</p>
-            <p id="profile-data-title">Correo electrónico</p>
-            <p id="profile-data-info">${email}</p>
-            <p id="profile-data-title">Fecha de nacimiento</p>
-            <p id="profile-data-info">${birthdate}</p>
+            <p class="profile-data-title">Nombre de usuario</p>
+            <p class="profile-data-info">@${username}</p>
+            <p class="profile-data-title">Correo electrónico</p>
+            <p class="profile-data-info">${email}</p>
+            <p class="profile-data-title">Fecha de nacimiento</p>
+            <p class="profile-data-info">${birthdate}</p>
         </div>
         <hr>
         <div class="profile-extra">
@@ -341,28 +358,34 @@ const setNavbarLinks = () => {
         const username = user.username, email = user.email, birthdate = user.birthdate;
         const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
 
+        // create form element to edit the profile
+        const form = document.createElement("form");
+        form.classList.add("profile-data");
+        form.setAttribute("method", "POST");
+        // add id to the form
+        form.setAttribute("id", "edit-profile-form");
+        form.innerHTML = `
+            <p class="profile-data-title">Nombre de usuario</p>
+            <input class="profile-data-info" type="text" name="username" id="username" placeholder="Nombre de usuario" value="${username}">
+            <p class="profile-data-title">Correo electrónico</p>
+            <input class="profile-data-info" type="email" name="email" id="email" placeholder="Correo electrónico" value="${email}">
+            <p class="profile-data-title">Fecha de nacimiento</p>
+            <input class="profile-data-info" type="date" name="birthdate" id="birthdate" value="${birthdate}">
+
+            <button type="submit" class="sign-log-in-button">
+                Guardar Cambios
+            </button>
+        `;
+
         profileData.innerHTML = `
         <div class="profile-data">
-            <img src="${userImage}" id="profile-image" alt="profile-image">
+            <img src="${userImage}" class="profile-image" alt="profile-image">
         </div>
-        <div class="profile-data">
-            <p id="profile-data-title">Nombre de usuario</p>
-            <p id="profile-data-info">@${username}</p>
-            <p id="profile-data-title">Correo electrónico</p>
-            <p id="profile-data-info">${email}</p>
-            <p id="profile-data-title">Fecha de nacimiento</p>
-            <p id="profile-data-info">${birthdate}</p>
-        </div>
-        <hr>`;
-        
-        // Añadimos el botón de editar perfil
-        profileData.innerHTML += `
-        <div class="profile-data">
-            <button onclick="location.href='edit-profile.html'" class="sign-log-in-button">
-                Editar Perfil
-            </button>
-        </div>`;}
+        `;
+
+        profileData.appendChild(form);
     }
+}
         
 if (signUpForm !== null) {
     signUpForm.addEventListener("submit", (event) => signUp(event));
@@ -405,3 +428,12 @@ const logoutModal = `
 
 // append the logout modal to the body
 document.body.innerHTML += logoutModal;
+
+// add an event listener to the form
+const editProfileForm = document.getElementById("edit-profile-form")
+if (editProfileForm !== null) {
+    editProfileForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        modifyProfile();
+    });
+}
