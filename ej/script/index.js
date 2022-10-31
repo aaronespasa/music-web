@@ -16,7 +16,6 @@ const PASSWORD_MIN_LENGTH = 8;
 
 const goToHome = () => window.location.href = "index.html";
 const goToProfileOptions = () => window.location.href = "profileOptions.html";
-const closeLogoutModal = () => window.location.href = "profileOptions.html";
 const goToLists = () => window.location.href = "mylists.html";
 const goToAccount = () => window.location.href = "account.html";
 const goToProfile = () => window.location.href = "profile.html";
@@ -24,6 +23,10 @@ const goToProfile = () => window.location.href = "profile.html";
 const modalFunction = () => {
     const modal = document.getElementById("logoutModal");
     modal.style.display = "flex";
+}
+const closeLogoutModal = () => {
+    const modal = document.getElementById("logoutModal");
+    modal.style.display = "none";
 }
 
 function toggleMenuLinks() {
@@ -178,7 +181,7 @@ const setNavbarLinks = () => {
                     </a>
                 </div>
                 <div class="navbar-profile-option">
-                    <a href="#logout" class="navbar-profile-option-link" onclick="logout()">
+                    <a href="#logout" class="navbar-profile-option-link" onclick="modalFunction()">
                         <p class="navbar-profile-option-text">Cerrar Sesión</p>
                     </a>
                 </div>
@@ -359,30 +362,6 @@ const setNavbarLinks = () => {
                 Editar Perfil
             </button>
         </div>`;}
-
-
-    // ! Añadimos la informacion de la página de opciones del perfil
-    if (isAuthenticated === "true" && window.location.href.includes("profileOptions.html")) {
-        const user = JSON.parse(localStorage.getItem("user"));
-        const name = user.name, surname = user.surname;
-        const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
-        profileOptions.innerHTML = `
-        <h2 class="profile-name">
-            ${name} ${surname}
-        </h2>
-        <div class="profile-options-data">
-            <img src="${userImage}" id="profile-options-image" alt="profile-options-image">
-        </div>
-        <button onclick="location.href='account.html'" class="options-button">
-            Cuenta
-        </button>
-        <button onclick="location.href='profile.html'" class="options-button">
-            Perfil
-        </button>
-        <button class="options-logout-button" onclick="modalFunction()">
-            Cerrar Sesión
-        </button>`;}
-
     }
         
 if (signUpForm !== null) {
@@ -406,3 +385,23 @@ if (signUpForm !== null) {
 }
 
 setNavbarLinks();
+
+const logoutModal = `
+    <div class="logoutModal" id="logoutModal">
+        <div class="logoutModal-content">
+            <div class="logoutModal-header">
+                <span class="close" onclick="closeLogoutModal()">&times;</span>
+            </div>
+            <div class="logoutModal-body">
+                <h2>¿Está seguro de que quiere cerrar sesión?</h2>
+                <p>Si cierras sesión, no podrás acceder a tus listas de reproducción.</p>
+            </div>
+            <div class="logoutModal-footer">
+                <button class="logoutModal-button" onclick="logout()">Si, cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+`;
+
+// append the logout modal to the body
+document.body.innerHTML += logoutModal;
