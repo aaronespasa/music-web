@@ -301,10 +301,16 @@ p {
     opacity: 0;
 }
 
+/* set the opacity of the before pseudo element to 1 when hovering the song cover container */
+.song-cover-container:hover::before {
+    opacity: 1;
+}
+
 .song-cover-container img {
     transition: transform 0.5s, filter 0.5s;
     width: 100%;
     border-radius: 8px;
+    cursor: pointer;
 }
 
 .song-description {
@@ -332,27 +338,6 @@ p {
 
 .song-cover-container {
     position: relative;
-}
-
-.song-cover-container audio {
-    position: absolute;
-    cursor: pointer;
-    top: 25%;
-    left: 0;
-    opacity: 0;
-    transition: opacity 0.8s;
-    z-index: 10;
-    width: 100%;
-    margin: 0.7em 0;
-    height: 40px;
-}
-
-.song-cover-container img:hover + audio {
-    opacity: 1;
-}
-
-.song-cover-container audio:hover {
-    opacity: 1;
 }
 
 .song-cover-container:hover img {
