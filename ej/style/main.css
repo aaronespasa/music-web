@@ -22,6 +22,7 @@
     --navbar-height: 70px;
     --content-height-without-footer: 94vh;
     --footer-height: calc(100vh - var(--content-height-without-footer));
+    --music-player-original-height: 0vh;
 }
 
 
@@ -286,21 +287,6 @@ p {
     width: 150px;
 }
 
-.song-cover-container::before {
-    content: "";
-    background-image: url("../images/play.svg");
-    background-size: 50px 50px;
-    background-repeat: no-repeat;
-    transition: opacity 0.5s;
-    z-index: 2;
-    pointer-events: none;
-    position: absolute;
-    margin: 3.3em;
-    height: 100%;
-    width: 100%;
-    opacity: 0;
-}
-
 .song-cover-container img {
     transition: transform 0.5s, filter 0.5s;
     width: 100%;
@@ -334,27 +320,6 @@ p {
     position: relative;
 }
 
-.song-cover-container audio {
-    position: absolute;
-    cursor: pointer;
-    top: 25%;
-    left: 0;
-    opacity: 0;
-    transition: opacity 0.8s;
-    z-index: 10;
-    width: 100%;
-    margin: 0.7em 0;
-    height: 40px;
-}
-
-.song-cover-container img:hover + audio {
-    opacity: 1;
-}
-
-.song-cover-container audio:hover {
-    opacity: 1;
-}
-
 .song-cover-container:hover img {
     transform: scale(1.1);
     filter: blur(0.5px);
@@ -386,21 +351,60 @@ p {
 }
 
 
-/* Audio webkit*/
+/* ! Audio webkit personalization*/
 audio::-webkit-media-controls-panel {
-    background-color: var(--bs-color-primary-nav-blue);
+    background-color: var(--bs-color-primary-sidebar);
+    width : 100%;
 }    
 
 audio::-webkit-media-controls-play-button {
-    background-color: var(--bs-color-secondary-button-blue);
+    background-color: rgba(163, 172, 255, 1);
     border-radius: 50%;
+}
+
+audio::-webkit-media-controls-play-button:hover {
+    background-color: rgba(163, 172, 255, 0.8);
+}
+
+audio::-webkit-media-controls-mute-button {
+    background-color: rgba(163, 172, 255, 0);
+    border-radius: 50%;
+}
+
+audio::-webkit-media-controls-mute-button:hover {
+    background-color: rgba(163, 172, 255, 1);
+}
+
+audio::-webkit-media-controls-volume-slider {
+    border-radius: 25px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+audio::-webkit-media-controls-volume-slider:hover {
+    background-color: rgba(163, 172, 255, 1);
+}
+
+audio::-webkit-media-controls-current-time-display {
+    font-weight: bolder;
+}
+
+audio::-webkit-media-controls-time-remaining-display {
+    font-weight: bolder;
+}
+
+audio::-webkit-media-controls-timeline:hover {
+    background-color: rgba(163, 172, 255, 1);
+    border-radius: 25px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 
 /* CTA */
 .cta-container {
     display: flex;
-    flex-direction: ;
+    flex-direction: row;
     justify-content: center;
     align-items: center;
     height: var(--footer-height);
@@ -454,21 +458,6 @@ audio::-webkit-media-controls-play-button {
 
     .music-genre-songs-container {
         justify-content: center;
-    }
-
-    .song-cover-container::before {
-        content: "";
-        background-image:  url("../images/play.svg");
-        background-size: 40px 40px;
-        background-repeat: no-repeat;
-        transition: opacity 0.5s;
-        z-index: 2;
-        pointer-events: none;
-        position: absolute;
-        margin: 2em;
-        height: 100%;
-        width: 100%;
-        opacity: 0;
     }
 }
 
@@ -1120,4 +1109,46 @@ p.artist-name {
     filter: brightness(1.1);
     transition: 0.2s;
 }
+
+
+/* ! Music player instead of tyhe cta-container in the footer */
+
+/* When hover on album cover, show the play button */
+
+.music-player {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: var(--music-player-original-height);
+    background-color:rgba(163, 172, 255, 1);
+}
+
+.song-cover-container a {
+    position: absolute;
+    display: block;
+    background: url(../images/play.svg);
+    width: 50px;
+    height: 50px;
+    top: 50px;
+    left: 50px;
+
+    background-repeat: no-repeat;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+    margin: none;
+}
+
+.song-cover-container a:hover {
+    display: block;
+    opacity: 1;
+    transition: 0.8s;
+}
+
+.song-cover-container img:hover + a {
+    opacity: 1;
+    transition: 0.8s;
+}
+
 
