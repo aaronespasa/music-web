@@ -1025,9 +1025,10 @@ p.artist-name {
     top: 60px;
     right: 0;
     color: black;
-    background: white;
+    background: rgb(221, 209, 255);
     width: 160px;
     z-index: 10;
+    border-radius: 0 0 0 10px;
 }
 
 .navbar-profile-option-link {
@@ -1042,7 +1043,8 @@ p.artist-name {
 }
 
 .navbar-profile-option-text:hover {
-    background: #f2f2f2;
+    background:rgb(236, 221, 255);
+    transition: background 0.2s ease;
 }
 
 
