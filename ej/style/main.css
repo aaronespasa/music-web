@@ -321,7 +321,7 @@ p {
 }
 
 .song-cover-container:hover img {
-    transform: scale(1.1);
+    transform: scale(1.001);
     filter: blur(0.5px);
     filter: brightness(.4);
 }
@@ -437,6 +437,18 @@ audio::-webkit-media-controls-timeline:hover {
     /*Title*/
     .title-link {
         font-size: 0.9em;
+    }
+
+    /*Music container*/
+    .music-genre-title {
+        margin-right: auto;
+        margin-left: auto;
+        padding: 0;
+        text-align: center;
+    }
+
+    .music-genre-songs-container {
+        justify-content: center;
     }
 }
 
