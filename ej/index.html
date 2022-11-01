@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<!-- Lengua castellana -->
 <html lang="es">
+<!-- Cabecera con título y metadatos -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,9 +12,12 @@
     <title>Listenify</title>
 </head>
 
+<!-- Cuerpo con el contenido del index -->
 <body>
     <div class="grid-container">
+        <!-- Contenedor de la columna de la izquierda -->
         <div class="column">
+            <!-- Contenedor del logo -->
             <div class="menu-title" onclick="goToHome()">
                 <a class="logo-link" href="#homepage">
                     <figure class="logo-container">
@@ -25,8 +30,10 @@
                     </h1>
                 </a>
             </div>
+            <!-- Contendedor con las opciones en la barra de la izquierda -->
             <div class="sidebar">
                 <ul class="menu-options-container">
+                    <!-- Botón de la página principal -->
                     <li class="menu-option-container" onclick="goToHome()">
                         <a href="#" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
@@ -37,16 +44,18 @@
                             </div>
                         </a>
                     </li>
+                    <!-- Botón de mis Listas de Reproducción -->
                     <li class="menu-option-container" onclick="goToLists()">
                         <a href="#" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
-                                <img src="images/music-notes-icon.svg" alt="Home icon">
+                                <img src="images/music-notes-icon.svg" alt="Listas">
                             </figure>
                             <div class="menu-option-text-container">
                                 <p>Listas</p>
                             </div>
                         </a>
                     </li>
+                    <!-- Botón de crear lista -->
                     <li class="menu-option-container">
                         <a href="#" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
@@ -57,6 +66,7 @@
                             </div>
                         </a>
                     </li>
+                    <!-- Botón de mis canciones favoritas -->
                     <li class="menu-option-container">
                         <a href="#" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
@@ -68,6 +78,7 @@
                         </a>
                     </li>
                 </ul>
+                <!-- Política de privacidad -->
                 <ul class="bottom-links-container">
                     <li class="bottom-link-container">
                         <a href="#privacy" class="bottom-link">
@@ -77,6 +88,7 @@
                             <p>Política de Privacidad</p>
                         </a>
                     </li>
+                    <!-- Política de cookies -->
                     <li class="bottom-link-container">
                         <a href="#cookies" class="bottom-link">
                             <figure class="bottom-link-icon-container">
@@ -88,28 +100,36 @@
                 </ul>
             </div>
         </div>
+        <!-- Contenedor de la columna de la derecha -->
         <div class="column">
-                <div class="navbar-links">
-                    <div class="navbar-links-container" id="navbar-links-container">
-                        
-                    </div>
+            <!-- Contenedor de la barra de navegación -->
+            <div class="navbar-links">
+                <div class="navbar-links-container" id="navbar-links-container">
                 </div>
+            </div>
+            <!-- Contenedor de la página principal -->
             <div class="content">
                 <span class="content-gradient"></span>
                 <div class="content-container">
+                    <!-- Contenedor de la sección de géneros musicales -->
                     <div class="music-genre-container">
+                        <!-- Canciones del género rock -->
                         <h2 class="music-genre-title">
                             Rock
                         </h2>
                         <div class="music-genre-songs-container">
+                            <!-- Contenedor de la canción -->
                             <div class="song-container">
+                                <!-- Contenedor de la imagen de la canción -->
                                 <figure class="song-cover-container">
                                     <img class="song-cover" src="./images/song-cover.jpg" alt="Song Cover">
                                     <a id="play-icon" alt="Play Icon" onclick="playSong('./audios/song.mp3', 'audio-player-1')"></a>
                                 </figure>
+                                <!-- Título de la canción -->
                                 <p class="song-description">
                                     Rise and Fall
                                 </p>
+                                <!-- Artista de la canción -->
                                 <p class="song-author">
                                     The Offspring
                                 </p>
@@ -164,6 +184,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Canciones del género pop -->
                     <div class="music-genre-container">
                         <h2 class="music-genre-title">
                             Pop
@@ -231,6 +252,7 @@
                             </div>
                         </div>
                     </div>
+                    <!-- Canciones del género hip hop -->
                     <div class="music-genre-container">
                         <h2 class="music-genre-title">
                             Hip Hop
@@ -302,13 +324,16 @@
             </div>
         </div>
     </div>
+    <!-- Contenedor del footer con la frase animando a registrarse -->
     <div class="cta-container">
         <a href="#footer" class="cta-text">
             ¡Regístrate y Disfruta de 3 Meses Gratis!
         </a>
     </div>
+    <!-- Contenedor de los reproductores de audio -->
     <div class="music-player" id="music-player">
     </div>
+    <!-- Por último, llamamos a nuestro archivo de JavaScript -->
     <script src="script/index.js"></script>
 </body>
 </html>
