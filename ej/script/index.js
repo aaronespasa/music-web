@@ -446,25 +446,6 @@ if (editProfileForm !== null) {
     });
 }
 
-
-// ! When song play button is clicked, we add the audio player to class "music-player"
-function playSong (song, audio) {
-    // activate the audio player
-    const audioPlayer = document.getElementById(audio);
-    const playIcon = document.getElementById("play-icon");
-    
-    openMusicPlayer(song, audio);
-
-    if (audioPlayer.paused) {
-        audioPlayer.play();
-        playIcon.src = "./images/play.svg";
-    } else {
-        audioPlayer.pause();
-        playIcon.src = "./images/pause.svg";
-        closeMusicPlayer(audio);
-    }
-} 
-
 function openMusicPlayer (song, audio) {
     document.documentElement.style.setProperty("--content-height-without-footer", "94vh");
     document.documentElement.style.setProperty("--footer-height", "0vh");
@@ -489,3 +470,23 @@ function closeMusicPlayer (audio) {
     const musicPlayer = document.getElementById("music-player");
     musicPlayer.innerHTML = ``;
 }
+
+
+
+// ! When song play button is clicked, we add the audio player to class "music-player"
+function playSong (song, audio) {
+    // activate the audio player
+    const audioPlayer = document.getElementById(audio);
+    const playIcon = document.getElementById("play-icon");
+    
+    openMusicPlayer(song, audio);
+
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playIcon.src = "./images/play.svg";
+    } else {
+        audioPlayer.pause();
+        playIcon.src = "./images/pause.svg";
+        closeMusicPlayer(audio);
+    }
+} 
