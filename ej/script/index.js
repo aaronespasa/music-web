@@ -565,25 +565,21 @@ if (editProfileForm !== null) {
 
 
 // ! When song play button is clicked, we add the audio player to class "music-player"
+firstClick = true;
 function playSong (song, audio) {
     // activate the audio player
     const audioPlayer = document.getElementById(audio);
-    const playIcon = document.getElementById("play-icon");
     
     openMusicPlayer(song, audio);
+    document.documentElement.style.setProperty("--play-pause-icon", "url(../images/pause.svg)");
 
     if (audioPlayer.paused) {
-        audioPlayer.play();
-        playIcon.src = "./images/play.svg";
     } else {
-        audioPlayer.pause();
-        playIcon.src = "./images/pause.svg";
+        // audioPlayer.pause();
+        document.documentElement.style.setProperty("--play-pause-icon", "url(../images/play.svg)");
         closeMusicPlayer(audio);
     }
-} 
-
-
-
+}
 
 
 // Specify globally used values
@@ -663,25 +659,6 @@ function closeMusicPlayer (audio) {
     musicPlayer.innerHTML = ``;
 }
 
-
-
-// ! When song play button is clicked, we add the audio player to class "music-player"
-function playSong (song, audio) {
-    // activate the audio player
-    const audioPlayer = document.getElementById(audio);
-    const playIcon = document.getElementById("play-icon");
-    
-    openMusicPlayer(song, audio);
-
-    if (audioPlayer.paused) {
-        audioPlayer.play();
-        playIcon.src = "./images/play.svg";
-    } else {
-        audioPlayer.pause();
-        playIcon.src = "./images/pause.svg";
-        closeMusicPlayer(audio);
-    }
-}
 
 const getSongsFromPlaylist = (playlist) => {
     let songs = [];

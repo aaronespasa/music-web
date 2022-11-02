@@ -24,6 +24,7 @@
     --footer-height: calc(100vh - var(--content-height-without-footer));
     --music-player-original-height: 0vh;
     --slider-height: 5px;
+    --play-pause-icon: url(../images/play.svg);
 
 }
 
@@ -1188,7 +1189,8 @@ p.artist-name {
     position: absolute;
     display: block;
     cursor: pointer;
-    background: url(../images/play.svg);
+    background: var(--play-pause-icon);
+    background-size: 50px 50px;
     width: 50px;
     height: 50px;
     top: 50px;
