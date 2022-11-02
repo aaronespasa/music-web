@@ -327,7 +327,7 @@ function searchSong() {
                 const searchResult = document.createElement("li");
                 searchResult.className = "searchbar-result"; // TODO!!
                 searchResult.innerHTML = `
-                    <button class="searchbar-button play-button" onclick="openMusicPlayer('${track.id}')"> 
+                    <button class="searchbar-button play-button" name="play-button" onclick="openMusicPlayer('${track.id}')"> 
                         <img src="./images/play.svg" alt="play-button">
                     </button>
                     <p>${track.title}</p>
@@ -702,7 +702,7 @@ function openMusicPlayer (iterator) {
 
     // We play the song
     loadTrack(iterator);
-    playpauseTrackExit(); // in here if we touch the pause icon twice, music player will close
+    playpauseTrackExit(iterator); // in here if we touch the pause icon twice, music player will close
     // playpauseTrack(); // in here if we touch the pause icon twice, music player will not close, pause instead
 }
 
@@ -816,22 +816,28 @@ function playpauseTrack() {
     playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
 }
 
-function playpauseTrackExit() {
+function playpauseTrackExit(iterator) {
     // Switch between playing and pausing
     // depending on the current state
+    console.log("iterator: " + iterator);
     if (!isPlaying) {
         playTrack();
         // Replace icon with the pause icon
         playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
         document.documentElement.style.setProperty("--play-pause-icon", "url(../images/pause.svg)");
-        // document.getElementsByClassName("searchbar-button play-button").innerHTML = '<img src="./images/pause.svg" alt="pause-button">';
+        TRACKS.forEach(track => {
+            document.getElementsByClassName("searchbar-button play-button")[track.id].innerHTML = '<img src="./images/pause.svg" alt="pause-button">';
+        });
+        
     }
     else {
         exitTrack();
         // Replace icon with the pause icon
         playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
         document.documentElement.style.setProperty("--play-pause-icon", "url(../images/play.svg)");
-        // document.getElementsByClassName("searchbar-button play-button").innerHTML = '<img src="./images/play.svg" alt="play-button">';
+        TRACKS.forEach(track => {
+            document.getElementsByClassName("searchbar-button play-button")[track.id].innerHTML = '<img src="./images/play.svg" alt="play-button">';
+        });
     }
 }
    
@@ -903,7 +909,7 @@ function seekUpdate() {
     var totalDuration = document.getElementById("total-duration");
 
     // Check if the current track duration is a legible number
-    if (!isNaN(curr_track.duration)) {
+    if (!isNaN(curr_track.duration) && seekSlider != null && seekSlider != undefined && seekPosition != null && seekPosition != undefined) {
       seekPosition = curr_track.currentTime * (100 / curr_track.duration);
       seekSlider.value = seekPosition;
    
@@ -923,4 +929,5 @@ function seekUpdate() {
       curr_time.textContent = currentMinutes + ":" + currentSeconds;
       totalDuration.textContent = durationMinutes + ":" + durationSeconds;
     }
+    
 }
