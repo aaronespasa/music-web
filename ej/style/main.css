@@ -1028,7 +1028,7 @@ p.artist-name {
     background: rgb(221, 209, 255);
     width: 160px;
     z-index: 10;
-    border-radius: 0 0 0 10px;
+    border-radius: 0 0 8px 8px;
 }
 
 .navbar-profile-option-link {
@@ -1072,7 +1072,8 @@ p.artist-name {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: white;
+    background-color: rgb(221, 209, 255);
+    border-radius: 0 0 8px 8px;
     color: black;
     position: absolute;
     top: 60px;
