@@ -24,6 +24,7 @@ const modalFunction = () => {
     const modal = document.getElementById("logoutModal");
     modal.style.display = "flex";
 }
+
 const closeLogoutModal = () => {
     const modal = document.getElementById("logoutModal");
     modal.style.display = "none";
@@ -385,6 +386,13 @@ const setNavbarLinks = () => {
 
         profileData.appendChild(form);
     }
+
+    if (document.documentElement.style.getPropertyValue("--music-player-original-height") === "6vh") {
+        const musicPlayer = document.getElementById("music-player");
+        musicPlayer.innerHTML = `
+            <p class="music-player-title">No hay canciones en la cola</p>
+        `;
+    }
 }
         
 if (signUpForm !== null) {
@@ -436,4 +444,48 @@ if (editProfileForm !== null) {
         e.preventDefault();
         modifyProfile();
     });
+}
+
+
+// ! When song play button is clicked, we add the audio player to class "music-player"
+function playSong (song, audio) {
+    // activate the audio player
+    const audioPlayer = document.getElementById(audio);
+    const playIcon = document.getElementById("play-icon");
+    
+    openMusicPlayer(song, audio);
+
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playIcon.src = "./images/play.svg";
+    } else {
+        audioPlayer.pause();
+        playIcon.src = "./images/pause.svg";
+        closeMusicPlayer(audio);
+    }
+} 
+
+function openMusicPlayer (song, audio) {
+    document.documentElement.style.setProperty("--content-height-without-footer", "94vh");
+    document.documentElement.style.setProperty("--footer-height", "0vh");
+    document.documentElement.style.setProperty("--music-player-original-height", "6vh");
+    
+    // We add the audio player to the music player div
+    const musicPlayer = document.getElementById("music-player");
+    musicPlayer.innerHTML = `
+        <audio id="${audio}" src="${song}" controls></audio>
+    `;
+
+    // We play the song
+    const audioPlayer = document.getElementById(audio);
+    audioPlayer.play();
+}
+
+function closeMusicPlayer (audio) {
+    document.documentElement.style.setProperty("--content-height-without-footer", "100vh");
+    document.documentElement.style.setProperty("--footer-height", "0vh");
+    document.documentElement.style.setProperty("--music-player-original-height", "0vh");
+    // we remove the audio player from the class "music-player"
+    const musicPlayer = document.getElementById("music-player");
+    musicPlayer.innerHTML = ``;
 }
