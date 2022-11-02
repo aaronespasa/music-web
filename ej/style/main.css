@@ -1084,17 +1084,35 @@ p.artist-name {
 .searchbar-result {
     display: flex;
     flex-direction: row;
-    justify-content: center;
     align-items: center;
     width: 100%;
     height: 100%;
     gap: 20px;
     padding: 10px;
-    cursor: pointer;
 }
 
 .searchbar::placeholder {
     color: white;
+}
+
+.searchbar-button {
+    border: none;
+    outline: none;
+}
+
+.searchbar-button img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.play-button {
+    margin-left: 10px;
+}
+
+.like-button {
+    margin-left: auto;
+    margin-right: 10px;
 }
 
 /* ! Notificación modal de confirmación de cerrar sesión */

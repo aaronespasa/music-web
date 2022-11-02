@@ -291,11 +291,19 @@ function searchSong() {
             const trackName = track.title.toLowerCase();
             const trackArtist = track.artist.toLowerCase();
 
-            if (trackName.includes(searchValue) || trackArtist.includes(searchValue)) {
+            if (trackName.includes(searchValue)) {
                 console.log(trackName);
                 const searchResult = document.createElement("li");
                 searchResult.className = "searchbar-result";
-                searchResult.innerHTML = track.title;
+                searchResult.innerHTML = `
+                    <button class="searchbar-button play-button" onclick="playSong('./audios/${track.audio}', 'audio-player-1')">
+                        <img src="./images/play.svg" alt="play-button">
+                    </button>
+                    <p>${track.title}</p>
+                    <button class="searchbar-button like-button" onclick="likeSong(this)">
+                        <img src="./images/heart.svg" alt="like-button">
+                    </button>
+                `;
                 searchResultsList.appendChild(searchResult);
             }
         });
