@@ -24,7 +24,6 @@ let prev_btn = document.getElementsByClassName(".prev-track");
 // Specify globally used values
 let isPlaying = false;
 let updateTimer;
-let iterator = 0; 
 
 let curr_track = document.createElement('audio');
 
@@ -40,105 +39,120 @@ const TRACKS = [
         "title": "Rise and Fall",
         "artist": "The Offspring",
         "cover": "song-cover.jpg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 0
     },
     {
         "playlist": "Rock",
         "title": "Under My Thumb",
         "artist": "The Rolling Stones",
         "cover": "under-my-thumb.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 1
     },
     {
         "playlist": "Rock",
         "title": "Sweet Child O'Mine",
         "artist": "Guns N'Roses",
         "cover": "sweet-child-o-mine.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 2
     },
     {
         "playlist": "Rock",
         "title": "Highway To Hell",
         "artist": "AC/DC",
         "cover": "highway-to-hell.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 3
     },
     {
         "playlist": "Rock",
         "title": "Seven Nation Army",
         "artist": "The White Stripes",
         "cover": "seven-nation-army.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 4
     },
     {
         "playlist": "Pop",
         "title": "Dynamite",
         "artist": "Taio Cruz",
         "cover": "dynamite.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 5
     },
     {
         "playlist": "Pop",
         "title": "Titanium",
         "artist": "David Guetta",
         "cover": "titanium.webp",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 6
     },
     {
         "playlist": "Pop",
         "title": "Believer",
         "artist": "Imagine Dragons",
         "cover": "believer.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 7
     },
     {
         "playlist": "Pop",
         "title": "Pompeii",
         "artist": "Bastille",
         "cover": "pompeii.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 8
     },
     {
         "playlist": "Pop",
         "title": "God's Plan",
         "artist": "Drake",
         "cover": "gods-plan.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 9
     },
     {
         "playlist": "Hip Hop",
         "title": "Still D.R.E.",
         "artist": "Dr. Dre, Snoop Dogg",
         "cover": "still-dre.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 10
     },
     {
         "playlist": "Hip Hop",
         "title": "In Da Club",
         "artist": "50 Cent",
         "cover": "in-da-club.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 11
     },
     {
         "playlist": "Hip Hop",
         "title": "Without Me",
         "artist": "Eminem",
         "cover": "without-me.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 12
     },
     {
         "playlist": "Hip Hop",
         "title": "Candy Shop",
         "artist": "50 Cent, Oliva",
         "cover": "candy-shop.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 13
     },
     {
         "playlist": "Hip Hop",
         "title": "P.I.M.P.",
         "artist": "50 Cent, Snoop Dogg",
         "cover": "pimp.jpeg",
-        "audio": "./audios/song.mp3"
+        "audio": "./audios/song.mp3",
+        "id": 14
     }
 ]
 
@@ -311,9 +325,9 @@ function searchSong() {
             if (trackName.includes(searchValue)) {
                 console.log(trackName);
                 const searchResult = document.createElement("li");
-                searchResult.className = "searchbar-result";
+                searchResult.className = "searchbar-result"; // TODO!!
                 searchResult.innerHTML = `
-                    <button class="searchbar-button play-button" onclick="playSong('${iterator}')">
+                    <button class="searchbar-button play-button" onclick="playSong('')"> 
                         <img src="./images/play.svg" alt="play-button">
                     </button>
                     <p>${track.title}</p>
@@ -597,10 +611,10 @@ function playSong (iterator) {
 }
 
 
+  
 const setPlaylistsInHome = () => {
     const songsGroupedByPlaylist = getSongsGroupedByPlaylist();
     const playlistsContainer = document.getElementById("home-music-container");
-    let iterator = 0;    
     songsGroupedByPlaylist.forEach((songsGroupedByPlaylist) => {
         const { playlist, songs } = songsGroupedByPlaylist;
         const playlistContainer = document.createElement("div");
@@ -612,8 +626,8 @@ const setPlaylistsInHome = () => {
         `;
         const playlistMusicContainer = playlistContainer.querySelector(".music-genre-songs-container");
         // Creamos un iterador para cada canción   
+        var iterador = 0;
         songs.forEach((song) => {
-            // Aumentamos el iterador autoincremental
             const { title, artist, cover, audio } = song;
             const musicCard = document.createElement("div");
             musicCard.classList.add("song-container");
@@ -623,7 +637,7 @@ const setPlaylistsInHome = () => {
             musicCard.innerHTML = `
                 <figure class="song-cover-container">
                     <img class="song-cover" src="./images/${cover}" alt="Song Cover">
-                    <a id="play-icon" alt="Play Icon" onclick="playSong(${iterator})"></a>
+                    <a id="play-icon" alt="Play Icon" onclick="playSong(${iterador})"></a>
                 </figure>
                 <p class="song-description">
                     ${title}
@@ -633,7 +647,8 @@ const setPlaylistsInHome = () => {
                 </p>
             `;
             playlistMusicContainer.appendChild(musicCard);
-            iterator++;
+            // Aumentamos el iterador autoincremental
+            iterador += 1;
         });
         playlistsContainer.appendChild(playlistContainer);
     });
@@ -643,7 +658,7 @@ function openMusicPlayer (iterator) {
     document.documentElement.style.setProperty("--content-height-without-footer", "94vh");
     document.documentElement.style.setProperty("--footer-height", "0vh");
     document.documentElement.style.setProperty("--music-player-original-height", "6vh");
-    
+    globalThis.iterator = iterator;
     const trackName = TRACKS[iterator].title;
     const trackArtist = TRACKS[iterator].artist;
     const trackImage = TRACKS[iterator].image;
@@ -657,8 +672,8 @@ function openMusicPlayer (iterator) {
         <!-- Define the section for displaying details -->
         <div class="player-controls">
             <div class="details">
-              <div class="track-name">${trackName}</div>
-              <div class="track-artist">${trackArtist}</div>
+              <div class="track-name" id="track-name">${trackName}</div>
+              <div class="track-artist" id="track-artist">${trackArtist}</div>
             </div>
     
         <!-- Define the section for displaying track buttons -->
@@ -760,6 +775,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function loadTrack(iterator) {
 
+    console.log("Loading track: " + iterator);
+
     // Clear the previous seek timer
     clearInterval(updateTimer);
     resetValues();
@@ -771,6 +788,10 @@ function loadTrack(iterator) {
     // Update details of the track
     track_name = TRACKS[iterator].title;
     track_artist = TRACKS[iterator].artist;
+    // We change them in the HTML
+    document.getElementById("track-name").innerHTML = track_name;
+    document.getElementById("track-artist").innerHTML = track_artist;
+
    
     // Set an interval of 1000 milliseconds
     // for updating the seek slider
@@ -779,6 +800,8 @@ function loadTrack(iterator) {
     // Move to the next track if the current finishes playing
     // using the 'ended' event
     curr_track.addEventListener("ended", nextTrack);
+
+    
 }
 
 
@@ -842,10 +865,9 @@ function exitTrack() {
 function nextTrack() {
     // Go back to the first track if the
     // current one is the last in the track list
-    if (iterator < TRACKS.length - 1)
-      iterator += 1;
+    if (iterator < TRACKS.length - 1) iterator += 1;
     else iterator = 0;
-   
+
     // Load and play the new track
     loadTrack(iterator);
     playTrack();
@@ -854,8 +876,7 @@ function nextTrack() {
 function prevTrack() {
     // Go back to the last track if the
     // current one is the first in the track list
-    if (iterator > 0)
-      iterator -= 1;
+    if (iterator > 0) iterator -= 1;
     else iterator = TRACKS.length - 1;
      
     // Load and play the new track
