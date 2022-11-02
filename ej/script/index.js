@@ -47,7 +47,7 @@ const TRACKS = [
         "title": "Under My Thumb",
         "artist": "The Rolling Stones",
         "cover": "under-my-thumb.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song2.mp3",
         "id": 1
     },
     {
@@ -63,7 +63,7 @@ const TRACKS = [
         "title": "Highway To Hell",
         "artist": "AC/DC",
         "cover": "highway-to-hell.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song2.mp3",
         "id": 3
     },
     {
@@ -79,7 +79,7 @@ const TRACKS = [
         "title": "Dynamite",
         "artist": "Taio Cruz",
         "cover": "dynamite.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song2.mp3",
         "id": 5
     },
     {
@@ -95,7 +95,7 @@ const TRACKS = [
         "title": "Believer",
         "artist": "Imagine Dragons",
         "cover": "believer.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song2.mp3",
         "id": 7
     },
     {
@@ -111,7 +111,7 @@ const TRACKS = [
         "title": "God's Plan",
         "artist": "Drake",
         "cover": "gods-plan.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song2.mp3",
         "id": 9
     },
     {
@@ -127,7 +127,7 @@ const TRACKS = [
         "title": "In Da Club",
         "artist": "50 Cent",
         "cover": "in-da-club.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song2.mp3",
         "id": 11
     },
     {
@@ -143,7 +143,7 @@ const TRACKS = [
         "title": "Candy Shop",
         "artist": "50 Cent, Oliva",
         "cover": "candy-shop.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song2.mp3",
         "id": 13
     },
     {
@@ -896,7 +896,7 @@ function seekTo() {
 }
 
 function setVolume() {
-    var volumeSlider = document.getElementById("seek_slider");
+    var volumeSlider = document.getElementById("volume_slider");
     // Set the volume according to the
     // percentage of the volume slider set
     curr_track.volume = volumeSlider.value / 100;
