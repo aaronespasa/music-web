@@ -323,7 +323,6 @@ p {
 }
 
 .song-cover-container:hover img {
-    transform: scale(1.001);
     filter: blur(0.5px);
     filter: brightness(.4);
 }
@@ -1141,6 +1140,7 @@ p.artist-name {
 .song-cover-container a {
     position: absolute;
     display: block;
+    cursor: pointer;
     background: url(../images/play.svg);
     width: 50px;
     height: 50px;

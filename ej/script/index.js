@@ -14,6 +14,116 @@ const profileOptions = document.getElementById("profile-options-container");
 const USERNAME_MIN_LENGTH = 5;
 const PASSWORD_MIN_LENGTH = 8;
 
+const PLAYLISTS = ["Rock", "Pop", "Hip Hop"]
+
+const TRACKS = [
+    {
+        "playlist": "Rock",
+        "title": "Rise and Fall",
+        "artist": "The Offspring",
+        "cover": "song-cover.jpg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Rock",
+        "title": "Under My Thumb",
+        "artist": "The Rolling Stones",
+        "cover": "under-my-thumb.jpeg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Rock",
+        "title": "Sweet Child O'Mine",
+        "artist": "Guns N'Roses",
+        "cover": "sweet-child-o-mine.jpeg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Rock",
+        "title": "Highway To Hell",
+        "artist": "AC/DC",
+        "cover": "highway-to-hell.jpeg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Rock",
+        "title": "Seven Nation Army",
+        "artist": "The White Stripes",
+        "cover": "seven-nation-army.jpeg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Pop",
+        "title": "Dynamite",
+        "artist": "Taio Cruz",
+        "cover": "dynamite.jpeg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Pop",
+        "title": "Titanium",
+        "artist": "David Guetta",
+        "cover": "titanium.webp",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Pop",
+        "title": "Believer",
+        "artist": "Imagine Dragons",
+        "cover": "believer.jpeg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Pop",
+        "title": "Pompeii",
+        "artist": "Bastille",
+        "cover": "pompeii.jpeg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Pop",
+        "title": "God's Plan",
+        "artist": "Drake",
+        "cover": "gods-plan.jpeg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Hip Hop",
+        "title": "Still D.R.E.",
+        "artist": "Dr. Dre, Snoop Dogg",
+        "cover": "still-dre.jpeg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Hip Hop",
+        "title": "In Da Club",
+        "artist": "50 Cent",
+        "cover": "in-da-club.jpeg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Hip Hop",
+        "title": "Without Me",
+        "artist": "Eminem",
+        "cover": "without-me.jpeg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Hip Hop",
+        "title": "Candy Shop",
+        "artist": "50 Cent, Oliva",
+        "cover": "candy-shop.jpeg",
+        "audio": "song.mp3"
+    },
+    {
+        "playlist": "Hip Hop",
+        "title": "P.I.M.P.",
+        "artist": "50 Cent, Snoop Dogg",
+        "cover": "pimp.jpeg",
+        "audio": "song.mp3"
+    }
+]
+
 const goToHome = () => window.location.href = "index.html";
 const goToProfileOptions = () => window.location.href = "profileOptions.html";
 const goToLists = () => window.location.href = "mylists.html";
@@ -415,28 +525,6 @@ if (signUpForm !== null) {
     loginForm.addEventListener("submit", (event) => login(event));
 }
 
-setNavbarLinks();
-
-const logoutModal = `
-    <div class="logoutModal" id="logoutModal">
-        <div class="logoutModal-content">
-            <div class="logoutModal-header">
-                <span class="close" onclick="closeLogoutModal()">&times;</span>
-            </div>
-            <div class="logoutModal-body">
-                <h2>¿Está seguro de que quiere cerrar sesión?</h2>
-                <p>Si cierras sesión, no podrás acceder a tus listas de reproducción.</p>
-            </div>
-            <div class="logoutModal-footer">
-                <button class="logoutModal-button" onclick="logout()">Si, cerrar sesión</button>
-            </div>
-        </div>
-    </div>
-`;
-
-// append the logout modal to the body
-document.body.innerHTML += logoutModal;
-
 // add an event listener to the form
 const editProfileForm = document.getElementById("edit-profile-form")
 if (editProfileForm !== null) {
@@ -571,156 +659,105 @@ function closeMusicPlayer (audio) {
 
 
 
+// ! When song play button is clicked, we add the audio player to class "music-player"
+function playSong (song, audio) {
+    // activate the audio player
+    const audioPlayer = document.getElementById(audio);
+    const playIcon = document.getElementById("play-icon");
+    
+    openMusicPlayer(song, audio);
 
-function loadTrack(track_index) {
-    // Clear the previous seek timer
-    clearInterval(updateTimer);
-    resetValues();
-   
-    // Load a new track
-    curr_track.src = track_list[track_index].path;
-    curr_track.load();
-   
-    // Update details of the track
-    track_art.style.backgroundImage =
-       "url(" + track_list[track_index].image + ")";
-    track_name.textContent = track_list[track_index].name;
-    track_artist.textContent = track_list[track_index].artist;
-    now_playing.textContent =
-       "PLAYING " + (track_index + 1) + " OF " + track_list.length;
-   
-    // Set an interval of 1000 milliseconds
-    // for updating the seek slider
-    updateTimer = setInterval(seekUpdate, 1000);
-   
-    // Move to the next track if the current finishes playing
-    // using the 'ended' event
-    curr_track.addEventListener("ended", nextTrack);
-   
-    // Apply a random background color
-    random_bg_color();
-  }
-   
-  function random_bg_color() {
-    // Get a random number between 64 to 256
-    // (for getting lighter colors)
-    let red = Math.floor(Math.random() * 256) + 64;
-    let green = Math.floor(Math.random() * 256) + 64;
-    let blue = Math.floor(Math.random() * 256) + 64;
-   
-    // Construct a color with the given values
-    let bgColor = "rgb(" + red + ", " + green + ", " + blue + ")";
-   
-    // Set the background to the new color
-    document.body.style.background = bgColor;
-  }
-   
-  // Function to reset all values to their default
-  function resetValues() {
-    curr_time.textContent = "00:00";
-    total_duration.textContent = "00:00";
-    seek_slider.value = 0;
-  }
-
-
-
-
-
-  function playpauseTrack() {
-    // Switch between playing and pausing
-    // depending on the current state
-    if (!isPlaying) playTrack();
-    else pauseTrack();
-  }
-   
-  function playTrack() {
-    // Play the loaded track
-    curr_track.play();
-    isPlaying = true;
-   
-    // Replace icon with the pause icon
-    playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
-  }
-   
-  function pauseTrack() {
-    // Pause the loaded track
-    curr_track.pause();
-    isPlaying = false;
-   
-    // Replace icon with the play icon
-    playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
-  }
-   
-  function nextTrack() {
-    // Go back to the first track if the
-    // current one is the last in the track list
-    if (track_index < track_list.length - 1)
-      track_index += 1;
-    else track_index = 0;
-   
-    // Load and play the new track
-    loadTrack(track_index);
-    playTrack();
-  }
-   
-  function prevTrack() {
-    // Go back to the last track if the
-    // current one is the first in the track list
-    if (track_index > 0)
-      track_index -= 1;
-    else track_index = track_list.length - 1;
-     
-    // Load and play the new track
-    loadTrack(track_index);
-    playTrack();
-  }
-
-
-
-
-
-  function seekTo() {
-    // Calculate the seek position by the
-    // percentage of the seek slider
-    // and get the relative duration to the track
-    seekto = curr_track.duration * (seek_slider.value / 100);
-   
-    // Set the current track position to the calculated seek position
-    curr_track.currentTime = seekto;
-  }
-   
-  function setVolume() {
-    // Set the volume according to the
-    // percentage of the volume slider set
-    curr_track.volume = volume_slider.value / 100;
-  }
-   
-  function seekUpdate() {
-    let seekPosition = 0;
-   
-    // Check if the current track duration is a legible number
-    if (!isNaN(curr_track.duration)) {
-      seekPosition = curr_track.currentTime * (100 / curr_track.duration);
-      seek_slider.value = seekPosition;
-   
-      // Calculate the time left and the total duration
-      let currentMinutes = Math.floor(curr_track.currentTime / 60);
-      let currentSeconds = Math.floor(curr_track.currentTime - currentMinutes * 60);
-      let durationMinutes = Math.floor(curr_track.duration / 60);
-      let durationSeconds = Math.floor(curr_track.duration - durationMinutes * 60);
-   
-      // Add a zero to the single digit time values
-      if (currentSeconds < 10) { currentSeconds = "0" + currentSeconds; }
-      if (durationSeconds < 10) { durationSeconds = "0" + durationSeconds; }
-      if (currentMinutes < 10) { currentMinutes = "0" + currentMinutes; }
-      if (durationMinutes < 10) { durationMinutes = "0" + durationMinutes; }
-   
-      // Display the updated duration
-      curr_time.textContent = currentMinutes + ":" + currentSeconds;
-      total_duration.textContent = durationMinutes + ":" + durationSeconds;
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playIcon.src = "./images/play.svg";
+    } else {
+        audioPlayer.pause();
+        playIcon.src = "./images/pause.svg";
+        closeMusicPlayer(audio);
     }
-  }
+}
 
+const getSongsFromPlaylist = (playlist) => {
+    let songs = [];
+    TRACKS.forEach((track) => {
+        if (track.playlist === playlist) {
+            songs.push(track);
+        }
+    });
+    return songs;
+}
 
+const getSongsGroupedByPlaylist = () => {
+    let songsGroupedByPlaylist = [];
+    PLAYLISTS.forEach((playlist) => {
+        songsGroupedByPlaylist.push({
+            playlist,
+            songs: getSongsFromPlaylist(playlist),
+        });
+    });
+    return songsGroupedByPlaylist;
+}
 
-  loadTrack(track_index);
+const setPlaylistsInHome = () => {
+    const songsGroupedByPlaylist = getSongsGroupedByPlaylist();
+    const playlistsContainer = document.getElementById("home-music-container");
+    songsGroupedByPlaylist.forEach((songsGroupedByPlaylist) => {
+        const { playlist, songs } = songsGroupedByPlaylist;
+        const playlistContainer = document.createElement("div");
+        playlistContainer.classList.add("music-genre-container");
+        playlistContainer.innerHTML = `
+            <h2 class="music-genre-title">${playlist}</h2>
+            <div class="music-genre-songs-container">
+            </div>
+        `;
+        const playlistMusicContainer = playlistContainer.querySelector(".music-genre-songs-container");
+        songs.forEach((song) => {
+            const { title, artist, cover, audio } = song;
+            const musicCard = document.createElement("div");
+            musicCard.classList.add("song-container");
+            musicCard.setAttribute("songName", title);
+            musicCard.innerHTML = `
+                <figure class="song-cover-container">
+                    <img class="song-cover" src="./images/${cover}" alt="Song Cover">
+                    <a id="play-icon" alt="Play Icon" onclick="playSong('./audios/${audio}', 'audio-player-1')"></a>
+                </figure>
+                <p class="song-description">
+                    ${title}
+                </p>
+                <p class="song-author">
+                    ${artist}
+                </p>
+            `;
+            playlistMusicContainer.appendChild(musicCard);
+        });
+        playlistsContainer.appendChild(playlistContainer);
+    });
+}
+
+const logoutModal = `
+    <div class="logoutModal" id="logoutModal">
+        <div class="logoutModal-content">
+            <div class="logoutModal-header">
+                <span class="close" onclick="closeLogoutModal()">&times;</span>
+            </div>
+            <div class="logoutModal-body">
+                <h2>¿Está seguro de que quiere cerrar sesión?</h2>
+                <p>Si cierras sesión, no podrás acceder a tus listas de reproducción.</p>
+            </div>
+            <div class="logoutModal-footer">
+                <button class="logoutModal-button" onclick="logout()">Si, cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+`;
+
+// on document load
+document.addEventListener("DOMContentLoaded", () => {
+    setNavbarLinks();
+
+    // append the logout modal to the body
+    document.body.innerHTML += logoutModal;
+
+    // set the playlists in the home page
+    setPlaylistsInHome();
+});
