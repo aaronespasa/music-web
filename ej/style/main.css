@@ -1232,7 +1232,9 @@ p.artist-name {
     transition: 0.8s;
 }
 
-/* Using flex with the column direction to align items in a vertical direction */
+
+
+/* ! Using flex with the column direction to align items in a vertical direction */
 .music-player .player-controls {
     display: flex;
     flex-direction: row;
@@ -1300,8 +1302,8 @@ p.artist-name {
   display: flex;
   flex-direction: row;
   align-items: center;
-  margin-top: 10px;
-  margin-bottom: -5px;
+  position: absolute;
+  top: 10px;
 }
 
 .playpause-track,
@@ -1328,6 +1330,8 @@ p.artist-name {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: absolute;
+  bottom: 5px;
 }
 
 /* we place the volume slider on the right side of the player */

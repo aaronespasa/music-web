@@ -22,105 +22,105 @@ const TRACKS = [
         "title": "Rise and Fall",
         "artist": "The Offspring",
         "cover": "song-cover.jpg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Rock",
         "title": "Under My Thumb",
         "artist": "The Rolling Stones",
         "cover": "under-my-thumb.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Rock",
         "title": "Sweet Child O'Mine",
         "artist": "Guns N'Roses",
         "cover": "sweet-child-o-mine.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Rock",
         "title": "Highway To Hell",
         "artist": "AC/DC",
         "cover": "highway-to-hell.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Rock",
         "title": "Seven Nation Army",
         "artist": "The White Stripes",
         "cover": "seven-nation-army.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Pop",
         "title": "Dynamite",
         "artist": "Taio Cruz",
         "cover": "dynamite.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Pop",
         "title": "Titanium",
         "artist": "David Guetta",
         "cover": "titanium.webp",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Pop",
         "title": "Believer",
         "artist": "Imagine Dragons",
         "cover": "believer.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Pop",
         "title": "Pompeii",
         "artist": "Bastille",
         "cover": "pompeii.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Pop",
         "title": "God's Plan",
         "artist": "Drake",
         "cover": "gods-plan.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Hip Hop",
         "title": "Still D.R.E.",
         "artist": "Dr. Dre, Snoop Dogg",
         "cover": "still-dre.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Hip Hop",
         "title": "In Da Club",
         "artist": "50 Cent",
         "cover": "in-da-club.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Hip Hop",
         "title": "Without Me",
         "artist": "Eminem",
         "cover": "without-me.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Hip Hop",
         "title": "Candy Shop",
         "artist": "50 Cent, Oliva",
         "cover": "candy-shop.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     },
     {
         "playlist": "Hip Hop",
         "title": "P.I.M.P.",
         "artist": "50 Cent, Snoop Dogg",
         "cover": "pimp.jpeg",
-        "audio": "song.mp3"
+        "audio": "./audios/song.mp3"
     }
 ]
 
@@ -599,7 +599,7 @@ let updateTimer;
 let curr_track = document.createElement('audio');
 
 
-function openMusicPlayer (song, iterator) {
+function openMusicPlayer (iterator) {
     document.documentElement.style.setProperty("--content-height-without-footer", "94vh");
     document.documentElement.style.setProperty("--footer-height", "0vh");
     document.documentElement.style.setProperty("--music-player-original-height", "6vh");
@@ -713,7 +713,7 @@ const setPlaylistsInHome = () => {
             musicCard.innerHTML = `
                 <figure class="song-cover-container">
                     <img class="song-cover" src="./images/${cover}" alt="Song Cover">
-                    <a id="play-icon" alt="Play Icon" onclick="playSong('./audios/${audio}', ${iterator})"></a>
+                    <a id="play-icon" alt="Play Icon" onclick="playSong(${iterator})"></a>
                 </figure>
                 <p class="song-description">
                     ${title}
