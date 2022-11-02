@@ -63,7 +63,7 @@ const TRACKS = [
         "playlist": "Pop",
         "title": "Titanium",
         "artist": "David Guetta",
-        "cover": "believer.jpeg",
+        "cover": "titanium.webp",
         "audio": "song.mp3"
     },
     {
@@ -614,20 +614,20 @@ const setPlaylistsInHome = () => {
         `;
         const playlistMusicContainer = playlistContainer.querySelector(".music-genre-songs-container");
         songs.forEach((song) => {
-            const { name, artist, cover, audio } = song;
+            const { title, artist, cover, audio } = song;
             const musicCard = document.createElement("div");
             musicCard.classList.add("song-container");
-            musicCard.setAttribute("songName", name);
+            musicCard.setAttribute("songName", title);
             musicCard.innerHTML = `
                 <figure class="song-cover-container">
                     <img class="song-cover" src="./images/${cover}" alt="Song Cover">
                     <a id="play-icon" alt="Play Icon" onclick="playSong('./audios/${audio}', 'audio-player-1')"></a>
                 </figure>
                 <p class="song-description">
-                    Rise and Fall
+                    ${title}
                 </p>
                 <p class="song-author">
-                    The Offspring
+                    ${artist}
                 </p>
             `;
             playlistMusicContainer.appendChild(musicCard);
