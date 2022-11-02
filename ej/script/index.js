@@ -19,9 +19,7 @@ let track_artist = document.getElementsByClassName(".track-artist");
 let playpause_btn = document.getElementsByClassName(".playpause-track");
 let next_btn = document.getElementsByClassName(".next-track");
 let prev_btn = document.getElementsByClassName(".prev-track");
- 
-let curr_time = document.getElementsByClassName(".current-time");
-let total_duration = document.getElementsByClassName(".total-duration");
+
 
 // Specify globally used values
 let isPlaying = false;
@@ -680,9 +678,9 @@ function openMusicPlayer (iterator) {
 
                 <!-- Define the section for displaying the seek slider-->
                 <div class="slider_container">
-                  <div class="current-time">00:00</div>
+                  <div class="current-time" id="current-time">00:00</div>
                   <input type="range" min="0" max="100" value="0" class="seek_slider" id="seek_slider" onchange="seekTo()">
-                  <div class="total-duration">00:00</div>
+                  <div class="total-duration" id="total-duration">00:00</div>
                 </div>
             </div>
 
@@ -786,9 +784,11 @@ function loadTrack(iterator) {
 
   // Function to reset all values to their default
 function resetValues() {
-    var seekSlider = document.getElementsByClassName(".seek_slider");
+    var seekSlider = document.getElementById("seek_slider");
+    var totalDuration = document.getElementById("total-duration");
+    var curr_time = document.getElementById("current-time");
     curr_time.textContent = "00:00";
-    total_duration.textContent = "00:00";
+    totalDuration.textContent = "00:00";
     seekSlider.value = 0;
 }
 
@@ -869,10 +869,9 @@ function seekTo() {
     // Calculate the seek position by the
     // percentage of the seek slider
     // and get the relative duration to the track
-    seekto = curr_track.duration * (seekSlider.value / 100);
    
     // Set the current track position to the calculated seek position
-    curr_track.currentTime = seekto;
+    curr_track.currentTime = curr_track.duration * (seekSlider.value / 100);;
 }
 
 function setVolume() {
@@ -885,6 +884,9 @@ function setVolume() {
 function seekUpdate() {
     let seekPosition = 0;
     var seekSlider = document.getElementById("seek_slider");
+    var curr_time = document.getElementById("current-time");
+    var totalDuration = document.getElementById("total-duration");
+
     // Check if the current track duration is a legible number
     if (!isNaN(curr_track.duration)) {
       seekPosition = curr_track.currentTime * (100 / curr_track.duration);
@@ -904,6 +906,6 @@ function seekUpdate() {
    
       // Display the updated duration
       curr_time.textContent = currentMinutes + ":" + currentSeconds;
-      total_duration.textContent = durationMinutes + ":" + durationSeconds;
+      totalDuration.textContent = durationMinutes + ":" + durationSeconds;
     }
 }
