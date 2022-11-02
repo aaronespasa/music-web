@@ -39,7 +39,7 @@ const TRACKS = [
         "title": "Rise and Fall",
         "artist": "The Offspring",
         "cover": "song-cover.jpg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song0.mp3",
         "id": 0
     },
     {
@@ -47,7 +47,7 @@ const TRACKS = [
         "title": "Under My Thumb",
         "artist": "The Rolling Stones",
         "cover": "under-my-thumb.jpeg",
-        "audio": "./audios/song2.mp3",
+        "audio": "./audios/song1.mp3",
         "id": 1
     },
     {
@@ -55,7 +55,7 @@ const TRACKS = [
         "title": "Sweet Child O'Mine",
         "artist": "Guns N'Roses",
         "cover": "sweet-child-o-mine.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song2.mp3",
         "id": 2
     },
     {
@@ -63,7 +63,7 @@ const TRACKS = [
         "title": "Highway To Hell",
         "artist": "AC/DC",
         "cover": "highway-to-hell.jpeg",
-        "audio": "./audios/song2.mp3",
+        "audio": "./audios/song3.mp3",
         "id": 3
     },
     {
@@ -71,7 +71,7 @@ const TRACKS = [
         "title": "Seven Nation Army",
         "artist": "The White Stripes",
         "cover": "seven-nation-army.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song4.mp3",
         "id": 4
     },
     {
@@ -87,7 +87,7 @@ const TRACKS = [
         "title": "Titanium",
         "artist": "David Guetta",
         "cover": "titanium.webp",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song3.mp3",
         "id": 6
     },
     {
@@ -103,7 +103,7 @@ const TRACKS = [
         "title": "Pompeii",
         "artist": "Bastille",
         "cover": "pompeii.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song4.mp3",
         "id": 8
     },
     {
@@ -111,7 +111,7 @@ const TRACKS = [
         "title": "God's Plan",
         "artist": "Drake",
         "cover": "gods-plan.jpeg",
-        "audio": "./audios/song2.mp3",
+        "audio": "./audios/song1.mp3",
         "id": 9
     },
     {
@@ -119,7 +119,7 @@ const TRACKS = [
         "title": "Still D.R.E.",
         "artist": "Dr. Dre, Snoop Dogg",
         "cover": "still-dre.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song0.mp3",
         "id": 10
     },
     {
@@ -135,7 +135,7 @@ const TRACKS = [
         "title": "Without Me",
         "artist": "Eminem",
         "cover": "without-me.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song4.mp3",
         "id": 12
     },
     {
@@ -143,7 +143,7 @@ const TRACKS = [
         "title": "Candy Shop",
         "artist": "50 Cent, Oliva",
         "cover": "candy-shop.jpeg",
-        "audio": "./audios/song2.mp3",
+        "audio": "./audios/song1.mp3",
         "id": 13
     },
     {
@@ -151,7 +151,7 @@ const TRACKS = [
         "title": "P.I.M.P.",
         "artist": "50 Cent, Snoop Dogg",
         "cover": "pimp.jpeg",
-        "audio": "./audios/song.mp3",
+        "audio": "./audios/song3.mp3",
         "id": 14
     }
 ]
