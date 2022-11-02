@@ -279,6 +279,29 @@ const logout = () => {
     window.location.href = "index.html";
 }
 
+function searchSong() {
+    const searchbarInput = document.getElementById("searchbar");
+    const searchValue = searchbar.value.toLowerCase();
+
+    let searchResultsList = document.getElementById("searchbar-results");
+    searchResultsList.innerHTML = "";
+
+    if (searchValue != "") {
+        TRACKS.forEach(track => {
+            const trackName = track.title.toLowerCase();
+            const trackArtist = track.artist.toLowerCase();
+
+            if (trackName.includes(searchValue) || trackArtist.includes(searchValue)) {
+                console.log(trackName);
+                const searchResult = document.createElement("li");
+                searchResult.className = "searchbar-result";
+                searchResult.innerHTML = track.title;
+                searchResultsList.appendChild(searchResult);
+            }
+        });
+    }
+}
+
 const setNavbarLinks = () => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
 
@@ -294,24 +317,30 @@ const setNavbarLinks = () => {
         const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
         navbarLinks.style.flexDirection = "column";
         const navbarProfileLinks = `
-            <div class="navbar-profile">
-                <img src=${userImage} class="navbar-profile-image" onclick="toggleMenuLinks()">
-            </div>
-            <div class="navbar-profile-options" id="navbar-profile-options">
-                <div class="navbar-profile-option">
-                    <a class="navbar-profile-option-link" onclick="goToAccount()">
-                        <p class="navbar-profile-option-text">Cuenta</p>
-                    </a>
+            <div class="searchbar-profile-container">
+                <div class="searchbar-container">
+                    <input id="searchbar" onkeyup="searchSong()" class="searchbar" type="text" placeholder="Buscar">
+                    <ul id="searchbar-results" class="searchbar-results"></ul>
                 </div>
-                <div class="navbar-profile-option">
-                    <a href="#settings" class="navbar-profile-option-link" onclick="goToProfile()">
-                        <p class="navbar-profile-option-text">Perfil</p>
-                    </a>
+                <div class="navbar-profile">
+                    <img src=${userImage} class="navbar-profile-image" onclick="toggleMenuLinks()">
                 </div>
-                <div class="navbar-profile-option">
-                    <a href="#logout" class="navbar-profile-option-link" onclick="modalFunction()">
-                        <p class="navbar-profile-option-text">Cerrar Sesión</p>
-                    </a>
+                <div class="navbar-profile-options" id="navbar-profile-options">
+                    <div class="navbar-profile-option">
+                        <a class="navbar-profile-option-link" onclick="goToAccount()">
+                            <p class="navbar-profile-option-text">Cuenta</p>
+                        </a>
+                    </div>
+                    <div class="navbar-profile-option">
+                        <a href="#settings" class="navbar-profile-option-link" onclick="goToProfile()">
+                            <p class="navbar-profile-option-text">Perfil</p>
+                        </a>
+                    </div>
+                    <div class="navbar-profile-option">
+                        <a href="#logout" class="navbar-profile-option-link" onclick="modalFunction()">
+                            <p class="navbar-profile-option-text">Cerrar Sesión</p>
+                        </a>
+                    </div>
                 </div>
             </div>
         `;
