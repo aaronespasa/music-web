@@ -599,19 +599,17 @@ let updateTimer;
 let curr_track = document.createElement('audio');
 
 
-function openMusicPlayer (song, audio) {
+function openMusicPlayer (song, iterator) {
     document.documentElement.style.setProperty("--content-height-without-footer", "94vh");
     document.documentElement.style.setProperty("--footer-height", "0vh");
     document.documentElement.style.setProperty("--music-player-original-height", "6vh");
     
-    const trackName = TRACKS[track_index].title;
-    const trackArtist = TRACKS[track_index].artist;
+    const trackName = TRACKS[iterator].title;
+    const trackArtist = TRACKS[iterator].artist;
 
     // We add the audio player to the music player div
     const musicPlayer = document.getElementById("music-player");
     musicPlayer.innerHTML = `
-        <!-- <audio id="${audio}" src="${song}" controls></audio> -->
-
         <!-- Define the section for displaying details -->
         <div class="player-controls">
             <div class="details">
@@ -692,6 +690,7 @@ const getSongsGroupedByPlaylist = () => {
 const setPlaylistsInHome = () => {
     const songsGroupedByPlaylist = getSongsGroupedByPlaylist();
     const playlistsContainer = document.getElementById("home-music-container");
+    let iterator = 0;    
     songsGroupedByPlaylist.forEach((songsGroupedByPlaylist) => {
         const { playlist, songs } = songsGroupedByPlaylist;
         const playlistContainer = document.createElement("div");
@@ -702,15 +701,19 @@ const setPlaylistsInHome = () => {
             </div>
         `;
         const playlistMusicContainer = playlistContainer.querySelector(".music-genre-songs-container");
+        // Creamos un iterador para cada canción   
         songs.forEach((song) => {
+            // Aumentamos el iterador autoincremental
             const { title, artist, cover, audio } = song;
             const musicCard = document.createElement("div");
             musicCard.classList.add("song-container");
             musicCard.setAttribute("songName", title);
+             // TODO: crear iterador autoincremental para poder distinguir las canciones
+            // ! Ahora pdodremos llamar a cada canción por su iterador (posición en el json)) 
             musicCard.innerHTML = `
                 <figure class="song-cover-container">
                     <img class="song-cover" src="./images/${cover}" alt="Song Cover">
-                    <a id="play-icon" alt="Play Icon" onclick="playSong('./audios/${audio}', 'audio-player-1')"></a>
+                    <a id="play-icon" alt="Play Icon" onclick="playSong('./audios/${audio}', ${iterator})"></a>
                 </figure>
                 <p class="song-description">
                     ${title}
@@ -720,6 +723,7 @@ const setPlaylistsInHome = () => {
                 </p>
             `;
             playlistMusicContainer.appendChild(musicCard);
+            iterator++;
         });
         playlistsContainer.appendChild(playlistContainer);
     });
