@@ -604,8 +604,8 @@ function openMusicPlayer (song, audio) {
     document.documentElement.style.setProperty("--footer-height", "0vh");
     document.documentElement.style.setProperty("--music-player-original-height", "6vh");
     
-    var trackName = "Pico Tres";
-    var artistName = "Pimp Flaco";
+    const trackName = TRACKS[track_index].title;
+    const trackArtist = TRACKS[track_index].artist;
 
     // We add the audio player to the music player div
     const musicPlayer = document.getElementById("music-player");
@@ -616,7 +616,7 @@ function openMusicPlayer (song, audio) {
         <div class="player-controls">
             <div class="details">
               <div class="track-name">${trackName}</div>
-              <div class="track-artist">${artistName}</div>
+              <div class="track-artist">${trackArtist}</div>
             </div>
     
         <!-- Define the section for displaying track buttons -->
@@ -802,8 +802,6 @@ function loadTrack(track_index) {
     total_duration.textContent = "00:00";
     seek_slider.value = 0;
   }
-
-
 
   function seekTo() {
     // Calculate the seek position by the
