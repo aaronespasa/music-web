@@ -1106,7 +1106,13 @@ p.artist-name {
     cursor: pointer;
 }
 
-.play-button {
+.searchbar-button img:hover {
+    transform: scale(1.1);
+    filter: brightness(0.99);
+    transition: 0.2s;
+}
+
+.play-pause-button {
     margin-left: 10px;
 }
 

@@ -327,7 +327,7 @@ function searchSong() {
                 const searchResult = document.createElement("li");
                 searchResult.className = "searchbar-result"; // TODO!!
                 searchResult.innerHTML = `
-                    <button class="searchbar-button play-button" onclick="playSong('')"> 
+                    <button class="searchbar-button play-button" onclick="openMusicPlayer('${track.id}')"> 
                         <img src="./images/play.svg" alt="play-button">
                     </button>
                     <p>${track.title}</p>
@@ -602,15 +602,6 @@ if (editProfileForm !== null) {
     });
 }
 
-
-// ! When song play button is clicked, we add the audio player to class "music-player"
-firstClick = true;
-function playSong (iterator) {
-    // activate the audio player
-    openMusicPlayer(iterator);
-}
-
-
   
 const setPlaylistsInHome = () => {
     const songsGroupedByPlaylist = getSongsGroupedByPlaylist();
@@ -637,7 +628,7 @@ const setPlaylistsInHome = () => {
             musicCard.innerHTML = `
                 <figure class="song-cover-container">
                     <img class="song-cover" src="./images/${cover}" alt="Song Cover">
-                    <a id="play-icon" alt="Play Icon" onclick="playSong(${iterador})"></a>
+                    <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(${iterador})"></a>
                 </figure>
                 <p class="song-description">
                     ${title}
@@ -654,6 +645,8 @@ const setPlaylistsInHome = () => {
     });
 }
 
+
+// ! When song play button is clicked, we add the audio player to class "music-player"
 function openMusicPlayer (iterator) {
     document.documentElement.style.setProperty("--content-height-without-footer", "94vh");
     document.documentElement.style.setProperty("--footer-height", "0vh");
@@ -710,6 +703,7 @@ function openMusicPlayer (iterator) {
     // We play the song
     loadTrack(iterator);
     playpauseTrackExit(); // in here if we touch the pause icon twice, music player will close
+    // playpauseTrack(); // in here if we touch the pause icon twice, music player will not close, pause instead
 }
 
 
@@ -800,8 +794,6 @@ function loadTrack(iterator) {
     // Move to the next track if the current finishes playing
     // using the 'ended' event
     curr_track.addEventListener("ended", nextTrack);
-
-    
 }
 
 
@@ -832,12 +824,14 @@ function playpauseTrackExit() {
         // Replace icon with the pause icon
         playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
         document.documentElement.style.setProperty("--play-pause-icon", "url(../images/pause.svg)");
+        // document.getElementsByClassName("searchbar-button play-button").innerHTML = '<img src="./images/pause.svg" alt="pause-button">';
     }
     else {
         exitTrack();
         // Replace icon with the pause icon
         playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
         document.documentElement.style.setProperty("--play-pause-icon", "url(../images/play.svg)");
+        // document.getElementsByClassName("searchbar-button play-button").innerHTML = '<img src="./images/play.svg" alt="play-button">';
     }
 }
    
