@@ -563,6 +563,63 @@ if (editProfileForm !== null) {
     });
 }
 
+
+// ! When song play button is clicked, we add the audio player to class "music-player"
+function playSong (song, audio) {
+    // activate the audio player
+    const audioPlayer = document.getElementById(audio);
+    const playIcon = document.getElementById("play-icon");
+    
+    openMusicPlayer(song, audio);
+
+    if (audioPlayer.paused) {
+        audioPlayer.play();
+        playIcon.src = "./images/play.svg";
+    } else {
+        audioPlayer.pause();
+        playIcon.src = "./images/pause.svg";
+        closeMusicPlayer(audio);
+    }
+} 
+
+
+
+
+
+// Specify globally used values
+let track_index = 0;
+let isPlaying = false;
+let updateTimer;
+ 
+// Create the audio element for the player
+let curr_track = document.createElement('audio');
+
+// Define the list of tracks that have to be played
+let track_list = [
+    {
+      name: "Night Owl",
+      artist: "Broke For Free",
+      image: "Image URL",
+      path: "Night_Owl.mp3"
+    },
+    {
+      name: "Enthusiast",
+      artist: "Tours",
+      image: "Image URL",
+      path: "Enthusiast.mp3"
+    },
+    {
+      name: "Shipping Lanes",
+      artist: "Chad Crouch",
+      image: "Image URL",
+      path: "Shipping_Lanes.mp3",
+    },
+  ];
+
+
+
+
+
 function openMusicPlayer (song, audio) {
     document.documentElement.style.setProperty("--content-height-without-footer", "94vh");
     document.documentElement.style.setProperty("--footer-height", "0vh");
@@ -571,7 +628,48 @@ function openMusicPlayer (song, audio) {
     // We add the audio player to the music player div
     const musicPlayer = document.getElementById("music-player");
     musicPlayer.innerHTML = `
-        <audio id="${audio}" src="${song}" controls></audio>
+        <!-- <audio id="${audio}" src="${song}" controls></audio> -->
+
+        <!-- Define the section for displaying details -->
+        <!--<div class="details">
+          <div class="now-playing">PLAYING x OF y</div>
+          <div class="track-art"></div>
+          <div class="track-name">Track Name</div>
+          <div class="track-artist">Track Artist</div>
+        </div>-->
+    
+        <!-- Define the section for displaying track buttons -->
+        <div class="player-controls">
+            <div class="track-buttons">
+                <div class="buttons">
+                  <div class="prev-track" onclick="prevTrack()">
+                    <i class="fa fa-step-backward fa-1x"></i>
+                  </div>
+                  <div class="playpause-track" onclick="playpauseTrack()">
+                    <i class="fa fa-play-circle fa-2x"></i>
+                  </div>
+                  <div class="next-track" onclick="nextTrack()">
+                    <i class="fa fa-step-forward fa-1x"></i>
+                  </div>
+                </div>
+
+                <!-- Define the section for displaying the seek slider-->
+                <div class="slider_container">
+                  <div class="current-time">00:00</div>
+                  <input type="range" min="1" max="100"
+                    value="0" class="seek_slider" onchange="seekTo()">
+                  <div class="total-duration">00:00</div>
+                </div>
+            </div>
+
+            <!-- Define the section for displaying the volume slider-->
+            <div class="slider_volume-container">
+              <i class="fa fa-volume-down"></i>
+              <input type="range" min="1" max="100"
+                value="100" class="volume_slider" onchange="setVolume()">
+                <!--<i class="fa fa-volume-up"></i>-->
+            </div>
+        </div>
     `;
 
     // We play the song
