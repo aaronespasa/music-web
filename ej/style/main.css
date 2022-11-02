@@ -1251,10 +1251,10 @@ p.artist-name {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 0;
     margin-right: auto;
     height: 6vh;
     top: 50%;
+    text-align: center;
 }
  
 .music-player .track-art {
@@ -1271,8 +1271,6 @@ p.artist-name {
 /* Changing the font sizes to suitable ones */
 
 .music-player .track-name {
-    left: 0;
-    text-align: left;
     font-weight: bold;
     font-size: 1.1em;
     font-family: var(--bs-font-roboto-default);
@@ -1280,8 +1278,6 @@ p.artist-name {
 }
  
 .music-player .track-artist {
-    left: 0;
-    text-align: left;
     font-size: .8em;
     font-family: var(--bs-font-roboto-default);
 }

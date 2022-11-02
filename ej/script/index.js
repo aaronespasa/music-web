@@ -11,8 +11,28 @@ const profileName = document.getElementById("profile-title");
 const profileData = document.getElementById("profile-body");
 const profileOptions = document.getElementById("profile-options-container");
 
+let now_playing = document.getElementsByClassName(".now-playing");
+let track_art = document.getElementsByClassName(".track-art");
+let track_name = document.getElementsByClassName(".track-name");
+let track_artist = document.getElementsByClassName(".track-artist");
+ 
+let playpause_btn = document.getElementsByClassName(".playpause-track");
+let next_btn = document.getElementsByClassName(".next-track");
+let prev_btn = document.getElementsByClassName(".prev-track");
+ 
+let curr_time = document.getElementsByClassName(".current-time");
+let total_duration = document.getElementsByClassName(".total-duration");
+
+// Specify globally used values
+let isPlaying = false;
+let updateTimer;
+let iterator = 0; 
+
+let curr_track = document.createElement('audio');
+
 const USERNAME_MIN_LENGTH = 5;
 const PASSWORD_MIN_LENGTH = 8;
+const song_num = 14; // 0..14
 
 const PLAYLISTS = ["Rock", "Pop", "Hip Hop"]
 
@@ -290,13 +310,12 @@ function searchSong() {
         TRACKS.forEach(track => {
             const trackName = track.title.toLowerCase();
             const trackArtist = track.artist.toLowerCase();
-
             if (trackName.includes(searchValue)) {
                 console.log(trackName);
                 const searchResult = document.createElement("li");
                 searchResult.className = "searchbar-result";
                 searchResult.innerHTML = `
-                    <button class="searchbar-button play-button" onclick="playSong('./audios/${track.audio}', 'audio-player-1')">
+                    <button class="searchbar-button play-button" onclick="playSong('${iterator}')">
                         <img src="./images/play.svg" alt="play-button">
                     </button>
                     <p>${track.title}</p>
@@ -574,118 +593,11 @@ if (editProfileForm !== null) {
 
 // ! When song play button is clicked, we add the audio player to class "music-player"
 firstClick = true;
-function playSong (song, audio) {
+function playSong (iterator) {
     // activate the audio player
-    const audioPlayer = document.getElementById(audio);
-    
-    openMusicPlayer(song, audio);
-    document.documentElement.style.setProperty("--play-pause-icon", "url(../images/pause.svg)");
-
-    if (audioPlayer.paused) {
-    } else {
-        // audioPlayer.pause();
-        document.documentElement.style.setProperty("--play-pause-icon", "url(../images/play.svg)");
-        closeMusicPlayer(audio);
-    }
+    openMusicPlayer(iterator);
 }
 
-
-// Specify globally used values
-let track_index = 0;
-let isPlaying = false;
-let updateTimer;
- 
-// Create the audio element for the player
-let curr_track = document.createElement('audio');
-
-
-function openMusicPlayer (iterator) {
-    document.documentElement.style.setProperty("--content-height-without-footer", "94vh");
-    document.documentElement.style.setProperty("--footer-height", "0vh");
-    document.documentElement.style.setProperty("--music-player-original-height", "6vh");
-    
-    const trackName = TRACKS[iterator].title;
-    const trackArtist = TRACKS[iterator].artist;
-
-    // We add the audio player to the music player div
-    const musicPlayer = document.getElementById("music-player");
-    musicPlayer.innerHTML = `
-        <!-- Define the section for displaying details -->
-        <div class="player-controls">
-            <div class="details">
-              <div class="track-name">${trackName}</div>
-              <div class="track-artist">${trackArtist}</div>
-            </div>
-    
-        <!-- Define the section for displaying track buttons -->
-        
-            <div class="track-buttons">
-                <div class="buttons">
-                  <div class="prev-track" onclick="prevTrack()">
-                    <i class="fa fa-step-backward fa-1x"></i>
-                  </div>
-                  <div class="playpause-track" onclick="playpauseTrack()">
-                    <i class="fa fa-play-circle fa-2x"></i>
-                  </div>
-                  <div class="next-track" onclick="nextTrack()">
-                    <i class="fa fa-step-forward fa-1x"></i>
-                  </div>
-                </div>
-
-                <!-- Define the section for displaying the seek slider-->
-                <div class="slider_container">
-                  <div class="current-time">00:00</div>
-                  <input type="range" min="1" max="100"
-                    value="0" class="seek_slider" onchange="seekTo()">
-                  <div class="total-duration">00:00</div>
-                </div>
-            </div>
-
-            <!-- Define the section for displaying the volume slider-->
-            <div class="slider_volume-container">
-              <i class="fa fa-volume-down"></i>
-              <input type="range" min="1" max="100"
-                value="100" class="volume_slider" onchange="setVolume()">
-                <!--<i class="fa fa-volume-up"></i>-->
-            </div>
-        </div>
-    `;
-
-    // We play the song
-    const audioPlayer = document.getElementById(audio);
-    audioPlayer.play();
-}
-
-function closeMusicPlayer (audio) {
-    document.documentElement.style.setProperty("--content-height-without-footer", "100vh");
-    document.documentElement.style.setProperty("--footer-height", "0vh");
-    document.documentElement.style.setProperty("--music-player-original-height", "0vh");
-    // we remove the audio player from the class "music-player"
-    const musicPlayer = document.getElementById("music-player");
-    musicPlayer.innerHTML = ``;
-}
-
-
-const getSongsFromPlaylist = (playlist) => {
-    let songs = [];
-    TRACKS.forEach((track) => {
-        if (track.playlist === playlist) {
-            songs.push(track);
-        }
-    });
-    return songs;
-}
-
-const getSongsGroupedByPlaylist = () => {
-    let songsGroupedByPlaylist = [];
-    PLAYLISTS.forEach((playlist) => {
-        songsGroupedByPlaylist.push({
-            playlist,
-            songs: getSongsFromPlaylist(playlist),
-        });
-    });
-    return songsGroupedByPlaylist;
-}
 
 const setPlaylistsInHome = () => {
     const songsGroupedByPlaylist = getSongsGroupedByPlaylist();
@@ -729,6 +641,96 @@ const setPlaylistsInHome = () => {
     });
 }
 
+function openMusicPlayer (iterator) {
+    document.documentElement.style.setProperty("--content-height-without-footer", "94vh");
+    document.documentElement.style.setProperty("--footer-height", "0vh");
+    document.documentElement.style.setProperty("--music-player-original-height", "6vh");
+    
+    const trackName = TRACKS[iterator].title;
+    const trackArtist = TRACKS[iterator].artist;
+    const trackImage = TRACKS[iterator].image;
+    const trackAudio = TRACKS[iterator].audio;
+    const trackCover = TRACKS[iterator].cover;
+
+    
+    // We add the audio player to the music player div
+    const musicPlayer = document.getElementById("music-player");
+    musicPlayer.innerHTML = `
+        <!-- Define the section for displaying details -->
+        <div class="player-controls">
+            <div class="details">
+              <div class="track-name">${trackName}</div>
+              <div class="track-artist">${trackArtist}</div>
+            </div>
+    
+        <!-- Define the section for displaying track buttons -->
+        
+            <div class="track-buttons">
+                <div class="buttons">
+                  <div class="prev-track" onclick="prevTrack()">
+                    <i class="fa fa-step-backward fa-1x"></i>
+                  </div>
+                  <div class="playpause-track" onclick="playpauseTrack()">
+                    <i class="fa fa-play-circle fa-2x"></i>
+                  </div>
+                  <div class="next-track" onclick="nextTrack()">
+                    <i class="fa fa-step-forward fa-1x"></i>
+                  </div>
+                </div>
+
+                <!-- Define the section for displaying the seek slider-->
+                <div class="slider_container">
+                  <div class="current-time">00:00</div>
+                  <input type="range" min="0" max="100" value="0" class="seek_slider" id="seek_slider" onchange="seekTo()">
+                  <div class="total-duration">00:00</div>
+                </div>
+            </div>
+
+            <!-- Define the section for displaying the volume slider-->
+            <div class="slider_volume-container">
+              <i class="fa fa-volume-down"></i>
+              <input type="range" min="0" max="100" value="100" class="volume_slider" id="volume_slider" onchange="setVolume()">
+            </div>
+        </div>
+    `;
+
+    // We play the song
+    loadTrack(iterator);
+    playpauseTrackExit(); // in here if we touch the pause icon twice, music player will close
+}
+
+
+function closeMusicPlayer () {
+    document.documentElement.style.setProperty("--content-height-without-footer", "100vh");
+    document.documentElement.style.setProperty("--footer-height", "0vh");
+    document.documentElement.style.setProperty("--music-player-original-height", "0vh");
+    // we remove the audio player from the class "music-player"
+    const musicPlayer = document.getElementById("music-player");
+    musicPlayer.innerHTML = ``;
+}
+
+const getSongsFromPlaylist = (playlist) => {
+    let songs = [];
+    TRACKS.forEach((track) => {
+        if (track.playlist === playlist) {
+            songs.push(track);
+        }
+    });
+    return songs;
+}
+
+const getSongsGroupedByPlaylist = () => {
+    let songsGroupedByPlaylist = [];
+    PLAYLISTS.forEach((playlist) => {
+        songsGroupedByPlaylist.push({
+            playlist,
+            songs: getSongsFromPlaylist(playlist),
+        });
+    });
+    return songsGroupedByPlaylist;
+}
+
+
 const logoutModal = `
     <div class="logoutModal" id="logoutModal">
         <div class="logoutModal-content">
@@ -757,22 +759,20 @@ document.addEventListener("DOMContentLoaded", () => {
     setPlaylistsInHome();
 });
 
-function loadTrack(track_index) {
+
+function loadTrack(iterator) {
+
     // Clear the previous seek timer
     clearInterval(updateTimer);
     resetValues();
    
     // Load a new track
-    curr_track.src = track_list[track_index].path;
+    curr_track.src = TRACKS[iterator].audio;
     curr_track.load();
    
     // Update details of the track
-    track_art.style.backgroundImage =
-       "url(" + track_list[track_index].image + ")";
-    track_name.textContent = track_list[track_index].name;
-    track_artist.textContent = track_list[track_index].artist;
-    now_playing.textContent =
-       "PLAYING " + (track_index + 1) + " OF " + track_list.length;
+    track_name = TRACKS[iterator].title;
+    track_artist = TRACKS[iterator].artist;
    
     // Set an interval of 1000 milliseconds
     // for updating the seek slider
@@ -781,55 +781,114 @@ function loadTrack(track_index) {
     // Move to the next track if the current finishes playing
     // using the 'ended' event
     curr_track.addEventListener("ended", nextTrack);
-   
-    // Apply a random background color
-    random_bg_color();
-  }
-   
-  function random_bg_color() {
-    // Get a random number between 64 to 256
-    // (for getting lighter colors)
-    let red = Math.floor(Math.random() * 256) + 64;
-    let green = Math.floor(Math.random() * 256) + 64;
-    let blue = Math.floor(Math.random() * 256) + 64;
-   
-    // Construct a color with the given values
-    let bgColor = "rgb(" + red + ", " + green + ", " + blue + ")";
-   
-    // Set the background to the new color
-    document.body.style.background = bgColor;
-  }
-   
+}
+
+
   // Function to reset all values to their default
-  function resetValues() {
+function resetValues() {
+    var seekSlider = document.getElementsByClassName(".seek_slider");
     curr_time.textContent = "00:00";
     total_duration.textContent = "00:00";
-    seek_slider.value = 0;
-  }
+    seekSlider.value = 0;
+}
 
-  function seekTo() {
+function playpauseTrack() {
+    // Switch between playing and pausing
+    // depending on the current state
+    if (!isPlaying) playTrack();
+    else pauseTrack();
+    // Replace icon with the pause icon
+    playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
+}
+
+function playpauseTrackExit() {
+    // Switch between playing and pausing
+    // depending on the current state
+    if (!isPlaying) {
+        playTrack();
+        // Replace icon with the pause icon
+        playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
+        document.documentElement.style.setProperty("--play-pause-icon", "url(../images/pause.svg)");
+    }
+    else {
+        exitTrack();
+        // Replace icon with the pause icon
+        playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
+        document.documentElement.style.setProperty("--play-pause-icon", "url(../images/play.svg)");
+    }
+}
+   
+function playTrack() {
+    // Play the loaded track
+    curr_track.play();
+    isPlaying = true;
+}
+   
+function pauseTrack() {
+    // Pause the loaded track
+    curr_track.pause();
+    isPlaying = false;
+    // Replace icon with the play icon
+    playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
+}
+
+function exitTrack() {
+    // Pause the loaded track
+    curr_track.pause();
+    isPlaying = false;
+    closeMusicPlayer();
+}
+
+function nextTrack() {
+    // Go back to the first track if the
+    // current one is the last in the track list
+    if (iterator < TRACKS.length - 1)
+      iterator += 1;
+    else iterator = 0;
+   
+    // Load and play the new track
+    loadTrack(iterator);
+    playTrack();
+}
+   
+function prevTrack() {
+    // Go back to the last track if the
+    // current one is the first in the track list
+    if (iterator > 0)
+      iterator -= 1;
+    else iterator = TRACKS.length - 1;
+     
+    // Load and play the new track
+    loadTrack(iterator);
+    playTrack();
+}
+
+
+function seekTo() {
+    var seekSlider = document.getElementById("seek_slider");
     // Calculate the seek position by the
     // percentage of the seek slider
     // and get the relative duration to the track
-    seekto = curr_track.duration * (seek_slider.value / 100);
+    seekto = curr_track.duration * (seekSlider.value / 100);
    
     // Set the current track position to the calculated seek position
     curr_track.currentTime = seekto;
-  }
-   
-  function setVolume() {
+}
+
+function setVolume() {
+    var volumeSlider = document.getElementById("seek_slider");
     // Set the volume according to the
     // percentage of the volume slider set
-    curr_track.volume = volume_slider.value / 100;
-  }
+    curr_track.volume = volumeSlider.value / 100;
+}
    
-  function seekUpdate() {
+function seekUpdate() {
     let seekPosition = 0;
-   
+    var seekSlider = document.getElementById("seek_slider");
     // Check if the current track duration is a legible number
     if (!isNaN(curr_track.duration)) {
       seekPosition = curr_track.currentTime * (100 / curr_track.duration);
-      seek_slider.value = seekPosition;
+      seekSlider.value = seekPosition;
    
       // Calculate the time left and the total duration
       let currentMinutes = Math.floor(curr_track.currentTime / 60);
@@ -847,62 +906,4 @@ function loadTrack(track_index) {
       curr_time.textContent = currentMinutes + ":" + currentSeconds;
       total_duration.textContent = durationMinutes + ":" + durationSeconds;
     }
-  }
-
-
-
-  loadTrack(track_index);
-
-
-
-  function playpauseTrack() {
-    // Switch between playing and pausing
-    // depending on the current state
-    if (!isPlaying) playTrack();
-    else pauseTrack();
-  }
-   
-  function playTrack() {
-    // Play the loaded track
-    curr_track.play();
-    isPlaying = true;
-   
-    // Replace icon with the pause icon
-    playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
-  }
-   
-  function pauseTrack() {
-    // Pause the loaded track
-    curr_track.pause();
-    isPlaying = false;
-   
-    // Replace icon with the play icon
-    playpause_btn.innerHTML = '<i class="fa fa-play-circle fa-5x"></i>';
-  }
-   
-  function nextTrack() {
-    // Go back to the first track if the
-    // current one is the last in the track list
-    if (track_index < track_list.length - 1)
-      track_index += 1;
-    else track_index = 0;
-   
-    // Load and play the new track
-    loadTrack(track_index);
-    playTrack();
-  }
-   
-  function prevTrack() {
-    // Go back to the last track if the
-    // current one is the first in the track list
-    if (track_index > 0)
-      track_index -= 1;
-    else track_index = track_list.length - 1;
-     
-    // Load and play the new track
-    loadTrack(track_index);
-    playTrack();
-  }
-
-
-
+}
