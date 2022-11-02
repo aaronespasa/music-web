@@ -1165,10 +1165,8 @@ p.artist-name {
     transition: 0.8s;
 }
 
-/* Using flex with the column direction to
-   align items in a vertical direction */
-
-.player-controls {
+/* Using flex with the column direction to align items in a vertical direction */
+.music-player .player-controls {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -1177,15 +1175,20 @@ p.artist-name {
 }
  
 
-.details {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-  margin-top: 25px;
+.music-player .details {
+    width: 20vw;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-left: 0;
+    margin-right: auto;
+    height: 6vh;
+    top: 50%;
 }
  
-.track-art {
+.music-player .track-art {
   margin: 25px;
   height: 250px;
   width: 250px;
@@ -1197,20 +1200,25 @@ p.artist-name {
 }
  
 /* Changing the font sizes to suitable ones */
-.now-playing {
-  font-size: 1rem;
+
+.music-player .track-name {
+    left: 0;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1.1em;
+    font-family: var(--bs-font-roboto-default);
+    padding-bottom: 5px;
 }
  
-.track-name {
-  font-size: 3rem;
-}
- 
-.track-artist {
-  font-size: 1.5rem;
+.music-player .track-artist {
+    left: 0;
+    text-align: left;
+    font-size: .8em;
+    font-family: var(--bs-font-roboto-default);
 }
 
 
-.track-buttons {
+.music-player .track-buttons {
     position: absolute;
   display: flex;
   flex-direction: column;
@@ -1220,9 +1228,8 @@ p.artist-name {
   width: 50vw;
 }
 
-/* Using flex with the row direction to
-   align items in a horizontal direction */
-.buttons {
+/* Using flex with the row direction to align items in a horizontal direction */
+.music-player .buttons {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -1248,7 +1255,7 @@ p.artist-name {
 }
  
 /* Define the slider width so that it scales properly */
-.slider_container {
+.music-player .slider_container {
   width: 100%;
   max-width: 50vw;
   display: flex;
@@ -1257,14 +1264,14 @@ p.artist-name {
 }
 
 /* we place the volume slider on the right side of the player */
-.slider_volume-container {
-  width: 20vw;
+.music-player .slider_volume-container {
+  width: 22vw;
   min-width: 100px;
   display: flex;
   justify-content: center;
   align-items: center;
   margin-left: auto;
-    margin-right: 10px;
+    margin-right: 0;
     height: 6vh;
     top: 50%;
 }
