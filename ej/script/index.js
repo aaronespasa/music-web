@@ -845,6 +845,7 @@ const setPlaylistsInHome = () => {
         `;
     }
 
+    var iterador = 0;
     songsGroupedByPlaylist.forEach((songsGroupedByPlaylist) => {
         const { playlist, songs } = songsGroupedByPlaylist;
         const playlistContainer = document.createElement("div");
@@ -856,14 +857,14 @@ const setPlaylistsInHome = () => {
         `;
         const playlistMusicContainer = playlistContainer.querySelector(".music-genre-songs-container");
         // Creamos un iterador para cada canción
-        var iterador = 0;
         songs.forEach((song) => {
             const { title, artist, cover, audio } = song;
             const musicCard = document.createElement("div");
             musicCard.classList.add("song-container");
             musicCard.setAttribute("songName", title);
             // Crear iterador autoincremental para poder distinguir las canciones
-            // ! Ahora podremos llamar a cada canción por su iterador (posición en el json)) 
+            // ! Ahora podremos llamar a cada canción por su iterador (posición en el json))
+            console.log(iterador);
             musicCard.innerHTML = `
                 <figure class="song-cover-container">
                     <img class="song-cover" src="./images/${cover}" alt="Song Cover">
@@ -1306,13 +1307,22 @@ const createMyLists = () => {
             const musicCard = document.createElement("div");
             musicCard.classList.add("song-container");
 
+            // We loop through the songs and if the name corresponds to the song we are looking for, get the id
+            var selectedSongId = 0;
+            for (var i = 0; i < TRACKS.length; i++) {
+                if (TRACKS[i].title == songName) {
+                    selectedSongId = TRACKS[i].id;
+                }
+            }
+            console.log(selectedSongId);
+
             const likedIcon = getLikeDisplayIcon(songName);
             // Crear iterador autoincremental para poder distinguir las canciones
             // ! Ahora podremos llamar a cada canción por su iterador (posición en el json)) 
             musicCard.innerHTML = `
                 <figure class="song-cover-container">
                     <img class="song-cover" src="./images/${cover}" alt="Song Cover">
-                    <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(${iterador})"></a>
+                    <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(${selectedSongId})"></a>
                 </figure>
                 <p class="song-description">
                     ${songName}
