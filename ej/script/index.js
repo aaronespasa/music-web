@@ -1,6 +1,5 @@
 const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
-const errorMessageContainer = document.getElementById("error-message-container");
 const errorMessage = document.getElementById("error-message");
 const signUpForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
@@ -184,6 +183,7 @@ function toggleMenuLinks() {
 }
 
 const createErrorMessage = (message) => {
+    const errorMessageContainer = document.getElementById("error-message-container");
     errorMessageContainer.style.display = "block";
     errorMessageContainer.style.opacity = "100";
     
@@ -712,6 +712,8 @@ const setNavbarLinks = () => {
             <button type="submit" class="sign-log-in-button">
                 Guardar Cambios
             </button>
+
+            <div id="error-message-container" class="error-message-container"></div>
         `;
 
         profileData.innerHTML = `
