@@ -493,7 +493,7 @@ const setNavbarLinks = () => {
                 <p id="profile-extra-title">Seguidores</p>
                 <div class="profile-extra-artists" id="profile-extra-artists">
                     <div class="artist-profile">
-                        <img src="images/profile-icon.svg" alt="artist1" class="artist-img"  onclick="goToFollower()">
+                        <img src="images/albertito03.jpeg" alt="artist1" class="artist-img"  onclick="goToFollower()">
                         <p class="artist-name">@alberto03</p>
                     </div>
                         <div class="artist-profile">
