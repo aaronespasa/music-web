@@ -12,6 +12,8 @@ In order to upload the files to aulaglobal, we have to upload a zip containing t
 $ sh create_zip.sh
 ```
 
-## A preguntar / hacer
+# Compatibilidades con los distintos navegadores
 
-* [ ] Definir las constantes de colores y fuentes en CSS
+Al utilizar **LocalStorage**, nuestra aplicación web **funcionará a la perfección en navegadores basados en Chromium**; véase Google Chrome o Microsoft Edge.
+
+Por otro lado y debido a la misma razón, en Firefox el LocalStorage no es persistente y por tanto no funciona correctamente el inicio de sesión.
