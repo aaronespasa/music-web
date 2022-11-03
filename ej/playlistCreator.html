@@ -1,5 +1,7 @@
 <!DOCTYPE html>
+<!-- Lengua castellana -->
 <html lang="es">
+<!-- Cabecera con título y metadatos -->
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,12 +9,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/main.css">
     <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
-    <title>Listenify | Mis Listas</title>
+    <title>Listenify</title>
+    <!-- Adding font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
+<!-- Cuerpo con el contenido del index -->
 <body>
     <div class="grid-container">
+        <!-- Contenedor de la columna de la izquierda -->
         <div class="column">
+            <!-- Contenedor del logo -->
             <div class="menu-title" onclick="goToHome()">
                 <a class="logo-link" href="#homepage">
                     <figure class="logo-container">
@@ -25,8 +32,10 @@
                     </h1>
                 </a>
             </div>
+            <!-- Contendedor con las opciones en la barra de la izquierda -->
             <div class="sidebar">
                 <ul class="menu-options-container">
+                    <!-- Botón de la página principal -->
                     <li class="menu-option-container" onclick="goToHome()">
                         <a href="index.html" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
@@ -37,30 +46,33 @@
                             </div>
                         </a>
                     </li>
-                    <li class="menu-option-container">
+                    <!-- Botón de mis Listas de Reproducción -->
+                    <li class="menu-option-container" onclick="goToLists()">
                         <a href="mylists.html" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
-                                <img src="images/music-notes-icon.svg" alt="Home icon">
+                                <img src="images/music-notes-icon.svg" alt="Listas">
                             </figure>
                             <div class="menu-option-text-container">
                                 <p>Listas</p>
                             </div>
                         </a>
                     </li>
+                    <!-- Botón de crear lista -->
                     <li class="menu-option-container">
                         <a href="playlistCreator.html" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
-                                <img src="images/podcast-icon.svg" alt="Listas">
+                                <img src="images/podcast-icon.svg" alt="Home icon">
                             </figure>
                             <div class="menu-option-text-container">
                                 <p>Crear Lista</p>
                             </div>
                         </a>
                     </li>
+                    <!-- Botón de mis canciones favoritas -->
                     <li class="menu-option-container">
                         <a href="#" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
-                                <img src="images/favourites-icon.svg" alt="Favoritos">
+                                <img src="images/favourites-icon.svg" alt="Home icon">
                             </figure>
                             <div class="menu-option-text-container">    
                                 <p>Favoritos</p>
@@ -68,19 +80,21 @@
                         </a>
                     </li>
                 </ul>
+                <!-- Política de privacidad -->
                 <ul class="bottom-links-container">
                     <li class="bottom-link-container">
                         <a href="#privacy" class="bottom-link">
                             <figure class="bottom-link-icon-container">
-                                <img src="images/privacy-policy-icon.svg" alt="Política de Privacidad">
+                                <img src="images/privacy-policy-icon.svg" alt="Home icon">
                             </figure>
                             <p>Política de Privacidad</p>
                         </a>
                     </li>
+                    <!-- Política de cookies -->
                     <li class="bottom-link-container">
                         <a href="#cookies" class="bottom-link">
                             <figure class="bottom-link-icon-container">
-                                <img src="images/cookie-icon.svg" alt="Política de Cookies">
+                                <img src="images/cookie-icon.svg" alt="Home icon">
                             </figure>
                             <p>Política de Cookies</p>
                         </a>
@@ -88,24 +102,53 @@
                 </ul>
             </div>
         </div>
+        <!-- Contenedor de la columna de la derecha -->
         <div class="column">
-                <div class="navbar-links">
-                    <div class="navbar-links-container" id="navbar-links-container">    
-                    </div>
+            <!-- Contenedor de la barra de navegación -->
+            <div class="navbar-links">
+                <div class="navbar-links-container" id="navbar-links-container">
                 </div>
+            </div>
+            <!-- Contenedor de la página principal -->
             <div class="content">
                 <span class="content-gradient"></span>
-                <div class="content-container" id="mylists-container">
+                <div class="content-container" id="playlist-creator-container">
+                    <div class="playlist-creator-header">
+                        <h1>Crear Lista</h1>
+                    </div>
+                    <form method="POST" id="playlist-creator-form">
+                        <div class="playlist-creator-title-container">
+                            <input type="text" name="playlist-title" id="playlist-title" placeholder="Título de la lista" required>
+                        </div>
+                        <div class="playlist-creator-search">
+                            <input type="text" name="playlist-searchbar" id="playlist-creator-searchbar" placeholder="Buscar canción" onkeyup="searchSongForPlaylist()">
+                            <ul class="playlist-creator-search-results" id="playlist-creator-results">
 
+                            </ul>
+                        </div>
+                        <div class="playlist-creator-added-songs-container">
+                            <h4>Canciones añadidas a la playlist:</h4>
+                            <ul class="playlist-creator-added-songs" id="playlist-creator-added-songs">
+                            </ul>
+                        </div>
+                        <div class="playlist-creator-buttons-container">
+                            <button type="submit" class="playlist-creator-button" id="playlist-creator-button">Crear</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
+    <!-- Contenedor del footer con la frase animando a registrarse -->
     <div class="cta-container">
         <a href="#footer" class="cta-text">
             ¡Regístrate y Disfruta de 3 Meses Gratis!
         </a>
     </div>
+    <!-- Contenedor de los reproductores de audio -->
+    <div class="music-player" id="music-player">
+    </div>
+    <!-- Por último, llamamos a nuestro archivo de JavaScript -->
     <script src="script/index.js"></script>
 </body>
 </html>

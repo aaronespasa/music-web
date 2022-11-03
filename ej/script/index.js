@@ -10,6 +10,7 @@ const selectImageButton = document.getElementById("select-image-button")
 const profileName = document.getElementById("profile-title");
 const profileData = document.getElementById("profile-body");
 const profileOptions = document.getElementById("profile-options-container");
+const myListsContainer = document.getElementById("mylists-container");
 
 let now_playing = document.getElementsByClassName(".now-playing");
 let track_art = document.getElementsByClassName(".track-art");
@@ -161,6 +162,9 @@ const goToProfileOptions = () => window.location.href = "profileOptions.html";
 const goToLists = () => window.location.href = "mylists.html";
 const goToAccount = () => window.location.href = "account.html";
 const goToProfile = () => window.location.href = "profile.html";
+const goToArtist = () => window.location.href = "artist.html";
+const goToFollower = () => window.location.href = "follower.html";
+
 
 const modalFunction = () => {
     const modal = document.getElementById("logoutModal");
@@ -280,6 +284,7 @@ const signUp = async (event) => {
             "surname": surname,
             "birthdate": birthdate,
             "likedSongs": [],
+            "playlists": []
         }
 
         await saveUserInLocalStorage(user);
@@ -314,7 +319,7 @@ const logout = () => {
 
 function searchSong() {
     const searchbarInput = document.getElementById("searchbar");
-    const searchValue = searchbar.value.toLowerCase();
+    const searchValue = searchbarInput.value.toLowerCase();
 
     let searchResultsList = document.getElementById("searchbar-results");
     searchResultsList.innerHTML = "";
@@ -712,6 +717,12 @@ const setNavbarLinks = () => {
             </button>
         `;
 
+        // // add an event listener to the form
+        form.addEventListener("submit", (e) => {
+            e.preventDefault();
+            modifyProfile();
+        });
+
         profileData.innerHTML = `
         <div class="profile-data">
             <img src="${userImage}" class="profile-image" alt="profile-image">
@@ -735,15 +746,6 @@ if (signUpForm !== null) {
 
 } else if (loginForm !== null) {
     loginForm.addEventListener("submit", (event) => login(event));
-}
-
-// add an event listener to the form
-const editProfileForm = document.getElementById("edit-profile-form")
-if (editProfileForm !== null) {
-    editProfileForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-        modifyProfile();
-    });
 }
 
 function isSongLiked(songName){
@@ -898,7 +900,9 @@ const setPlaylistsInHome = () => {
             // Aumentamos el iterador autoincremental
             iterador += 1;
         });
-        playlistsContainer.appendChild(playlistContainer);
+        if(playlistsContainer != null) {
+            playlistsContainer.appendChild(playlistContainer);
+        } 
     });
 }
 
@@ -1196,59 +1200,170 @@ var countDownDate0 = new Date("Jan 5, 2023 15:34:25").getTime();
 var countDownDate1 = new Date("Feb 7, 2023 15:36:35").getTime();
 var countDownDate2 = new Date("Jan 10, 2023 00:37:11").getTime();
 
+const Counter0 = document.getElementById("counter-0");
+const Counter1 = document.getElementById("counter-1");
+const Counter2 = document.getElementById("counter-2");
+
 // Actualizamos el contador cada segundo
-var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate0 - now;
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("counter-0").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("counter-0").innerHTML = "OUT NOW";
-    }
-}, 1000);
-
-var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate1 - now;
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("counter-1").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("counter-1").innerHTML = "OUT NOW";
-    }
-}, 1000);
-
-var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate2 - now;
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("counter-2").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("counter-2").innerHTML = "OUT NOW";
-    }
-}, 1000);
-
-
-// ! Redireccionamos a la pagina del artista
-function goToArtist() {
-    window.location.href = "artist.html";
+if (Counter0 != null) {
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate0 - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        Counter0.innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+        if (distance < 0) {
+            clearInterval(x);
+            Counter0.innerHTML = "OUT NOW";
+        }
+    }, 1000);
 }
 
-// ! Redireccionamos a la pagina del album
-function goToFollower() {
-    window.location.href = "follower.html";
+if (Counter1 != null) {
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate1 - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        Counter1.innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+        if (distance < 0) {
+            clearInterval(x);
+            Counter1.innerHTML = "OUT NOW";
+        }
+    }, 1000);
 }
+
+if (Counter2 != null) {
+    var x = setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate2 - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        Counter2.innerHTML = days + "d " + hours + "h "
+        + minutes + "m " + seconds + "s ";
+        if (distance < 0) {
+            clearInterval(x);
+            Counter2.innerHTML = "OUT NOW";
+        }
+    }, 1000);
+}
+
+
+/* My Playlists & Playlist Creator */
+// const createMyLists = () => {
+
+// }
+
+const userPlaylistExists = (userPlaylists, newPlaylistName) => {
+    let exists = false;
+    userPlaylists.forEach(playlist => {
+        if (playlist.name === newPlaylistName) {
+            exists = true;
+        }
+    });
+    return exists;
+}
+
+const modifyUserPlaylists = (e) => {
+    e.preventDefault();
+    const addedSongsContainer = document.getElementById("playlist-creator-added-songs");
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    const playlists = user.playlists;
+    const playlistName = document.getElementById("playlist-title").value;
+    const addedSongs = addedSongsContainer.querySelectorAll("li");
+    
+    const songs = [];
+    addedSongs.forEach((song) => {
+        songs.push(song.textContent);
+    });
+
+    // avoid creating two playlists with the same name
+    if(userPlaylistExists(playlists, playlistName) === false) {
+        const newPlaylist = {
+            name: playlistName,
+            songs: songs
+        }
+
+        playlists.push(newPlaylist);
+        user.playlists = playlists;
+    } else {
+        playlists.forEach(playlist => {
+            if (playlist.name === playlistName) {
+                playlist.songs = songs;
+            }
+        });
+    }
+
+    localStorage.setItem("user", JSON.stringify(user));
+}
+
+const isSongInList = (title) => {
+    const addedSongsContainer = document.getElementById("playlist-creator-added-songs");
+    const addedSongs = addedSongsContainer.querySelectorAll("li");
+    let isSongInList = false;
+    addedSongs.forEach((song) => {
+        if (song.textContent === title) {
+            isSongInList = true;
+        }
+    });
+    return isSongInList;
+}
+
+const addSongToPlaylist = (title) => {
+    if (isSongInList(title) === false){
+        const addedSongsContainer = document.getElementById("playlist-creator-added-songs");
+        let addedSong = document.createElement("li");
+        addedSong.classList.add("playlist-creator-added-song");
+        addedSong.innerHTML = title;
+        addedSongsContainer.appendChild(addedSong);
+    }
+}
+
+const searchSongForPlaylist = () => {
+    const searchbarInput = document.getElementById("playlist-creator-searchbar");
+    const searchValue = searchbarInput.value.toLowerCase();
+
+    let searchResultsList = document.getElementById("playlist-creator-results");
+    searchResultsList.innerHTML = "";
+
+    if (searchValue != "") {
+        TRACKS.forEach(track => {
+            const trackName = track.title.toLowerCase();
+
+            if (trackName.includes(searchValue)) {
+                const searchResult = document.createElement("li");
+                searchResult.className = "playlist-creator-search-result";
+                searchResult.innerHTML = `
+                    ${track.title}
+                `;
+
+                searchResult.addEventListener("click", () => {
+                    addSongToPlaylist(track.title);
+                    searchbarInput.value = "";
+                    searchResultsList.innerHTML = "";
+                })
+
+                searchResultsList.appendChild(searchResult);
+            }
+        });
+    }
+}
+
+// check if the dom is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    const playlistCreatorForm = document.getElementById("playlist-creator-form");
+    if(playlistCreatorForm != null) {
+        playlistCreatorForm.addEventListener("submit", (e) => {
+            modifyUserPlaylists(e);
+        });
+    }
+});
