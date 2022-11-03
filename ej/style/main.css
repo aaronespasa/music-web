@@ -1239,9 +1239,13 @@ p.artist-name {
     transition: 0.8s;
 }
 
+.liked-container {
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+}
+
 .liked-icon {
-    margin-left: auto;
-    margin-right: auto;
     width: 30px;
     height: 30px;
     cursor: pointer;
