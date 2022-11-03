@@ -862,7 +862,6 @@ const setPlaylistsInHome = () => {
             const musicCard = document.createElement("div");
             musicCard.classList.add("song-container");
             musicCard.setAttribute("songName", title);
-            const likedIcon = getLikeDisplayIcon(title);
             // Crear iterador autoincremental para poder distinguir las canciones
             // ! Ahora podremos llamar a cada canción por su iterador (posición en el json)) 
             musicCard.innerHTML = `
@@ -880,6 +879,7 @@ const setPlaylistsInHome = () => {
                 </div>
             `;
             if(isAuthenticated === "true"){
+                const likedIcon = getLikeDisplayIcon(title);
                 const likedIconElement = `<img src="${likedIcon}" class="liked-icon" onClick="toggleLike('${title}')"/>`;
                 const likedContainer = musicCard.querySelector(".liked-container");
                 likedContainer.innerHTML = likedIconElement;
@@ -1469,5 +1469,8 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    createMyLists();
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    if(isAuthenticated === "true") {
+        createMyLists();
+    }
 });
