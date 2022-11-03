@@ -1289,7 +1289,7 @@ const createMyLists = () => {
         playlistContainer.classList.add("music-genre-container");
         playlistContainer.innerHTML = `
             <h2 class="music-genre-title">${playlistName}&nbsp;&nbsp;</h2><h3 class="delete-playlist">Eliminar</h3>
-            <p>Se puede hacer drag and drop para ordenar las canciones</p>
+            <br><br><br>
             <div class="music-genre-songs-container">
             </div>`;
         const deletePlaylistButton = playlistContainer.querySelector(".delete-playlist");
