@@ -254,8 +254,6 @@ const modifyProfile = () => {
     const email = document.getElementById("email").value;
     const birthdate = document.getElementById("birthdate").value;
 
-    console.log(username)
-
     if (validateUsername(username)) {
         user.username = username;
         user.email = email;
@@ -329,7 +327,6 @@ function searchSong() {
             const trackName = track.title.toLowerCase();
             const trackArtist = track.artist.toLowerCase();
             if (trackName.includes(searchValue)) {
-                console.log(trackName);
                 const searchResult = document.createElement("li");
                 searchResult.className = "searchbar-result"; // TODO!!
                 searchResult.innerHTML = `
@@ -717,12 +714,6 @@ const setNavbarLinks = () => {
             </button>
         `;
 
-        // // add an event listener to the form
-        form.addEventListener("submit", (e) => {
-            e.preventDefault();
-            modifyProfile();
-        });
-
         profileData.innerHTML = `
         <div class="profile-data">
             <img src="${userImage}" class="profile-image" alt="profile-image">
@@ -1031,8 +1022,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 function loadTrack(iterator) {
 
-    console.log("Loading track: " + iterator);
-
     // Clear the previous seek timer
     clearInterval(updateTimer);
     resetValues();
@@ -1081,7 +1070,6 @@ function playpauseTrack() {
 function playpauseTrackExit(iterator) {
     // Switch between playing and pausing
     // depending on the current state
-    console.log("iterator: " + iterator);
     if (!isPlaying) {
         playTrack();
         // Replace icon with the pause icon
@@ -1364,6 +1352,14 @@ document.addEventListener("DOMContentLoaded", () => {
     if(playlistCreatorForm != null) {
         playlistCreatorForm.addEventListener("submit", (e) => {
             modifyUserPlaylists(e);
+        });
+    }
+
+    const editProfileForm = document.getElementById("edit-profile-form");
+    if(editProfileForm != null) {
+        editProfileForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            modifyProfile();
         });
     }
 });
