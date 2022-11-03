@@ -434,47 +434,6 @@ audio::-webkit-media-controls-timeline:hover {
 }
 
 
-/* media query for a max width of 768px */
-@media (max-width: 768px) {
-    /*Title*/
-    .title-link {
-        font-size: 0.9em;
-    }
-
-    /*Music container*/
-    .music-genre-title {
-        margin-right: auto;
-        margin-left: auto;
-        padding: 0;
-        text-align: center;
-    }
-
-    .music-genre-songs-container {
-        justify-content: center;
-    }
-}
-
-
-/* media query for a max width of 600px */
-@media (max-width: 600px) {
-    /*Title*/
-    .title-link {
-        font-size: 0.8em;
-    }
-
-    /*Music container*/
-    .music-genre-title {
-        margin-right: auto;
-        margin-left: auto;
-        padding: 0;
-        text-align: center;
-    }
-
-    .music-genre-songs-container {
-        justify-content: center;
-    }
-}
-
 /************************
  * Login & Sign Up Page *
  ************************/
@@ -1563,4 +1522,126 @@ i.fa-step-backward {
     margin: 10px 10px 0 10px;
     cursor: pointer;
     transition: transform .2s;
+}
+
+
+
+/************************
+ * Media Queries        *
+ ************************/
+
+/* media query for a max width of 768px */
+@media (max-width: 768px) {
+    /*Title*/
+    .title-link {
+        font-size: 0.9em;
+    }
+
+    /*Music container*/
+    .music-genre-title{
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+        padding: 0;
+    }
+
+    .music-genre-songs-container {
+        justify-content: center;
+    }
+
+    /* Align delete delete-playlist in the center */
+    .content-container {
+        text-align: center;
+    }
+
+    .bottom-link p {
+        font-size: 0.8em;
+    }
+
+    .profile-title .profile-name {
+        font-size: 1.8em;
+    }
+}
+
+
+/* media query for a max width of 600px */
+@media (max-width: 600px) {
+    /*Title*/
+    .title-link {
+        font-size: 0.8em;
+    }
+
+    /*Music container*/
+    .music-genre-title h2{
+        width: 100%;
+        padding: 0;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .music-genre-songs-container {
+        justify-content: center;
+    }
+
+    /* Quitamos el texto de los botones */
+    .menu-option-text-container {
+        display: none;
+    }
+
+    /* Cambiamos el tamaño del sidebar */
+    /* Layout */
+    .grid-container {
+        display: grid;
+        grid-template-columns: 80px 1fr;
+        height: var(--content-height-without-footer);
+    }
+
+    .sidebar{
+        width: 80px;
+    }
+
+    /* Align delete delete-playlist in the center */
+    .content-container {
+        text-align: center;
+    }
+
+    .menu-title {
+        font-size: 0.8em;
+        width: 80px;
+    }
+
+    .menu-title .title-link {
+        display: none;
+    }
+
+    .menu-title .logo-link {
+        width: 80px;
+    }
+
+    .menu-title .logo-link .logo-container {
+        margin: 0 0 0 20px;
+    }
+
+    .menu-option-container {
+        width: 75px;
+    }
+
+    .bottom-link-container {
+        margin: 0 0 0 27.5px;
+    }
+
+    .menu-option-icon-container {
+        left : 0;
+        width: 40px;
+        margin: 0;
+    }
+
+    .bottom-link p {
+        display: none;
+    }
+
+    .profile-title .profile-name {
+        font-size: 1.8em;
+    }
+    
 }
