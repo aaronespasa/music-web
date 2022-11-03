@@ -454,16 +454,16 @@ const setNavbarLinks = () => {
             <p id="profile-extra-title">Canciones más escuchadas</p>
             <div class="profile-extra-artists" id="profile-extra-artists">
                 <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
+                    <img src="images/highway-to-hell.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Highway to Hell</p>
                 </div>
                 <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
+                    <img src="images/still-dre.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Still D.R.E.</p>
                 </div>
                 <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
+                    <img src="images/gods-plan.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Gods Plan</p>
                 </div>
             </div>
             <p id="profile-extra-title">Canciones favoritas</p>
@@ -483,19 +483,11 @@ const setNavbarLinks = () => {
         favourites += `</div>`;
 
         const restOfSections = `
-            <p id="profile-extra-title">Canciones del usuario</p>
+            <p id="profile-extra-title">Canciones del usuario: 1</p>
                 <div class="profile-extra-artists" id="profile-extra-artists">
                     <div class="artist-profile">
-                        <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                        <p class="artist-name">Pimp Flaco</p>
-                    </div>
-                    <div class="artist-profile">
-                        <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                        <p class="artist-name">Pimp Flaco</p>
-                    </div>
-                    <div class="artist-profile">
-                        <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                        <p class="artist-name">Pimp Flaco</p>
+                        <img src="images/profile-cover.jpeg" alt="artist1" class="artist-img">
+                        <p class="artist-name">Sunrise Cover</p>
                     </div>
                 </div>
                 <p id="profile-extra-title">Seguidores</p>
@@ -504,13 +496,10 @@ const setNavbarLinks = () => {
                         <img src="images/profile-icon.svg" alt="artist1" class="artist-img"  onclick="goToFollower()">
                         <p class="artist-name">@alberto03</p>
                     </div>
-                    <div class="artist-profile">
-                        <img src="images/pimp.jpeg" alt="artist1" class="artist-img"  onclick="goToFollower()">
-                        <p class="artist-name">Pimp Flaco</p>
+                        <div class="artist-profile">
+                        <img src="images/50cent.jpeg" alt="artist1" class="artist-img" onclick="goToArtist()">
+                        <p class="artist-name">50 Cent</p>
                     </div>
-                    <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img"  onclick="goToFollower()">
-                    <p class="artist-name">Pimp Flaco</p>
                 </div>
             </div>
         </div>
@@ -635,47 +624,14 @@ const setNavbarLinks = () => {
                     <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
                     <p class="artist-name">Pimp Flaco</p>
                 </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
             </div>
-            <p id="profile-extra-title">Canciones del usuario</p>
-            <div class="profile-extra-artists" id="profile-extra-artists">
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-            </div>
+            <p id="profile-extra-title">Canciones del usuario: 0</p>
+            <br><br><br>
             <p id="profile-extra-title">Seguidores</p>
-            <div class="profile-extra-artists" id="profile-extra-artists">
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
+                <div class="profile-extra-artists" id="profile-extra-artists">
+                    <div class="artist-profile">
+                    <img src="images/david_guetta.jpeg" alt="artist1" class="artist-img" onclick="goToArtist()">
+                    <p class="artist-name">David Guetta</p>
                 </div>
             </div>
         </div>`;}
