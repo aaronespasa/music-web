@@ -568,7 +568,7 @@ const setNavbarLinks = () => {
         // set the profile data
         profileData.innerHTML = `
         <div class="profile-data">
-            <img src="./images/profile-icon.svg" class="profile-image" alt="profile-image">
+            <img src="./images/albertito03.jpeg" class="profile-image" alt="profile-image">
         </div>
         <div class="profile-data">
             <p class="profile-data-title">Nombre de usuario</p>
@@ -597,33 +597,41 @@ const setNavbarLinks = () => {
             </div>
             <p id="profile-extra-title">Canciones más escuchadas</p>
             <div class="profile-extra-artists" id="profile-extra-artists">
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
+            <div class="artist-profile">
+                <img src="images/highway-to-hell.jpeg" alt="artist1" class="artist-img">
+                <p class="artist-name">Highway to Hell</p>
+            </div>
+            <div class="artist-profile">
+                <img src="images/still-dre.jpeg" alt="artist1" class="artist-img">
+                <p class="artist-name">Still D.R.E.</p>
+            </div>
+            <div class="artist-profile">
+                <img src="images/without-me.jpeg" alt="artist1" class="artist-img">
+                <p class="artist-name">Without Me</p>
+            </div>
             </div>
             <p id="profile-extra-title">Canciones favoritas</p>
             <div class="profile-extra-liked-songs" id="profile-extra-liked-songs">
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
+            <div class="artist-profile">
+                <img src="images/highway-to-hell.jpeg" alt="artist1" class="artist-img">
+                <p class="artist-name">Highway to Hell</p>
+            </div>
+            <div class="artist-profile">
+                <img src="images/titanium.webp" alt="artist1" class="artist-img">
+                <p class="artist-name">Titanium</p>
+            </div>
+            <div class="artist-profile">
+                <img src="images/gods-plan.jpeg" alt="artist1" class="artist-img">
+                <p class="artist-name">Gods Plan</p>
+            </div>
+            <div class="artist-profile">
+                <img src="images/still-dre.jpeg" alt="artist1" class="artist-img">
+                <p class="artist-name">Still D.R.E.</p>
+            </div>
+            <div class="artist-profile">
+                <img src="images/without-me.jpeg" alt="artist1" class="artist-img">
+                <p class="artist-name">Without Me</p>
+            </div>
             </div>
             <p id="profile-extra-title">Canciones del usuario: 0</p>
             <br><br><br>
@@ -1143,65 +1151,56 @@ function seekUpdate() {
 
 
 // ! Creamos los countfown timer
+// ! Creamos los countfown timer
 var countDownDate0 = new Date("Jan 5, 2023 15:34:25").getTime();
 var countDownDate1 = new Date("Feb 7, 2023 15:36:35").getTime();
 var countDownDate2 = new Date("Jan 10, 2023 00:37:11").getTime();
 
-const Counter0 = document.getElementById("counter-0");
-const Counter1 = document.getElementById("counter-1");
-const Counter2 = document.getElementById("counter-2");
-
 // Actualizamos el contador cada segundo
-if (Counter0 != null) {
-    var x = setInterval(function() {
-        var now = new Date().getTime();
-        var distance = countDownDate0 - now;
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        Counter0.innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
-        if (distance < 0) {
-            clearInterval(x);
-            Counter0.innerHTML = "OUT NOW";
-        }
-    }, 1000);
-}
+setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate0 - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("counter-0").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("counter-0").innerHTML = "OUT NOW";
+    }
+}, 1000);
 
-if (Counter1 != null) {
-    var x = setInterval(function() {
-        var now = new Date().getTime();
-        var distance = countDownDate1 - now;
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        Counter1.innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
-        if (distance < 0) {
-            clearInterval(x);
-            Counter1.innerHTML = "OUT NOW";
-        }
-    }, 1000);
-}
+setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate1 - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("counter-1").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("counter-1").innerHTML = "OUT NOW";
+    }
+}, 1000);
 
-if (Counter2 != null) {
-    var x = setInterval(function() {
-        var now = new Date().getTime();
-        var distance = countDownDate2 - now;
-        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-        Counter2.innerHTML = days + "d " + hours + "h "
-        + minutes + "m " + seconds + "s ";
-        if (distance < 0) {
-            clearInterval(x);
-            Counter2.innerHTML = "OUT NOW";
-        }
-    }, 1000);
-}
+setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate2 - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("counter-2").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("counter-2").innerHTML = "OUT NOW";
+    }
+}, 1000);
 
 const deletePlaylist = (playlistName) => {
     const user = JSON.parse(localStorage.getItem('user'));
