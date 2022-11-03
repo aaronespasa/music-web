@@ -278,7 +278,8 @@ const signUp = async (event) => {
             "password": password,
             "name": name,
             "surname": surname,
-            "birthdate": birthdate
+            "birthdate": birthdate,
+            "likedSongs": [],
         }
 
         await saveUserInLocalStorage(user);
@@ -419,20 +420,20 @@ const setNavbarLinks = () => {
         // set the profile data
         const username = user.username, email = user.email, birthdate = user.birthdate;
         const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
-        profileData.innerHTML = `
-        <div class="profile-data">
+        const userProfileInitialData = `
+            <div class="profile-data">
             <img src="${userImage}" class="profile-image" alt="profile-image">
-        </div>
-        <div class="profile-data">
-            <p class="profile-data-title">Nombre de usuario</p>
-            <p class="profile-data-info">@${username}</p>
-            <p class="profile-data-title">Correo electrónico</p>
-            <p class="profile-data-info">${email}</p>
-            <p class="profile-data-title">Fecha de nacimiento</p>
-            <p class="profile-data-info">${birthdate}</p>
-        </div>
-        <hr>
-        <div class="profile-extra">
+            </div>
+            <div class="profile-data">
+                <p class="profile-data-title">Nombre de usuario</p>
+                <p class="profile-data-info">@${username}</p>
+                <p class="profile-data-title">Correo electrónico</p>
+                <p class="profile-data-info">${email}</p>
+                <p class="profile-data-title">Fecha de nacimiento</p>
+                <p class="profile-data-info">${birthdate}</p>
+            </div>
+            <hr>
+            <div class="profile-extra">
             <p id="profile-extra-title">Artistas más escuchados</p>
             <div class="profile-extra-artists" id="profile-extra-artists">
                 <div class="artist-profile">
@@ -464,63 +465,60 @@ const setNavbarLinks = () => {
                 </div>
             </div>
             <p id="profile-extra-title">Canciones favoritas</p>
-            <div class="profile-extra-liked-songs" id="profile-extra-liked-songs">
+        `;
+
+        let favourites = `<div class="profile-extra-liked-songs" id="profile-extra-liked-songs">`;
+        const favouriteSongs = getLikedSongsInformation();
+        favouriteSongs.forEach(song => {
+            const { title, artist, cover } = song;
+            favourites += `
                 <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
+                    <img src="images/${cover}" alt="${artist}" class="artist-img">
+                    <p class="artist-name">${title}</p>
                 </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-            </div>
+            `;
+        });
+        favourites += `</div>`;
+
+        const restOfSections = `
             <p id="profile-extra-title">Canciones del usuario</p>
-            <div class="profile-extra-artists" id="profile-extra-artists">
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
+                <div class="profile-extra-artists" id="profile-extra-artists">
+                    <div class="artist-profile">
+                        <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                        <p class="artist-name">Pimp Flaco</p>
+                    </div>
+                    <div class="artist-profile">
+                        <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                        <p class="artist-name">Pimp Flaco</p>
+                    </div>
+                    <div class="artist-profile">
+                        <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                        <p class="artist-name">Pimp Flaco</p>
+                    </div>
                 </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-            </div>
-            <p id="profile-extra-title">Seguidores</p>
-            <div class="profile-extra-artists" id="profile-extra-artists">
-                <div class="artist-profile">
-                    <img src="images/profile-icon.svg" alt="artist1" class="artist-img"  onclick="goToFollower()">
-                    <p class="artist-name">@alberto03</p>
-                </div>
-                <div class="artist-profile">
+                <p id="profile-extra-title">Seguidores</p>
+                <div class="profile-extra-artists" id="profile-extra-artists">
+                    <div class="artist-profile">
+                        <img src="images/profile-icon.svg" alt="artist1" class="artist-img"  onclick="goToFollower()">
+                        <p class="artist-name">@alberto03</p>
+                    </div>
+                    <div class="artist-profile">
+                        <img src="images/pimp.jpeg" alt="artist1" class="artist-img"  onclick="goToFollower()">
+                        <p class="artist-name">Pimp Flaco</p>
+                    </div>
+                    <div class="artist-profile">
                     <img src="images/pimp.jpeg" alt="artist1" class="artist-img"  onclick="goToFollower()">
                     <p class="artist-name">Pimp Flaco</p>
                 </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img"  onclick="goToFollower()">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
             </div>
-        </div>`;}
+        </div>
+        `
+        profileData.innerHTML = `
+            ${userProfileInitialData}
+            ${favourites}
+            ${restOfSections}
+        `
+    }
     
     // ! Vamos a la pagina del artista
     if (window.location.href.includes("artist.html")) {
@@ -735,18 +733,6 @@ if (signUpForm !== null) {
     signUpForm.addEventListener("submit", (event) => signUp(event));
     selectImageButton.addEventListener("click", () => selectImageInput.click());
 
-    // musicCard.addEventListener("click", () => {
-    //     const musicName = musicCard.getAttribute("songName")
-    //     const musics = localStorage.getItem("musics")
-    //     for(let i = 0; i < musics.length; i++){
-    //         if(musics[i].name === musicName){
-    //             musics[i].clickCount += 1;
-    //             break
-    //         }
-    //     }
-    //     localStorage.setItem("musics", JSON.stringify(musics))
-    // })
-
 } else if (loginForm !== null) {
     loginForm.addEventListener("submit", (event) => login(event));
 }
@@ -758,6 +744,50 @@ if (editProfileForm !== null) {
         e.preventDefault();
         modifyProfile();
     });
+}
+
+function isSongLiked(songName){
+    const user = JSON.parse(localStorage.getItem("user"));
+    const likedSongs = user.likedSongs;
+    return likedSongs.includes(songName);
+}
+
+function getLikeDisplayIcon(songName){
+    return isSongLiked(songName) ? "./images/heart-fill.svg" : "./images/heart-no-fill.svg";
+}
+
+function toggleLike(songName) {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const likedSongs = user.likedSongs;
+    if (likedSongs.includes(songName)) {
+        // remove the song from the liked songs
+        const index = likedSongs.indexOf(songName);
+        likedSongs.splice(index, 1);
+    } else {
+        // add the song to the liked songs
+        likedSongs.push(songName);
+    }
+    user.likedSongs = likedSongs;
+    localStorage.setItem("user", JSON.stringify(user));
+}
+
+function getSongInformation(songName) {
+    for (let i = 0; i < TRACKS.length; i++) {
+        if (TRACKS[i].title === songName) {
+            return TRACKS[i];
+        }
+    }
+}
+
+function getLikedSongsInformation() {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const likedSongs = user.likedSongs;
+    let likedSongsInformation = [];
+    likedSongs.forEach((songName) => {
+        const song = getSongInformation(songName);
+        likedSongsInformation.push(song);
+    });
+    return likedSongsInformation;
 }
 
   
@@ -837,8 +867,10 @@ const setPlaylistsInHome = () => {
             const musicCard = document.createElement("div");
             musicCard.classList.add("song-container");
             musicCard.setAttribute("songName", title);
+            const likedIcon = getLikeDisplayIcon(title);
+            
             // Crear iterador autoincremental para poder distinguir las canciones
-            // ! Ahora pdodremos llamar a cada canción por su iterador (posición en el json)) 
+            // ! Ahora podremos llamar a cada canción por su iterador (posición en el json)) 
             musicCard.innerHTML = `
                 <figure class="song-cover-container">
                     <img class="song-cover" src="./images/${cover}" alt="Song Cover">
@@ -850,14 +882,21 @@ const setPlaylistsInHome = () => {
                 <p class="song-author">
                     ${artist}
                 </p>
+                <div class="liked-container">
+                    <img src="${likedIcon}" class="liked-icon" onClick="toggleLike('${title}')"/>
+                </div>
             `;
+            const likedTextContainer = musicCard.querySelector(".liked-icon");
+            likedTextContainer.addEventListener("click", () => {
+                const likedIcon = getLikeDisplayIcon(title);
+                likedTextContainer.src = likedIcon;
+            });
             playlistMusicContainer.appendChild(musicCard);
             // Aumentamos el iterador autoincremental
             iterador += 1;
         });
         playlistsContainer.appendChild(playlistContainer);
     });
-
 }
 
 
