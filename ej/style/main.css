@@ -1524,3 +1524,43 @@ i.fa-step-backward {
     background-color: rgba(255, 255, 255, 0.8);
     transform: scale(0.95);
 }
+
+.music-genre-title {
+    display: inline-block;
+}
+
+.delete-playlist {
+    display: inline-block;
+    /* styles for a button */
+    font-size: 1.2rem;
+    font-family: var(--bs-font-roboto-default);
+    background-color: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 0, 0, 0.8);
+    padding: 10px 30px 10px 30px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    margin: 0 10px 0 10px;
+    cursor: pointer;
+    transition: transform .2s;
+}
+
+.delete-playlist:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+    transform: scale(0.95);
+}
+
+.delete-song {
+    /* styles for a button */
+    font-size: 1rem;
+    font-family: var(--bs-font-roboto-default);
+    background-color: rgba(255, 255, 255, 0.6);
+    color: rgba(0, 0, 0, 0.8);
+    padding: 10px 30px 10px 30px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    margin: 10px 10px 0 10px;
+    cursor: pointer;
+    transition: transform .2s;
+}

@@ -1246,6 +1246,33 @@ if (Counter2 != null) {
     }, 1000);
 }
 
+const deletePlaylist = (playlistName) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    let playlists = user.playlists;
+    let newPlaylists = [];
+    playlists.forEach(playlist => {
+        if (playlist.name != playlistName) {
+            newPlaylists.push(playlist);
+        }
+    });
+    user.playlists = newPlaylists;
+    localStorage.setItem('user', JSON.stringify(user));
+}
+
+const deleteSongFromPlaylist = (playlistName, songName) => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    let playlists = user.playlists;
+    // delete song from playlist
+    playlists.forEach(playlist => {
+        if (playlist.name === playlistName) {
+            playlist.songs = playlist.songs.filter(song => song !== songName);
+        }
+    });
+    // update user
+    user.playlists = playlists;
+    localStorage.setItem('user', JSON.stringify(user));
+}
+
 
 /* My Playlists & Playlist Creator */
 const createMyLists = () => {
@@ -1260,9 +1287,15 @@ const createMyLists = () => {
         const playlistContainer = document.createElement("div");
         playlistContainer.classList.add("music-genre-container");
         playlistContainer.innerHTML = `
-            <h2 class="music-genre-title">${playlistName}</h2>
+            <h2 class="music-genre-title">${playlistName}&nbsp;&nbsp;</h2><h3 class="delete-playlist">Eliminar</h3>
+            <p>Se puede hacer drag and drop para ordenar las canciones</p>
             <div class="music-genre-songs-container">
             </div>`;
+        const deletePlaylistButton = playlistContainer.querySelector(".delete-playlist");
+        deletePlaylistButton.addEventListener("click", () => {
+            deletePlaylist(playlistName);
+            playlistContainer.remove();
+        });
 
         const songsContainer = playlistContainer.querySelector(".music-genre-songs-container");
 
@@ -1289,7 +1322,17 @@ const createMyLists = () => {
                 </p>
                 <div class="liked-container">
                 </div>
+                <div class="delete-song">
+                    <p>Eliminar</p>
+                </div>
             `;
+
+            const deleteSong = musicCard.querySelector(".delete-song");
+            deleteSong.addEventListener("click", () => {
+                deleteSongFromPlaylist(playlistName, songName);
+                musicCard.remove();
+            });
+
             if(isAuthenticated === "true"){
                 const likedIconElement = `<img src="${likedIcon}" class="liked-icon" onClick="toggleLike('${songName}')"/>`;
                 const likedContainer = musicCard.querySelector(".liked-container");
