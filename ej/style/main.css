@@ -1285,13 +1285,13 @@ p.artist-name {
 
 .music-player .track-name {
     font-weight: bold;
-    font-size: 1.1em;
+    font-size: 1.0em;
     font-family: var(--bs-font-roboto-default);
-    padding-bottom: 5px;
+    padding-bottom: 3px;
 }
  
 .music-player .track-artist {
-    font-size: .8em;
+    font-size: .7em;
     font-family: var(--bs-font-roboto-default);
 }
 
@@ -1312,7 +1312,7 @@ p.artist-name {
   flex-direction: row;
   align-items: center;
   position: absolute;
-  top: 10px;
+  top: 3.5px;
 }
 
 .playpause-track,
@@ -1340,7 +1340,7 @@ p.artist-name {
   justify-content: center;
   align-items: center;
   position: absolute;
-  bottom: 5px;
+  bottom: 0;
 }
 
 /* we place the volume slider on the right side of the player */
