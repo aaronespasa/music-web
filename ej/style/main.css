@@ -264,7 +264,6 @@ p {
 .music-genre-title {
     color: black;
     width: auto;
-    background-clip: text;
     font-size: 2.2em;
     font-weight: bold;
     padding-left: 26px;
@@ -363,7 +362,6 @@ p {
 
 .cta-text:hover {
     background: black;
-    background-clip: text;
 }
 
 
@@ -1258,7 +1256,6 @@ p.artist-name {
 /* Modify the appearance of the slider */
 .seek_slider, .volume_slider {
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   height: var(--slider-height);
   background: black;
@@ -1271,7 +1268,6 @@ p.artist-name {
 .seek_slider::-webkit-slider-thumb,
 .volume_slider::-webkit-slider-thumb {
   -webkit-appearance: none;
-  -moz-appearance: none;
   appearance: none;
   width: 15px;
   height: 15px;
