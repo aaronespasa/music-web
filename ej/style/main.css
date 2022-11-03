@@ -654,6 +654,11 @@ audio::-webkit-media-controls-timeline:hover {
     justify-content: center;
 }
 
+.form-input-checkbox p {
+    display: inline-block;
+    margin: 0 0 0 5px;
+}
+
 
 /*! Botón de registro */
 .login-content input[type=submit]:active {

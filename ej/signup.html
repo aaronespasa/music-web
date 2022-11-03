@@ -97,8 +97,8 @@
                     </div>
                 </div>
             <div class="content">
-                <div login-content class="login-content">
-                    <div login-content-container class="login-content-container">
+                <div class="login-content">
+                    <div class="login-content-container">
                         <form method="POST" id="signup-form">
                             <div class="form-container">
                                 <div class="login-title">
@@ -128,7 +128,7 @@
                                         <input type="text" name="surname" id="surname" placeholder="Apellido(s)" required>
                                     </div>
                                     <div class="form-input">
-                                        <input type="date" name="birthdate" id="birthdate" placeholder="Fecha de Nacimiento:" onchange="this.classList.toggle('has-value',this.value);" required>
+                                        <input type="date" name="birthdate" id="birthdate" onchange="this.classList.toggle('has-value',this.value);" required>
                                     </div>
                                     <div class="form-input">
                                         <!-- only allow to upload files in jpg or png -->
@@ -136,7 +136,8 @@
                                         <button class='select-image-button' id='select-image-button'>Selecciona su Imagen de Perfil</button>
                                     </div>
                                     <div class="form-input-checkbox">
-                                        <input class="form-checkbox" type="checkbox" name="terms" id="terms" required> He leído y acepto las condiciones de uso </input>
+                                        <input class="form-checkbox" type="checkbox" name="terms" id="terms" required>
+                                        <p>He leído y acepto las condiciones de uso</p>
                                     </div>
                                     <div class="form-input">
                                         <input class="form-button" type="reset" value="Borrar información">
