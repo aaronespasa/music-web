@@ -344,12 +344,12 @@ function searchSong() {
 const setNavbarLinks = () => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
 
-    // isAuthenticated default value
+    // ! isAuthenticated default value
     if (isAuthenticated === null) {
         localStorage.setItem("isAuthenticated", false);
     }
     
-    // Esto hay que crearlo como la imagen del usuario y si se le da click, que te muestre las siguientes opciones
+    // ! Esto hay que crearlo como la imagen del usuario y si se le da click, que te muestre las siguientes opciones
     if (isAuthenticated === "true") {
         // Cuando se inicia sesión, en el navbar solo aparece la imagen del usuario
         const user = JSON.parse(localStorage.getItem("user"));
@@ -436,16 +436,16 @@ const setNavbarLinks = () => {
             <p id="profile-extra-title">Artistas más escuchados</p>
             <div class="profile-extra-artists" id="profile-extra-artists">
                 <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
+                    <img src="images/acdc.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">AC/DC</p>
                 </div>
                 <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
+                    <img src="images/david_guetta.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">David Guetta</p>
                 </div>
                 <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
+                    <img src="images/50cent.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">50 Cent</p>
                 </div>
             </div>
             <p id="profile-extra-title">Canciones más escuchadas</p>
@@ -604,8 +604,64 @@ if (editProfileForm !== null) {
 
   
 const setPlaylistsInHome = () => {
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
     const songsGroupedByPlaylist = getSongsGroupedByPlaylist();
     const playlistsContainer = document.getElementById("home-music-container");
+    
+    // ! Si no se ha registrado, se mostrará una playlist nueva
+    if (isAuthenticated !== "true") {
+        playlistsContainer.innerHTML += `
+        <h2 class="music-genre-title">Últimos lanzamientos</h2>
+        <div class="music-genre-songs-container">
+            <div class="song-container">
+                <figure class="song-cover-container">
+                    <img class="song-cover" src="./images/pompeii.jpeg" alt="Song Cover">
+                    <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                </figure>
+                <p class="song-description">
+                    Pompeii
+                </p>
+                <p class="song-author">
+                    Bastille
+                </p>
+                <br>
+                <p id="counter-0">
+                </p>
+            </div>
+            <div class="song-container">
+                <figure class="song-cover-container">
+                    <img class="song-cover" src="./images/still-dre.jpeg" alt="Song Cover">
+                    <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                </figure>
+                <p class="song-description">
+                    Still Dre
+                </p>
+                <p class="song-author">
+                    Dr. Dre
+                </p>
+                <br>
+                <p id="counter-1">
+                </p>
+            </div>
+            <div class="song-container">
+                <figure class="song-cover-container">
+                    <img class="song-cover" src="./images/pimp.jpeg" alt="Song Cover">
+                    <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                </figure>
+                <p class="song-description">
+                    P.I.M.P.
+                </p>
+                <p class="song-author">
+                    50 Cent
+                </p>
+                <br>
+                <p id="counter-2">
+                </p>
+            </div>
+        </div>
+        `;
+    }
+
     songsGroupedByPlaylist.forEach((songsGroupedByPlaylist) => {
         const { playlist, songs } = songsGroupedByPlaylist;
         const playlistContainer = document.createElement("div");
@@ -616,14 +672,14 @@ const setPlaylistsInHome = () => {
             </div>
         `;
         const playlistMusicContainer = playlistContainer.querySelector(".music-genre-songs-container");
-        // Creamos un iterador para cada canción   
+        // Creamos un iterador para cada canción
         var iterador = 0;
         songs.forEach((song) => {
             const { title, artist, cover, audio } = song;
             const musicCard = document.createElement("div");
             musicCard.classList.add("song-container");
             musicCard.setAttribute("songName", title);
-             // TODO: crear iterador autoincremental para poder distinguir las canciones
+            // Crear iterador autoincremental para poder distinguir las canciones
             // ! Ahora pdodremos llamar a cada canción por su iterador (posición en el json)) 
             musicCard.innerHTML = `
                 <figure class="song-cover-container">
@@ -643,11 +699,13 @@ const setPlaylistsInHome = () => {
         });
         playlistsContainer.appendChild(playlistContainer);
     });
+
 }
 
 
 // ! When song play button is clicked, we add the audio player to class "music-player"
-function openMusicPlayer (iterator) {
+function openMusicPlayer (iterator){
+    
     document.documentElement.style.setProperty("--content-height-without-footer", "94vh");
     document.documentElement.style.setProperty("--footer-height", "0vh");
     document.documentElement.style.setProperty("--music-player-original-height", "6vh");
@@ -931,3 +989,55 @@ function seekUpdate() {
     }
     
 }
+
+
+// ! Creamos los countfown timer
+var countDownDate0 = new Date("Jan 5, 2023 15:34:25").getTime();
+var countDownDate1 = new Date("Jan 7, 2024 15:36:35").getTime();
+var countDownDate2 = new Date("Jan 10, 2023 00:37:11").getTime();
+
+// Actualizamos el contador cada segundo
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate0 - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("counter-0").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("counter-0").innerHTML = "OUT NOW";
+    }
+}, 1000);
+
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate1 - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("counter-1").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("counter-1").innerHTML = "OUT NOW";
+    }
+}, 1000);
+
+var x = setInterval(function() {
+    var now = new Date().getTime();
+    var distance = countDownDate2 - now;
+    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    document.getElementById("counter-2").innerHTML = days + "d " + hours + "h "
+    + minutes + "m " + seconds + "s ";
+    if (distance < 0) {
+        clearInterval(x);
+        document.getElementById("counter-2").innerHTML = "OUT NOW";
+    }
+}, 1000);
