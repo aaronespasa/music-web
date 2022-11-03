@@ -508,15 +508,15 @@ const setNavbarLinks = () => {
             <p id="profile-extra-title">Seguidores</p>
             <div class="profile-extra-artists" id="profile-extra-artists">
                 <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <img src="images/profile-icon.svg" alt="artist1" class="artist-img"  onclick="goToFollower()">
+                    <p class="artist-name">@alberto03</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img"  onclick="goToFollower()">
                     <p class="artist-name">Pimp Flaco</p>
                 </div>
                 <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Pimp Flaco</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img"  onclick="goToFollower()">
                     <p class="artist-name">Pimp Flaco</p>
                 </div>
             </div>
@@ -568,6 +568,117 @@ const setNavbarLinks = () => {
             </div>
         </div>`;}
 
+
+    // ! Añadimos la pagina del seguidor
+    if (isAuthenticated === "true" && window.location.href.includes("follower.html")) {
+        profileName.innerHTML = `
+        <h2 class="profile-name">
+            Perfil de Alberto García
+        </h2>`;
+
+        // set the profile data
+        profileData.innerHTML = `
+        <div class="profile-data">
+            <img src="./images/profile-icon.svg" class="profile-image" alt="profile-image">
+        </div>
+        <div class="profile-data">
+            <p class="profile-data-title">Nombre de usuario</p>
+            <p class="profile-data-info">@alberto03</p>
+            <p class="profile-data-title">Correo electrónico</p>
+            <p class="profile-data-info">albertito2003@gmail.com</p>
+            <p class="profile-data-title">Fecha de nacimiento</p>
+            <p class="profile-data-info">2003-02-12</p>
+        </div>
+        <hr>
+        <div class="profile-extra">
+            <p id="profile-extra-title">Artistas más escuchados</p>
+            <div class="profile-extra-artists" id="profile-extra-artists">
+                <div class="artist-profile">
+                    <img src="images/acdc.jpeg" alt="artist1" class="artist-img" onclick="goToArtist()">
+                    <p class="artist-name">AC/DC</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/david_guetta.jpeg" alt="artist1" class="artist-img" onclick="goToArtist()">
+                    <p class="artist-name">David Guetta</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/50cent.jpeg" alt="artist1" class="artist-img" onclick="goToArtist()">
+                    <p class="artist-name">50 Cent</p>
+                </div>
+            </div>
+            <p id="profile-extra-title">Canciones más escuchadas</p>
+            <div class="profile-extra-artists" id="profile-extra-artists">
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+            </div>
+            <p id="profile-extra-title">Canciones favoritas</p>
+            <div class="profile-extra-liked-songs" id="profile-extra-liked-songs">
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+            </div>
+            <p id="profile-extra-title">Canciones del usuario</p>
+            <div class="profile-extra-artists" id="profile-extra-artists">
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+            </div>
+            <p id="profile-extra-title">Seguidores</p>
+            <div class="profile-extra-artists" id="profile-extra-artists">
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Pimp Flaco</p>
+                </div>
+            </div>
+        </div>`;}
     
 
     // ! Añadimos la página de la cuenta
@@ -1093,4 +1204,9 @@ var x = setInterval(function() {
 // ! Redireccionamos a la pagina del artista
 function goToArtist() {
     window.location.href = "artist.html";
+}
+
+// ! Redireccionamos a la pagina del album
+function goToFollower() {
+    window.location.href = "follower.html";
 }
