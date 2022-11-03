@@ -436,15 +436,15 @@ const setNavbarLinks = () => {
             <p id="profile-extra-title">Artistas más escuchados</p>
             <div class="profile-extra-artists" id="profile-extra-artists">
                 <div class="artist-profile">
-                    <img src="images/acdc.jpeg" alt="artist1" class="artist-img">
+                    <img src="images/acdc.jpeg" alt="artist1" class="artist-img" onclick="goToArtist()">
                     <p class="artist-name">AC/DC</p>
                 </div>
                 <div class="artist-profile">
-                    <img src="images/david_guetta.jpeg" alt="artist1" class="artist-img">
+                    <img src="images/david_guetta.jpeg" alt="artist1" class="artist-img" onclick="goToArtist()">
                     <p class="artist-name">David Guetta</p>
                 </div>
                 <div class="artist-profile">
-                    <img src="images/50cent.jpeg" alt="artist1" class="artist-img">
+                    <img src="images/50cent.jpeg" alt="artist1" class="artist-img" onclick="goToArtist()">
                     <p class="artist-name">50 Cent</p>
                 </div>
             </div>
@@ -521,6 +521,53 @@ const setNavbarLinks = () => {
                 </div>
             </div>
         </div>`;}
+    
+    // ! Vamos a la pagina del artista
+    if (window.location.href.includes("artist.html")) {
+        profileName.innerHTML = `
+        <h2 class="profile-name">
+            Perfil del Artista 50 Cent
+        </h2>`;
+
+        // set the profile data
+        profileData.innerHTML = `
+        <div class="profile-data">
+            <img src="images/50cent.jpeg" class="profile-image" alt="profile-image">
+        </div>
+        <br>
+        <div class="profile-extra">
+            <p id="profile-extra-title">Canciones</p>
+            <div class="profile-extra-artists" id="profile-extra-artists">
+                <div class="artist-profile">
+                    <img src="images/candy-shop.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Candy Shop</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">P.I.M.P</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/in-da-club2.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">In Da Club</p>
+                </div>
+            </div>
+            <p id="profile-extra-title">Álbumes</p>
+            <div class="profile-extra-artists" id="profile-extra-artists">
+                <div class="artist-profile">
+                    <img src="images/in-da-club.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Get Rich or Die Tryin'</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/candy-shop.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">The Massacre</p>
+                </div>
+                <div class="artist-profile">
+                    <img src="images/21questions.jpeg" alt="artist1" class="artist-img">
+                    <p class="artist-name">21 Questions</p>
+                </div>
+            </div>
+        </div>`;}
+
     
 
     // ! Añadimos la página de la cuenta
@@ -993,7 +1040,7 @@ function seekUpdate() {
 
 // ! Creamos los countfown timer
 var countDownDate0 = new Date("Jan 5, 2023 15:34:25").getTime();
-var countDownDate1 = new Date("Jan 7, 2024 15:36:35").getTime();
+var countDownDate1 = new Date("Feb 7, 2023 15:36:35").getTime();
 var countDownDate2 = new Date("Jan 10, 2023 00:37:11").getTime();
 
 // Actualizamos el contador cada segundo
@@ -1041,3 +1088,9 @@ var x = setInterval(function() {
         document.getElementById("counter-2").innerHTML = "OUT NOW";
     }
 }, 1000);
+
+
+// ! Redireccionamos a la pagina del artista
+function goToArtist() {
+    window.location.href = "artist.html";
+}

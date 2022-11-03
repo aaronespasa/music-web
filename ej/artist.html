@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="author" content="100451339 & 100451170">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style/main.css">
+    <link rel="shortcut icon" href="images/favicon.png" type="image/x-icon">
+    <title>Listenify | Perfil</title>
+</head>
+
+<body>
+    <div class="grid-container">
+        <div class="column">
+            <div class="menu-title"  onclick="goToHome()">
+                <a class="logo-link" href="#">
+                    <figure class="logo-container">
+                        <img src="images/logo.svg" alt="Logo of the webpage">
+                    </figure>
+                </a>
+                <a class="title-link" href="#">
+                    <h1>
+                        Listenify
+                    </h1>
+                </a>
+            </div>
+            <div class="sidebar">
+                <ul class="menu-options-container">
+                    <li class="menu-option-container"  onclick="goToHome()">
+                        <a href="#" class="menu-option-link-container">
+                            <figure class="menu-option-icon-container">
+                                <img src="images/icon.svg" alt="Home icon">
+                            </figure>
+                            <div class="menu-option-text-container">
+                                <p>Home</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="menu-option-container" onclick="goToLists()">
+                        <a href="#" class="menu-option-link-container">
+                            <figure class="menu-option-icon-container">
+                                <img src="images/music-notes-icon.svg" alt="Listas">
+                            </figure>
+                            <div class="menu-option-text-container">
+                                <p>Listas</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="menu-option-container">
+                        <a href="#" class="menu-option-link-container">
+                            <figure class="menu-option-icon-container">
+                                <img src="images/podcast-icon.svg" alt="Crear Lista">
+                            </figure>
+                            <div class="menu-option-text-container">
+                                <p>Crear Lista</p>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="menu-option-container">
+                        <a href="#" class="menu-option-link-container">
+                            <figure class="menu-option-icon-container">
+                                <img src="images/favourites-icon.svg" alt="Home icon">
+                            </figure>
+                            <div class="menu-option-text-container">    
+                                <p>Favoritos</p>
+                            </div>
+                        </a>
+                    </li>
+                </ul>
+                <ul class="bottom-links-container">
+                    <li class="bottom-link-container">
+                        <a href="#privacy" class="bottom-link">
+                            <figure class="bottom-link-icon-container">
+                                <img src="images/privacy-policy-icon.svg" alt="Política de Privacidad">
+                            </figure>
+                            <p>Política de Privacidad</p>
+                        </a>
+                    </li>
+                    <li class="bottom-link-container">
+                        <a href="#cookies" class="bottom-link">
+                            <figure class="bottom-link-icon-container">
+                                <img src="images/cookie-icon.svg" alt="Política de Cookies">
+                            </figure>
+                            <p>Política de Cookies</p>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="column">
+            <div class="navbar-links">
+                <div class="navbar-links-container" id="navbar-links-container">
+                </div>
+            </div>
+            <div class="content">
+                <div profile-content class="profile-content">
+                    <div profile-content-container class="profile-content-container">
+                        <div class="profile-container">
+                            <div class="profile-title" id="profile-title">
+                            </div>
+                            <div class="profile-body" id="profile-body">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cta-container">
+        <a href="#footer" class="cta-text">
+            ¡Regístrate y Disfruta de 3 Meses Gratis!
+        </a>
+    </div>
+</body>
+<script src="script/index.js"></script>
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
+</html>
