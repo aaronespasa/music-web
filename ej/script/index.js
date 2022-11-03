@@ -1246,9 +1246,70 @@ if (Counter2 != null) {
 
 
 /* My Playlists & Playlist Creator */
-// const createMyLists = () => {
+const createMyLists = () => {
+    const myListsContainer = document.getElementById("mylists-container");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    const playlists = user.playlists;
 
-// }
+    playlists.forEach((playlist) => {
+        const playlistName = playlist.name;
+
+        const playlistContainer = document.createElement("div");
+        playlistContainer.classList.add("music-genre-container");
+        playlistContainer.innerHTML = `
+            <h2 class="music-genre-title">${playlistName}</h2>
+            <div class="music-genre-songs-container">
+            </div>`;
+
+        const songsContainer = playlistContainer.querySelector(".music-genre-songs-container");
+
+        const playlistSongs = playlist.songs;
+        var iterador = 0;
+        playlistSongs.forEach((songName) => {
+            const {artist, cover} = getSongInformation(songName);
+            const musicCard = document.createElement("div");
+            musicCard.classList.add("song-container");
+
+            const likedIcon = getLikeDisplayIcon(songName);
+            // Crear iterador autoincremental para poder distinguir las canciones
+            // ! Ahora podremos llamar a cada canción por su iterador (posición en el json)) 
+            musicCard.innerHTML = `
+                <figure class="song-cover-container">
+                    <img class="song-cover" src="./images/${cover}" alt="Song Cover">
+                    <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(${iterador})"></a>
+                </figure>
+                <p class="song-description">
+                    ${songName}
+                </p>
+                <p class="song-author">
+                    ${artist}
+                </p>
+                <div class="liked-container">
+                </div>
+            `;
+            if(isAuthenticated === "true"){
+                const likedIconElement = `<img src="${likedIcon}" class="liked-icon" onClick="toggleLike('${songName}')"/>`;
+                const likedContainer = musicCard.querySelector(".liked-container");
+                likedContainer.innerHTML = likedIconElement;
+                const likedTextContainer = musicCard.querySelector(".liked-icon");
+                likedTextContainer.addEventListener("click", () => {
+                    const likedIcon = getLikeDisplayIcon(songName);
+                    likedTextContainer.src = likedIcon;
+                });
+            }
+            songsContainer.appendChild(musicCard);
+            // Aumentamos el iterador autoincremental
+            iterador += 1;
+        })
+        if(playlistContainer != null) {
+            playlistContainer.appendChild(songsContainer);
+        } 
+        if(myListsContainer != null) {
+            myListsContainer.appendChild(playlistContainer);
+        } 
+    });
+}
 
 const userPlaylistExists = (userPlaylists, newPlaylistName) => {
     let exists = false;
@@ -1362,4 +1423,6 @@ document.addEventListener("DOMContentLoaded", () => {
             modifyProfile();
         });
     }
+
+    createMyLists();
 });
