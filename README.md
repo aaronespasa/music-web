@@ -1,4 +1,4 @@
-# Práctica 1 de Interfaces de Usuario
+# Práctica 2 de Interfaces de Usuario
 
 # Compatibilidades con los distintos navegadores
 
