@@ -10,7 +10,12 @@
     /* Colors */
     --bs-color-secondary-button-blue: rgba(146, 139, 218, 0.6);
     --bs-color-primary-nav-blue: rgba(230, 209, 255, .75);
-    --bs-color-primary-sidebar: rgb(221, 209, 255);
+
+    --color-dark-primary: #121216;
+    --color-dark-secondary: #191922;
+    --color-dark-medium: #23232D;
+
+    --color-light-primary: #D9D9D9;
 
     /* Fonts */
     --bs-font-roboto-default: Roboto, "Segoe UI",
@@ -36,7 +41,9 @@ body {
 
 h1 {
     margin: 0;
-    color: rgba(0, 0, 0, 1);
+    color: var(--color-light-primary);
+    font-family: var(--bs-font-roboto-default);
+    font-weight: lighter;
 }
 
 li {
@@ -50,7 +57,7 @@ ul {
 
 a {
     text-decoration: none;
-    color: rgb(0, 0, 0, 1);
+    color: var(--color-light-primary);
 }
 
 button {
@@ -88,7 +95,7 @@ p {
 .menu-title {
     display: flex;
     align-items: center;
-    background-color: var(--bs-color-primary-nav-blue);
+    background-color: var(--color-dark-secondary);
 }
 
 .menu-title:hover .title-link {
@@ -99,7 +106,8 @@ p {
 .navbar-links {
     display: flex;
     width: 100%;
-    background-color: var(--bs-color-primary-nav-blue);
+    background-color: var(--color-dark-primary);
+    align-items: center;
 }
 
 .navbar-links-container {
@@ -110,7 +118,7 @@ p {
 }
 
 .logo-container {
-    margin: 0 2em;
+    margin: .5em .5em 0 2em;
 }
 
 .logo-container img {
@@ -121,13 +129,6 @@ p {
     font-size: 1.3em;
     color: white;
     width: 100%;
-}
-
-.navbar-links {
-    background-color:
-        var(--bs-color-primary-nav-blue);
-    display: flex;
-    align-items: center;
 }
 
 .navbar-links-container {
@@ -164,7 +165,7 @@ p {
     flex-direction: column;
     justify-content: space-between;
     padding-top: 1em;
-    background-color: rgb(221, 209, 255);
+    background-color: var(--color-dark-secondary);
 }
 
 .menu-options-container {
@@ -232,14 +233,17 @@ p {
     position: relative;
     opacity: 1;
 
-    background:
+    background-color: var(--color-dark-primary);
+
+    /*TODO: Añadir las bolitas de fondo*/
+    /* background:
         linear-gradient(
             270deg, rgba(0, 0, 0, 0.1)0%, rgba(23, 204, 68, 0.3) 100%), 
         linear-gradient(
             90deg, rgba(91, 219, 40, 0.8) 0%, rgba(122, 89, 245, 0.6) 100%),
         rgba(101, 101, 252, .7);
 
-    background-blend-mode: multiply, screen, normal;
+    background-blend-mode: multiply, screen, normal; */
     z-index: 0;
 }
 
@@ -1100,7 +1104,7 @@ p.artist-name {
     justify-content: center;
     align-items: center;
     height: var(--music-player-original-height);
-    background-color:rgba(163, 172, 255, 1);
+    background-color: var(--color-dark-medium);
 }
 
 .song-cover-container a {
