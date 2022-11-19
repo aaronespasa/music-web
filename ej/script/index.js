@@ -966,7 +966,6 @@ const logoutModal = `
             </div>
             <div class="logoutModal-body">
                 <h2>¿Está seguro de que quiere cerrar sesión?</h2>
-                <p>Si cierras sesión, no podrás acceder a tus listas de reproducción.</p>
             </div>
             <div class="logoutModal-footer">
                 <button class="logoutModal-button" onclick="logout()">Si, cerrar sesión</button>
