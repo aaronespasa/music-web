@@ -922,15 +922,21 @@ p.artist-name {
 .navbar-profile-options {
     max-height: 0px;
     transition: max-height 0.2s ease;
+    /* We move the dropdown menu 10 pixels down*/
+    transform: translateY(10px);
     overflow: hidden;
     position: absolute;
     top: 60px;
     right: 0;
-    color: black;
-    background: rgb(221, 209, 255);
     width: 160px;
     z-index: 10;
-    border-radius: 0 0 8px 8px;
+    border-radius: 8px 8px 8px 8px;
+
+    /* Glass Effect */
+    background: rgba(25, 25, 34, 0.75);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.2px);
+    -webkit-backdrop-filter: blur(8.2px);
 }
 
 .navbar-profile-option-link {
@@ -945,8 +951,12 @@ p.artist-name {
 }
 
 .navbar-profile-option-text:hover {
-    background:rgb(236, 221, 255);
+    /* We increase the brightness */
+    filter: brightness(1.8);
     transition: background 0.2s ease;
+    transition: filter 0.2s ease;
+    /* We increase the brightness of the background */
+    background: rgba(25, 25, 34, 0.75);
 }
 
 .searchbar-profile-container {
@@ -962,18 +972,15 @@ p.artist-name {
 .searchbar {
     outline: none;
     border: none;
-    background-color: #c89dff;
+    background-color: var(--color-dark-secondary);
     color: white;
     padding: 5px 20px;
     margin: 10px 0 0 0;
     border-radius: 20px;
-    height: 4vh;
-    width: 50vw;
 }
 
 .searchbar-container {
     align-items: center;
-    z
 }
 
 .searchbar-results {
