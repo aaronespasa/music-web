@@ -15,6 +15,8 @@
     --color-dark-secondary: #191922;
     --color-dark-medium: #23232D;
 
+    --color-music-shadow: #3F3F3F;
+
     --color-light-primary: #D9D9D9;
 
     /* Fonts */
@@ -266,7 +268,7 @@ p {
 }
 
 .music-genre-title {
-    color: black;
+    color: var(--color-light-primary);
     width: auto;
     font-size: 2.2em;
     font-weight: bold;
@@ -327,24 +329,25 @@ p {
 .song-container {
     
     /* Glass Effect */
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 16px;
+    background: rgba(25, 25, 34, 0.75);
+    border-radius: 8px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3px);
-    border: 1.5px solid rgba(255, 255, 255, 0.1);
-
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(8.2px);
+    -webkit-backdrop-filter: blur(8.2px);
+    border: 1px solid rgba(25, 25, 34, 0.79);
+    
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     padding: 1.5em 1.5em 1.2em 1.5em;
-    border-radius: 8px;
 }
 
 .song-container p {
-    color: black;
-    text-align: center
+    color: var(--color-light-primary);
+    text-align: center;
+    justify-content: center;
+    align-items: center;
 }
 
 
@@ -403,12 +406,12 @@ p {
     min-width: calc(300px + 40px);
     height: auto;
     /* Glass Effect */
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 16px;
+    background: rgba(25, 25, 34, 0.75);
+    border-radius: 8px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3px);
-    border: 1.5px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(8.2px);
+    -webkit-backdrop-filter: blur(8.2px);
+    border: 1px solid rgba(25, 25, 34, 0.79);
 }
 
 .login-content .form-container {
@@ -695,12 +698,12 @@ hr {
     min-width: calc(300px + 40px);
     height: auto;
     /* Glass Effect */
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 16px 16px 16px 16px;
+    background: rgba(25, 25, 34, 0.75);
+    border-radius: 8px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-    backdrop-filter: blur(3px);
-    border: 1.5px solid rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(8.2px);
+    -webkit-backdrop-filter: blur(8.2px);
+    border: 1px solid rgba(25, 25, 34, 0.79);
 }
 
 
@@ -962,7 +965,15 @@ p.artist-name {
     background-color: #c89dff;
     color: white;
     padding: 5px 20px;
+    margin: 10px 0 0 0;
     border-radius: 20px;
+    height: 4vh;
+    width: 50vw;
+}
+
+.searchbar-container {
+    align-items: center;
+    z
 }
 
 .searchbar-results {
