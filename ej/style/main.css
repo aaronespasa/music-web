@@ -975,8 +975,9 @@ p.artist-name {
     background-color: var(--color-dark-secondary);
     color: white;
     padding: 5px 20px;
-    margin: 10px 0 0 0;
     border-radius: 20px;
+    /* Align it in the middle of the searchbar container */
+    align-self: center;
 }
 
 .searchbar-container {
@@ -1475,50 +1476,91 @@ i.fa-step-backward {
 }
 
 
+/* Hamberger menu hidden by default */
+#hamburger-menu {
+    display: none;
+}
+
+.hamburguer-menu-options {
+    max-height: 0px;
+    transition: max-height 0.2s ease;
+    /* We move the dropdown menu 10 pixels down*/
+    transform: translateY(20px);
+    overflow: hidden;
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    width: 160px;
+    z-index: 10;
+    border-radius: 8px 8px 8px 8px;
+
+    /* Glass Effect */
+    background: rgba(25, 25, 34, 0.75);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(8.2px);
+    -webkit-backdrop-filter: blur(8.2px);
+}
+
+.hamburguer-menu-option-link {
+    width: 100%;
+    cursor: pointer;
+}
+
+.hamburguer-menu-option-text {
+    padding: 10px;
+    width: 100%;
+    transition: background 0.2s ease;
+    /* Alineamos la imagen y el texto */
+    display: flex;
+    align-items: center;
+    
+}
+
+.hamburguer-menu-image {
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+}
+
+.hamburguer-menu-option-text:hover {
+    /* We increase the brightness */
+    filter: brightness(1.8);
+    transition: background 0.2s ease;
+    transition: filter 0.2s ease;
+    /* We increase the brightness of the background */
+    background: rgba(25, 25, 34, 0.75);
+}
+
+.hamburguer-menu-option-text p {
+    margin: 0;
+    padding: 0;
+    font-size: 1.2rem;
+    font-family: var(--bs-font-roboto-default);
+    color: var(--bs-font-light);
+}
+
+.hamburguer-menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    gap: 30px;
+    position: relative;
+}
+
+
+
 
 /************************
  * Media Queries        *
  ************************/
 
-/* media query for a max width of 768px */
+/* media query for a max width of 768px -> Tablet */
 @media (max-width: 768px) {
     /*Title*/
     .title-link {
         font-size: 0.9em;
-    }
-
-    /*Music container*/
-    .music-genre-title{
-        width: 100%;
-        text-align: center;
-        justify-content: center;
-        padding: 0;
-    }
-
-    .music-genre-songs-container {
-        justify-content: center;
-    }
-
-    /* Align delete delete-playlist in the center */
-    .content-container {
-        text-align: center;
-    }
-
-    .bottom-link p {
-        font-size: 0.8em;
-    }
-
-    .profile-title .profile-name {
-        font-size: 1.7em;
-    }
-}
-
-
-/* media query for a max width of 600px */
-@media (max-width: 600px) {
-    /*Title*/
-    .title-link {
-        font-size: 0.8em;
     }
 
     /*Music container*/
@@ -1591,7 +1633,73 @@ i.fa-step-backward {
     }
 
     .profile-title .profile-name {
-        font-size: 1.6em;
+        font-size: 1.7em;
     }
     
+}
+
+
+/* media query for a max width of 600px -> Mobile */
+@media (max-width: 600px) {
+    /*Title*/
+    .title-link {
+        font-size: 0.8em;
+    }
+
+    /*Music container*/
+    .music-genre-title h2{
+        width: 100%;
+        padding: 0;
+        text-align: center;
+        justify-content: center;
+    }
+
+    .music-genre-songs-container {
+        justify-content: center;
+    }
+
+    /* Quitamos el texto de los botones */
+    .menu-option-text-container {
+        display: none;
+    }
+
+    /* Eliminamos el sidebar (width=0) */
+    /* Layout */
+    .grid-container {
+        display: grid;
+        grid-template-columns: 0 1fr;
+        height: var(--content-height-without-footer);
+    }
+
+    .sidebar{
+        width: 0;
+    }
+
+    /* Quitamos el padding del music-genre-title */
+    .music-genre-title {
+        padding: 0;
+    }
+    
+    /* Hamburguer menu at the top left corner of the navbar-links */
+    #hamburger-menu {
+        display: block;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        padding: 10px 10px 10px 20px;
+    }
+
+    .hamburger-menu img {
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+
+    .hamburger-menu img:hover {
+        transform: scale(1.05);
+        filter: brightness(1.1);
+        transition: 0.2s;
+    }
 }

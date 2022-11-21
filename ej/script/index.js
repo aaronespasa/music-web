@@ -3,7 +3,9 @@ const passwordInput = document.getElementById("password");
 const errorMessage = document.getElementById("error-message");
 const signUpForm = document.getElementById("signup-form");
 const loginForm = document.getElementById("login-form");
+const navbarL = document.getElementById("navbar-links")
 const navbarLinks = document.getElementById("navbar-links-container")
+const hamburgerDropdown = document.getElementById("hamburguer-menu-options");
 const selectImageInput = document.getElementById("input-file");
 const selectImageButton = document.getElementById("select-image-button")
 const profileName = document.getElementById("profile-title");
@@ -328,7 +330,7 @@ function searchSong() {
             const trackArtist = track.artist.toLowerCase();
             if (trackName.includes(searchValue)) {
                 const searchResult = document.createElement("li");
-                searchResult.className = "searchbar-result"; // TODO!!
+                searchResult.className = "searchbar-result";
                 searchResult.innerHTML = `
                     <button class="searchbar-button play-button" name="play-button" onclick="openMusicPlayer('${track.id}')"> 
                         <img src="./images/play.svg" alt="play-button">
@@ -1438,3 +1440,15 @@ document.addEventListener("DOMContentLoaded", () => {
         createMyLists();
     }
 });
+
+
+
+function openHamburgerMenu() {
+    // Si solo si el tamaño de la pantalla es menor a 600px
+    if (window.innerWidth < 600) {
+        navbarHamburgerMenu = document.getElementById("hamburguer-menu-options");
+        maxProfileHeight = navbarHamburgerMenu.style.maxHeight;
+        // if navProfileOptions maxHeight style is 0, then set it to auto else set it to 0
+        navbarHamburgerMenu.style.maxHeight = (maxProfileHeight === "0px" || maxProfileHeight === "") ? "270px" : "0px";
+    }
+}
