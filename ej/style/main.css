@@ -166,7 +166,7 @@ p {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    padding-top: 1em;
+    padding-top: 2em;
     background-color: var(--color-dark-secondary);
 }
 
@@ -176,23 +176,22 @@ p {
 }
 
 .menu-option-link-container {
-    background-color: var(--bs-color-secondary-button-blue);
+    background-color: var(--color-dark-secondary);
     margin: 0 1em;
     border-radius: 8px;
     padding: 0.3em 0.6em;
-    color: white;
+    color: var(--color-light-primary);
     display: flex;
     align-items: center;
     transition:filter 0.3s;
 }
 
 .menu-option-link-container:hover {
-    transform: scale(1.01);
     filter: brightness(1.2);
 }
 
 .menu-option-icon-container {
-    margin: 0.25em 2em;
+    margin: 0.25em 2em 0.25em 1em;
     height: 25px;
 }
 
