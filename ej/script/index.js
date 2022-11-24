@@ -110,7 +110,7 @@ const TRACKS = [
     },
     {
         "playlist": "Pop",
-        "title": "God's Plan",
+        "title": "Gods Plan",
         "artist": "Drake",
         "cover": "gods-plan.jpeg",
         "audio": "./audios/song1.mp3",
