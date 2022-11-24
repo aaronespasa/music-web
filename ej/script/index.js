@@ -1388,6 +1388,8 @@ const addSongToPlaylist = (title) => {
     }
 }
 
+
+
 const searchSongForPlaylist = () => {
     const searchbarInput = document.getElementById("playlist-creator-searchbar");
     const searchValue = searchbarInput.value.toLowerCase();
