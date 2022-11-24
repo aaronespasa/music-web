@@ -8,7 +8,7 @@
 :root {
 
     /* Colors */
-    --bs-color-secondary-button-blue: rgba(146, 139, 218, 0.6);
+    --bs-color-secondary-button-blue:#4EADFE;
     --bs-color-primary-nav-blue: rgba(230, 209, 255, .75);
 
     --color-dark-primary: #121216;
@@ -429,7 +429,7 @@ p {
     padding: 1px 0 0 0;
     font-size: 1.2em;
     font-weight: bold;
-    color: black;
+    color: rgb(255, 255, 255);
     text-align: center;
 }
 
@@ -452,6 +452,7 @@ p {
 }
 .login-content input[type=text]::placeholder {
     text-align: center; 
+    color:#D9D9D9
 }
 
 
@@ -469,6 +470,7 @@ p {
 }
 .login-content input[type=email]::placeholder {
     text-align: center;
+    color:#D9D9D9
 }
 
 
@@ -486,6 +488,7 @@ p {
 }
 .login-content input[type=password]::placeholder {
     text-align: center;
+    color:#D9D9D9
 }
 
 
@@ -542,7 +545,7 @@ p {
     height:calc(20px + 1.2em);
     border: transparent;
     border-radius: 4px;
-    color: white;
+    color: rgb(0, 0, 0);
     font-size: .9em;
     font-weight: bold;
     background-color: var(--bs-color-secondary-button-blue);
@@ -603,32 +606,6 @@ p {
     transition: 0.2s;
 }
 
-.login-content .third-party-auth {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.third-party-auth img {
-    cursor: pointer;
-}
-
-.facebook-auth, .google-auth {
-    background-color: white;
-    border-radius: 4px;
-    padding: 5px;
-    margin: 5px 5px 5px 5px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-}
-
-.facebook-auth:active, .google-auth:active {
-    transform: scale(1.05);
-    filter: brightness(1.1);
-    transition: 0.2s;
-}
 
 .error-message-container {
     display: none;
@@ -657,6 +634,7 @@ p {
     cursor: pointer;
     transition: transform 0.5s ease;
     transform: scale(1.0);
+    
 }
 
 .form-button:hover {
