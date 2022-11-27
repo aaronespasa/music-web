@@ -118,9 +118,16 @@ p {
     background-color: var(--color-dark-secondary);
 }
 
-.menu-title:hover .title-link {
-    transition: transform 0.5s ease-in-out;
-    transform: scale(0.95);
+.title-link {
+    font-size: 1.3em;
+    color: white;
+    width: 100%;
+}
+.title-link h1{
+    transition: color 0.5s ease-in-out;
+}
+.menu-title:hover .title-link h1 {
+    color:#67bdff;
 }
 
 .navbar-links {
@@ -145,11 +152,7 @@ p {
     width: 40px;
 }
 
-.title-link {
-    font-size: 1.3em;
-    color: white;
-    width: 100%;
-}
+
 
 .navbar-links-container {
     margin-left: auto;
@@ -418,10 +421,11 @@ p {
     align-items: center;
     justify-content: center;
     margin-top: 8vh;
-    width: calc(30vw + 40px);
+    width: calc(65vw + 40px);
     max-width: calc(700px + 40px); 
     min-width: calc(300px + 40px);
     height: auto;
+    
     /* Glass Effect */
     background: var(--space-blue);
     border-radius: 8px;
@@ -457,108 +461,61 @@ p {
 
 
 /*! Seleccionando nombre de usuario, nombre, apellidos */
-.login-content input[type=text] {
+.login-content input{
     width: 30vw;  /* Pasar todos los calcs a variables */
     max-width: 700px;
     min-width: 300px;
     margin: 5px 5px;
     height: calc(20px + 1.2em);
     display: inline-block;
-    border: 1px solid var(--border-white);
+    border: 1px solid var(--gray-20);
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: var(--gray-20);
+    color:#FEFEFE;
 }
-.login-content input[type=text]::placeholder {
+.login-content input::placeholder {
     text-align: center; 
     color:#D9D9D9
 }
-
-
-/*! Seleccionando email */
-.login-content input[type=email] {
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
-    margin: 5px 5px;
-    height: calc(20px + 1.2em);
-    display: inline-block;
-    border: 1px solid var(--border-white);
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.login-content input[type=email]::placeholder {
-    text-align: center;
-    color:#D9D9D9
-}
-
-
-/*! Seleccionando contraseña */
-.login-content input[type=password] {
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
-    margin: 5px 5px;
-    height: calc(20px + 1.2em);
-    display: inline-block;
-    border: 1px solid var(--border-white);
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.login-content input[type=password]::placeholder {
-    text-align: center;
-    color:#D9D9D9
-}
-
-
-/*! Seleccionando date */
-.login-content input[type=date] {
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
-    margin: 5px 5px;
-    height: calc(20px + 1.2em);
-    display: inline-block;
-    border: 1px solid var(--border-white);
-    background-color: var(--white);
-    color: var(--old-silver);
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.login-content input[type=date]::placeholder {
-    text-align: center;
-    align-items: center;
-    margin: 0 -20px 0 0;
-}
-.login-content input[type="date"]:before{
-    content: attr(placeholder);
-    width: 180px;
-}
-
 
 /*! Seleccionando imagen de perfil */
 .login-content .input-file {
     display:none;  
 }
-
 .login-content .select-image-button {
     cursor: pointer;
     width: 30vw;
     max-width: 700px;
-    min-width: 300px;
+    min-width:400px;
     margin: 5px 5px;
     height: calc(20px + 1.2em);
     display: inline-block;
-    border: 1px solid var(--border-white);
-    background-color: var(--white);
-    color: var(--old-silver);
+    border: 1px solid var(--gray-20);
+    background-color: var(--gray-20);
+    color: var(--border-white);
     border-radius: 4px;
     box-sizing: border-box;
 }
 
+/*! Seleccionando date */
+
+
+.login-content input[type="date"]:before{
+    content: attr(placeholder);
+    width: 180px;
+    color:#D9D9D9
+}
+.login-content input[type="date"]:before::placeholder{
+    content: attr(placeholder);
+    width: 180px;
+    color:#D9D9D9
+}
+
 .login-content input[type=submit] {
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
+    width: 10vw;
+    max-width: 400px;
+    min-width: 100px;
     margin: 5px 10px;
     height:calc(20px + 1.2em);
     border: transparent;
@@ -568,52 +525,41 @@ p {
     font-weight: bold;
     background-color: var(--bs-color-secondary-button-blue);
 }
-
-
-/*! Borrar formulario */
-.login-content input[type=reset] {
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
-    margin: 5px 5px;
-    height: calc(20px + 1.2em);
-    display: inline-block;
-    border: 1px solid var(--border-white);
-    background-color: var(--white);
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.login-content input[type=reset]::placeholder {
-    text-align: center;
-}
-
 .form-input input {
     outline: none;
 }
 
 /*! Checkbox */
-.login-content .form-input-checkbox {
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
-    margin: 5px 5px;
+.login-content input[type=checkbox] {
+    width: 1vw;
+    max-width: 30px;
+    min-width: 20px;
+    
     height: calc(10px + .6em);
-    display: inline-block;
+    float: left;
+    
     /* border: 1px solid #ccc;*/
     background-color: rgba(0, 0, 0, 0.0); /*#ffffff*/
     color: black;/*#858585;*/
     border-radius: 4px;
     box-sizing: border-box;
     text-align: center;
-    font-size: .8em;
+    font-size: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 }
 
 .form-input-checkbox p {
-    display: inline-block;
-    margin: 0 0 0 5px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--border-white);
+    font-size: 1em;
 }
 
 

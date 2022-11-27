@@ -117,29 +117,25 @@
                                         <!-- <label for="password">Contraseña</label> -->
                                         <input type="text" name="surname" id="surname" placeholder="Apellido(s)" required>
                                     </div>
-                                    <div class="form-input">
-                                        <input placeholder="Fecha de nacimiento" type="date" name="birthdate" id="birthdate" onchange="this.classList.toggle('has-value',this.value);" required>
-                                    </div>
+                                    <!--
+                                        <div class="form-input">
+                                            <input placeholder="Fecha de nacimiento" type="date" name="birthdate" id="birthdate" onchange="this.classList.toggle('has-value',this.value);" required>
+                                        </div>
+                                    -->
+                                    
                                     <div class="form-input">
                                         <!-- only allow to upload files in jpg or png -->
                                         <input type='file' class='input-file' id="input-file" accept="image/png, image/jpeg">
-                                        <button class='select-image-button' id='select-image-button'>Selecciona su Imagen de Perfil</button>
+                                        <button class='select-image-button' id='select-image-button'>Imagen de Perfil</button>
                                     </div>
                                     <div class="form-input-checkbox">
                                         <input class="form-checkbox" type="checkbox" name="terms" id="terms" required>
                                         <p>He leído y acepto las condiciones de uso</p>
                                     </div>
                                     <div class="form-input">
-                                        <input class="form-button" type="reset" value="Borrar información">
-                                    </div>
-                                    <div class="form-input">
                                         <input class="form-button" type="submit" value="Registrarse" id="submit">
                                     </div>
                                     <div id="error-message-container" class="error-message-container"></div>
-                                    <div class="third-party-auth">
-                                        <img src="images/google-icon.svg" alt="iniciar sesión con Google" class="google-auth">
-                                        <img src="images/facebook-icon.svg" alt="iniciar sesión con Facebook" class="facebook-auth">
-                                    </div>
                                 </div>
                             </div>
                         </form>
