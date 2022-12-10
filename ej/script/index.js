@@ -24,7 +24,6 @@ let playpause_btn = document.getElementsByClassName(".playpause-track");
 let next_btn = document.getElementsByClassName(".next-track");
 let prev_btn = document.getElementsByClassName(".prev-track");
 
-
 // Specify globally used values
 let isPlaying = false;
 let updateTimer;
@@ -266,16 +265,16 @@ const saveUserInLocalStorage = async user => {
     localStorage.setItem("user", JSON.stringify(user));
 }
 
-const modifyProfile = () => {
+const modifyProfile = (event) => {
+    event.preventDefault();
+
     const user = JSON.parse(localStorage.getItem("user"));
     const username = document.getElementById("username").value;
     const email = document.getElementById("email").value;
-    const birthdate = document.getElementById("birthdate").value;
 
     if (validateUsername(username) && (validateEmail(email))) {
         user.username = username;
         user.email = email;
-        user.birthdate = birthdate;
 
         localStorage.setItem("user", JSON.stringify(user));
         window.location.href = "index.html";
@@ -291,7 +290,6 @@ const signUp = async (event) => {
     const password = passwordInput.value;
     const name = document.getElementById("name").value;
     const surname = document.getElementById("surname").value;
-    const birthdate = document.getElementById("birthdate").value;
 
     console.log("entering in signup")
 
@@ -304,7 +302,6 @@ const signUp = async (event) => {
             "password": password,
             "name": name,
             "surname": surname,
-            "birthdate": birthdate,
             "likedSongs": [],
             "playlists": []
         }
@@ -453,10 +450,9 @@ const setNavbarLinks = () => {
         //<p class="profile-data-title">Correo electrónico</p>
         //<p class="profile-data-info">${email}</p>
         //<p class="profile-data-title">Fecha de nacimiento</p>
-        //<p class="profile-data-info">${birthdate}</p>
         
         // set the profile data
-        const username = user.username, email = user.email, birthdate = user.birthdate;
+        const username = user.username, email = user.email;
         const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
         const userProfileInitialData = `
             
@@ -733,10 +729,9 @@ const setNavbarLinks = () => {
 
         // deleted
         //<p class="profile-data-title">Fecha de nacimiento</p>
-        //<input class="profile-data-info" type="date" name="birthdate" id="birthdate" value="${birthdate}">
 
         // set the profile data
-        const username = user.username, email = user.email, birthdate = user.birthdate;
+        const username = user.username, email = user.email;
         const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
 
         // create form element to edit the profile
@@ -773,21 +768,6 @@ const setNavbarLinks = () => {
             <p class="music-player-title">No hay canciones en la cola</p>
         `;
     }
-}
-        
-if (signUpForm !== null) {
-    // detect when submitting using the signUpForm and prevent the default behaviour
-    // signUpForm.addEventListener("submit", (event) => signUp(event));
-
-    signUpForm.addEventListener("submit", (event) => {
-        event.preventDefault();
-        console.log("signUpForm submitted");
-    });
-
-    // selectImageButton.addEventListener("click", () => selectImageInput.click());
-
-} else if (loginForm !== null) {
-    loginForm.addEventListener("submit", (event) => login(event));
 }
 
 function isSongLiked(songName){
@@ -834,11 +814,81 @@ function getLikedSongsInformation() {
     return likedSongsInformation;
 }
 
+const playlistCounters = () => {
+    // ! Creamos los countfown timer
+    // ! Creamos los countfown timer
+    var countDownDate0 = new Date("Jan 5, 2023 15:34:25").getTime();
+    var countDownDate1 = new Date("Feb 7, 2023 15:36:35").getTime();
+    var countDownDate2 = new Date("Jan 10, 2023 00:37:11").getTime();
+
+    // Actualizamos el contador cada segundo
+    setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate0 - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        
+        const counter0 = document.getElementById("counter-0")
+        if (counter0 !== null) {
+            counter0.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+            if (distance < 0) {
+                clearInterval(x);
+                counter0.innerHTML = "OUT NOW";
+            }
+        }
+    }, 1000);
+
+    setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate1 - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const counter1 = document.getElementById("counter-1")
+        if (counter1 !== null) {
+            counter1.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+            if (distance < 0) {
+                clearInterval(x);
+                counter1.innerHTML = "OUT NOW";
+            }
+        }
+    }, 1000);
+
+    setInterval(function() {
+        var now = new Date().getTime();
+        var distance = countDownDate2 - now;
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        const counter2 = document.getElementById("counter-2")
+        if (counter2 !== null) {
+            counter2.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+            if (distance < 0) {
+                clearInterval(x);
+                counter2.innerHTML = "OUT NOW";
+            }
+        }
+    }, 1000);
+}
+
   
 const setPlaylistsInHome = () => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
-    const songsGroupedByPlaylist = getSongsGroupedByPlaylist();
+
     const playlistsContainer = document.getElementById("home-music-container");
+
+    if (playlistsContainer === null) return;
+
+    if (isAuthenticated !== "true") {
+        playlistCounters();
+    }
+
+    const songsGroupedByPlaylist = getSongsGroupedByPlaylist();
     
     // ! Si no se ha registrado, se mostrará una playlist nueva
     if (isAuthenticated !== "true") {
@@ -1059,21 +1109,6 @@ const logoutModal = `
     </div>
 `;
 
-// on document load
-document.addEventListener("DOMContentLoaded", () => {
-    setNavbarLinks();
-
-    // append the logout modal to the body
-    document.body.innerHTML += logoutModal;
-
-    // detect if the current page is index.html
-    if (window.location.pathname === "/index.html") {
-        // set the playlists in the home page
-        setPlaylistsInHome();
-    }
-});
-
-
 function loadTrack(iterator) {
 
     // Clear the previous seek timer
@@ -1235,67 +1270,6 @@ function seekUpdate() {
     }
     
 }
-
-
-// ! Creamos los countfown timer
-// ! Creamos los countfown timer
-var countDownDate0 = new Date("Jan 5, 2023 15:34:25").getTime();
-var countDownDate1 = new Date("Feb 7, 2023 15:36:35").getTime();
-var countDownDate2 = new Date("Jan 10, 2023 00:37:11").getTime();
-
-// Actualizamos el contador cada segundo
-setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate0 - now;
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    
-    const counter0 = document.getElementById("counter-0")
-    if (counter0 !== null) {
-        counter0.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-        if (distance < 0) {
-            clearInterval(x);
-            counter0.innerHTML = "OUT NOW";
-        }
-    }
-}, 1000);
-
-setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate1 - now;
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    const counter1 = document.getElementById("counter-1")
-    if (counter1 !== null) {
-        counter1.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-        if (distance < 0) {
-            clearInterval(x);
-            counter1.innerHTML = "OUT NOW";
-        }
-    }
-}, 1000);
-
-setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate2 - now;
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-
-    const counter2 = document.getElementById("counter-2")
-    if (counter2 !== null) {
-        counter2.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
-        if (distance < 0) {
-            clearInterval(x);
-            counter2.innerHTML = "OUT NOW";
-        }
-    }
-}, 1000);
 
 const deletePlaylist = (playlistName) => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -1514,30 +1488,14 @@ const searchSongForPlaylist = () => {
     }
 }
 
-// check if the dom is loaded
-document.addEventListener("DOMContentLoaded", () => {
-    const playlistCreatorForm = document.getElementById("playlist-creator-form");
-    if(playlistCreatorForm != null) {
-        playlistCreatorForm.addEventListener("submit", (e) => {
-            modifyUserPlaylists(e);
-        });
+const handleSingUpLogIn = () => {
+    if (signUpForm !== null) {
+        signUpForm.addEventListener("submit", (event) => signUp(event));
+        selectImageButton.addEventListener("click", () => selectImageInput.click());
+    } else if (loginForm !== null) {
+        loginForm.addEventListener("submit", (event) => login(event));
     }
-
-    const editProfileForm = document.getElementById("edit-profile-form");
-    if(editProfileForm != null) {
-        editProfileForm.addEventListener("submit", (e) => {
-            e.preventDefault();
-            modifyProfile();
-        });
-    }
-
-    const isAuthenticated = localStorage.getItem("isAuthenticated");
-    if(isAuthenticated === "true") {
-        createMyLists();
-    }
-});
-
-
+}
 
 function openHamburgerMenu() {
     // Si solo si el tamaño de la pantalla es menor a 600px
@@ -1548,3 +1506,26 @@ function openHamburgerMenu() {
         navbarHamburgerMenu.style.maxHeight = (maxProfileHeight === "0px" || maxProfileHeight === "") ? "270px" : "0px";
     }
 }
+
+// check if the dom is loaded
+document.addEventListener("DOMContentLoaded", () => {
+    const playlistCreatorForm = document.getElementById("playlist-creator-form");
+    const editProfileForm = document.getElementById("edit-profile-form");
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+
+    handleSingUpLogIn();
+
+    setNavbarLinks();
+    // document.body.innerHTML += logoutModal;
+    setPlaylistsInHome();
+
+    if(playlistCreatorForm != null) {
+        playlistCreatorForm.addEventListener("submit", (e) => modifyUserPlaylists(e));
+    }
+
+    if(editProfileForm != null) {
+        editProfileForm.addEventListener("submit", (e) => modifyProfile(e));
+    }
+
+    if(isAuthenticated === "true") createMyLists();
+});
