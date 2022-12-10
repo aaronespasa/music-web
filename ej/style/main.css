@@ -79,7 +79,7 @@ h1 {
     margin: 0;
     color: var(--color-light-primary);
     font-family: var(--bs-font-roboto-default);
-    font-weight: lighter;
+    font-weight: lighter
 }
 
 li {
@@ -723,9 +723,7 @@ h2.profile-name {
     align-self: center;
     margin-top: 60px;
     cursor: pointer;
-
-}
-
+} 
 
 .profile-extra {
     display: flex;
@@ -948,6 +946,7 @@ p.artist-name {
     border-radius: 20px;
     /* Align it in the middle of the searchbar container */
     align-self: center;
+    height: 30px;
 }
 
 .searchbar-container {
@@ -1332,12 +1331,16 @@ i.fa-step-backward {
     text-align: center;
 }
 
+#playlist-creator-container h1{
+    font-weight: bold;
+    color: var(--color-light-primary);
+}
+
 #playlist-title {
     font-size: 1.3em;
     font-weight: bold;
     font-family: var(--bs-font-roboto-default);
-    background-color: var(--white-medium-oppacity);
-    color: var(--black-high-oppacity);
+    background-color: var(--color-light-primary);
     padding: 10px 30px 10px 30px;
     border: none;
     border-radius: 10px;

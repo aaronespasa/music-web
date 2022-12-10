@@ -725,7 +725,7 @@ const setNavbarLinks = () => {
             <p class="profile-data-title">Correo electrónico</p>
             <input class="profile-data-info" type="email" name="email" id="email" placeholder="Correo electrónico" value="${email}">
 
-            <button type="submit" class="sign-log-in-button">
+            <button type="submit" class="sign-log-in-button" onclick="goToHome()">
                 Guardar Cambios
             </button>
 
