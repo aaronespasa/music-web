@@ -227,6 +227,17 @@ const validatePassword = (password) => {
     return true;
 }
 
+const validateEmail = (email) =>{
+    const regex = new RegExp("[a-zA-Z0-9_.]@[a-z]+\.[a-z]{2,}", 'g');
+    if (regex.test(email) == true){
+      return true;
+    }
+    else{
+        createErrorMessage(`El email debe ser del siguiente <example@gmail.com> por ejemplo: maruui22@hotmail.com`)
+      return false
+    }
+  }
+
 // create async function to get the user image
 const saveUserInLocalStorage = async user => {
     const useImageInput = document.getElementById("input-file");
@@ -256,12 +267,14 @@ const modifyProfile = () => {
     const email = document.getElementById("email").value;
     const birthdate = document.getElementById("birthdate").value;
 
-    if (validateUsername(username)) {
+    if (validateUsername(username) && (validateEmail(email))) {
         user.username = username;
         user.email = email;
         user.birthdate = birthdate;
 
         localStorage.setItem("user", JSON.stringify(user));
+        window.location.href = "index.html";
+    
     }
 }
 
@@ -675,7 +688,7 @@ const setNavbarLinks = () => {
             <p class="profile-data-title">Fecha de nacimiento</p>
             <input class="profile-data-info" type="date" name="birthdate" id="birthdate" value="${birthdate}">
 
-            <button type="submit" class="sign-log-in-button" onclick="goToHome()">
+            <button type="submit" class="sign-log-in-button">
                 Guardar Cambios
             </button>
 
