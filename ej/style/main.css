@@ -29,9 +29,22 @@
     --crystal-blue: #58abb7;
     --gray-20: rgb(51, 51, 51);
     --space-blue: rgba(25, 25, 34, 0.75);
+    --black-no-opacity: rgba(0, 0, 0, 0.0);
     --black-low-oppacity: rgba(0, 0, 0, 0.1);
+    --black-medium-oppacity: rgba(0, 0, 0, 0.4);
+    --black-medium-exact-oppacity: rgba(0, 0, 0, 0.5);
+    --black-high-oppacity: rgba(0, 0, 0, 0.8);
+    --white-low-oppacity: rgba(255, 255, 255, 0.1);
+    --white-medium-low-oppacity: rgba(255, 255, 255, 0.2);
+    --white-medium-oppacity: rgba(255, 255, 255, 0.6);
+    --white-medium-high-oppacity: rgba(255, 255, 255, 0.7);
+    --white-high-oppacity: rgba(255, 255, 255, 0.8);
     --perano-blue: rgb(163, 172, 255);
-    
+    --red: rgb(255, 0, 0);
+    --chinese-black: rgb(22, 22, 22);
+    --light-purple: rgb(221, 209, 255);
+    --very-dark-gray: rgb(87, 87, 87);
+    --light-gray:  rgb(211,211,211);
 
 
 
@@ -451,7 +464,7 @@ p {
     padding: 1px 0 0 0;
     font-size: 1.2em;
     font-weight: bold;
-    color: rgb(255, 255, 255);
+    color: var(--white);
     text-align: center;
 }
 
@@ -472,11 +485,11 @@ p {
     border-radius: 4px;
     box-sizing: border-box;
     background-color: var(--gray-20);
-    color:#FEFEFE;
+    color:var(--white2);
 }
 .login-content input::placeholder {
     text-align: center; 
-    color:#D9D9D9
+    color:var( --color-light-primary)
 }
 
 /*! Seleccionando imagen de perfil */
@@ -504,12 +517,12 @@ p {
 .login-content input[type="date"]:before{
     content: attr(placeholder);
     width: 180px;
-    color:#D9D9D9
+    color:var( --color-light-primary)
 }
 .login-content input[type="date"]:before::placeholder{
     content: attr(placeholder);
     width: 180px;
-    color:#D9D9D9
+    color:var( --color-light-primary)
 }
 
 .login-content input[type=submit] {
@@ -520,7 +533,7 @@ p {
     height:calc(20px + 1.2em);
     border: transparent;
     border-radius: 4px;
-    color: rgb(0, 0, 0);
+    color: var(--black);
     font-size: .9em;
     font-weight: bold;
     background-color: var(--bs-color-secondary-button-blue);
@@ -539,8 +552,8 @@ p {
     float: left;
     
     /* border: 1px solid #ccc;*/
-    background-color: rgba(0, 0, 0, 0.0); /*#ffffff*/
-    color: black;/*#858585;*/
+    background-color: var(--black-no-opacity); /*#ffffff*/
+    color: var(--black);/*#858585;*/
     border-radius: 4px;
     box-sizing: border-box;
     text-align: center;
@@ -577,7 +590,7 @@ p {
     width: 30vw;
     max-width: 700px;
     min-width: 300px;
-    background-color: red;
+    background-color: var(--red);
     border-radius: 4px;
     padding: 10px 0 10px 0;
     margin: 5px 5px;
@@ -586,7 +599,7 @@ p {
 .error-message {
     display: block;
     font-size: 0.9em;
-    color: white;
+    color: var(--white);
     text-align: center;
 }
 
@@ -610,7 +623,7 @@ p {
 /* ! Estilos para el perfil del usuario*/
 
 hr {
-    border: 1px solid rgb(22, 22, 22);
+    border: 1px solid var(--chinese-black);
     border-radius: 4px;
     width: 20vw;
 }
@@ -685,7 +698,7 @@ h2.profile-name {
 }
 
 .profile-data input {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--white-low-oppacity);
 }
 
 .profile-data .profile-data-info:focus {
@@ -693,7 +706,7 @@ h2.profile-name {
 }
 
 .profile-data .sign-log-in-button {
-    color: rgb(255, 255, 255);
+    color: var(--white);
     padding: .8rem;
     border-radius: 8px;
     margin: 20px 0 0 0;
@@ -807,15 +820,15 @@ p.artist-name {
     width: 100%;
     height: 100%; 
     overflow: auto; 
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: var(--black);
+    background-color: var(--black-medium-oppacity);
 }
 
 .modalContainer .modal-content {
     background-color: var(--white2);
     margin: auto;
     padding: 20px;
-    border: 1px solid lightgray;
+    border: 1px solid var(--light-gray);
     border-top: 10px solid var(--crystal-blue);
     width: 60%;
 }
@@ -914,7 +927,7 @@ p.artist-name {
     outline: none;
     border: none;
     background-color: var(--color-dark-secondary);
-    color: white;
+    color: var(--white);
     padding: 5px 20px;
     border-radius: 20px;
     /* Align it in the middle of the searchbar container */
@@ -931,9 +944,9 @@ p.artist-name {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: rgb(221, 209, 255);
+    background-color: var(--light-purple);
     border-radius: 0 0 8px 8px;
-    color: black;
+    color: var(--black);
     position: absolute;
     top: 60px;
     z-index: 10;
@@ -950,7 +963,7 @@ p.artist-name {
 }
 
 .searchbar::placeholder {
-    color: white;
+    color: var(--white);
 }
 
 .searchbar-button {
@@ -991,7 +1004,7 @@ p.artist-name {
     top: 0;
     width: 100%;
     height: 100%; 
-    background-color: rgba(0,0,0,0.4);
+    background-color: var(--black-medium-oppacity);
 }
 
 .logoutModal .logoutModal-content {
@@ -1039,7 +1052,7 @@ p.artist-name {
     color: var(--white);
     padding: .6rem 1rem .6rem 1rem;
     border-radius: 8px;
-    background-color: rgb(87, 87, 87);
+    background-color: var(--very-dark-gray);
     border: none;
     cursor: pointer;
 }
@@ -1219,7 +1232,7 @@ p.artist-name {
   -webkit-appearance: none;
   appearance: none;
   height: var(--slider-height);
-  background: black;
+  background: var(--black);
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
@@ -1232,7 +1245,7 @@ p.artist-name {
   appearance: none;
   width: 15px;
   height: 15px;
-  background: white;
+  background: var(--white);
   cursor: pointer;
   border-radius: 50%;
 }
@@ -1279,8 +1292,8 @@ i.fa-step-backward {
     font-size: 1.3em;
     font-weight: bold;
     font-family: var(--bs-font-roboto-default);
-    background-color: rgba(255, 255, 255, 0.6);
-    color: rgba(0, 0, 0, 0.8);
+    background-color: var(--white-medium-oppacity);
+    color: var(--black-high-oppacity);
     padding: 10px 30px 10px 30px;
     border: none;
     border-radius: 10px;
@@ -1288,11 +1301,11 @@ i.fa-step-backward {
 }
 
 #playlist-title:focus {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: var(--white-medium-oppacity);
 }
 
 #playlist-title::placeholder {
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--black-medium-exact-oppacity);
 }
 
 .playlist-creator-search {
@@ -1306,8 +1319,8 @@ i.fa-step-backward {
 #playlist-creator-searchbar {
     font-size: 1.0em;
     font-family: var(--bs-font-roboto-default);
-    background-color: white;
-    color: rgba(0, 0, 0, 0.8);
+    background-color: var(--white);
+    color: var(--black-high-oppacity);
     padding: 10px 30px 10px 30px;
     min-width: 300px;
     width: 60%;
@@ -1318,11 +1331,11 @@ i.fa-step-backward {
 
 .playlist-creator-search-results {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: var(--white-medium-high-oppacity);
     backdrop-filter: blur(10px);
     min-width: 300px;
     width: 60%;
-    color: black;
+    color: var(--black);
     top: 40px;
     border-radius: 0 0 10px 10px;
     z-index: 10;
@@ -1334,9 +1347,9 @@ i.fa-step-backward {
 }
 
 .playlist-creator-added-songs-container {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--white-medium-low-oppacity);
     backdrop-filter: blur(10px);
-    color: black;
+    color: var(--black);
     border-radius: 10px;
     padding: 20px 0 20px 0;
 }
@@ -1360,8 +1373,8 @@ i.fa-step-backward {
 .playlist-creator-button {
     font-size: 1.2rem;
     font-family: var(--bs-font-roboto-default);
-    background-color: rgba(255, 255, 255, 0.6);
-    color: rgba(0, 0, 0, 0.8);
+    background-color: var(--white-medium-oppacity);
+    color: var(--black-high-oppacity);
     padding: 10px 30px 10px 30px;
     border: none;
     border-radius: 10px;
@@ -1372,7 +1385,7 @@ i.fa-step-backward {
 }
 
 .playlist-creator-button:hover {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--white-high-oppacity);
     transform: scale(0.95);
 }
 
@@ -1385,8 +1398,8 @@ i.fa-step-backward {
     /* styles for a button */
     font-size: 1.2rem;
     font-family: var(--bs-font-roboto-default);
-    background-color: rgba(255, 255, 255, 0.6);
-    color: rgba(0, 0, 0, 0.8);
+    background-color: var(--white-medium-oppacity);
+    color: var(--black-high-oppacity);
     padding: 10px 30px 10px 30px;
     border: none;
     border-radius: 10px;
@@ -1397,7 +1410,7 @@ i.fa-step-backward {
 }
 
 .delete-playlist:hover {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--white-high-oppacity);
     transform: scale(0.95);
 }
 
@@ -1405,8 +1418,8 @@ i.fa-step-backward {
     /* styles for a button */
     font-size: 1rem;
     font-family: var(--bs-font-roboto-default);
-    background-color: rgba(255, 255, 255, 0.6);
-    color: rgba(0, 0, 0, 0.8);
+    background-color: var(--white-medium-oppacity);
+    color: var(--black-high-oppacity);
     padding: 10px 30px 10px 30px;
     border: none;
     border-radius: 10px;
