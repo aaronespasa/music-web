@@ -332,7 +332,7 @@ function searchSong() {
                 const searchResult = document.createElement("li");
                 searchResult.className = "searchbar-result";
                 searchResult.innerHTML = `
-                    <button class="searchbar-button play-button" name="play-button" onclick="openMusicPlayer('${track.id}')"> 
+                    <button class="searchbar-button play-button" name="play-button" onclick="openMusicPlayer('${track.id}')">
                         <img src="./images/play.svg" alt="play-button">
                     </button>
                     <p>${track.title}</p>

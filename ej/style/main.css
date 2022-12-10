@@ -32,11 +32,6 @@
     --black-low-oppacity: rgba(0, 0, 0, 0.1);
     --perano-blue: rgb(163, 172, 255);
     
-
-
-
-
-
     /* Fonts */
     --bs-font-roboto-default: Roboto, "Segoe UI",
     "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
@@ -931,9 +926,9 @@ p.artist-name {
     justify-content: center;
     align-items: center;
     width: 100%;
-    background-color: rgb(221, 209, 255);
+    background-color: var(--color-dark-secondary);
     border-radius: 0 0 8px 8px;
-    color: black;
+    color: var(--color-light-primary);
     position: absolute;
     top: 60px;
     z-index: 10;
@@ -1580,6 +1575,7 @@ i.fa-step-backward {
 }
 
 
+
 /* media query for a max width of 600px -> Mobile */
 @media (max-width: 600px) {
     /*Title*/
@@ -1595,9 +1591,6 @@ i.fa-step-backward {
         justify-content: center;
     }
 
-    .music-genre-songs-container {
-        justify-content: center;
-    }
 
     /* Quitamos el texto de los botones */
     .menu-option-text-container {
@@ -1642,5 +1635,62 @@ i.fa-step-backward {
         transform: scale(1.05);
         filter: brightness(1.1);
         transition: 0.2s;
+    }
+
+    .navbar-links-container {
+        margin-left: 80px;
+        padding-right: 0;
+        width: calc(100vw - 80px);
+    }
+
+    /* Ponemos el navbar-profile a la derecha */
+    .navbar-links-container .navbar-profile {
+        right: 0;
+    }
+
+    /* Centramos el searchbar */
+    .searchbar-container {
+        position: absolute;
+        display: flex;
+        left: calc(50vw - 215px);
+        height: 100%;
+    }
+
+    /* Cambiamos el tamaño del sidebar para que sea usable en mobile */
+    #searchbar {
+        text-align: center;
+        height: 40px;
+        width: 250px;
+        padding: 0;
+    }
+
+    .searchbar-profile-container {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        position: relative;
+    }
+
+    /* Navbar profile at the right of the navbar-links */
+    .navbar-profile {
+        position: absolute;
+        padding: 0 20px 0 0;
+        top: -25px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .navbar-profile-options {
+        top: 35px;
+        right: 20px;
+    }
+
+    /* Align the searchbar results in the center */
+    .searchbar-results {
+        margin: 0 auto;
+        right: calc(50vw - 50%);
+        /* padding del scroll-bar */
+        padding-right: 15px;
     }
 }
