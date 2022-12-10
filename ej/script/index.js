@@ -675,7 +675,7 @@ const setNavbarLinks = () => {
             <p class="profile-data-title">Fecha de nacimiento</p>
             <input class="profile-data-info" type="date" name="birthdate" id="birthdate" value="${birthdate}">
 
-            <button type="submit" class="sign-log-in-button">
+            <button type="submit" class="sign-log-in-button" onclick="goToHome()">
                 Guardar Cambios
             </button>
 

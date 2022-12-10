@@ -37,7 +37,7 @@
                 <ul class="menu-options-container">
                     <!-- Botón de la página principal -->
                     <li class="menu-option-container" onclick="goToHome()">
-                        <a href="index.html" class="menu-option-link-container">
+                        <a href="#" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
                                 <img src="images/icon.svg" alt="Home icon">
                             </figure>
@@ -50,7 +50,7 @@
                     <li class="menu-option-container" onclick="goToLists()">
                         <a href="mylists.html" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
-                                <img src="images/music-notes-icon.svg" alt="Listas">
+                                <img src="images/music-notes-icon.svg" alt="Listas icon">
                             </figure>
                             <div class="menu-option-text-container">
                                 <p>Listas</p>
@@ -61,7 +61,7 @@
                     <li class="menu-option-container">
                         <a href="playlistCreator.html" class="menu-option-link-container">
                             <figure class="menu-option-icon-container">
-                                <img src="images/podcast-icon.svg" alt="Home icon">
+                                <img src="images/podcast-icon.svg" alt="Create icon">
                             </figure>
                             <div class="menu-option-text-container">
                                 <p>Crear Lista</p>
@@ -74,7 +74,7 @@
                     <li class="bottom-link-container">
                         <a href="#privacy" class="bottom-link">
                             <figure class="bottom-link-icon-container">
-                                <img src="images/privacy-policy-icon.svg" alt="Home icon">
+                                <img src="images/privacy-policy-icon.svg" alt="Policy icon">
                             </figure>
                             <p>Política de Privacidad</p>
                         </a>
@@ -83,7 +83,7 @@
                     <li class="bottom-link-container">
                         <a href="#cookies" class="bottom-link">
                             <figure class="bottom-link-icon-container">
-                                <img src="images/cookie-icon.svg" alt="Home icon">
+                                <img src="images/cookie-icon.svg" alt="Cookie icon">
                             </figure>
                             <p>Política de Cookies</p>
                         </a>
@@ -95,10 +95,37 @@
         <div class="column">
             <!-- Contenedor de la barra de navegación -->
             <div class="navbar-links">
+                <div id="hamburger-menu" class="hamburger-menu">
+                    <img src="images/burger-menu.png" alt="Hamburger menu" onclick="openHamburgerMenu()">
+                </div>
+                
+                <div class="hamburguer-menu-options" id="hamburguer-menu-options">
+                    <div class="hamburguer-menu-option">
+                        <a class="hamburguer-menu-option-link" onclick="goToHome()">
+                            <p class="hamburguer-menu-option-text"><img class="hamburguer-menu-image" src="images/icon.svg" alt="Home icon">Home</p>
+                        </a>
+                    </div>
+                    <div class="hamburguer-menu-option">
+                        <a class="hamburguer-menu-option-link">
+                            <p class="hamburguer-menu-option-text"><img class="hamburguer-menu-image" src="images/music-notes-icon.svg" alt="Listas">Favoritos</p>
+                        </a>
+                    </div>
+                    <div class="hamburguer-menu-option">
+                        <a class="hamburguer-menu-option-link" onclick="goToLists()">
+                            <p class="hamburguer-menu-option-text"><img class="hamburguer-menu-image" src="images/music-notes-icon.svg" alt="Listas">Playlists</p>
+                        </a>
+                    </div>
+                    <div class="hamburguer-menu-option">
+                        <a class="hamburguer-menu-option-link" href="playlistCreator.html">
+                            <p class="hamburguer-menu-option-text"><img class="hamburguer-menu-image" src="images/podcast-icon.svg" alt="Create icon">Crear Playlist</p>
+                        </a>
+                    </div>
+                </div>
+                
                 <div class="navbar-links-container" id="navbar-links-container">
                 </div>
             </div>
-            <!-- Contenedor de la página principal -->
+            <!-- Contenedor del contenido -->
             <div class="content">
                 <span class="content-gradient"></span>
                 <div class="content-container" id="playlist-creator-container">
