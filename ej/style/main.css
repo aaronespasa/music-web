@@ -115,8 +115,7 @@ p {
 .navbar-links-container {
     display: flex;
     align-items: center;
-    margin-left: auto;
-    padding-right: 2em;
+    width: 100%;
 }
 
 .logo-container {
@@ -131,11 +130,6 @@ p {
     font-size: 1.3em;
     color: white;
     width: 100%;
-}
-
-.navbar-links-container {
-    margin-left: auto;
-    padding-right: 2em;
 }
 
 .sign-log-in-button {
@@ -895,10 +889,6 @@ p.artist-name {
 
 
 /* mostrar imaghe de perfil del usuario */
-.navbar-links-container {
-    display: flex;
-    position: relative;
-}
 
 .navbar-profile {
     display: flex;
@@ -907,8 +897,8 @@ p.artist-name {
 
 .navbar-profile-image {
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
 }
 
@@ -959,28 +949,28 @@ p.artist-name {
 }
 
 .searchbar-profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 90%;
+    background-color: rgb(87, 87, 87);
+}
+
+.searchbar-container {
     width: 100%;
-    height: 100%;
-    gap: 30px;
-    position: relative;
+    height: 50px;
+    background-color: var(--color-dark-secondary);
+    display: flex;
 }
 
 .searchbar {
     outline: none;
     border: none;
+    width: 100%;
+    height: 100%;
     background-color: var(--color-dark-secondary);
     color: white;
     padding: 5px 20px;
-    border-radius: 20px;
+    border-radius: 5px;
     /* Align it in the middle of the searchbar container */
     align-self: center;
-}
-
-.searchbar-container {
-    align-items: center;
 }
 
 .searchbar-results {
@@ -988,7 +978,6 @@ p.artist-name {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
     background-color: rgb(221, 209, 255);
     border-radius: 0 0 8px 8px;
     color: black;

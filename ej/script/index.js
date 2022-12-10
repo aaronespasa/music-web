@@ -360,12 +360,7 @@ const setNavbarLinks = () => {
         const user = JSON.parse(localStorage.getItem("user"));
         const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
         navbarLinks.style.flexDirection = "column";
-        const navbarProfileLinks = `
-            <div class="searchbar-profile-container">
-                <div class="searchbar-container">
-                    <input id="searchbar" onkeyup="searchSong()" class="searchbar" type="text" placeholder="Buscar">
-                    <ul id="searchbar-results" class="searchbar-results"></ul>
-                </div>
+        const navbarProfileImageMenu = `
                 <div class="navbar-profile">
                     <img src=${userImage} class="navbar-profile-image" onclick="toggleMenuLinks()">
                 </div>
@@ -386,6 +381,17 @@ const setNavbarLinks = () => {
                         </a>
                     </div>
                 </div>
+        `;
+        const songsSearchbar = `
+            <div class="searchbar-container">
+                <input id="searchbar" onkeyup="searchSong()" class="searchbar" type="text" placeholder="Buscar">
+                ${navbarProfileImageMenu}
+                <ul id="searchbar-results" class="searchbar-results"></ul>
+            </div>
+        `;
+        const navbarProfileLinks = `
+            <div class="searchbar-profile-container">
+                ${songsSearchbar}
             </div>
         `;
         navbarLinks.innerHTML = navbarProfileLinks;
