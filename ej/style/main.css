@@ -8,7 +8,7 @@
 :root {
 
     /* Colors */
-    --bs-color-secondary-button-blue: rgba(146, 139, 218, 0.6);
+    --bs-color-secondary-button-blue:#4EADFE;
     --bs-color-primary-nav-blue: rgba(230, 209, 255, .75);
 
     --color-dark-primary: #121216;
@@ -18,6 +18,40 @@
     --color-music-shadow: #3F3F3F;
 
     --color-light-primary: #D9D9D9;
+    --color-light-primary-43: rgba(217, 217, 217, 0.43);
+
+    --border-white: #ccc;
+    --border-dark: rgba(25, 25, 34, 0.79);
+    --dark-gray: #aaaaaa;
+    --white: #ffffff;
+    --old-silver: #858585;
+    --white2: #FEFEFE;
+    --black: #000000;
+    --crystal-blue: #58abb7;
+    --gray-20: rgb(51, 51, 51);
+    --space-blue: rgba(25, 25, 34, 0.75);
+    --black-no-opacity: rgba(0, 0, 0, 0.0);
+    --black-low-oppacity: rgba(0, 0, 0, 0.1);
+    --black-medium-oppacity: rgba(0, 0, 0, 0.4);
+    --black-medium-exact-oppacity: rgba(0, 0, 0, 0.5);
+    --black-high-oppacity: rgba(0, 0, 0, 0.8);
+    --white-low-oppacity: rgba(255, 255, 255, 0.1);
+    --white-medium-low-oppacity: rgba(255, 255, 255, 0.2);
+    --white-medium-oppacity: rgba(255, 255, 255, 0.6);
+    --white-medium-high-oppacity: rgba(255, 255, 255, 0.7);
+    --white-high-oppacity: rgba(255, 255, 255, 0.8);
+    --perano-blue: rgb(163, 172, 255);
+    --dark-blue: #1B1724;
+    
+    --red: rgb(255, 0, 0);
+    --chinese-black: rgb(22, 22, 22);
+    --light-purple: rgb(221, 209, 255);
+    --very-dark-gray: rgb(87, 87, 87);
+    --light-gray:  rgb(211,211,211);
+
+
+
+
 
     /* Fonts */
     --bs-font-roboto-default: Roboto, "Segoe UI",
@@ -45,7 +79,7 @@ h1 {
     margin: 0;
     color: var(--color-light-primary);
     font-family: var(--bs-font-roboto-default);
-    font-weight: lighter;
+    font-weight: lighter
 }
 
 li {
@@ -100,9 +134,16 @@ p {
     background-color: var(--color-dark-secondary);
 }
 
-.menu-title:hover .title-link {
-    transition: transform 0.5s ease-in-out;
-    transform: scale(0.95);
+.title-link {
+    font-size: 1.3em;
+    color: white;
+    width: 100%;
+}
+.title-link h1{
+    transition: color 0.5s ease-in-out;
+}
+.menu-title:hover .title-link h1 {
+    color:#67bdff;
 }
 
 .navbar-links {
@@ -126,10 +167,11 @@ p {
     width: 40px;
 }
 
-.title-link {
-    font-size: 1.3em;
-    color: white;
-    width: 100%;
+
+
+.navbar-links-container {
+    margin-left: auto;
+    padding-right: 2em;
 }
 
 .sign-log-in-button {
@@ -143,7 +185,7 @@ p {
 
 .sign-log-in-button {
     font-family: Poppins, sans-serif;
-    color: rgb(255, 255, 255);
+    color: var(--white);
     padding: .8rem;
     border-radius: 8px;
     background-color: var(--bs-color-secondary-button-blue);
@@ -212,7 +254,7 @@ p {
 
 .bottom-link:hover {
     text-decoration: underline;
-    color:rgb(51, 51, 51)
+    color:var(--gray-20)
 }
 
 .bottom-links-container {
@@ -281,6 +323,10 @@ p {
     width: 150px;
 }
 
+.song-cover-small {
+    height: 120px;
+    width: 120px;
+}
 .song-cover-container img {
     transition: transform 0.5s, filter 0.5s;
     width: 100%;
@@ -322,12 +368,12 @@ p {
 .song-container {
     
     /* Glass Effect */
-    background: rgba(25, 25, 34, 0.75);
+    background: var(--space-blue);
     border-radius: 8px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px var(--black-low-oppacity);
     backdrop-filter: blur(8.2px);
     -webkit-backdrop-filter: blur(8.2px);
-    border: 1px solid rgba(25, 25, 34, 0.79);
+    border: 1px solid var(--border-dark);
     
     display: flex;
     flex-direction: column;
@@ -351,7 +397,7 @@ p {
     justify-content: center;
     align-items: center;
     height: var(--footer-height);
-    background-color:rgba(163, 172, 255, 1);
+    background-color:var(--perano-blue);
 }
 
 .cta-text {
@@ -394,17 +440,18 @@ p {
     align-items: center;
     justify-content: center;
     margin-top: 8vh;
-    width: calc(30vw + 40px);
+    width: calc(65vw + 40px);
     max-width: calc(700px + 40px); 
     min-width: calc(300px + 40px);
     height: auto;
+    
     /* Glass Effect */
-    background: rgba(25, 25, 34, 0.75);
+    background: var(--space-blue);
     border-radius: 8px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px var(--black-low-oppacity);
     backdrop-filter: blur(8.2px);
     -webkit-backdrop-filter: blur(8.2px);
-    border: 1px solid rgba(25, 25, 34, 0.79);
+    border: 1px solid var(--border-dark);
 }
 
 .login-content .form-container {
@@ -423,7 +470,7 @@ p {
     padding: 1px 0 0 0;
     font-size: 1.2em;
     font-weight: bold;
-    color: black;
+    color: var(--white);
     text-align: center;
 }
 
@@ -433,160 +480,105 @@ p {
 
 
 /*! Seleccionando nombre de usuario, nombre, apellidos */
-.login-content input[type=text] {
+.login-content input{
     width: 30vw;  /* Pasar todos los calcs a variables */
     max-width: 700px;
     min-width: 300px;
     margin: 5px 5px;
     height: calc(20px + 1.2em);
     display: inline-block;
-    border: 1px solid #ccc;
+    border: 1px solid var(--gray-20);
     border-radius: 4px;
     box-sizing: border-box;
+    background-color: var(--gray-20);
+    color:var(--white2);
 }
-.login-content input[type=text]::placeholder {
+.login-content input::placeholder {
     text-align: center; 
+    color:var( --color-light-primary)
 }
-
-
-/*! Seleccionando email */
-.login-content input[type=email] {
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
-    margin: 5px 5px;
-    height: calc(20px + 1.2em);
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.login-content input[type=email]::placeholder {
-    text-align: center;
-}
-
-
-/*! Seleccionando contraseña */
-.login-content input[type=password] {
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
-    margin: 5px 5px;
-    height: calc(20px + 1.2em);
-    display: inline-block;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.login-content input[type=password]::placeholder {
-    text-align: center;
-}
-
-
-/*! Seleccionando date */
-.login-content input[type=date] {
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
-    margin: 5px 5px;
-    height: calc(20px + 1.2em);
-    display: inline-block;
-    border: 1px solid #ccc;
-    background-color: #ffffff;
-    color: #858585;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.login-content input[type=date]::placeholder {
-    text-align: center;
-    align-items: center;
-    margin: 0 -20px 0 0;
-}
-.login-content input[type="date"]:before{
-    content: attr(placeholder);
-    width: 180px;
-}
-
 
 /*! Seleccionando imagen de perfil */
 .login-content .input-file {
     display:none;  
 }
-
 .login-content .select-image-button {
     cursor: pointer;
     width: 30vw;
     max-width: 700px;
-    min-width: 300px;
+    min-width:400px;
     margin: 5px 5px;
     height: calc(20px + 1.2em);
     display: inline-block;
-    border: 1px solid #ccc;
-    background-color: #ffffff;
-    color: #858585;
+    border: 1px solid var(--gray-20);
+    background-color: var(--gray-20);
+    color: var(--border-white);
     border-radius: 4px;
     box-sizing: border-box;
 }
 
+/*! Seleccionando date */
+
+
+.login-content input[type="date"]:before{
+    content: attr(placeholder);
+    width: 180px;
+    color:var( --color-light-primary)
+}
+.login-content input[type="date"]:before::placeholder{
+    content: attr(placeholder);
+    width: 180px;
+    color:var( --color-light-primary)
+}
+
 .login-content input[type=submit] {
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
+    width: 10vw;
+    max-width: 400px;
+    min-width: 100px;
     margin: 5px 10px;
     height:calc(20px + 1.2em);
     border: transparent;
     border-radius: 4px;
-    color: white;
+    color: var(--black);
     font-size: .9em;
     font-weight: bold;
     background-color: var(--bs-color-secondary-button-blue);
 }
-
-
-/*! Borrar formulario */
-.login-content input[type=reset] {
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
-    margin: 5px 5px;
-    height: calc(20px + 1.2em);
-    display: inline-block;
-    border: 1px solid #ccc;
-    background-color: #ffffff;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-.login-content input[type=reset]::placeholder {
-    text-align: center;
-}
-
 .form-input input {
     outline: none;
 }
 
 /*! Checkbox */
-.login-content .form-input-checkbox {
-    width: 30vw;
-    max-width: 700px;
-    min-width: 300px;
-    margin: 5px 5px;
+.login-content input[type=checkbox] {
+    width: 1vw;
+    max-width: 30px;
+    min-width: 20px;
+    
     height: calc(10px + .6em);
-    display: inline-block;
+    float: left;
+    
     /* border: 1px solid #ccc;*/
-    background-color: rgba(0, 0, 0, 0.0); /*#ffffff*/
-    color: black;/*#858585;*/
+    background-color: var(--black-no-opacity); /*#ffffff*/
+    color: var(--black);/*#858585;*/
     border-radius: 4px;
     box-sizing: border-box;
     text-align: center;
-    font-size: .8em;
+    font-size: 1em;
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    padding-top: 2vh;
+    padding-bottom: 2vh;
 }
 
 .form-input-checkbox p {
-    display: inline-block;
-    margin: 0 0 0 5px;
+    margin-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--border-white);
+    font-size: 1em;
 }
 
 
@@ -597,32 +589,6 @@ p {
     transition: 0.2s;
 }
 
-.login-content .third-party-auth {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-}
-
-.third-party-auth img {
-    cursor: pointer;
-}
-
-.facebook-auth, .google-auth {
-    background-color: white;
-    border-radius: 4px;
-    padding: 5px;
-    margin: 5px 5px 5px 5px;
-    width: 30px;
-    height: 30px;
-    border: 1px solid #ccc;
-}
-
-.facebook-auth:active, .google-auth:active {
-    transform: scale(1.05);
-    filter: brightness(1.1);
-    transition: 0.2s;
-}
 
 .error-message-container {
     display: none;
@@ -630,7 +596,7 @@ p {
     width: 30vw;
     max-width: 700px;
     min-width: 300px;
-    background-color: red;
+    background-color: var(--red);
     border-radius: 4px;
     padding: 10px 0 10px 0;
     margin: 5px 5px;
@@ -639,7 +605,7 @@ p {
 .error-message {
     display: block;
     font-size: 0.9em;
-    color: white;
+    color: var(--white);
     text-align: center;
 }
 
@@ -651,6 +617,7 @@ p {
     cursor: pointer;
     transition: transform 0.5s ease;
     transform: scale(1.0);
+    
 }
 
 .form-button:hover {
@@ -662,9 +629,9 @@ p {
 /* ! Estilos para el perfil del usuario*/
 
 hr {
-    border: 1px solid rgb(22, 22, 22);
+    border: 1px solid var(--chinese-black);
     border-radius: 4px;
-    width: 20vw;
+    width: 45vw;
 }
 
 .profile-content{
@@ -691,12 +658,12 @@ hr {
     min-width: calc(300px + 40px);
     height: auto;
     /* Glass Effect */
-    background: rgba(25, 25, 34, 0.75);
+    background: var(--space-blue);
     border-radius: 8px;
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 30px var(--black-low-oppacity);
     backdrop-filter: blur(8.2px);
     -webkit-backdrop-filter: blur(8.2px);
-    border: 1px solid rgba(25, 25, 34, 0.79);
+    border: 1px solid var(--border-dark);
 }
 
 
@@ -706,19 +673,21 @@ hr {
     justify-content: center;
     align-items: center;
     margin: 0 0 40px 0;
+    color: var(--color-light-primary);
 }
 
 h2.profile-name {
     text-align: center;
     font-size: 2em;
-    margin: 3vh 0 2vh 0;
+    margin: 3vh 0 0vh 0;
+    color: var(--color-light-primary);
 }
 
 .profile-data .profile-image {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    margin: 0 0 -10px 0;
+    margin: 10px 0 -20px 0;
 }
 
 .profile-data .profile-data-title {
@@ -733,11 +702,12 @@ h2.profile-name {
     border: none;
     border-radius: 4px;
     padding: 10px 10px;
-    text-align: center;
+    text-align: left;
+    color: var(--color-light-primary-43);
 }
 
 .profile-data input {
-    background: rgba(255, 255, 255, 0.1);
+    background: var(--white-low-oppacity);
 }
 
 .profile-data .profile-data-info:focus {
@@ -745,30 +715,33 @@ h2.profile-name {
 }
 
 .profile-data .sign-log-in-button {
-    color: rgb(255, 255, 255);
+    color: var(--dark-blue);
     padding: .8rem;
     border-radius: 8px;
     margin: 20px 0 0 0;
-    background-color: var(--bs-color-secondary-button-blue);
     align-self: center;
     margin-top: 60px;
     cursor: pointer;
-}
-
+} 
 
 .profile-extra {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     width: 100%;
     height: 100%;
 }
 
 .profile-extra #profile-extra-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
     font-size: 1.3em;
     font-weight: bold;
-    margin: 25px 0 0px 0;
+    margin: 0px 0 0px 40px;
+    color: var(--color-light-primary);
 }
 
 
@@ -781,8 +754,8 @@ h2.profile-name {
     width: 100%;
     height: 100%;
     margin: 40px 0 30px 0;
-    width: 30vw;
-    max-width: 700px;
+    
+    max-width: 900px;
     min-width: 100px;
     border-radius: 8px;
     gap: 30px;
@@ -806,6 +779,7 @@ p.artist-name {
     margin: 10px 0 0px 0;
     text-align: center;
     max-width: 80px;
+    color: var(--color-light-primary);
 }
 
 .profile-extra #profile-extra-songs {
@@ -859,21 +833,21 @@ p.artist-name {
     width: 100%;
     height: 100%; 
     overflow: auto; 
-    background-color: rgb(0,0,0);
-    background-color: rgba(0,0,0,0.4);
+    background-color: var(--black);
+    background-color: var(--black-medium-oppacity);
 }
 
 .modalContainer .modal-content {
-    background-color: #fefefe;
+    background-color: var(--white2);
     margin: auto;
     padding: 20px;
-    border: 1px solid lightgray;
-    border-top: 10px solid #58abb7;
+    border: 1px solid var(--light-gray);
+    border-top: 10px solid var(--crystal-blue);
     width: 60%;
 }
 
 .modalContainer .close {
-    color: #aaaaaa;
+    color: var(--dark-gray);
     float: right;
     font-size: 28px;
     font-weight: bold;
@@ -881,7 +855,7 @@ p.artist-name {
 
 .modalContainer .close:hover,
 .modalContainer .close:focus {
-    color: #000;
+    color: var(--black);
     text-decoration: none;
     cursor: pointer;
 }
@@ -922,8 +896,8 @@ p.artist-name {
     border-radius: 8px 8px 8px 8px;
 
     /* Glass Effect */
-    background: rgba(25, 25, 34, 0.75);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: var(--space-blue);
+    box-shadow: 0 4px 30px var(--black-low-oppacity);
     backdrop-filter: blur(8.2px);
     -webkit-backdrop-filter: blur(8.2px);
 }
@@ -945,7 +919,7 @@ p.artist-name {
     transition: background 0.2s ease;
     transition: filter 0.2s ease;
     /* We increase the brightness of the background */
-    background: rgba(25, 25, 34, 0.75);
+    background: var(--space-blue);
 }
 
 .searchbar-profile-container {
@@ -966,11 +940,12 @@ p.artist-name {
     width: 100%;
     height: 100%;
     background-color: var(--color-dark-secondary);
-    color: white;
+    color: var(--white);
     padding: 5px 20px;
     border-radius: 5px;
     /* Align it in the middle of the searchbar container */
     align-self: center;
+    height: 30px;
 }
 
 .searchbar-results {
@@ -978,9 +953,10 @@ p.artist-name {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: rgb(221, 209, 255);
+    width: 100%;
+    background-color: var(--color-dark-secondary);
     border-radius: 0 0 8px 8px;
-    color: black;
+    color: var(--color-light-primary);
     position: absolute;
     top: 60px;
     z-index: 10;
@@ -997,7 +973,7 @@ p.artist-name {
 }
 
 .searchbar::placeholder {
-    color: white;
+    color: var(--white);
 }
 
 .searchbar-button {
@@ -1038,7 +1014,7 @@ p.artist-name {
     top: 0;
     width: 100%;
     height: 100%; 
-    background-color: rgba(0,0,0,0.4);
+    background-color: var(--black-medium-oppacity);
 }
 
 .logoutModal .logoutModal-content {
@@ -1051,7 +1027,7 @@ p.artist-name {
 }
 
 .logoutModal .close {
-    color: #aaaaaa;
+    color: var(--dark-gray);
     float: right;
     font-size: 40px;
     font-weight: bold;
@@ -1060,7 +1036,7 @@ p.artist-name {
 
 .logoutModal .close:hover,
 .logoutModal .close:focus {
-    color: #000;
+    color: var(--black);
     text-decoration: none;
     cursor: pointer;
     transform: scale(1.05);
@@ -1083,10 +1059,10 @@ p.artist-name {
 .logoutModal-footer button {
     font-family: Poppins, sans-serif;
     font-size: 0.8em;
-    color: rgb(255, 255, 255);
+    color: var(--white);
     padding: .6rem 1rem .6rem 1rem;
     border-radius: 8px;
-    background-color: rgb(87, 87, 87);
+    background-color: var(--color-music-shadow);
     border: none;
     cursor: pointer;
 }
@@ -1135,6 +1111,34 @@ p.artist-name {
 }
 
 .song-cover-container img:hover + a {
+    opacity: 1;
+    transition: 0.8s;
+}
+
+.song-cover-container-small a {
+    position: absolute;
+    display: block;
+    cursor: pointer;
+    background: var(--play-pause-icon);
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+    top: 60px;
+    left: 60px;
+
+    background-repeat: no-repeat;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.song-cover-container-small a:hover {
+    display: block;
+    opacity: 1;
+    transition: 0.8s;
+}
+
+.song-cover-container-small img:hover + a {
     opacity: 1;
     transition: 0.8s;
 }
@@ -1266,7 +1270,7 @@ p.artist-name {
   -webkit-appearance: none;
   appearance: none;
   height: var(--slider-height);
-  background: black;
+  background: var(--black);
   opacity: 0.7;
   -webkit-transition: .2s;
   transition: opacity .2s;
@@ -1279,7 +1283,7 @@ p.artist-name {
   appearance: none;
   width: 15px;
   height: 15px;
-  background: white;
+  background: var(--white);
   cursor: pointer;
   border-radius: 50%;
 }
@@ -1322,12 +1326,16 @@ i.fa-step-backward {
     text-align: center;
 }
 
+#playlist-creator-container h1{
+    font-weight: bold;
+    color: var(--color-light-primary);
+}
+
 #playlist-title {
     font-size: 1.3em;
     font-weight: bold;
     font-family: var(--bs-font-roboto-default);
-    background-color: rgba(255, 255, 255, 0.6);
-    color: rgba(0, 0, 0, 0.8);
+    background-color: var(--color-light-primary);
     padding: 10px 30px 10px 30px;
     border: none;
     border-radius: 10px;
@@ -1335,11 +1343,11 @@ i.fa-step-backward {
 }
 
 #playlist-title:focus {
-    background-color: rgba(255, 255, 255, 0.6);
+    background-color: var(--white-medium-oppacity);
 }
 
 #playlist-title::placeholder {
-    color: rgba(0, 0, 0, 0.5);
+    color: var(--black-medium-exact-oppacity);
 }
 
 .playlist-creator-search {
@@ -1353,8 +1361,8 @@ i.fa-step-backward {
 #playlist-creator-searchbar {
     font-size: 1.0em;
     font-family: var(--bs-font-roboto-default);
-    background-color: white;
-    color: rgba(0, 0, 0, 0.8);
+    background-color: var(--white);
+    color: var(--black-high-oppacity);
     padding: 10px 30px 10px 30px;
     min-width: 300px;
     width: 60%;
@@ -1365,11 +1373,11 @@ i.fa-step-backward {
 
 .playlist-creator-search-results {
     position: absolute;
-    background-color: rgba(255, 255, 255, 0.7);
+    background-color: var(--white-medium-high-oppacity);
     backdrop-filter: blur(10px);
     min-width: 300px;
     width: 60%;
-    color: black;
+    color: var(--black);
     top: 40px;
     border-radius: 0 0 10px 10px;
     z-index: 10;
@@ -1381,9 +1389,9 @@ i.fa-step-backward {
 }
 
 .playlist-creator-added-songs-container {
-    background: rgba(255, 255, 255, 0.2);
+    background: var(--white-medium-low-oppacity);
     backdrop-filter: blur(10px);
-    color: black;
+    color: var(--color-light-primary);
     border-radius: 10px;
     padding: 20px 0 20px 0;
 }
@@ -1407,8 +1415,8 @@ i.fa-step-backward {
 .playlist-creator-button {
     font-size: 1.2rem;
     font-family: var(--bs-font-roboto-default);
-    background-color: rgba(255, 255, 255, 0.6);
-    color: rgba(0, 0, 0, 0.8);
+    background-color: var(--color-music-shadow);
+    color: var(--color-light-primary);
     padding: 10px 30px 10px 30px;
     border: none;
     border-radius: 10px;
@@ -1419,7 +1427,8 @@ i.fa-step-backward {
 }
 
 .playlist-creator-button:hover {
-    background-color: rgba(255, 255, 255, 0.8);
+    /* make brighter */
+    filter: brightness(1.2);
     transform: scale(0.95);
 }
 
@@ -1432,8 +1441,8 @@ i.fa-step-backward {
     /* styles for a button */
     font-size: 1.2rem;
     font-family: var(--bs-font-roboto-default);
-    background-color: rgba(255, 255, 255, 0.6);
-    color: rgba(0, 0, 0, 0.8);
+    background-color: var(--white-medium-oppacity);
+    color: var(--black-high-oppacity);
     padding: 10px 30px 10px 30px;
     border: none;
     border-radius: 10px;
@@ -1444,7 +1453,7 @@ i.fa-step-backward {
 }
 
 .delete-playlist:hover {
-    background-color: rgba(255, 255, 255, 0.8);
+    background-color: var(--white-high-oppacity);
     transform: scale(0.95);
 }
 
@@ -1452,8 +1461,8 @@ i.fa-step-backward {
     /* styles for a button */
     font-size: 1rem;
     font-family: var(--bs-font-roboto-default);
-    background-color: rgba(255, 255, 255, 0.6);
-    color: rgba(0, 0, 0, 0.8);
+    background-color: var(--white-medium-oppacity);
+    color: var(--black-high-oppacity);
     padding: 10px 30px 10px 30px;
     border: none;
     border-radius: 10px;
@@ -1464,7 +1473,7 @@ i.fa-step-backward {
 }
 
 
-/* Hamberger menu hidden by default */
+/* Hamburger menu hidden by default */
 #hamburger-menu {
     display: none;
 }
@@ -1483,8 +1492,8 @@ i.fa-step-backward {
     border-radius: 8px 8px 8px 8px;
 
     /* Glass Effect */
-    background: rgba(25, 25, 34, 0.75);
-    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    background: var(--space-blue);
+    box-shadow: 0 4px 30px var(--black-low-oppacity);
     backdrop-filter: blur(8.2px);
     -webkit-backdrop-filter: blur(8.2px);
 }
@@ -1516,7 +1525,7 @@ i.fa-step-backward {
     transition: background 0.2s ease;
     transition: filter 0.2s ease;
     /* We increase the brightness of the background */
-    background: rgba(25, 25, 34, 0.75);
+    background: var(--space-blue);
 }
 
 .hamburguer-menu-option-text p {
@@ -1588,6 +1597,7 @@ i.fa-step-backward {
     .menu-title {
         font-size: 0.8em;
         width: 80px;
+        color: var(--color-light-primary);
     }
 
     .menu-title .title-link {
@@ -1618,13 +1628,16 @@ i.fa-step-backward {
 
     .bottom-link p {
         display: none;
+        color: var(--color-light-primary);
     }
 
     .profile-title .profile-name {
         font-size: 1.7em;
+        color: var(--color-light-primary);
     }
     
 }
+
 
 
 /* media query for a max width of 600px -> Mobile */
@@ -1642,9 +1655,6 @@ i.fa-step-backward {
         justify-content: center;
     }
 
-    .music-genre-songs-container {
-        justify-content: center;
-    }
 
     /* Quitamos el texto de los botones */
     .menu-option-text-container {
@@ -1689,5 +1699,62 @@ i.fa-step-backward {
         transform: scale(1.05);
         filter: brightness(1.1);
         transition: 0.2s;
+    }
+
+    .navbar-links-container {
+        margin-left: 80px;
+        padding-right: 0;
+        width: calc(100vw - 80px);
+    }
+
+    /* Ponemos el navbar-profile a la derecha */
+    .navbar-links-container .navbar-profile {
+        right: 0;
+    }
+
+    /* Centramos el searchbar */
+    .searchbar-container {
+        position: absolute;
+        display: flex;
+        left: calc(50vw - 215px);
+        height: 100%;
+    }
+
+    /* Cambiamos el tamaño del sidebar para que sea usable en mobile */
+    #searchbar {
+        text-align: center;
+        height: 40px;
+        width: 250px;
+        padding: 0;
+    }
+
+    .searchbar-profile-container {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        position: relative;
+    }
+
+    /* Navbar profile at the right of the navbar-links */
+    .navbar-profile {
+        position: absolute;
+        padding: 0 20px 0 0;
+        top: -25px;
+        width: 50px;
+        height: 50px;
+    }
+    
+    .navbar-profile-options {
+        top: 35px;
+        right: 20px;
+    }
+
+    /* Align the searchbar results in the center */
+    .searchbar-results {
+        /* margin: 0 auto; */
+        top:35px;
+        width: 300px;
+        left: -25px;
     }
 }
