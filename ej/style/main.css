@@ -668,6 +668,7 @@ hr {
     justify-content: center;
     align-items: center;
     margin: 0 0 40px 0;
+    color: var(--color-light-primary);
 }
 
 h2.profile-name {
@@ -696,6 +697,7 @@ h2.profile-name {
     border-radius: 4px;
     padding: 10px 10px;
     text-align: center;
+    color: var(--color-light-primary);
 }
 
 .profile-data input {
@@ -707,14 +709,15 @@ h2.profile-name {
 }
 
 .profile-data .sign-log-in-button {
-    color: var(--white);
+    color: var(--color-light-primary);
     padding: .8rem;
     border-radius: 8px;
     margin: 20px 0 0 0;
-    background-color: var(--bs-color-secondary-button-blue);
+    background-color: var(--color-music-shadow);
     align-self: center;
     margin-top: 60px;
     cursor: pointer;
+
 }
 
 
@@ -731,6 +734,7 @@ h2.profile-name {
     font-size: 1.3em;
     font-weight: bold;
     margin: 25px 0 0px 0;
+    color: var(--color-light-primary);
 }
 
 
@@ -768,6 +772,7 @@ p.artist-name {
     margin: 10px 0 0px 0;
     text-align: center;
     max-width: 80px;
+    color: var(--color-light-primary);
 }
 
 .profile-extra #profile-extra-songs {
@@ -1053,7 +1058,7 @@ p.artist-name {
     color: var(--white);
     padding: .6rem 1rem .6rem 1rem;
     border-radius: 8px;
-    background-color: var(--very-dark-gray);
+    background-color: var(--color-music-shadow);
     border: none;
     cursor: pointer;
 }
@@ -1350,7 +1355,7 @@ i.fa-step-backward {
 .playlist-creator-added-songs-container {
     background: var(--white-medium-low-oppacity);
     backdrop-filter: blur(10px);
-    color: var(--black);
+    color: var(--color-light-primary);
     border-radius: 10px;
     padding: 20px 0 20px 0;
 }
@@ -1374,8 +1379,8 @@ i.fa-step-backward {
 .playlist-creator-button {
     font-size: 1.2rem;
     font-family: var(--bs-font-roboto-default);
-    background-color: var(--white-medium-oppacity);
-    color: var(--black-high-oppacity);
+    background-color: var(--color-music-shadow);
+    color: var(--color-light-primary);
     padding: 10px 30px 10px 30px;
     border: none;
     border-radius: 10px;
@@ -1386,7 +1391,8 @@ i.fa-step-backward {
 }
 
 .playlist-creator-button:hover {
-    background-color: var(--white-high-oppacity);
+    /* make brighter */
+    filter: brightness(1.2);
     transform: scale(0.95);
 }
 
@@ -1431,7 +1437,7 @@ i.fa-step-backward {
 }
 
 
-/* Hamberger menu hidden by default */
+/* Hamburger menu hidden by default */
 #hamburger-menu {
     display: none;
 }
@@ -1555,6 +1561,7 @@ i.fa-step-backward {
     .menu-title {
         font-size: 0.8em;
         width: 80px;
+        color: var(--color-light-primary);
     }
 
     .menu-title .title-link {
@@ -1585,10 +1592,12 @@ i.fa-step-backward {
 
     .bottom-link p {
         display: none;
+        color: var(--color-light-primary);
     }
 
     .profile-title .profile-name {
         font-size: 1.7em;
+        color: var(--color-light-primary);
     }
     
 }
@@ -1707,9 +1716,9 @@ i.fa-step-backward {
 
     /* Align the searchbar results in the center */
     .searchbar-results {
-        margin: 0 auto;
-        right: calc(50vw - 50%);
-        /* padding del scroll-bar */
-        padding-right: 15px;
+        /* margin: 0 auto; */
+        top:35px;
+        width: 300px;
+        left: -25px;
     }
 }
