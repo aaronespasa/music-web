@@ -49,6 +49,8 @@
     --very-dark-gray: rgb(87, 87, 87);
     --light-gray:  rgb(211,211,211);
 
+    --gray: rgb(114, 114, 136);
+
 
 
 
@@ -864,15 +866,20 @@ p.artist-name {
 
 /* mostrar imaghe de perfil del usuario */
 
+.bell-image {
+    cursor: pointer;
+}
+
 .navbar-profile {
     display: flex;
     align-items: center;
+    margin-left: 15px;
 }
 
 .navbar-profile-image {
     cursor: pointer;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     border-radius: 50%;
 }
 
@@ -891,15 +898,57 @@ p.artist-name {
     position: absolute;
     top: 60px;
     right: 0;
-    width: 160px;
+    min-width: 220px;
     z-index: 10;
-    border-radius: 8px 8px 8px 8px;
+    border-radius: 8px;
+    padding: 0;
 
     /* Glass Effect */
     background: var(--space-blue);
     box-shadow: 0 4px 30px var(--black-low-oppacity);
     backdrop-filter: blur(8.2px);
     -webkit-backdrop-filter: blur(8.2px);
+}
+
+.navbar-profile-option {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    height: 100%;
+    padding: 5px;
+}
+
+.navbar-profile-option:last-child {
+    margin-top: 20px;
+}
+
+.navbar-profile-option-container {
+    width: 100%;
+    padding-left: 40px;
+}
+
+.navbar-profile-option-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    width: 100%;
+    height: 100%;
+    padding: 10px;
+}
+
+.navbar-profile-option-image {
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+    box-shadow: 0px 0px 25px rgba(48, 119, 157, 0.8);
+}
+
+.navbar-profile-option-name {
+    font-size: .7em;
+    margin: 15px 0 0 0;
+    color: var(--gray);
 }
 
 .navbar-profile-option-link {
@@ -914,24 +963,22 @@ p.artist-name {
 }
 
 .navbar-profile-option-text:hover {
-    /* We increase the brightness */
-    filter: brightness(1.8);
-    transition: background 0.2s ease;
-    transition: filter 0.2s ease;
-    /* We increase the brightness of the background */
-    background: var(--space-blue);
+    transition: color 0.2s ease;
+    color: var(--gray);
 }
 
 .searchbar-profile-container {
     width: 90%;
-    background-color: rgb(87, 87, 87);
 }
 
 .searchbar-container {
     width: 100%;
     height: 50px;
     background-color: var(--color-dark-secondary);
+    padding: 0 10px 0 10px;
+    border-radius: 8px;
     display: flex;
+    position: relative;
 }
 
 .searchbar {
@@ -945,8 +992,24 @@ p.artist-name {
     border-radius: 5px;
     /* Align it in the middle of the searchbar container */
     align-self: center;
-    height: 30px;
+    height: 35px;
 }
+
+/* .searchbar-input-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+} */
+
+/* .searchbar-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    margin-left: 10px;
+    align-self: center;
+} */
 
 .searchbar-results {
     display: flex;
@@ -958,7 +1021,8 @@ p.artist-name {
     border-radius: 0 0 8px 8px;
     color: var(--color-light-primary);
     position: absolute;
-    top: 60px;
+    top: 45px;
+    left: 0;
     z-index: 10;
 }
 
@@ -973,7 +1037,12 @@ p.artist-name {
 }
 
 .searchbar::placeholder {
-    color: var(--white);
+    font-size: 1.2em;
+    color: var(--gray)
+}
+
+.searchbar:focus {
+    color: white;
 }
 
 .searchbar-button {
@@ -1681,17 +1750,15 @@ i.fa-step-backward {
     /* Hamburguer menu at the top left corner of the navbar-links */
     #hamburger-menu {
         display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 50px;
-        height: 50px;
-        padding: 10px 10px 10px 20px;
+        width: 40px;
+        height: 40px;
+        align-self: center;
+        margin: 0 15px 0 20px;
     }
 
     .hamburger-menu img {
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         cursor: pointer;
     }
 
@@ -1702,7 +1769,7 @@ i.fa-step-backward {
     }
 
     .navbar-links-container {
-        margin-left: 80px;
+        margin-left: 0;
         padding-right: 0;
         width: calc(100vw - 80px);
     }
@@ -1714,18 +1781,17 @@ i.fa-step-backward {
 
     /* Centramos el searchbar */
     .searchbar-container {
-        position: absolute;
         display: flex;
-        left: calc(50vw - 215px);
         height: 100%;
+        background: none;
+        padding-left: 0;
     }
 
     /* Cambiamos el tamaño del sidebar para que sea usable en mobile */
     #searchbar {
-        text-align: center;
         height: 40px;
         width: 250px;
-        padding: 0;
+        padding: 0 0 0 20px;
     }
 
     .searchbar-profile-container {
@@ -1736,25 +1802,44 @@ i.fa-step-backward {
         position: relative;
     }
 
-    /* Navbar profile at the right of the navbar-links */
-    .navbar-profile {
-        position: absolute;
-        padding: 0 20px 0 0;
-        top: -25px;
-        width: 50px;
-        height: 50px;
-    }
-    
-    .navbar-profile-options {
-        top: 35px;
-        right: 20px;
-    }
-
     /* Align the searchbar results in the center */
     .searchbar-results {
         /* margin: 0 auto; */
-        top:35px;
-        width: 300px;
-        left: -25px;
+        top: 40px;
+        left: 0;
+
+        padding: 0 10px;
+
+        /* same width as the #searchbar input
+           without the padding and 2 spaces */
+        min-width: calc(250px - 40px - 35px);
+        width: 54%;
+    }
+
+    .searchbar-results img {
+        width: 20px;
+        height: 20px;
+    }
+
+    .searchbar-result p {
+        font-size: 0.8em;
+    }
+
+    /* Navbar profile at the right of the navbar-links */
+    .navbar-profile {
+        padding: 0 20px 0 0;
+        width: 50px;
+        height: 50px;
+        margin-left: 0;
+        padding-right: 0;
+    }
+
+    .navbar-profile:has(> .bell-image) {
+        margin-left: 15px;
+    }
+    
+    .navbar-profile-options {
+        top: 60px;
+        right: 0;
     }
 }

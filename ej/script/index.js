@@ -179,10 +179,33 @@ const closeLogoutModal = () => {
 }
 
 function toggleMenuLinks() {
+    navbarNotifications = document.getElementById("navbar-notifications");
     navbarProfileOptions = document.getElementById("navbar-profile-options");
+
     maxProfileHeight = navbarProfileOptions.style.maxHeight;
     // if navProfileOptions maxHeight style is 0, then set it to auto else set it to 0
-    navbarProfileOptions.style.maxHeight = (maxProfileHeight === "0px" || maxProfileHeight === "") ? "200px" : "0px";
+    navbarProfileOptions.style.maxHeight = (maxProfileHeight === "0px" || maxProfileHeight === "") ? "300px" : "0px";
+    navbarProfileOptions.style.paddingTop = (maxProfileHeight === "0px" || maxProfileHeight === "") ? "10px" : "0px";
+    navbarProfileOptions.style.paddingBottom = (maxProfileHeight === "0px" || maxProfileHeight === "") ? "10px" : "0px";
+
+    navbarNotifications.style.maxHeight = "0px";
+    navbarNotifications.style.paddingTop = "0px";
+    navbarNotifications.style.paddingBottom = "0px";
+}
+
+function toggleNotificationLinks() {
+    navbarNotifications = document.getElementById("navbar-notifications");
+    navbarProfileOptions = document.getElementById("navbar-profile-options");
+    
+    maxNotificationsHeight = navbarNotifications.style.maxHeight;
+    // if navProfileOptions maxHeight style is 0, then set it to auto else set it to 0
+    navbarNotifications.style.maxHeight = (maxNotificationsHeight === "0px" || maxNotificationsHeight === "") ? "300px" : "0px";
+    navbarNotifications.style.paddingTop = (maxNotificationsHeight === "0px" || maxNotificationsHeight === "") ? "10px" : "0px";
+    navbarNotifications.style.paddingBottom = (maxNotificationsHeight === "0px" || maxNotificationsHeight === "") ? "10px" : "0px";
+
+    navbarProfileOptions.style.maxHeight = "0px";
+    navbarProfileOptions.style.paddingTop = "0px";
+    navbarProfileOptions.style.paddingBottom = "0px";
 }
 
 const createErrorMessage = (message) => {
@@ -365,6 +388,10 @@ function searchSong() {
     }
 }
 
+const getNotificationIcon = (isNotification) => {
+    return isNotification ? "./images/bell-notification.svg" : "./images/bell.svg";
+}
+
 const setNavbarLinks = () => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
 
@@ -378,32 +405,61 @@ const setNavbarLinks = () => {
         // Cuando se inicia sesión, en el navbar solo aparece la imagen del usuario
         const user = JSON.parse(localStorage.getItem("user"));
         const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
+        
+        let isNotification = true;
+
         navbarLinks.style.flexDirection = "column";
+        const navbarNotificationsMenu = `
+            <div class="navbar-profile">
+                <img src=${getNotificationIcon(isNotification)} class="bell-image" onclick="toggleNotificationLinks()">
+            </div>
+            <div class="navbar-profile-options" id="navbar-notifications">
+                    <div class="navbar-profile-option-container">
+                        <div class="navbar-profile-option">
+                            <img src="./images/edit-profile.svg" class="navbar-profile-option-icon">
+                            <a href="#settings" class="navbar-profile-option-link" onclick="goToProfile()">
+                                <p class="navbar-profile-option-text">Editar Perfil</p>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+        `
         const navbarProfileImageMenu = `
                 <div class="navbar-profile">
                     <img src=${userImage} class="navbar-profile-image" onclick="toggleMenuLinks()">
                 </div>
                 <div class="navbar-profile-options" id="navbar-profile-options">
-                    <div class="navbar-profile-option">
-                        <a class="navbar-profile-option-link" onclick="goToAccount()">
-                            <p class="navbar-profile-option-text">Cuenta</p>
-                        </a>
-                    </div>
-                    <div class="navbar-profile-option">
-                        <a href="#settings" class="navbar-profile-option-link" onclick="goToProfile()">
-                            <p class="navbar-profile-option-text">Perfil</p>
-                        </a>
-                    </div>
-                    <div class="navbar-profile-option">
-                        <a href="#logout" class="navbar-profile-option-link" onclick="modalFunction()">
-                            <p class="navbar-profile-option-text">Cerrar Sesión</p>
-                        </a>
+                    <div class="navbar-profile-option-info">
+                        <img src=${userImage} class="navbar-profile-option-image">
+                        <p class="navbar-profile-option-name">${user.name} ${user.surname}</p>
+                    </div> 
+                    <div class="navbar-profile-option-container">
+                        <div class="navbar-profile-option">
+                            <img src="./images/edit-profile.svg" class="navbar-profile-option-icon">
+                            <a href="#settings" class="navbar-profile-option-link" onclick="goToProfile()">
+                                <p class="navbar-profile-option-text">Editar Perfil</p>
+                            </a>
+                        </div>
+                        <div class="navbar-profile-option">
+                            <img src="./images/account.svg" class="navbar-profile-option-icon">
+                            <a class="navbar-profile-option-link" onclick="goToAccount()">
+                                <p class="navbar-profile-option-text">Mi Cuenta</p>
+                            </a>
+                        </div>
+                        
+                        <div class="navbar-profile-option">
+                            <img src="./images/logout.svg" class="navbar-profile-option-icon">
+                            <a href="#logout" class="navbar-profile-option-link" onclick="modalFunction()">
+                                <p class="navbar-profile-option-text">Cerrar Sesión</p>
+                            </a>
+                        </div>
                     </div>
                 </div>
         `;
         const songsSearchbar = `
             <div class="searchbar-container">
                 <input id="searchbar" onkeyup="searchSong()" class="searchbar" type="text" placeholder="Buscar">
+                ${navbarNotificationsMenu}
                 ${navbarProfileImageMenu}
                 <ul id="searchbar-results" class="searchbar-results"></ul>
             </div>
