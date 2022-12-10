@@ -13,6 +13,8 @@ const profileData = document.getElementById("profile-body");
 const profileOptions = document.getElementById("profile-options-container");
 const myListsContainer = document.getElementById("mylists-container");
 
+const profileImage = document.getElementById("profile-image");
+
 let now_playing = document.getElementsByClassName(".now-playing");
 let track_art = document.getElementsByClassName(".track-art");
 let track_name = document.getElementsByClassName(".track-name");
@@ -373,12 +375,7 @@ const setNavbarLinks = () => {
         const user = JSON.parse(localStorage.getItem("user"));
         const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
         navbarLinks.style.flexDirection = "column";
-        const navbarProfileLinks = `
-            <div class="searchbar-profile-container">
-                <div class="searchbar-container">
-                    <input id="searchbar" onkeyup="searchSong()" class="searchbar" type="text" placeholder="Buscar">
-                    <ul id="searchbar-results" class="searchbar-results"></ul>
-                </div>
+        const navbarProfileImageMenu = `
                 <div class="navbar-profile">
                     <img src=${userImage} class="navbar-profile-image" onclick="toggleMenuLinks()">
                 </div>
@@ -399,6 +396,17 @@ const setNavbarLinks = () => {
                         </a>
                     </div>
                 </div>
+        `;
+        const songsSearchbar = `
+            <div class="searchbar-container">
+                <input id="searchbar" onkeyup="searchSong()" class="searchbar" type="text" placeholder="Buscar">
+                ${navbarProfileImageMenu}
+                <ul id="searchbar-results" class="searchbar-results"></ul>
+            </div>
+        `;
+        const navbarProfileLinks = `
+            <div class="searchbar-profile-container">
+                ${songsSearchbar}
             </div>
         `;
         navbarLinks.innerHTML = navbarProfileLinks;
@@ -434,20 +442,21 @@ const setNavbarLinks = () => {
             Perfil de ${name} ${surname}
         </h2>`;
 
+        //deleted
+        //<p class="profile-data-title">Correo electrónico</p>
+        //<p class="profile-data-info">${email}</p>
+        //<p class="profile-data-title">Fecha de nacimiento</p>
+        //<p class="profile-data-info">${birthdate}</p>
+        
         // set the profile data
         const username = user.username, email = user.email, birthdate = user.birthdate;
         const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
         const userProfileInitialData = `
+            
             <div class="profile-data">
-            <img src="${userImage}" class="profile-image" alt="profile-image">
-            </div>
-            <div class="profile-data">
-                <p class="profile-data-title">Nombre de usuario</p>
+                
                 <p class="profile-data-info">@${username}</p>
-                <p class="profile-data-title">Correo electrónico</p>
-                <p class="profile-data-info">${email}</p>
-                <p class="profile-data-title">Fecha de nacimiento</p>
-                <p class="profile-data-info">${birthdate}</p>
+                
             </div>
             <hr>
             <div class="profile-extra">
@@ -468,22 +477,56 @@ const setNavbarLinks = () => {
             </div>
             <p id="profile-extra-title">Canciones más escuchadas</p>
             <div class="profile-extra-artists" id="profile-extra-artists">
-                <div class="artist-profile">
-                    <img src="images/highway-to-hell.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Highway to Hell</p>
+                <div class="song-container">
+
+                    <figure class="song-cover-container-small">
+                        <img class="song-cover-small" src="./images/highway-to-hell.jpeg" alt="Song Cover">
+                        <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                    </figure>
+                    <p class="song-description">
+                        Highway to Hell
+                    </p>
+                    <p class="song-author">
+                        AC/DC
+                    </p>
+                
                 </div>
-                <div class="artist-profile">
-                    <img src="images/still-dre.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Still D.R.E.</p>
+                <div class="song-container">
+
+                    <figure class="song-cover-container-small">
+                        <img class="song-cover-small" src="./images/still-dre.jpeg" alt="Song Cover">
+                        <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                    </figure>
+                    <p class="song-description">
+                        Still D.R.E.
+                    </p>
+                    <p class="song-author">
+                        Dr. Dre
+                    </p>
+                
                 </div>
-                <div class="artist-profile">
-                    <img src="images/gods-plan.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Gods Plan</p>
+                <div class="song-container">
+
+                    <figure class="song-cover-container-small">
+                        <img class="song-cover-small" src="./images/gods-plan.jpeg" alt="Song Cover">
+                        <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                    </figure>
+                    <p class="song-description">
+                        Gods plan
+                    </p>
+                    <p class="song-author">
+                        Drake
+                    </p>
+                
                 </div>
             </div>
             <p id="profile-extra-title">Canciones favoritas</p>
         `;
-
+        profileImage.innerHTML = `
+        <div class="profile-data">
+            <img src="${userImage}" class="profile-image" alt="profile-image">
+        </div>
+        `;
         let favourites = `<div class="profile-extra-liked-songs" id="profile-extra-liked-songs">`;
         const favouriteSongs = getLikedSongsInformation();
         favouriteSongs.forEach(song => {
@@ -500,10 +543,20 @@ const setNavbarLinks = () => {
         const restOfSections = `
             <p id="profile-extra-title">Canciones del usuario: 1</p>
                 <div class="profile-extra-artists" id="profile-extra-artists">
-                    <div class="artist-profile">
-                        <img src="images/profile-cover.jpeg" alt="artist1" class="artist-img">
-                        <p class="artist-name">Sunrise Cover</p>
-                    </div>
+                <div class="song-container">
+
+                <figure class="song-cover-container-small">
+                    <img class="song-cover-small" src="./images/profile-cover.jpeg" alt="Song Cover">
+                    <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                </figure>
+                <p class="song-description">
+                    Sunrise Cover
+                </p>
+                <p class="song-author">
+                    User
+                </p>
+            
+            </div>
                 </div>
                 <p id="profile-extra-title">Seguidores</p>
                 <div class="profile-extra-artists" id="profile-extra-artists">
@@ -670,6 +723,11 @@ const setNavbarLinks = () => {
             Cuenta de ${name} ${surname}
         </h2>`;
 
+
+        // deleted
+        //<p class="profile-data-title">Fecha de nacimiento</p>
+        //<input class="profile-data-info" type="date" name="birthdate" id="birthdate" value="${birthdate}">
+
         // set the profile data
         const username = user.username, email = user.email, birthdate = user.birthdate;
         const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
@@ -685,8 +743,6 @@ const setNavbarLinks = () => {
             <input class="profile-data-info" type="text" name="username" id="username" placeholder="Nombre de usuario" value="${username}">
             <p class="profile-data-title">Correo electrónico</p>
             <input class="profile-data-info" type="email" name="email" id="email" placeholder="Correo electrónico" value="${email}">
-            <p class="profile-data-title">Fecha de nacimiento</p>
-            <input class="profile-data-info" type="date" name="birthdate" id="birthdate" value="${birthdate}">
 
             <button type="submit" class="sign-log-in-button">
                 Guardar Cambios
@@ -695,7 +751,7 @@ const setNavbarLinks = () => {
             <div id="error-message-container" class="error-message-container"></div>
         `;
 
-        profileData.innerHTML = `
+        profileImage.innerHTML = `
         <div class="profile-data">
             <img src="${userImage}" class="profile-image" alt="profile-image">
         </div>

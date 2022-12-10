@@ -18,6 +18,7 @@
     --color-music-shadow: #3F3F3F;
 
     --color-light-primary: #D9D9D9;
+    --color-light-primary-43: rgba(217, 217, 217, 0.43);
 
     --border-white: #ccc;
     --border-dark: rgba(25, 25, 34, 0.79);
@@ -40,6 +41,7 @@
     --white-medium-high-oppacity: rgba(255, 255, 255, 0.7);
     --white-high-oppacity: rgba(255, 255, 255, 0.8);
     --perano-blue: rgb(163, 172, 255);
+    --dark-blue: #1B1724;
     
     --red: rgb(255, 0, 0);
     --chinese-black: rgb(22, 22, 22);
@@ -154,8 +156,7 @@ p {
 .navbar-links-container {
     display: flex;
     align-items: center;
-    margin-left: auto;
-    padding-right: 2em;
+    width: 100%;
 }
 
 .logo-container {
@@ -322,6 +323,10 @@ p {
     width: 150px;
 }
 
+.song-cover-small {
+    height: 120px;
+    width: 120px;
+}
 .song-cover-container img {
     transition: transform 0.5s, filter 0.5s;
     width: 100%;
@@ -626,7 +631,7 @@ p {
 hr {
     border: 1px solid var(--chinese-black);
     border-radius: 4px;
-    width: 20vw;
+    width: 45vw;
 }
 
 .profile-content{
@@ -674,7 +679,7 @@ hr {
 h2.profile-name {
     text-align: center;
     font-size: 2em;
-    margin: 3vh 0 2vh 0;
+    margin: 3vh 0 0vh 0;
     color: var(--color-light-primary);
 }
 
@@ -682,7 +687,7 @@ h2.profile-name {
     width: 120px;
     height: 120px;
     border-radius: 50%;
-    margin: 0 0 -10px 0;
+    margin: 10px 0 -20px 0;
 }
 
 .profile-data .profile-data-title {
@@ -697,8 +702,8 @@ h2.profile-name {
     border: none;
     border-radius: 4px;
     padding: 10px 10px;
-    text-align: center;
-    color: var(--color-light-primary);
+    text-align: left;
+    color: var(--color-light-primary-43);
 }
 
 .profile-data input {
@@ -710,11 +715,10 @@ h2.profile-name {
 }
 
 .profile-data .sign-log-in-button {
-    color: var(--color-light-primary);
+    color: var(--dark-blue);
     padding: .8rem;
     border-radius: 8px;
     margin: 20px 0 0 0;
-    background-color: var(--color-music-shadow);
     align-self: center;
     margin-top: 60px;
     cursor: pointer;
@@ -724,15 +728,19 @@ h2.profile-name {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: left;
     width: 100%;
     height: 100%;
 }
 
 .profile-extra #profile-extra-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
     font-size: 1.3em;
     font-weight: bold;
-    margin: 25px 0 0px 0;
+    margin: 0px 0 0px 40px;
     color: var(--color-light-primary);
 }
 
@@ -746,8 +754,8 @@ h2.profile-name {
     width: 100%;
     height: 100%;
     margin: 40px 0 30px 0;
-    width: 30vw;
-    max-width: 700px;
+    
+    max-width: 900px;
     min-width: 100px;
     border-radius: 8px;
     gap: 30px;
@@ -855,10 +863,6 @@ p.artist-name {
 
 
 /* mostrar imaghe de perfil del usuario */
-.navbar-links-container {
-    display: flex;
-    position: relative;
-}
 
 .navbar-profile {
     display: flex;
@@ -867,8 +871,8 @@ p.artist-name {
 
 .navbar-profile-image {
     cursor: pointer;
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
 }
 
@@ -919,29 +923,29 @@ p.artist-name {
 }
 
 .searchbar-profile-container {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 90%;
+    background-color: rgb(87, 87, 87);
+}
+
+.searchbar-container {
     width: 100%;
-    height: 100%;
-    gap: 30px;
-    position: relative;
+    height: 50px;
+    background-color: var(--color-dark-secondary);
+    display: flex;
 }
 
 .searchbar {
     outline: none;
     border: none;
+    width: 100%;
+    height: 100%;
     background-color: var(--color-dark-secondary);
     color: var(--white);
     padding: 5px 20px;
-    border-radius: 20px;
+    border-radius: 5px;
     /* Align it in the middle of the searchbar container */
     align-self: center;
     height: 30px;
-}
-
-.searchbar-container {
-    align-items: center;
 }
 
 .searchbar-results {
@@ -1107,6 +1111,34 @@ p.artist-name {
 }
 
 .song-cover-container img:hover + a {
+    opacity: 1;
+    transition: 0.8s;
+}
+
+.song-cover-container-small a {
+    position: absolute;
+    display: block;
+    cursor: pointer;
+    background: var(--play-pause-icon);
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+    top: 60px;
+    left: 60px;
+
+    background-repeat: no-repeat;
+    z-index: 1;
+    opacity: 0;
+    transition: opacity 0.8s ease;
+}
+
+.song-cover-container-small a:hover {
+    display: block;
+    opacity: 1;
+    transition: 0.8s;
+}
+
+.song-cover-container-small img:hover + a {
     opacity: 1;
     transition: 0.8s;
 }
