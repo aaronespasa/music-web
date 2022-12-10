@@ -675,6 +675,7 @@ h2.profile-name {
     text-align: center;
     font-size: 2em;
     margin: 3vh 0 2vh 0;
+    color: var(--color-light-primary);
 }
 
 .profile-data .profile-image {
