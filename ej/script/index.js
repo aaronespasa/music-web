@@ -243,11 +243,14 @@ const validateEmail = (email) =>{
 // create async function to get the user image
 const saveUserInLocalStorage = async user => {
     const useImageInput = document.getElementById("input-file");
+    console.log("function to save image")
     if (useImageInput.files.length > 0) {
+        console.log("if to save image")
         const userImageFile = useImageInput.files[0];
         const reader = new FileReader();
         reader.readAsDataURL(userImageFile);
 
+        console.log("reader", reader)
         // wait until the reader is ready
         await new Promise((resolve, reject) => {
             reader.onload = resolve;
@@ -290,7 +293,11 @@ const signUp = async (event) => {
     const surname = document.getElementById("surname").value;
     const birthdate = document.getElementById("birthdate").value;
 
+    console.log("entering in signup")
+
     if (validateUsername(username) && validatePassword(password)) {
+
+        console.log("username and password validated")
         let user = {
             "username": username,
             "email": email,
@@ -769,8 +776,15 @@ const setNavbarLinks = () => {
 }
         
 if (signUpForm !== null) {
-    signUpForm.addEventListener("submit", (event) => signUp(event));
-    selectImageButton.addEventListener("click", () => selectImageInput.click());
+    // detect when submitting using the signUpForm and prevent the default behaviour
+    // signUpForm.addEventListener("submit", (event) => signUp(event));
+
+    signUpForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        console.log("signUpForm submitted");
+    });
+
+    // selectImageButton.addEventListener("click", () => selectImageInput.click());
 
 } else if (loginForm !== null) {
     loginForm.addEventListener("submit", (event) => login(event));
@@ -899,7 +913,7 @@ const setPlaylistsInHome = () => {
             musicCard.setAttribute("songName", title);
             // Crear iterador autoincremental para poder distinguir las canciones
             // ! Ahora podremos llamar a cada canción por su iterador (posición en el json))
-            console.log(iterador);
+
             musicCard.innerHTML = `
                 <figure class="song-cover-container">
                     <img class="song-cover" src="./images/${cover}" alt="Song Cover">
@@ -1052,8 +1066,11 @@ document.addEventListener("DOMContentLoaded", () => {
     // append the logout modal to the body
     document.body.innerHTML += logoutModal;
 
-    // set the playlists in the home page
-    setPlaylistsInHome();
+    // detect if the current page is index.html
+    if (window.location.pathname === "/index.html") {
+        // set the playlists in the home page
+        setPlaylistsInHome();
+    }
 });
 
 
@@ -1234,11 +1251,14 @@ setInterval(function() {
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("counter-0").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("counter-0").innerHTML = "OUT NOW";
+    
+    const counter0 = document.getElementById("counter-0")
+    if (counter0 !== null) {
+        counter0.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        if (distance < 0) {
+            clearInterval(x);
+            counter0.innerHTML = "OUT NOW";
+        }
     }
 }, 1000);
 
@@ -1249,11 +1269,13 @@ setInterval(function() {
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("counter-1").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("counter-1").innerHTML = "OUT NOW";
+    const counter1 = document.getElementById("counter-1")
+    if (counter1 !== null) {
+        counter1.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        if (distance < 0) {
+            clearInterval(x);
+            counter1.innerHTML = "OUT NOW";
+        }
     }
 }, 1000);
 
@@ -1264,11 +1286,14 @@ setInterval(function() {
     var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     var seconds = Math.floor((distance % (1000 * 60)) / 1000);
-    document.getElementById("counter-2").innerHTML = days + "d " + hours + "h "
-    + minutes + "m " + seconds + "s ";
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("counter-2").innerHTML = "OUT NOW";
+
+    const counter2 = document.getElementById("counter-2")
+    if (counter2 !== null) {
+        counter2.innerHTML = days + "d " + hours + "h " + minutes + "m " + seconds + "s ";
+        if (distance < 0) {
+            clearInterval(x);
+            counter2.innerHTML = "OUT NOW";
+        }
     }
 }, 1000);
 
