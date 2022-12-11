@@ -1652,11 +1652,15 @@ i.fa-step-backward {
   .title-link {
     font-size: 0.9em;
   }
+  
+  .music-genre-title {
+    padding-left: 0;
+  }
 
   /*Music container*/
   .music-genre-title h2 {
     width: 100%;
-    padding: 0;
+    padding-left: 0;
     text-align: center;
     justify-content: center;
   }
