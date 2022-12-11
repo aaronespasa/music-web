@@ -770,12 +770,14 @@ h2.profile-name {
   color: var(--color-light-primary-43);
 }
 
+
 .profile-data input {
   background: var(--white-low-oppacity);
 }
 
 .profile-data .profile-data-info:focus {
   outline: none;
+  color: var(--white);
 }
 
 .profile-data .sign-log-in-button {

@@ -55,8 +55,8 @@ const TRACKS = [
     },
     {
         "playlist": "Rock",
-        "title": "Sweet Child O'Mine",
-        "artist": "Guns N'Roses",
+        "title": "Sweet Child OMine",
+        "artist": "Guns NRoses",
         "cover": "sweet-child-o-mine.jpeg",
         "audio": "./audios/song2.mp3",
         "id": 2
@@ -436,13 +436,13 @@ const setNavbarLinks = () => {
                     <div class="navbar-profile-option-container">
                         <div class="navbar-profile-option">
                             <img src="./images/edit-profile.svg" class="navbar-profile-option-icon">
-                            <a href="#settings" class="navbar-profile-option-link" onclick="goToProfile()">
+                            <a href="#settings" class="navbar-profile-option-link" onclick="goToAccount()">
                                 <p class="navbar-profile-option-text">Editar Perfil</p>
                             </a>
                         </div>
                         <div class="navbar-profile-option">
                             <img src="./images/account.svg" class="navbar-profile-option-icon">
-                            <a class="navbar-profile-option-link" onclick="goToAccount()">
+                            <a class="navbar-profile-option-link" onclick="goToProfile()">
                                 <p class="navbar-profile-option-text">Mi Cuenta</p>
                             </a>
                         </div>
