@@ -1807,13 +1807,9 @@ i.fa-step-backward {
         /* margin: 0 auto; */
         top: 40px;
         left: 0;
-
         padding: 0 10px;
-
-        /* same width as the #searchbar input
-           without the padding and 2 spaces */
-        min-width: calc(250px - 40px - 35px);
-        width: 54%;
+        /* si el tamaño es de la pantalla es de 510px, el width es de 250px */
+        max-width: calc(250px);
     }
 
     .searchbar-results img {
@@ -1841,5 +1837,16 @@ i.fa-step-backward {
     .navbar-profile-options {
         top: 60px;
         right: 0;
+    }
+}
+
+/* media query for a max width of 510px -> small mobile */
+@media (max-width: 512px) {
+    .searchbar-results {
+        /* same width as the #searchbar input
+           without the padding and 2 spaces */
+        min-width: calc(250px - 40px - 40px);
+        /* El width va ser el mismo que el del searchbar, que camia en función del tamaño de la pantalla */ 
+        width: 62%;
     }
 }
