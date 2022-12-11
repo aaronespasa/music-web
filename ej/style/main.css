@@ -288,6 +288,10 @@ p {
   height: 25px;
 }
 
+.bottom-link p {
+    margin-right: 20px;
+}
+
 .bottom-link {
   display: flex;
   align-items: center;
