@@ -1660,7 +1660,6 @@ i.fa-step-backward {
   /*Music container*/
   .music-genre-title h2 {
     width: 100%;
-    padding-left: 0;
     text-align: center;
     justify-content: center;
   }
