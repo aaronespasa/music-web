@@ -642,7 +642,7 @@ const setNavbarLinks = () => {
     if (window.location.href.includes("artist.html")) {
         profileName.innerHTML = `
         <h2 class="profile-name">
-            Perfil del Artista 50 Cent
+            50 Cent
         </h2>`;
 
         // set the profile data
@@ -654,32 +654,111 @@ const setNavbarLinks = () => {
         <div class="profile-extra">
             <p id="profile-extra-title">Canciones</p>
             <div class="profile-extra-artists" id="profile-extra-artists">
-                <div class="artist-profile">
-                    <img src="images/candy-shop.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Candy Shop</p>
+                <div class="song-container">
+                    <figure class="song-cover-container-small">
+                        <img class="song-cover-small" src="images/candy-shop.jpeg" alt="Song Cover">
+                        <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                    </figure>
+                    <p class="song-description">
+                        Candy Shop
+                    </p>
+                    <p class="song-author">
+                        50 Cent
+                    </p>
                 </div>
-                <div class="artist-profile">
-                    <img src="images/pimp.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">P.I.M.P</p>
+                <div class="song-container">
+                    <figure class="song-cover-container-small">
+                        <img class="song-cover-small" src="images/pimp.jpeg" alt="Song Cover">
+                        <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                    </figure>
+                    <p class="song-description">
+                        P.I.M.P
+                    </p>
+                    <p class="song-author">
+                        50 Cent
+                    </p>
                 </div>
-                <div class="artist-profile">
-                    <img src="images/in-da-club2.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">In Da Club</p>
+                <div class="song-container">
+                    <figure class="song-cover-container-small">
+                        <img class="song-cover-small" src="images/in-da-club.jpeg" alt="Song Cover">
+                        <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                    </figure>
+                    <p class="song-description">
+                        In Da Club
+                    </p>
+                    <p class="song-author">
+                        50 Cent
+                    </p>
                 </div>
             </div>
             <p id="profile-extra-title">Álbumes</p>
             <div class="profile-extra-artists" id="profile-extra-artists">
+                <div class="song-container">
+                    <figure class="song-cover-container-small">
+                        <img class="song-cover-small" src="images/in-da-club.jpeg" alt="Song Cover">
+                        <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                    </figure>
+                    <p class="song-description">
+                        Get Rich or Die
+                    </p>
+                    <p class="song-author">
+                        50 Cent
+                    </p>
+                </div>
+                <div class="song-container">
+                    <figure class="song-cover-container-small">
+                        <img class="song-cover-small" src="images/candy-shop.jpeg" alt="Song Cover">
+                        <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                    </figure>
+                    <p class="song-description">
+                        The Massacre
+                    </p>
+                    <p class="song-author">
+                        50 Cent
+                    </p>
+                </div>
+                <div class="song-container">
+                    <figure class="song-cover-container-small">
+                        <img class="song-cover-small" src="images/21questions.jpeg" alt="Song Cover">
+                        <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(0)"></a>
+                    </figure>
+                    <p class="song-description">
+                        21 Questions
+                    </p>
+                    <p class="song-author">
+                        50 Cent
+                    </p>
+                </div>  
+            </div>
+            <p id="profile-extra-title">Tours y próximos eventos</p>
+            <div class="profile-extra-artists" id="profile-extra-artists">
                 <div class="artist-profile">
-                    <img src="images/in-da-club.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Get Rich or Die Tryin'</p>
+                    <img src="images/la-riviera.jpg" alt="artist1" class="artist-img">
+                    <p class="artist-name">La Riviera'</p>
                 </div>
                 <div class="artist-profile">
-                    <img src="images/candy-shop.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">The Massacre</p>
+                    <img src="images/wizink-center.jpg" alt="artist1" class="artist-img">
+                    <p class="artist-name">Wizink Center</p>
                 </div>
                 <div class="artist-profile">
-                    <img src="images/21questions.jpeg" alt="artist1" class="artist-img">
-                    <p class="artist-name">21 Questions</p>
+                    <img src="images/palau-sant-jordi.jpg" alt="artist1" class="artist-img">
+                    <p class="artist-name">21 Palau Sant Jordi</p>
+                </div>
+
+                <div class="tour-container">
+                    <figure class="song-cover-container-small">
+                        <img class="tour-image-cover" src="images/wizink-center.jpg" alt="tour Cover">
+                    </figure>
+                    
+                    <p class="song-description">
+                        Wizink Center
+                    </p>
+                    <p class="song-author">
+                        Madrid
+                    </p>
+                    <p class="song-author">
+                        10/07/2023
+                    </p>
                 </div>
             </div>
         </div>`;}
