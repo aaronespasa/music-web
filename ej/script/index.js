@@ -1088,7 +1088,7 @@ function openMusicPlayer (iterator){
                     <i class="fa fa-step-backward fa-1x"></i>
                   </div>
                   <div class="playpause-track" onclick="playpauseTrack()">
-                    <i class="fa fa-play-circle fa-2x"></i>
+                    <i class="fa fa-play-circle fa-2x" color="white"></i>
                   </div>
                   <div class="next-track" onclick="nextTrack()">
                     <i class="fa fa-step-forward fa-1x"></i>
