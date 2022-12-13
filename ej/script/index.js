@@ -392,11 +392,77 @@ function searchSong() {
 const getNotificationIcon = (isNotification) => {
     return isNotification ? "./images/bell-notification.svg" : "./images/bell.svg";
 }
+function readValueFromAddTour(){
+   
+    var sala = document.getElementById("sala-entry");
+    var date = document.getElementById("date-entry");
+    //checkear si son nulos
+    if ((sala.value=="") || (date.value=="")){
+        
+        createErrorMessage("cant be none!");
+    }
+    // Si no es nulo entonces crear la carta tour y almacenar en local storage
+    else{
+        var salaText =
+        console.log(sala, date);
+        
+        const tourContainer = document.createElement("div");
+        tourContainer.classList.add("tour-container");
+        const imageSource = "images/"+sala.value+".jpg";
+        console.log(imageSource);
+        tourContainer.innerHTML=`
+            <figure class="song-cover-container-small">
+                                <img class="tour-image-cover" src= ${imageSource} alt="tour Cover">
+                            </figure>
+                            <p class="song-description">
+                                ${sala.options[sala.selectedIndex].text}
+                            </p>
+                            <p class="song-author">
+                                Madrid
+                            </p>
+                            <p class="song-author">
+                                ${date.options[sala.selectedIndex].text}
+                            </p>
+        `;
+        var toursContainer = document.getElementById("tours-container");
+        toursContainer.appendChild(tourContainer);
+    
+    }
+    
+    
+    
+}
 
 function addTour(){
     console.log("HAHAHAHHHAAHHA");
-    let tourContainer = document.getElementById("add-tour-container");
-    tourContainer.innerHTML = `<h1>HAHAHAHHHAH fuck you</h1>`;
+    let addTourContainer = document.getElementById("add-tour-options");
+    addTourContainer.innerHTML = `
+    <div class="sala-container">
+        <label for="sala" style=color:#ffffff>Sala</label>
+        <select name="sala" class="sala-entry" id="sala-entry">
+            <option value="" selected disabled hidden>No ha elegido ninguna sala</option>
+            <option value="wizink-center">Wizink Center</option>
+            <option value="la-riviera">La Riviera</option>
+            <option value="palau-sant-jordi">Palau Sant Jordi</option>
+        </select>
+
+    </div>
+    <div class="date-container">
+    <label for="date" style=color:#ffffff>Fecha</label>
+        <select name="date" class="date-entry" id="date-entry">
+            <option value="" selected disabled hidden>No ha elegido ninguna fecha</option>
+            <option value="julio-22-2023">Julio-22-2023</option>
+            <option value="agosto-12-2023">Agosto-12-2023</option>
+            <option value="junio-20-2023">Junio-20-2023</option>
+        </select>
+    </div>
+    <button class="add-tour-button" onclick="readValueFromAddTour()">
+        Añadir Tour
+    </button>
+    <div class="error-message-container" id="error-message-container"></div>
+
+    
+    `;
     
 }
 
@@ -740,38 +806,11 @@ const setNavbarLinks = () => {
                 </div>  
             </div>
             <p id="profile-extra-title">Tours y próximos eventos</p>
-            <div class="profile-extra-artists" id="profile-extra-artists">
-                <div class="artist-profile">
-                    <img src="images/la-riviera.jpg" alt="artist1" class="artist-img">
-                    <p class="artist-name">La Riviera'</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/wizink-center.jpg" alt="artist1" class="artist-img">
-                    <p class="artist-name">Wizink Center</p>
-                </div>
-                <div class="artist-profile">
-                    <img src="images/palau-sant-jordi.jpg" alt="artist1" class="artist-img">
-                    <p class="artist-name">21 Palau Sant Jordi</p>
-                </div>
-
-                <div class="tour-container">
-                    <figure class="song-cover-container-small">
-                        <img class="tour-image-cover" src="images/wizink-center.jpg" alt="tour Cover">
-                    </figure>
-                    
-                    <p class="song-description">
-                        Wizink Center
-                    </p>
-                    <p class="song-author">
-                        Madrid
-                    </p>
-                    <p class="song-author">
-                        10/07/2023
-                    </p>
-                </div>
+            <div class="profile-extra-artists" id="tours-container">
             </div>
             <div class="add-tour-container" id="add-tour-container">
-            <button class='add-tour-button' onclick="addTour()">Add Tour</button>
+                <button class='add-tour-button' onclick="addTour()">Añadir tour</button>
+                <div class="add-tour-options" id="add-tour-options"></div>
             </div>
         </div>`;}
 
@@ -1661,6 +1700,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const playlistCreatorForm = document.getElementById("playlist-creator-form");
     const editProfileForm = document.getElementById("edit-profile-form");
     const isAuthenticated = localStorage.getItem("isAuthenticated");
+    
 
     handleSingUpLogIn();
 

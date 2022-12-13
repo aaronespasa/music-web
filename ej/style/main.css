@@ -828,7 +828,22 @@ h2.profile-name {
 }
 
 /* ! Adding the images of the most played artists */
-.profile-extra #profile-extra-artists {
+.profile-extra #profile-extra-artists{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: flex-start;
+  width: 100%;
+  height: 100%;
+  margin: 40px 0 30px 0;
+
+  max-width: 900px;
+  min-width: 100px;
+  border-radius: 8px;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+.profile-extra #tours-container {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -849,6 +864,7 @@ img.artist-img {
   height: 80px;
   border-radius: 50%;
 }
+
 
 img.artist-img:hover {
   transform: scale(1.05);
