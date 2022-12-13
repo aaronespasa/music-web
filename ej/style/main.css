@@ -692,6 +692,20 @@ p {
   filter: brightness(1.1);
 }
 
+.add-tour-button {
+  border:none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: transform 0.5s ease;
+  transform: scale(1);
+  color:var(--white);
+  background-color: var(--bs-color-secondary-button-blue);
+}
+
+.add-tour-button:hover {
+  transform: scale(0.95);
+  filter: brightness(1.1);
+}
 /* ! Estilos para el perfil del usuario*/
 
 hr {
@@ -752,6 +766,9 @@ h2.profile-name {
   height: 120px;
   border-radius: 50%;
   margin: 10px 0 -20px 0;
+  box-shadow: 0 4px 30px var(--black-low-oppacity);
+  filter: drop-shadow(5px 5px 15px #000000);
+
 }
 
 .profile-data .profile-data-title {
@@ -802,11 +819,11 @@ h2.profile-name {
 .profile-extra #profile-extra-title {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: left;
   align-items: flex-start;
   font-size: 1.3em;
   font-weight: bold;
-  margin: 0px 0 0px 40px;
+  margin: 0 0 0 5%;
   color: var(--color-light-primary);
 }
 

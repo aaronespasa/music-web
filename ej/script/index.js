@@ -326,7 +326,8 @@ const signUp = async (event) => {
             "name": name,
             "surname": surname,
             "likedSongs": [],
-            "playlists": []
+            "playlists": [],
+            "artistTours": []
         }
 
         await saveUserInLocalStorage(user);
@@ -391,6 +392,14 @@ function searchSong() {
 const getNotificationIcon = (isNotification) => {
     return isNotification ? "./images/bell-notification.svg" : "./images/bell.svg";
 }
+
+function addTour(){
+    console.log("HAHAHAHHHAAHHA");
+    let tourContainer = document.getElementById("add-tour-container");
+    tourContainer.innerHTML = `<h1>HAHAHAHHHAH fuck you</h1>`;
+    
+}
+
 
 const setNavbarLinks = () => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
@@ -761,7 +770,12 @@ const setNavbarLinks = () => {
                     </p>
                 </div>
             </div>
+            <div class="add-tour-container" id="add-tour-container">
+            <button class='add-tour-button' onclick="addTour()">Add Tour</button>
+            </div>
         </div>`;}
+
+
 
 
     // ! Añadimos la pagina del seguidor
