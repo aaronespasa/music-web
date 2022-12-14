@@ -1061,6 +1061,69 @@ p.artist-name {
   color: var(--gray);
 }
 
+.navbar-notification-option {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  height: 20%;
+  padding: 10px;
+  border: solid #121216 3px;
+  
+}
+
+.navbar-notification-option-container {
+  width: 100%;
+  height: 400px;
+  
+  overflow-y:scroll;
+}
+
+.navbar-notification-option-container::-webkit-scrollbar{
+  display: none;
+}
+
+.navbar-notification-option-info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+}
+
+.navbar-notification-option-name {
+  font-size: 0.7em;
+  margin: 15px 0 0 0;
+  color: var(--gray);
+}
+
+.navbar-notification-option-link {
+  width: 100%;
+  cursor: pointer;
+}
+
+.navbar-notification-option-text {
+  padding: 10px;
+  width: 100%;
+  transition: background 0.2s ease;
+}
+
+.navbar-notification-option-text:hover {
+  transition: color 0.2s ease;
+  color: var(--gray);
+}
+.navbar-notification-option-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 100%;
+  margin-right: 10px;
+  box-shadow: 0px 0px 25px rgba(48, 119, 157, 0.8);
+}
+
+
+
 .searchbar-profile-container {
   width: 90%;
 }

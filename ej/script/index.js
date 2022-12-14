@@ -194,6 +194,7 @@ function toggleMenuLinks() {
 }
 
 function toggleNotificationLinks() {
+    populateNotifications();
     navbarNotifications = document.getElementById("navbar-notifications");
     navbarProfileOptions = document.getElementById("navbar-profile-options");
     
@@ -206,6 +207,26 @@ function toggleNotificationLinks() {
     navbarProfileOptions.style.maxHeight = "0px";
     navbarProfileOptions.style.paddingTop = "0px";
     navbarProfileOptions.style.paddingBottom = "0px";
+}
+function populateNotifications(){
+    const user = JSON.parse(localStorage.getItem("user"));
+    const toursList = user.artistTours;
+    var notificationsContainer = document.getElementById("notifications-container");
+    toursList.forEach(tour => {
+        var notificationEntry = document.createElement("div");
+        notificationEntry.classList.add("navbar-notification-option");
+        notificationEntry.innerHTML=`
+        <img src=${tour.artistImage} class="navbar-notification-option-image">
+        <a class="navbar-notification-option-link" onclick="goToArtistPage(${tour})">
+            <p class="navbar-notification-option-text">New tour by ${tour.artist}</p>
+        </a>
+        `;
+        notificationsContainer.appendChild(notificationEntry);
+    });
+
+    
+
+
 }
 
 const createErrorMessage = (message) => {
@@ -392,7 +413,12 @@ function searchSong() {
 const getNotificationIcon = (isNotification) => {
     return isNotification ? "./images/bell-notification.svg" : "./images/bell.svg";
 }
-function readValueFromAddTour(){
+function readValueFromAddTourAndSaveToLocalStorage(){
+    //if (window.location.href.includes("artist.html")){
+        const artist = "50 Cent";
+        const artistImage = "images/50cent.jpeg";
+        const artistPage = "artist.html";
+    //}
    
     var sala = document.getElementById("sala-entry");
     var date = document.getElementById("date-entry");
@@ -403,30 +429,25 @@ function readValueFromAddTour(){
     }
     // Si no es nulo entonces crear la carta tour y almacenar en local storage
     else{
-        var salaText =
-        console.log(sala, date);
         
-        const tourContainer = document.createElement("div");
-        tourContainer.classList.add("tour-container");
+        console.log("It is creating tour")
         const imageSource = "images/"+sala.value+".jpg";
         console.log(imageSource);
-        tourContainer.innerHTML=`
-            <figure class="song-cover-container-small">
-                                <img class="tour-image-cover" src= ${imageSource} alt="tour Cover">
-                            </figure>
-                            <p class="song-description">
-                                ${sala.options[sala.selectedIndex].text}
-                            </p>
-                            <p class="song-author">
-                                Madrid
-                            </p>
-                            <p class="song-author">
-                                ${date.options[sala.selectedIndex].text}
-                            </p>
-        `;
-        var toursContainer = document.getElementById("tours-container");
-        toursContainer.appendChild(tourContainer);
-    
+        let tour = {
+            "artist":artist,
+            "artistImage":artistImage,
+            "artistPage":artistPage,
+            "sala":sala.options[sala.selectedIndex].text,
+            "date":date.options[date.selectedIndex].text,
+            "source":imageSource,
+            "isRead":false
+        }
+        const user = JSON.parse(localStorage.getItem("user"));
+        artistTours = user.artistTours;
+        artistTours.push(tour)
+        user.artistTours = artistTours;
+        localStorage.setItem("user", JSON.stringify(user));
+        console.log("Successfully stored to local storage");
     }
     
     
@@ -456,7 +477,7 @@ function addTour(){
             <option value="junio-20-2023">Junio-20-2023</option>
         </select>
     </div>
-    <button class="add-tour-button" onclick="readValueFromAddTour()">
+    <button class="add-tour-button" onclick="readValueFromAddTourAndSaveToLocalStorage()">
         Añadir Tour
     </button>
     <div class="error-message-container" id="error-message-container"></div>
@@ -465,7 +486,15 @@ function addTour(){
     `;
     
 }
+function notificationIsRead(toursList){
+    toursList.forEach(tour =>{
+        if (tour.isRead ==="true"){
+            return true;
+        }
+    });
+    return false;
 
+}
 
 const setNavbarLinks = () => {
     const isAuthenticated = localStorage.getItem("isAuthenticated");
@@ -481,19 +510,23 @@ const setNavbarLinks = () => {
         const user = JSON.parse(localStorage.getItem("user"));
         const userImage = user.image === undefined ? "./images/profile-icon.svg" : user.image;
         
-        let isNotification = true;
-
+        
         navbarLinks.style.flexDirection = "column";
+        
+        const toursList = user.artistTours;
+        //Para saber hay notificación, mira si hay algun isRead de tour es true, si al menos hay 1
+        //returnea la funcion notificationIsRead true
+        let isNotification = notificationIsRead(toursList);
         const navbarNotificationsMenu = `
             <div class="navbar-profile">
                 <img src=${getNotificationIcon(isNotification)} class="bell-image" onclick="toggleNotificationLinks()">
             </div>
             <div class="navbar-profile-options" id="navbar-notifications">
-                    <div class="navbar-profile-option-container">
-                        <div class="navbar-profile-option">
-                            <img src="./images/edit-profile.svg" class="navbar-profile-option-icon">
+                    <div class="navbar-notification-option-container" id="notifications-container">
+                        <div class="navbar-notification-option">
+                            <img src="./images/logo.svg" class="navbar-profile-option-icon">
                             <a href="#settings" class="navbar-profile-option-link" onclick="goToProfile()">
-                                <p class="navbar-profile-option-text">Editar Perfil</p>
+                                <p class="navbar-profile-option-text">This is your first notification!</p>
                             </a>
                         </div>
                     </div>
@@ -955,6 +988,41 @@ const setNavbarLinks = () => {
         musicPlayer.innerHTML = `
             <p class="music-player-title">No hay canciones en la cola</p>
         `;
+    }
+    //ahora en perfil de artista
+    if (isAuthenticated === "true" && window.location.href.includes("artist.html")) {
+        const user = JSON.parse(localStorage.getItem("user"));
+        // user.artistTours = [];
+        // localStorage.setItem("user", JSON.stringify(user));
+        var artistTours = user.artistTours;
+        var toursContainer = document.getElementById("tours-container");
+        artistTours.forEach(tour=>{
+            const tourContainer = document.createElement("div");
+            tourContainer.classList.add("tour-container");
+            tourContainer.innerHTML=`
+            <a href="https://www.ticketmaster.es/" target="_blank">
+                <figure class="song-cover-container-small">
+                    <img class="tour-image-cover" src= ${tour.source} alt="tour Cover">
+                    </figure>
+                    <p class="song-description">
+                        ${tour.sala}
+                    </p>
+                    <p class="song-author">
+                        Madrid
+                    </p>
+                    <p class="song-author">
+                        ${tour.date}
+                    </p>
+                </figure>
+            </a>
+            `;
+            toursContainer.appendChild(tourContainer);
+        });
+    }
+    //update notification 
+    if (isAuthenticated === "true"){
+        return
+
     }
 }
 
