@@ -212,7 +212,6 @@ function toggleMenuLinks() {
 }
 
 function toggleNotificationLinks() {
-    populateNotifications();
     navbarNotifications = document.getElementById("navbar-notifications");
     navbarProfileOptions = document.getElementById("navbar-profile-options");
     
@@ -235,7 +234,7 @@ function populateNotifications(){
         notificationEntry.classList.add("navbar-notification-option");
         notificationEntry.innerHTML=`
         <img src=${tour.artistImage} class="navbar-notification-option-image">
-        <a class="navbar-notification-option-link" onclick="goToArtistPage(${tour})">
+        <a href="artist.html" class="navbar-notification-option-link">
             <p class="navbar-notification-option-text">New tour by ${tour.artist}</p>
         </a>
         `;
@@ -374,6 +373,8 @@ const signUp = async (event) => {
         // redirect to the login page
         window.location.href = "login.html";
     }
+
+    createInitialTours();
 }
 
 const login = (event) => {
@@ -418,7 +419,7 @@ function searchSong() {
                         <img src="./images/play.svg" alt="play-button">
                     </button>
                     <p>${track.title}</p>
-                    <button class="searchbar-button like-button" onclick="likeSong(this)">
+                    <button class="searchbar-button like-button" onClick="toggleLike('${track.title}')">
                         <img src="./images/heart.svg" alt="like-button">
                     </button>
                 `;
@@ -431,23 +432,50 @@ function searchSong() {
 const getNotificationIcon = (isNotification) => {
     return isNotification ? "./images/bell-notification.svg" : "./images/bell.svg";
 }
+
+function createInitialTours() {
+    let tour = {
+        "artist":"50 Cent",
+        "artistImage":"images/50cent.jpeg",
+        "artistPage": "artist.html",
+        "sala": "Wizink Center",
+        "date": "Julio-22-2023",
+        "source": "images/50cent.jpeg",
+        "isRead":false
+    }
+
+    let tour2 = {
+        "artist":"David Guetta",
+        "artistImage":"images/david_guetta.jpeg",
+        "artistPage": "artist.html",
+        "sala": "La Riviera",
+        "date": "Julio-22-2023",
+        "source": "images/50cent.jpeg",
+        "isRead":false
+    }
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    artistTours = user.artistTours;
+    artistTours.push(tour)
+    artistTours.push(tour2)
+    user.artistTours = artistTours;
+    localStorage.setItem("user", JSON.stringify(user));
+    console.log("Successfully stored to local storage");
+}
+
 function readValueFromAddTourAndSaveToLocalStorage(){
-    //if (window.location.href.includes("artist.html")){
-        const artist = "50 Cent";
-        const artistImage = "images/50cent.jpeg";
-        const artistPage = "artist.html";
-    //}
+    const artist = "50 Cent";
+    const artistImage = "images/50cent.jpeg";
+    const artistPage = "artist.html";
    
-    var sala = document.getElementById("sala-entry");
-    var date = document.getElementById("date-entry");
+    const sala = document.getElementById("sala-entry");
+    const date = document.getElementById("date-entry");
     //checkear si son nulos
     if ((sala.value=="") || (date.value=="")){
-        
         createErrorMessage("cant be none!");
     }
     // Si no es nulo entonces crear la carta tour y almacenar en local storage
     else{
-        
         console.log("It is creating tour")
         const imageSource = "images/"+sala.value+".jpg";
         console.log(imageSource);
@@ -467,9 +495,6 @@ function readValueFromAddTourAndSaveToLocalStorage(){
         localStorage.setItem("user", JSON.stringify(user));
         console.log("Successfully stored to local storage");
     }
-    
-    
-    
 }
 
 function addTour(){
@@ -495,23 +520,20 @@ function addTour(){
             <option value="junio-20-2023">Junio-20-2023</option>
         </select>
     </div>
-    <button class="add-tour-button" onclick="readValueFromAddTourAndSaveToLocalStorage()">
+    <button class="btn-default" onclick="readValueFromAddTourAndSaveToLocalStorage()">
         Añadir Tour
     </button>
     <div class="error-message-container" id="error-message-container"></div>
-
-    
     `;
     
 }
 function notificationIsRead(toursList){
     toursList.forEach(tour =>{
-        if (tour.isRead ==="true"){
+        if (tour.isRead === "false"){
             return true;
         }
     });
-    return false;
-
+    return true;
 }
 
 const setNavbarLinks = () => {
@@ -541,12 +563,6 @@ const setNavbarLinks = () => {
             </div>
             <div class="navbar-profile-options" id="navbar-notifications">
                     <div class="navbar-notification-option-container" id="notifications-container">
-                        <div class="navbar-notification-option">
-                            <img src="./images/logo.svg" alt="logo" class="navbar-profile-option-icon">
-                            <a href="#settings" class="navbar-profile-option-link" onclick="goToProfile()">
-                                <p class="navbar-profile-option-text">This is your first notification!</p>
-                            </a>
-                        </div>
                     </div>
                 </div>
         `
@@ -598,6 +614,7 @@ const setNavbarLinks = () => {
             </div>
         `;
         navbarLinks.innerHTML = navbarProfileLinks;
+        populateNotifications();
     } else {
         navbarLinks.innerHTML = `
             <button onclick="location.href='signup.html'" class="sign-log-in-button sign-in-button">
@@ -864,7 +881,7 @@ const setNavbarLinks = () => {
             <div class="profile-extra-artists" id="tours-container">
             </div>
             <div class="add-tour-container" id="add-tour-container">
-                <button class='add-tour-button' onclick="addTour()">Añadir tour</button>
+                <button class='btn-default' onclick="addTour()">Añadir tour</button>
                 <div class="add-tour-options" id="add-tour-options"></div>
             </div>
         </div>`;}
@@ -1190,9 +1207,9 @@ const setPlaylistsInHome = () => {
                 <p class="song-description">
                     Pompeii
                 </p>
-                <p class="song-author">
+                <a href="artist.html" class="song-author">
                     Bastille
-                </p>
+                </a>
                 <br>
                 <p id="counter-0">
                 </p>
@@ -1205,9 +1222,9 @@ const setPlaylistsInHome = () => {
                 <p class="song-description">
                     Still Dre
                 </p>
-                <p class="song-author">
+                <a href="artist.html" class="song-author">
                     Dr. Dre
-                </p>
+                </a>
                 <br>
                 <p id="counter-1">
                 </p>
@@ -1220,9 +1237,9 @@ const setPlaylistsInHome = () => {
                 <p class="song-description">
                     P.I.M.P.
                 </p>
-                <p class="song-author">
+                <a href="artist.html" class="song-author">
                     50 Cent
-                </p>
+                </a>
                 <br>
                 <p id="counter-2">
                 </p>
@@ -1259,9 +1276,9 @@ const setPlaylistsInHome = () => {
                 <p class="song-description">
                     ${title}
                 </p>
-                <p class="song-author">
+                <a href="artist.html" class="song-author">
                     ${artist}
-                </p>
+                </a>
                 <div class="liked-container">
                 </div>
             `;
@@ -1581,76 +1598,91 @@ const createLikedSongs = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     const likedSongs = user.likedSongs;
-    console.log("hi")
-    const playlistContainer = document.createElement("div");
-    playlistContainer.classList.add("music-genre-container");
-    playlistContainer.innerHTML = `
-        <h2 class="music-genre-title">Liked songs</h2>
-        <br><br><br>
-        <div class="music-genre-songs-container">
-        </div>`;
-    
-    const songsContainer = playlistContainer.querySelector(".music-genre-songs-container");
 
-    const playlistSongs = likedSongs;
-    var iterador = 0;
-    playlistSongs.forEach((songName) => {
-        const {artist, cover} = getSongInformation(songName);
-        const musicCard = document.createElement("div");
-        musicCard.classList.add("song-container");
+    if (isAuthenticated === "false") {
 
-        // We loop through the songs and if the name corresponds to the song we are looking for, get the id
-        var selectedSongId = 0;
-        for (var i = 0; i < TRACKS.length; i++) {
-            if (TRACKS[i].title == songName) {
-                selectedSongId = TRACKS[i].id;
-            }
-        }
-        
-        
-
-        const likedIcon = getLikeDisplayIcon(songName);
-        // Crear iterador autoincremental para poder distinguir las canciones
-        // ! Ahora podremos llamar a cada canción por su iterador (posición en el json)) 
-        musicCard.innerHTML = `
-            <figure class="song-cover-container">
-                <img class="song-cover" src="./images/${cover}" alt="Song Cover">
-                <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(${selectedSongId})"></a>
-            </figure>
-            <p class="song-description">
-                ${songName}
-            </p>
-            <p class="song-author">
-                ${artist}
-            </p>
-            <div class="liked-container">
-            </div>
-            
+        myListsContainer.innerHTML = `
+            <p class="music-genre-title">Inicia sesión para guardar tus canciones favoritas</p>
+            <button onClick="goToLogin()" class="btn-default">Iniciar sesión</button>
         `;
-
+    } else {
+        const playlistContainer = document.createElement("div");
+        playlistContainer.classList.add("music-genre-container");
+        playlistContainer.innerHTML = `
+            <h2 class="music-genre-title">Liked songs</h2>
+            <br><br><br>
+            <div class="music-genre-songs-container">
+            </div>`;
         
+        const songsContainer = playlistContainer.querySelector(".music-genre-songs-container");
 
-        if(isAuthenticated === "true"){
-            const likedIconElement = `<img src="${likedIcon}" class="liked-icon" onClick="toggleLike('${songName}')"/>`;
-            const likedContainer = musicCard.querySelector(".liked-container");
-            likedContainer.innerHTML = likedIconElement;
-            const likedTextContainer = musicCard.querySelector(".liked-icon");
-            likedTextContainer.addEventListener("click", () => {
+        const playlistSongs = likedSongs;
+        if (playlistSongs.length == 0) {
+            if (myListsContainer != null) {
+                myListsContainer.innerHTML = `
+                    <h2 class="music-genre-title">Las canciones a las que le des me gusta aparecerán aquí</h2>
+                `;
+            }
+        } else {
+            var iterador = 0;
+            playlistSongs.forEach((songName) => {
+                const {artist, cover} = getSongInformation(songName);
+                const musicCard = document.createElement("div");
+                musicCard.classList.add("song-container");
+
+                // We loop through the songs and if the name corresponds to the song we are looking for, get the id
+                var selectedSongId = 0;
+                for (var i = 0; i < TRACKS.length; i++) {
+                    if (TRACKS[i].title == songName) {
+                        selectedSongId = TRACKS[i].id;
+                    }
+                }
+                
+                
+
                 const likedIcon = getLikeDisplayIcon(songName);
-                likedTextContainer.src = likedIcon;
-            });
+                // Crear iterador autoincremental para poder distinguir las canciones
+                // ! Ahora podremos llamar a cada canción por su iterador (posición en el json)) 
+                musicCard.innerHTML = `
+                    <figure class="song-cover-container">
+                        <img class="song-cover" src="./images/${cover}" alt="Song Cover">
+                        <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(${selectedSongId})"></a>
+                    </figure>
+                    <p class="song-description">
+                        ${songName}
+                    </p>
+                    <p class="song-author">
+                        ${artist}
+                    </p>
+                    <div class="liked-container">
+                    </div>
+                    
+                `;
+
+                
+                
+                if(isAuthenticated === "true"){
+                    const likedIconElement = `<img src="${likedIcon}" class="liked-icon" onClick="toggleLike('${songName}')"/>`;
+                    const likedContainer = musicCard.querySelector(".liked-container");
+                    likedContainer.innerHTML = likedIconElement;
+                    const likedTextContainer = musicCard.querySelector(".liked-icon");
+                    likedTextContainer.addEventListener("click", () => {
+                        const likedIcon = getLikeDisplayIcon(songName);
+                        likedTextContainer.src = likedIcon;
+                    });
+                }
+                songsContainer.appendChild(musicCard);
+                // Aumentamos el iterador autoincremental
+                iterador += 1;
+            })
+            if(playlistContainer != null) {
+                playlistContainer.appendChild(songsContainer);
+            } 
+            if(myListsContainer != null) {
+                myListsContainer.appendChild(playlistContainer);
+            } 
         }
-        songsContainer.appendChild(musicCard);
-        // Aumentamos el iterador autoincremental
-        iterador += 1;
-    })
-    if(playlistContainer != null) {
-        playlistContainer.appendChild(songsContainer);
-    } 
-    if(myListsContainer != null) {
-        myListsContainer.appendChild(playlistContainer);
-    } 
-    
+    }
 }
 
 /* My Playlists & Playlist Creator */
@@ -1898,5 +1930,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (myListsContainer != null) createMyLists();
-    if(isAuthenticated === "true") createLikedSongs();
+    if (document.getElementById("likedSongs-container") != null) createLikedSongs();
 });
