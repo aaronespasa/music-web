@@ -434,12 +434,8 @@ p {
 .song-description {
   margin: 0.5em 0 0 0;
   transition: transform 0.3s;
-  cursor: pointer;
   font-weight: bold;
-}
-
-.song-description:hover {
-  text-decoration: underline;
+  pointer-events: none;
 }
 
 .song-author {
@@ -447,6 +443,8 @@ p {
   cursor: pointer;
   font-weight: lighter;
   font-size: 0.6em;
+  width: 100%;
+  text-align: center;
 }
 
 .song-author:hover {
@@ -714,6 +712,16 @@ p {
 .form-button:hover {
   transform: scale(0.95);
   filter: brightness(1.1);
+}
+
+.add-tour-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 2em;
 }
 
 .add-tour-button {
@@ -1092,8 +1100,6 @@ p.artist-name {
   justify-content: flex-start;
   height: 20%;
   padding: 10px;
-  border: solid #121216 3px;
-  
 }
 
 .navbar-notification-option-container {

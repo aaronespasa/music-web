@@ -212,7 +212,6 @@ function toggleMenuLinks() {
 }
 
 function toggleNotificationLinks() {
-    populateNotifications();
     navbarNotifications = document.getElementById("navbar-notifications");
     navbarProfileOptions = document.getElementById("navbar-profile-options");
     
@@ -235,7 +234,7 @@ function populateNotifications(){
         notificationEntry.classList.add("navbar-notification-option");
         notificationEntry.innerHTML=`
         <img src=${tour.artistImage} class="navbar-notification-option-image">
-        <a class="navbar-notification-option-link" onclick="goToArtistPage(${tour})">
+        <a href="artist.html" class="navbar-notification-option-link">
             <p class="navbar-notification-option-text">New tour by ${tour.artist}</p>
         </a>
         `;
@@ -374,6 +373,8 @@ const signUp = async (event) => {
         // redirect to the login page
         window.location.href = "login.html";
     }
+
+    createInitialTours();
 }
 
 const login = (event) => {
@@ -431,23 +432,50 @@ function searchSong() {
 const getNotificationIcon = (isNotification) => {
     return isNotification ? "./images/bell-notification.svg" : "./images/bell.svg";
 }
+
+function createInitialTours() {
+    let tour = {
+        "artist":"50 Cent",
+        "artistImage":"images/50cent.jpeg",
+        "artistPage": "artist.html",
+        "sala": "Wizink Center",
+        "date": "Julio-22-2023",
+        "source": "images/50cent.jpeg",
+        "isRead":false
+    }
+
+    let tour2 = {
+        "artist":"David Guetta",
+        "artistImage":"images/david_guetta.jpeg",
+        "artistPage": "artist.html",
+        "sala": "La Riviera",
+        "date": "Julio-22-2023",
+        "source": "images/50cent.jpeg",
+        "isRead":false
+    }
+
+    const user = JSON.parse(localStorage.getItem("user"));
+    artistTours = user.artistTours;
+    artistTours.push(tour)
+    artistTours.push(tour2)
+    user.artistTours = artistTours;
+    localStorage.setItem("user", JSON.stringify(user));
+    console.log("Successfully stored to local storage");
+}
+
 function readValueFromAddTourAndSaveToLocalStorage(){
-    //if (window.location.href.includes("artist.html")){
-        const artist = "50 Cent";
-        const artistImage = "images/50cent.jpeg";
-        const artistPage = "artist.html";
-    //}
+    const artist = "50 Cent";
+    const artistImage = "images/50cent.jpeg";
+    const artistPage = "artist.html";
    
-    var sala = document.getElementById("sala-entry");
-    var date = document.getElementById("date-entry");
+    const sala = document.getElementById("sala-entry");
+    const date = document.getElementById("date-entry");
     //checkear si son nulos
     if ((sala.value=="") || (date.value=="")){
-        
         createErrorMessage("cant be none!");
     }
     // Si no es nulo entonces crear la carta tour y almacenar en local storage
     else{
-        
         console.log("It is creating tour")
         const imageSource = "images/"+sala.value+".jpg";
         console.log(imageSource);
@@ -467,9 +495,6 @@ function readValueFromAddTourAndSaveToLocalStorage(){
         localStorage.setItem("user", JSON.stringify(user));
         console.log("Successfully stored to local storage");
     }
-    
-    
-    
 }
 
 function addTour(){
@@ -495,23 +520,20 @@ function addTour(){
             <option value="junio-20-2023">Junio-20-2023</option>
         </select>
     </div>
-    <button class="add-tour-button" onclick="readValueFromAddTourAndSaveToLocalStorage()">
+    <button class="btn-default" onclick="readValueFromAddTourAndSaveToLocalStorage()">
         Añadir Tour
     </button>
     <div class="error-message-container" id="error-message-container"></div>
-
-    
     `;
     
 }
 function notificationIsRead(toursList){
     toursList.forEach(tour =>{
-        if (tour.isRead ==="true"){
+        if (tour.isRead === "false"){
             return true;
         }
     });
-    return false;
-
+    return true;
 }
 
 const setNavbarLinks = () => {
@@ -541,12 +563,6 @@ const setNavbarLinks = () => {
             </div>
             <div class="navbar-profile-options" id="navbar-notifications">
                     <div class="navbar-notification-option-container" id="notifications-container">
-                        <div class="navbar-notification-option">
-                            <img src="./images/logo.svg" class="navbar-profile-option-icon">
-                            <a href="#settings" class="navbar-profile-option-link" onclick="goToProfile()">
-                                <p class="navbar-profile-option-text">This is your first notification!</p>
-                            </a>
-                        </div>
                     </div>
                 </div>
         `
@@ -596,6 +612,7 @@ const setNavbarLinks = () => {
             </div>
         `;
         navbarLinks.innerHTML = navbarProfileLinks;
+        populateNotifications();
     } else {
         navbarLinks.innerHTML = `
             <button onclick="location.href='signup.html'" class="sign-log-in-button sign-in-button">
@@ -862,7 +879,7 @@ const setNavbarLinks = () => {
             <div class="profile-extra-artists" id="tours-container">
             </div>
             <div class="add-tour-container" id="add-tour-container">
-                <button class='add-tour-button' onclick="addTour()">Añadir tour</button>
+                <button class='btn-default' onclick="addTour()">Añadir tour</button>
                 <div class="add-tour-options" id="add-tour-options"></div>
             </div>
         </div>`;}
@@ -1188,9 +1205,9 @@ const setPlaylistsInHome = () => {
                 <p class="song-description">
                     Pompeii
                 </p>
-                <p class="song-author">
+                <a href="artist.html" class="song-author">
                     Bastille
-                </p>
+                </a>
                 <br>
                 <p id="counter-0">
                 </p>
@@ -1203,9 +1220,9 @@ const setPlaylistsInHome = () => {
                 <p class="song-description">
                     Still Dre
                 </p>
-                <p class="song-author">
+                <a href="artist.html" class="song-author">
                     Dr. Dre
-                </p>
+                </a>
                 <br>
                 <p id="counter-1">
                 </p>
@@ -1218,9 +1235,9 @@ const setPlaylistsInHome = () => {
                 <p class="song-description">
                     P.I.M.P.
                 </p>
-                <p class="song-author">
+                <a href="artist.html" class="song-author">
                     50 Cent
-                </p>
+                </a>
                 <br>
                 <p id="counter-2">
                 </p>
@@ -1257,9 +1274,9 @@ const setPlaylistsInHome = () => {
                 <p class="song-description">
                     ${title}
                 </p>
-                <p class="song-author">
+                <a href="artist.html" class="song-author">
                     ${artist}
-                </p>
+                </a>
                 <div class="liked-container">
                 </div>
             `;
