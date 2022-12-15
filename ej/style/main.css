@@ -159,6 +159,7 @@ p {
 
 .hidden {
   display: none;
+  color: var(--white);
 }
 
 /************************

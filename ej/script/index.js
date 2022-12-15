@@ -601,7 +601,7 @@ const setNavbarLinks = () => {
         const songsSearchbar = `
         
             <div class="searchbar-container">
-                <label for="searchbar" class="hidden">Searchbar</label>
+                <label for="searchbar" class="hidden" >Searchbar</label>
                 <input id="searchbar" onkeyup="searchSong()" class="searchbar" type="text" placeholder="Buscar">
                 ${navbarNotificationsMenu}
                 ${navbarProfileImageMenu}
