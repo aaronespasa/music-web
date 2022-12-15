@@ -66,13 +66,15 @@
 
 /* FA icons */
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css");
-.fa-play-circle {
+.fa-play-circle,
+.fa-pause-circle {
   color: var(--color-light-primary);
   font-size: 2em;
   transition: color 0.5s ease-in-out;
 }
 
-.fa-play-circle:hover {
+.fa-play-circle:hover,
+.fa-pause-circle:hover {
   filter: brightness(1.2);
 }
 

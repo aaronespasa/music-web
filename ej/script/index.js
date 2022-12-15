@@ -1288,7 +1288,7 @@ function openMusicPlayer (iterator){
                     <i class="fa fa-step-backward fa-1x"></i>
                   </div>
                   <div class="playpause-track" onclick="playpauseTrack()">
-                    <i class="fa fa-play-circle fa-2x" color="white"></i>
+                    <i id="music-player-play-icon" class="fa fa-pause-circle fa-2x" color="white"></i>
                   </div>
                   <div class="next-track" onclick="nextTrack()">
                     <i class="fa fa-step-forward fa-1x"></i>
@@ -1392,7 +1392,15 @@ function playpauseTrack() {
     if (!isPlaying) playTrack();
     else pauseTrack();
     // Replace icon with the pause icon
-    playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
+    // playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
+    const playIcon = document.getElementById("music-player-play-icon");
+    if (playIcon.classList.contains("fa-play-circle")) {
+        playIcon.classList.remove("fa-play-circle");
+        playIcon.classList.add("fa-pause-circle");
+    } else {
+        playIcon.classList.remove("fa-pause-circle");
+        playIcon.classList.add("fa-play-circle");
+    }
 }
 
 function playpauseTrackExit(iterator) {
@@ -1400,8 +1408,6 @@ function playpauseTrackExit(iterator) {
     // depending on the current state
     if (!isPlaying) {
         playTrack();
-        // Replace icon with the pause icon
-        playpause_btn.innerHTML = '<i class="fa fa-pause-circle fa-5x"></i>';
         document.documentElement.style.setProperty("--play-pause-icon", "url(../images/pause.svg)");
         TRACKS.forEach(track => {
             document.getElementsByClassName("searchbar-button play-button")[track.id].innerHTML = '<img src="./images/pause.svg" alt="pause-button">';
