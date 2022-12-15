@@ -179,6 +179,22 @@ const closeLogoutModal = () => {
     modal.style.display = "none";
 }
 
+const deleteModal = () => {
+    const deleteModal = document.getElementById("deleteModal");
+    deleteModal.style.display = "flex";
+}
+
+const closeDeleteModal = () => {
+    const deleteModal = document.getElementById("deleteModal");
+    deleteModal.style.display = "none";
+}
+
+const deleteAccount = () => {
+    localStorage.removeItem("user");
+    localStorage.setItem("isAuthenticated", "false");
+    window.location.href = "index.html";
+}
+
 function toggleMenuLinks() {
     navbarNotifications = document.getElementById("navbar-notifications");
     navbarProfileOptions = document.getElementById("navbar-profile-options");
@@ -974,8 +990,17 @@ const setNavbarLinks = () => {
                 Guardar Cambios
             </button>
 
+            <button type="button" class="delete-account-button" id="delete-account-button">
+                Borrar tu perfil
+            </button>
+
             <div id="error-message-container" class="error-message-container"></div>
         `;
+
+        const deleteButton = form.querySelector("#delete-account-button");
+        deleteButton.addEventListener("click", () => {
+            deleteModal();
+        });
 
         profileImage.innerHTML = `
         <div class="profile-data">

@@ -142,6 +142,20 @@
             ¡Regístrate y Disfruta de 3 Meses Gratis!
         </a>
     </div>
+    <div class="logoutModal" id="deleteModal">
+        <div class="logoutModal-content">
+            <div class="logoutModal-header">
+                <span class="close" onclick="closeDeleteModal()">&times;</span>
+            </div>
+            <div class="logoutModal-body">
+                <h2>¿Está seguro de que desea borrar su cuenta?</h2>
+            </div>
+            <div class="logoutModal-footer">
+                <button class="logoutModal-button bg-red" onclick="deleteAccount()">Borrar cuenta</button>
+                <button class="logoutModal-button" onclick="closeDeleteModal()">Mantener cuenta</button>
+            </div>
+        </div>
+    </div>
     <div class="logoutModal" id="logoutModal">
         <div class="logoutModal-content">
             <div class="logoutModal-header">

@@ -235,6 +235,28 @@ p {
   background-color: var(--bs-color-secondary-button-blue);
 }
 
+.delete-account-button {
+  font-family: Poppins, sans-serif;
+  color: var(--dark-gray);
+  font-weight: bold;
+  padding: 0.8rem;
+  border-radius: 8px;
+  border: none;
+  margin-left: auto;
+  margin-right: -2em;
+  cursor: pointer;
+  margin-top: 2em;
+}
+
+.delete-account-button::before {
+  content: "🗑";
+  margin-right: 0.5em;
+}
+
+.delete-account-button:hover {
+  color: var(--white);
+}
+
 .sign-log-in-button:hover {
   transform: scale(1.01);
   filter: brightness(1.2);
@@ -1295,10 +1317,18 @@ p.artist-name {
   cursor: pointer;
 }
 
+.logoutModal-footer button:nth-child(2) {
+  margin-left: 30px;
+}
+
 .logoutModal-footer button:hover {
   transform: scale(1.05);
   filter: brightness(1.1);
   transition: 0.2s;
+}
+
+.bg-red {
+  background-color: red !important;
 }
 
 /* ! Music player instead of tyhe cta-container in the footer */
@@ -1798,6 +1828,12 @@ i.fa-step-backward {
 /************************
  * Media Queries        *
  ************************/
+
+ @media (max-width: 1024px) {
+  .delete-account-button {
+    margin: 2em 0 0 0;
+  }
+ }
 
 /* media query for a max width of 768px -> Tablet */
 @media (max-width: 768px) {
