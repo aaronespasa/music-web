@@ -12,6 +12,7 @@ const profileName = document.getElementById("profile-title");
 const profileData = document.getElementById("profile-body");
 const profileOptions = document.getElementById("profile-options-container");
 const myListsContainer = document.getElementById("mylists-container");
+const likedSongs = document.getElementById("likedSongs-container");
 
 const profileImage = document.getElementById("profile-image");
 
@@ -1544,6 +1545,84 @@ const deleteSongFromPlaylist = (playlistName, songName) => {
 }
 
 
+/* My liked songs creator */
+const createLikedSongs = () => {
+    const myListsContainer = document.getElementById("likedSongs-container");
+    const user = JSON.parse(localStorage.getItem("user"));
+    const isAuthenticated = localStorage.getItem("isAuthenticated");
+    const likedSongs = user.likedSongs;
+
+    const playlistContainer = document.createElement("div");
+    playlistContainer.classList.add("music-genre-container");
+    playlistContainer.innerHTML = `
+        <h2 class="music-genre-title">Liked songs</h2>
+        <br><br><br>
+        <div class="music-genre-songs-container">
+        </div>`;
+    
+    const songsContainer = playlistContainer.querySelector(".music-genre-songs-container");
+
+    const playlistSongs = likedSongs;
+    var iterador = 0;
+    playlistSongs.forEach((songName) => {
+        const {artist, cover} = getSongInformation(songName);
+        const musicCard = document.createElement("div");
+        musicCard.classList.add("song-container");
+
+        // We loop through the songs and if the name corresponds to the song we are looking for, get the id
+        var selectedSongId = 0;
+        for (var i = 0; i < TRACKS.length; i++) {
+            if (TRACKS[i].title == songName) {
+                selectedSongId = TRACKS[i].id;
+            }
+        }
+        
+        
+
+        const likedIcon = getLikeDisplayIcon(songName);
+        // Crear iterador autoincremental para poder distinguir las canciones
+        // ! Ahora podremos llamar a cada canción por su iterador (posición en el json)) 
+        musicCard.innerHTML = `
+            <figure class="song-cover-container">
+                <img class="song-cover" src="./images/${cover}" alt="Song Cover">
+                <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(${selectedSongId})"></a>
+            </figure>
+            <p class="song-description">
+                ${songName}
+            </p>
+            <p class="song-author">
+                ${artist}
+            </p>
+            <div class="liked-container">
+            </div>
+            
+        `;
+
+        
+
+        if(isAuthenticated === "true"){
+            const likedIconElement = `<img src="${likedIcon}" class="liked-icon" onClick="toggleLike('${songName}')"/>`;
+            const likedContainer = musicCard.querySelector(".liked-container");
+            likedContainer.innerHTML = likedIconElement;
+            const likedTextContainer = musicCard.querySelector(".liked-icon");
+            likedTextContainer.addEventListener("click", () => {
+                const likedIcon = getLikeDisplayIcon(songName);
+                likedTextContainer.src = likedIcon;
+            });
+        }
+        songsContainer.appendChild(musicCard);
+        // Aumentamos el iterador autoincremental
+        iterador += 1;
+    })
+    if(playlistContainer != null) {
+        playlistContainer.appendChild(songsContainer);
+    } 
+    if(myListsContainer != null) {
+        myListsContainer.appendChild(playlistContainer);
+    } 
+    
+}
+
 /* My Playlists & Playlist Creator */
 const createMyLists = () => {
     const myListsContainer = document.getElementById("mylists-container");
@@ -1773,4 +1852,5 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if(isAuthenticated === "true") createMyLists();
+    if(isAuthenticated === "true") createLikedSongs();
 });

@@ -9,7 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style/main.css">
     <link rel="shortcut icon" href="images/favicon.svg" type="image/x-icon">
-    <title>Tunin | Registrarse</title>
+    <title>Tunin | Mis Listas</title>
+    <!-- Adding font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <!-- Cuerpo con el contenido del index -->
@@ -136,49 +138,9 @@
             </div>
             <!-- Contenedor del contenido -->
             <div class="content">
-                <div class="login-content">
-                    <div class="login-content-container">
-                        <form method="POST" id="signup-form">
-                            <div class="form-container">
-                                <div class="login-title">
-                                    <h2>
-                                        Registrarse
-                                    </h2>
-                                </div>
-                                <div class="form-body">
-                                    <div class="form-input">
-                                        <input type="text" name="username" id="username" placeholder="Nombre de usuario" required>
-                                    </div>
-                                    <div class="form-input">
-                                        <input type="email" name="email" id="email" placeholder="Correo Electrónico" required>
-                                    </div>
-                                    <div class="form-input">
-                                        <input type="password" name="password" id="password" placeholder="Contraseña" required>
-                                    </div>
-                                    <div class="form-input">
-                                        <input type="text" name="name" id="name" placeholder="Nombre" required>
-                                    </div>
-                                    <div class="form-input">
-                                        <input type="text" name="surname" id="surname" placeholder="Apellido(s)" required>
-                                    </div>
-                                    
-                                    <div class="form-input">
-                                        <!-- only allow to upload files in jpg or png -->
-                                        <input type='file' class='input-file' id="input-file" accept="image/png, image/jpeg">
-                                        <button type="button" class='select-image-button' id='select-image-button'>Imagen de Perfil</button>
-                                    </div>
-                                    <div class="form-input-checkbox">
-                                        <input class="form-checkbox" type="checkbox" name="terms" id="terms" required>
-                                        <p>He leído y acepto las condiciones de uso</p>
-                                    </div>
-                                    <div class="form-input">
-                                        <input class="form-button" type="submit" value="Registrarse">
-                                    </div>
-                                    <div id="error-message-container" class="error-message-container"></div>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
+                <span class="content-gradient"></span>
+                <div class="content-container" id="likedSongs-container">
+
                 </div>
             </div>
         </div>
@@ -188,7 +150,22 @@
             ¡Regístrate y Disfruta de 3 Meses Gratis!
         </a>
     </div>
+    <!-- Contenedor de los reproductores de audio -->
+    <div class="music-player" id="music-player">
+    </div>
+    <div class="logoutModal" id="logoutModal">
+        <div class="logoutModal-content">
+            <div class="logoutModal-header">
+                <span class="close" onclick="closeLogoutModal()">&times;</span>
+            </div>
+            <div class="logoutModal-body">
+                <h2>¿Está seguro de que quiere cerrar sesión?</h2>
+            </div>
+            <div class="logoutModal-footer">
+                <button class="logoutModal-button" onclick="logout()">Si, cerrar sesión</button>
+            </div>
+        </div>
+    </div>
     <script src="script/index.js"></script>
 </body>
-<!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> -->
 </html>
