@@ -1227,23 +1227,6 @@ const getSongsGroupedByPlaylist = () => {
     return songsGroupedByPlaylist;
 }
 
-
-const logoutModal = `
-    <div class="logoutModal" id="logoutModal">
-        <div class="logoutModal-content">
-            <div class="logoutModal-header">
-                <span class="close" onclick="closeLogoutModal()">&times;</span>
-            </div>
-            <div class="logoutModal-body">
-                <h2>¿Está seguro de que quiere cerrar sesión?</h2>
-            </div>
-            <div class="logoutModal-footer">
-                <button class="logoutModal-button" onclick="logout()">Si, cerrar sesión</button>
-            </div>
-        </div>
-    </div>
-`;
-
 function loadTrack(iterator) {
 
     // Clear the previous seek timer
@@ -1651,7 +1634,6 @@ document.addEventListener("DOMContentLoaded", () => {
     handleSingUpLogIn();
 
     setNavbarLinks();
-    // document.body.innerHTML += logoutModal;
     setPlaylistsInHome();
 
     if(playlistCreatorForm != null) {
