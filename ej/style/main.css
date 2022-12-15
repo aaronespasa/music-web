@@ -1002,6 +1002,14 @@ p.artist-name {
   margin-left: 15px;
 }
 
+.text-white {
+  color: white;
+}
+
+.padding-bounding {
+  padding: 2em 5em;
+}
+
 .navbar-profile-image {
   cursor: pointer;
   width: 35px;
