@@ -419,7 +419,7 @@ function searchSong() {
                         <img src="./images/play.svg" alt="play-button">
                     </button>
                     <p>${track.title}</p>
-                    <button class="searchbar-button like-button" onclick="likeSong(this)">
+                    <button class="searchbar-button like-button" onClick="toggleLike('${track.title}')">
                         <img src="./images/heart.svg" alt="like-button">
                     </button>
                 `;
