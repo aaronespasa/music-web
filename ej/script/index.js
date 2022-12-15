@@ -233,7 +233,7 @@ function populateNotifications(){
         var notificationEntry = document.createElement("div");
         notificationEntry.classList.add("navbar-notification-option");
         notificationEntry.innerHTML=`
-        <img src=${tour.artistImage} class="navbar-notification-option-image">
+        <img src=${tour.artistImage} alt="Artist image" class="navbar-notification-option-image">
         <a href="artist.html" class="navbar-notification-option-link">
             <p class="navbar-notification-option-text">New tour by ${tour.artist}</p>
         </a>
@@ -1002,8 +1002,10 @@ const setNavbarLinks = () => {
         form.setAttribute("id", "edit-profile-form");
         form.innerHTML = `
             <p class="profile-data-title">Nombre de usuario</p>
+            <label for="username" class="hidden">Nombre de usuario</label>
             <input class="profile-data-info" type="text" name="username" id="username" placeholder="Nombre de usuario" value="${username}">
             <p class="profile-data-title">Correo electrónico</p>
+            <label for="email" class="hidden">Email</label>
             <input class="profile-data-info" type="email" name="email" id="email" placeholder="Correo electrónico" value="${email}">
 
             <button type="submit" class="sign-log-in-button">
@@ -1284,7 +1286,7 @@ const setPlaylistsInHome = () => {
             `;
             if(isAuthenticated === "true"){
                 const likedIcon = getLikeDisplayIcon(title);
-                const likedIconElement = `<img src="${likedIcon}" class="liked-icon" onClick="toggleLike('${title}')"/>`;
+                const likedIconElement = `<img src="${likedIcon}" alt="Liked Icon" class="liked-icon" onClick="toggleLike('${title}')"/>`;
                 const likedContainer = musicCard.querySelector(".liked-container");
                 likedContainer.innerHTML = likedIconElement;
                 const likedTextContainer = musicCard.querySelector(".liked-icon");
@@ -1662,7 +1664,7 @@ const createLikedSongs = () => {
                 
                 
                 if(isAuthenticated === "true"){
-                    const likedIconElement = `<img src="${likedIcon}" class="liked-icon" onClick="toggleLike('${songName}')"/>`;
+                    const likedIconElement = `<img src="${likedIcon}" alt="like icon" class="liked-icon" onClick="toggleLike('${songName}')"/>`;
                     const likedContainer = musicCard.querySelector(".liked-container");
                     likedContainer.innerHTML = likedIconElement;
                     const likedTextContainer = musicCard.querySelector(".liked-icon");
@@ -1761,7 +1763,7 @@ const createMyLists = () => {
                     });
 
                     if(isAuthenticated === "true"){
-                        const likedIconElement = `<img src="${likedIcon}" class="liked-icon" onClick="toggleLike('${songName}')"/>`;
+                        const likedIconElement = `<img src="${likedIcon}" alt="Liked Icon" class="liked-icon" onClick="toggleLike('${songName}')"/>`;
                         const likedContainer = musicCard.querySelector(".liked-container");
                         likedContainer.innerHTML = likedIconElement;
                         const likedTextContainer = musicCard.querySelector(".liked-icon");

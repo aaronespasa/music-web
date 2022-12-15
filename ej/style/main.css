@@ -1360,7 +1360,7 @@ p.artist-name {
 }
 
 .bg-red {
-  background-color: red !important;
+  background-color: rgb(144, 4, 4) !important;
 }
 
 /* ! Music player instead of tyhe cta-container in the footer */
