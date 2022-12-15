@@ -1553,6 +1553,26 @@ i.fa-step-backward {
 }
 
 /* Playlist creator */
+.btn-default {
+  background-color: var(--color-light-primary);
+  color: var(--color-dark-primary);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 30px 10px 30px;
+  font-size: 1em;
+  font-weight: bold;
+  font-family: var(--bs-font-roboto-default);
+  cursor: pointer;
+  transition: 0.3s;
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.btn-default:hover {
+  background-color: var(--white-medium-oppacity);
+}
+
 #playlist-creator-container {
   text-align: center;
 }
