@@ -996,6 +996,19 @@ p.artist-name {
   cursor: pointer;
 }
 
+/* query only those that contain the following two classes at the same time searchbar-button like-button */
+.searchbar-button.like-button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+  transition: 0.2s;
+}
+
+.searchbar-button.like-button:active {
+  transform: scale(0.95);
+  filter: brightness(1.2);
+  transition: 0.2s;
+}
+
 .navbar-profile {
   display: flex;
   align-items: center;
