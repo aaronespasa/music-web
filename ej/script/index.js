@@ -167,7 +167,8 @@ const goToAccount = () => window.location.href = "account.html";
 const goToProfile = () => window.location.href = "profile.html";
 const goToArtist = () => window.location.href = "artist.html";
 const goToFollower = () => window.location.href = "follower.html";
-
+const goToPlaylistCreator = () => window.location.href = "playlistCreator.html";
+const goToLogin = () => window.location.href = "login.html";
 
 const modalFunction = () => {
     const modal = document.getElementById("logoutModal");
@@ -587,6 +588,8 @@ const setNavbarLinks = () => {
             <button onclick="location.href='login.html'" class="sign-log-in-button">
                 Iniciar Sesión
             </button>`;
+        // select the first child of the navbarLinks and apply it a margin left auto
+        navbarLinks.firstElementChild.style.marginLeft = "auto";
     }
 
     // ! si se ha iniciado sesión, se borra el pie de página y se agranda el resto de la página
@@ -1625,93 +1628,109 @@ const createLikedSongs = () => {
 
 /* My Playlists & Playlist Creator */
 const createMyLists = () => {
-    const myListsContainer = document.getElementById("mylists-container");
-    const user = JSON.parse(localStorage.getItem("user"));
     const isAuthenticated = localStorage.getItem("isAuthenticated");
-    const playlists = user.playlists;
+    
+    if (isAuthenticated === "true") {
+        const user = JSON.parse(localStorage.getItem("user"));
+        const playlists = user.playlists;
 
-    playlists.forEach((playlist) => {
-        const playlistName = playlist.name;
-
-        const playlistContainer = document.createElement("div");
-        playlistContainer.classList.add("music-genre-container");
-        playlistContainer.innerHTML = `
-            <h2 class="music-genre-title">${playlistName}&nbsp;&nbsp;</h2><h3 class="delete-playlist">Eliminar</h3>
-            <br><br><br>
-            <div class="music-genre-songs-container">
-            </div>`;
-        const deletePlaylistButton = playlistContainer.querySelector(".delete-playlist");
-        deletePlaylistButton.addEventListener("click", () => {
-            deletePlaylist(playlistName);
-            playlistContainer.remove();
-        });
-
-        const songsContainer = playlistContainer.querySelector(".music-genre-songs-container");
-
-        const playlistSongs = playlist.songs;
-        var iterador = 0;
-        playlistSongs.forEach((songName) => {
-            const {artist, cover} = getSongInformation(songName);
-            const musicCard = document.createElement("div");
-            musicCard.classList.add("song-container");
-
-            // We loop through the songs and if the name corresponds to the song we are looking for, get the id
-            var selectedSongId = 0;
-            for (var i = 0; i < TRACKS.length; i++) {
-                if (TRACKS[i].title == songName) {
-                    selectedSongId = TRACKS[i].id;
-                }
-            }
-            console.log(selectedSongId);
-
-            const likedIcon = getLikeDisplayIcon(songName);
-            // Crear iterador autoincremental para poder distinguir las canciones
-            // ! Ahora podremos llamar a cada canción por su iterador (posición en el json)) 
-            musicCard.innerHTML = `
-                <figure class="song-cover-container">
-                    <img class="song-cover" src="./images/${cover}" alt="Song Cover">
-                    <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(${selectedSongId})"></a>
-                </figure>
-                <p class="song-description">
-                    ${songName}
-                </p>
-                <p class="song-author">
-                    ${artist}
-                </p>
-                <div class="liked-container">
-                </div>
-                <div class="delete-song">
-                    <p>Eliminar</p>
-                </div>
+        if (playlists.length == 0) {
+            myListsContainer.innerHTML = `
+                <h2 class="music-genre-title">No tienes listas creadas</h2>
+                <button onClick="goToPlaylistCreator()" class="btn-default">Crear lista</button>
             `;
+        } else {
+            playlists.forEach((playlist) => {
+                const playlistName = playlist.name;
 
-            const deleteSong = musicCard.querySelector(".delete-song");
-            deleteSong.addEventListener("click", () => {
-                deleteSongFromPlaylist(playlistName, songName);
-                musicCard.remove();
-            });
-
-            if(isAuthenticated === "true"){
-                const likedIconElement = `<img src="${likedIcon}" class="liked-icon" onClick="toggleLike('${songName}')"/>`;
-                const likedContainer = musicCard.querySelector(".liked-container");
-                likedContainer.innerHTML = likedIconElement;
-                const likedTextContainer = musicCard.querySelector(".liked-icon");
-                likedTextContainer.addEventListener("click", () => {
-                    const likedIcon = getLikeDisplayIcon(songName);
-                    likedTextContainer.src = likedIcon;
+                const playlistContainer = document.createElement("div");
+                playlistContainer.classList.add("music-genre-container");
+                playlistContainer.innerHTML = `
+                    <h2 class="music-genre-title">${playlistName}&nbsp;&nbsp;</h2><h3 class="delete-playlist">Eliminar</h3>
+                    <br><br><br>
+                    <div class="music-genre-songs-container">
+                    </div>`;
+                const deletePlaylistButton = playlistContainer.querySelector(".delete-playlist");
+                deletePlaylistButton.addEventListener("click", () => {
+                    deletePlaylist(playlistName);
+                    playlistContainer.remove();
                 });
-            }
-            songsContainer.appendChild(musicCard);
-            // Aumentamos el iterador autoincremental
-            iterador += 1;
-        })
-        if(playlistContainer != null) {
-            playlistContainer.appendChild(songsContainer);
-        } 
-        if(myListsContainer != null) {
-            myListsContainer.appendChild(playlistContainer);
-        } 
-    });
+
+                const songsContainer = playlistContainer.querySelector(".music-genre-songs-container");
+
+                const playlistSongs = playlist.songs;
+                var iterador = 0;
+                playlistSongs.forEach((songName) => {
+                    const {artist, cover} = getSongInformation(songName);
+                    const musicCard = document.createElement("div");
+                    musicCard.classList.add("song-container");
+
+                    // We loop through the songs and if the name corresponds to the song we are looking for, get the id
+                    var selectedSongId = 0;
+                    for (var i = 0; i < TRACKS.length; i++) {
+                        if (TRACKS[i].title == songName) {
+                            selectedSongId = TRACKS[i].id;
+                        }
+                    }
+                    console.log(selectedSongId);
+
+                    const likedIcon = getLikeDisplayIcon(songName);
+                    // Crear iterador autoincremental para poder distinguir las canciones
+                    // ! Ahora podremos llamar a cada canción por su iterador (posición en el json)) 
+                    musicCard.innerHTML = `
+                        <figure class="song-cover-container">
+                            <img class="song-cover" src="./images/${cover}" alt="Song Cover">
+                            <a id="play-icon" alt="Play Icon" onclick="openMusicPlayer(${selectedSongId})"></a>
+                        </figure>
+                        <p class="song-description">
+                            ${songName}
+                        </p>
+                        <p class="song-author">
+                            ${artist}
+                        </p>
+                        <div class="liked-container">
+                        </div>
+                        <div class="delete-song">
+                            <p>Eliminar</p>
+                        </div>
+                    `;
+
+                    const deleteSong = musicCard.querySelector(".delete-song");
+                    deleteSong.addEventListener("click", () => {
+                        deleteSongFromPlaylist(playlistName, songName);
+                        musicCard.remove();
+                    });
+
+                    if(isAuthenticated === "true"){
+                        const likedIconElement = `<img src="${likedIcon}" class="liked-icon" onClick="toggleLike('${songName}')"/>`;
+                        const likedContainer = musicCard.querySelector(".liked-container");
+                        likedContainer.innerHTML = likedIconElement;
+                        const likedTextContainer = musicCard.querySelector(".liked-icon");
+                        likedTextContainer.addEventListener("click", () => {
+                            const likedIcon = getLikeDisplayIcon(songName);
+                            likedTextContainer.src = likedIcon;
+                        });
+                    }
+                    songsContainer.appendChild(musicCard);
+                    // Aumentamos el iterador autoincremental
+                    iterador += 1;
+                })
+                if(playlistContainer != null) {
+                    playlistContainer.appendChild(songsContainer);
+                } 
+                if(myListsContainer != null) {
+                    myListsContainer.appendChild(playlistContainer);
+                } 
+            });
+        }
+    } else {
+        if (myListsContainer != null) {
+            myListsContainer.innerHTML = `
+                <h2 class="music-genre-title">Debes iniciar sesión para poder crear tus propias listas</h2>
+                <button onClick="goToLogin()" class="btn-default">Iniciar sesión</button>
+            `;
+        }
+    }
 }
 
 const userPlaylistExists = (userPlaylists, newPlaylistName) => {
@@ -1851,6 +1870,6 @@ document.addEventListener("DOMContentLoaded", () => {
         editProfileForm.addEventListener("submit", (e) => modifyProfile(e));
     }
 
-    if(isAuthenticated === "true") createMyLists();
+    createMyLists();
     if(isAuthenticated === "true") createLikedSongs();
 });
