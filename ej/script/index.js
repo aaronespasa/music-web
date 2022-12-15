@@ -1579,7 +1579,7 @@ const createLikedSongs = () => {
     const user = JSON.parse(localStorage.getItem("user"));
     const isAuthenticated = localStorage.getItem("isAuthenticated");
     const likedSongs = user.likedSongs;
-
+    console.log("hi")
     const playlistContainer = document.createElement("div");
     playlistContainer.classList.add("music-genre-container");
     playlistContainer.innerHTML = `
@@ -1895,6 +1895,6 @@ document.addEventListener("DOMContentLoaded", () => {
         editProfileForm.addEventListener("submit", (e) => modifyProfile(e));
     }
 
-    createMyLists();
+    if (myListsContainer != null) createMyLists();
     if(isAuthenticated === "true") createLikedSongs();
 });
