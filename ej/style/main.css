@@ -39,7 +39,7 @@
   --white-medium-oppacity: rgba(255, 255, 255, 0.6);
   --white-medium-high-oppacity: rgba(255, 255, 255, 0.7);
   --white-high-oppacity: rgba(255, 255, 255, 0.8);
-  --perano-blue: rgb(163, 172, 255);
+  --perano-blue: rgb(66, 83, 240);
   --dark-blue: #1b1724;
 
   --red: rgb(255, 0, 0);
@@ -157,6 +157,10 @@ p {
   margin: 0;
 }
 
+.hidden {
+  display: none;
+}
+
 /************************
  * Homepage             *
  ************************/
@@ -229,7 +233,7 @@ p {
 
 .sign-log-in-button {
   font-family: Poppins, sans-serif;
-  color: var(--white);
+  color: var(--black);
   padding: 0.8rem;
   border-radius: 8px;
   background-color: var(--bs-color-secondary-button-blue);

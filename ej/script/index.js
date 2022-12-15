@@ -537,12 +537,12 @@ const setNavbarLinks = () => {
         let isNotification = notificationIsRead(toursList);
         const navbarNotificationsMenu = `
             <div class="navbar-profile">
-                <img src=${getNotificationIcon(isNotification)} class="bell-image" onclick="toggleNotificationLinks()">
+                <img src=${getNotificationIcon(isNotification)} alt="Notification" class="bell-image" onclick="toggleNotificationLinks()">
             </div>
             <div class="navbar-profile-options" id="navbar-notifications">
                     <div class="navbar-notification-option-container" id="notifications-container">
                         <div class="navbar-notification-option">
-                            <img src="./images/logo.svg" class="navbar-profile-option-icon">
+                            <img src="./images/logo.svg" alt="logo" class="navbar-profile-option-icon">
                             <a href="#settings" class="navbar-profile-option-link" onclick="goToProfile()">
                                 <p class="navbar-profile-option-text">This is your first notification!</p>
                             </a>
@@ -552,29 +552,29 @@ const setNavbarLinks = () => {
         `
         const navbarProfileImageMenu = `
                 <div class="navbar-profile">
-                    <img src=${userImage} class="navbar-profile-image" onclick="toggleMenuLinks()">
+                    <img src=${userImage} alt = "user-image" class="navbar-profile-image"  onclick="toggleMenuLinks()">
                 </div>
                 <div class="navbar-profile-options" id="navbar-profile-options">
                     <div class="navbar-profile-option-info">
-                        <img src=${userImage} class="navbar-profile-option-image">
+                        <img src=${userImage} alt = "user-image"  class="navbar-profile-option-image">
                         <p class="navbar-profile-option-name">${user.name} ${user.surname}</p>
                     </div> 
                     <div class="navbar-profile-option-container">
                         <div class="navbar-profile-option">
-                            <img src="./images/edit-profile.svg" class="navbar-profile-option-icon">
+                            <img src="./images/edit-profile.svg" alt = "edit-profile" class="navbar-profile-option-icon">
                             <a href="#settings" class="navbar-profile-option-link" onclick="goToAccount()">
                                 <p class="navbar-profile-option-text">Editar Perfil</p>
                             </a>
                         </div>
                         <div class="navbar-profile-option">
-                            <img src="./images/account.svg" class="navbar-profile-option-icon">
+                            <img src="./images/account.svg" alt = "account" class="navbar-profile-option-icon">
                             <a class="navbar-profile-option-link" onclick="goToProfile()">
                                 <p class="navbar-profile-option-text">Mi Cuenta</p>
                             </a>
                         </div>
                         
                         <div class="navbar-profile-option">
-                            <img src="./images/logout.svg" class="navbar-profile-option-icon">
+                            <img src="./images/logout.svg" alt="logout" class="navbar-profile-option-icon">
                             <a href="#logout" class="navbar-profile-option-link" onclick="modalFunction()">
                                 <p class="navbar-profile-option-text">Cerrar Sesión</p>
                             </a>
@@ -583,7 +583,9 @@ const setNavbarLinks = () => {
                 </div>
         `;
         const songsSearchbar = `
+        
             <div class="searchbar-container">
+                <label for="searchbar" class="hidden">Searchbar</label>
                 <input id="searchbar" onkeyup="searchSong()" class="searchbar" type="text" placeholder="Buscar">
                 ${navbarNotificationsMenu}
                 ${navbarProfileImageMenu}

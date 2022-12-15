@@ -145,12 +145,13 @@
                     </div>
                     <form method="POST" id="playlist-creator-form">
                         <div class="playlist-creator-title-container">
+                            <label for="playlist-title" class="hidden">Título de la lista</label>
                             <input type="text" name="playlist-title" id="playlist-title" placeholder="Título de la lista" required>
                         </div>
                         <div class="playlist-creator-search">
+                            <label for="playlist-searchbar" class="hidden">Buscar canción</label>
                             <input type="text" name="playlist-searchbar" id="playlist-creator-searchbar" placeholder="Buscar canción" onkeyup="searchSongForPlaylist()">
                             <ul class="playlist-creator-search-results" id="playlist-creator-results">
-
                             </ul>
                         </div>
                         <div class="playlist-creator-added-songs-container">
